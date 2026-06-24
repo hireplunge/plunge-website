@@ -320,6 +320,7 @@ function loadGoogleReviews() {
                 place.reviews
                     .sort((a, b) => b.time - a.time)
                     .forEach(review => container.appendChild(buildReviewCard(review)));
+                container.appendChild(buildReviewCTACard());
             } else {
                 container.innerHTML = '<p class="reviews-loading">No reviews yet.</p>';
             }
@@ -364,6 +365,22 @@ function buildReviewCard(review) {
             : ''}
     `;
 
+    return article;
+}
+
+function buildReviewCTACard() {
+    const article = document.createElement('article');
+    article.className = 'review-card review-card-cta';
+    article.setAttribute('role', 'listitem');
+    article.innerHTML = `
+        <p>Had a great experience with Plunge? We'd love to hear about it!</p>
+        <a href="${escapeHTMLAttr(CONFIG.GOOGLE.REVIEW_LINK)}"
+           class="btn btn-review"
+           target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-google" aria-hidden="true"></i>
+            Leave a Review
+        </a>
+    `;
     return article;
 }
 
