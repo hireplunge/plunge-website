@@ -296,6 +296,8 @@ function loadGoogleReviews() {
         },
         (place, status) => {
 
+            console.log('Places API status:', status);
+
             if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
                 container.innerHTML =
                     '<p class="reviews-loading">Unable to load reviews right now. ' +
