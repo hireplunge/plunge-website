@@ -279,16 +279,22 @@ button {
 .header-brand {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.45rem;
 }
 
-.header-logo {
+.header-logo-wrap {
     width: 65px;
     height: 65px;
     flex-shrink: 0;
-    margin-right: 0.75rem;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.header-logo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: scale(1.12);
 }
 
 .header-title {
@@ -1398,7 +1404,7 @@ textarea {
 
     .header-company-name { font-size: 1.3rem; }
     .header-tagline      { font-size: 0.78rem; }
-    .header-logo         { width: 44px; height: 44px; }
+    .header-logo-wrap    { width: 44px; height: 44px; }
 
     .menu-btn {
         right: 0.75rem;

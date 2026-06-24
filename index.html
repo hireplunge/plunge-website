@@ -62,7 +62,9 @@
             <div class="header-brand">
                 <!-- NOTE: Place your logo file at images/logo.png
                      Recommended size: 120×120 px minimum, square or circular crop -->
-                <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-logo-wrap">
+                    <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                </div>
                 <div class="header-title">
                     <span class="header-company-name">Plunge</span>
                     <span class="header-tagline">a Plumbing Co.</span>
@@ -424,16 +426,6 @@
                 </iframe>
             </div>
 
-            <!-- Leave a Review call-to-action -->
-            <div class="leave-review-box">
-                <h3>Had a great experience?</h3>
-                <p>Share your feedback — it helps other customers find us and helps us keep improving.</p>
-                <a href="https://search.google.com/local/writereview?placeid=ChIJM_t8bEGnK4cRQPN1UACaRtA"
-                   id="leave-review-btn" class="btn btn-review" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-google" aria-hidden="true"></i>
-                    Leave a Google Review
-                </a>
-            </div>
 
         </div>
     </section>
@@ -464,7 +456,7 @@
     <section id="gallery" class="gallery-section">
         <div class="container">
 
-            <h2 class="section-title">Our Work</h2>
+            <h2 class="section-title">Expert Work by Our Professionals</h2>
             <p class="section-subtitle">A sample of our plumbing projects across the service area.</p>
 
             <!-- Category filter buttons -->
