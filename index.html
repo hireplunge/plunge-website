@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- =============================================
+         META TAGS & SEO
+         Update description and keywords to match your business
+         ============================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plunge, a Plumbing Co. — Licensed, insured plumbing services. Book online or call now for fast, professional plumbing repairs and installations.">
+    <meta name="keywords" content="plumbing, plumber, drain cleaning, pipe repair, water heater, Plunge plumbing, plumbing company">
+    <title>Plunge, a Plumbing Co. | Professional Plumbing Services</title>
+
+    <!-- Preconnect to Google services for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts: Montserrat for headings, Open Sans for body, Playfair Display for About Us -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome icons (phone, map pin, social media, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Main site stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org structured data for local business SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Plumber",
+      "name": "Plunge, a Plumbing Co.",
+      "url": "https://yourwebsite.com",
+      "telephone": "+14808780808",
+      "email": "info@hireplunge.com",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+      ]
+    }
+    </script>
+
+</head>
+<body>
+
+    <!-- =============================================
+         OVERLAY — dims the page when the nav drawer is open
+         ============================================= -->
+    <div id="nav-overlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+
+    <!-- =============================================
+         HEADER
+         Logo and company name are centered together.
+         Menu button is fixed to the top-right corner.
+         ============================================= -->
+    <header class="site-header">
+
+        <!-- Brand group: logo on left, company name on right — clickable link to homepage -->
+        <a href="index.html" class="header-brand-link" aria-label="Return to home page">
+            <div class="header-brand">
+                <!-- NOTE: Place your logo file at images/logo.png
+                     Recommended size: 120×120 px minimum, square or circular crop -->
+                <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-title">
+                    <span class="header-company-name">Plunge</span>
+                    <span class="header-tagline">a Plumbing Co.</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Menu button — top-left — opens the city services navigation drawer -->
+        <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
+            <span class="menu-icon" aria-hidden="true">&#9776;</span>
+            <span class="menu-label">Service Areas</span>
+        </button>
+
+    </header>
+
+
+    <!-- =============================================
+         CITY SERVICES NAVIGATION DRAWER
+         Slides in from the right when Menu button is clicked.
+
+         TO ADD A CITY: copy one <li> and update the href and label.
+         City pages live in the cities/ folder.
+         Create new city pages by copying cities/city-template.html.
+         ============================================= -->
+    <nav id="city-nav" class="city-nav" aria-label="City Service Areas" role="navigation">
+
+        <div class="city-nav-header">
+            <h2>Service Areas</h2>
+            <button class="close-nav-btn" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <p class="city-nav-subtitle">Professional plumbing in your city</p>
+
+        <ul class="city-nav-list">
+            <!-- =============================================
+                 ADD OR REMOVE CITY LINKS HERE
+                 ============================================= -->
+            <li><a href="cities/los-angeles.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Los Angeles</a></li>
+            <li><a href="cities/long-beach.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Long Beach</a></li>
+            <li><a href="cities/pasadena.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Pasadena</a></li>
+            <li><a href="cities/glendale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Glendale</a></li>
+            <li><a href="cities/burbank.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Burbank</a></li>
+            <li><a href="cities/torrance.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Torrance</a></li>
+            <li><a href="cities/compton.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Compton</a></li>
+            <li><a href="cities/inglewood.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Inglewood</a></li>
+            <!-- Add more cities here -->
+        </ul>
+
+        <div class="city-nav-footer">
+            <a href="cities/" class="city-nav-all-link">View All Service Areas &rarr;</a>
+            <!-- CALL NOW — replace +14808780808 with your phone number -->
+            <a href="tel:+14808780808" class="call-btn-nav">
+                <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+            </a>
+        </div>
+
+    </nav>
+
+
+    <!-- =============================================
+         ABOUT US SECTION
+         Brand story and company values with Playfair Display heading.
+         ============================================= -->
+    <section id="about" class="about-section">
+        <div class="container about-content">
+            <h1 class="about-headline">About Plunge</h1>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-intro">
+                        Plunge is a trusted, locally-owned plumbing company serving Southern California communities with integrity,
+                        reliability, and expert craftsmanship. We've been fixing pipes and solving plumbing problems for homeowners
+                        and businesses for over a decade.
+                    </p>
+                    <p>
+                        Whether it's an emergency pipe burst, a routine maintenance call, or a complete bathroom remodel, our licensed
+                        and insured plumbers treat every job with the same attention to detail and respect for your home. We show up
+                        on time, we respect your space, and we stand behind our work.
+                    </p>
+                    <p>
+                        When you call Plunge, you're not reaching a call center — you're reaching local plumbers who live and work
+                        in your community. We're available 7 days a week, with emergency response 24/7. Same-day service is our standard,
+                        not a luxury.
+                    </p>
+                </div>
+            </div>
+            <div class="about-cta">
+                <!-- CALL NOW — replace +14808780808 with your phone number (digits only) -->
+                <a href="tel:+14808780808" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                </a>
+                <a href="#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         BOOKING SECTION
+         Customers fill out this form to schedule a plumbing job.
+         Form data is sent to the ServiceTitan CRM via the API.
+
+         SETUP REQUIRED — see js/script.js, section "CONFIGURATION":
+         1. Add your ServiceTitan Tenant ID, App Key, and API credentials
+         2. Either use Option A (backend proxy — recommended) or
+            Option B (ServiceTitan's hosted booking widget)
+         ============================================= -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+
+            <h2 class="section-title">Book a Service</h2>
+            <p class="section-subtitle">Schedule your plumbing service online — we'll confirm within 1 hour during business hours.</p>
+
+            <form id="booking-form" class="booking-form" novalidate>
+
+                <!-- Customer Information -->
+                <h3 class="form-section-label">Your Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name <span class="required">*</span></label>
+                        <input type="text" id="first-name" name="firstName" required placeholder="John" autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name <span class="required">*</span></label>
+                        <input type="text" id="last-name" name="lastName" required placeholder="Smith" autocomplete="family-name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="john@email.com" autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555" autocomplete="tel">
+                    </div>
+                </div>
+
+                <!-- Service Address -->
+                <h3 class="form-section-label">Service Address</h3>
+                <div class="form-row">
+                    <div class="form-group form-group--wide">
+                        <label for="address">Street Address <span class="required">*</span></label>
+                        <input type="text" id="address" name="street" required placeholder="123 Main Street" autocomplete="street-address">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit">Unit / Apt</label>
+                        <input type="text" id="unit" name="unit" placeholder="Apt 4B" autocomplete="address-line2">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city-field">City <span class="required">*</span></label>
+                        <input type="text" id="city-field" name="city" required placeholder="Los Angeles" autocomplete="address-level2">
+                    </div>
+                    <div class="form-group form-group--small">
+                        <label for="state">State <span class="required">*</span></label>
+                        <input type="text" id="state" name="state" required placeholder="CA" maxlength="2" autocomplete="address-level1">
+                    </div>
+                    <div class="form-group form-group--small">
+                        <label for="zip">ZIP Code <span class="required">*</span></label>
+                        <input type="text" id="zip" name="zip" required placeholder="90001" autocomplete="postal-code" maxlength="10">
+                    </div>
+                </div>
+
+                <!-- Service Details -->
+                <h3 class="form-section-label">Service Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service-type">Type of Service <span class="required">*</span></label>
+                        <select id="service-type" name="serviceType" required>
+                            <option value="" disabled selected>Select a service&hellip;</option>
+                            <!-- =============================================
+                                 UPDATE these options to match your ServiceTitan
+                                 job types. The values can match your job type IDs.
+                                 ============================================= -->
+                            <option value="drain-cleaning">Drain Cleaning</option>
+                            <option value="leak-repair">Leak Detection &amp; Repair</option>
+                            <option value="water-heater">Water Heater Service</option>
+                            <option value="toilet-repair">Toilet Repair / Replacement</option>
+                            <option value="pipe-repair">Pipe Repair / Replacement</option>
+                            <option value="sewer-line">Sewer Line Service</option>
+                            <option value="garbage-disposal">Garbage Disposal</option>
+                            <option value="faucet">Faucet Repair / Replacement</option>
+                            <option value="remodel">Plumbing Remodel</option>
+                            <option value="emergency">Emergency Service</option>
+                            <option value="other">Other (describe below)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred-date">Preferred Date <span class="required">*</span></label>
+                        <input type="date" id="preferred-date" name="preferredDate" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preferred-time">Preferred Time Window</label>
+                        <select id="preferred-time" name="preferredTime">
+                            <option value="">No preference</option>
+                            <option value="morning">Morning (8am – 12pm)</option>
+                            <option value="afternoon">Afternoon (12pm – 4pm)</option>
+                            <option value="evening">Evening (4pm – 7pm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="is-new-customer">Are you a new customer?</label>
+                        <select id="is-new-customer" name="isNewCustomer">
+                            <option value="true">Yes, new customer</option>
+                            <option value="false">No, returning customer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Describe the Issue</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Please describe the plumbing issue you are experiencing&hellip;"></textarea>
+                </div>
+
+                <!-- Status message shown after form submission -->
+                <div id="booking-status" class="booking-status" role="alert" aria-live="polite"></div>
+
+                <button type="submit" class="btn btn-submit">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Request Booking
+                </button>
+                <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour during business hours.</p>
+
+            </form>
+
+            <!-- =============================================
+                 SERVICETITAN HOSTED WIDGET (ALTERNATIVE)
+                 If you prefer ServiceTitan's own booking widget
+                 over the custom form above, paste your embed
+                 code here and hide or remove the form above.
+                 Get the embed code from ServiceTitan:
+                 Settings > Online Booking > Widget
+                 ============================================= -->
+            <!--
+            <div id="servicetitan-widget">
+                PASTE YOUR SERVICETITAN BOOKING WIDGET EMBED CODE HERE
+            </div>
+            -->
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         BUSINESS HOURS & CONTACT
+         Update times and phone number to match your actual schedule.
+         ============================================= -->
+    <section id="hours" class="hours-section">
+        <div class="container hours-contact-grid">
+
+            <!-- Business Hours card -->
+            <div class="hours-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
+                </h2>
+                <table class="hours-table" aria-label="Business Hours">
+                    <tbody>
+                        <!-- =============================================
+                             UPDATE HOURS TO MATCH YOUR SCHEDULE
+                             ============================================= -->
+                        <tr><th scope="row">Monday</th><td>7:00 AM – 6:00 PM</td></tr>
+                        <tr><th scope="row">Tuesday</th><td>7:00 AM – 6:00 PM</td></tr>
+                        <tr><th scope="row">Wednesday</th><td>7:00 AM – 6:00 PM</td></tr>
+                        <tr><th scope="row">Thursday</th><td>7:00 AM – 6:00 PM</td></tr>
+                        <tr><th scope="row">Friday</th><td>7:00 AM – 6:00 PM</td></tr>
+                        <tr><th scope="row">Saturday</th><td>8:00 AM – 4:00 PM</td></tr>
+                        <tr class="row-closed"><th scope="row">Sunday</th><td>Closed</td></tr>
+                        <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contact / Call Now card -->
+            <div class="contact-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
+                </h2>
+
+                <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
+                <a href="tel:+14808780808" class="btn btn-call btn-call--large">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                        <strong>Call Now</strong>
+                        <small>(480) 878-0808</small>
+                    </span>
+                </a>
+
+                <!-- =============================================
+                     SOCIAL MEDIA LINKS
+                     Replace each # with your actual profile URL.
+                     Remove any platforms you don't use.
+                     ============================================= -->
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--yelp" aria-label="Plunge on Yelp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-yelp" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--nextdoor" aria-label="Plunge on Nextdoor" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--youtube" aria-label="Plunge on YouTube" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         GOOGLE REVIEWS SECTION
+         Uses an official Google Maps embed iframe —
+         no API key required, served directly by Google.
+         ============================================= -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+
+            <h2 class="section-title">What Our Customers Say</h2>
+
+            <!-- Official Google Maps embed — shows business rating and reviews -->
+            <div class="maps-embed-wrapper">
+                <iframe
+                    src="https://maps.google.com/maps?q=place_id:ChIJM_t8bEGnK4cRQPN1UACaRtA&output=embed"
+                    width="100%"
+                    height="500"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Plunge Plumbing — Google Maps &amp; Reviews">
+                </iframe>
+            </div>
+
+            <!-- Leave a Review call-to-action -->
+            <div class="leave-review-box">
+                <h3>Had a great experience?</h3>
+                <p>Share your feedback — it helps other customers find us and helps us keep improving.</p>
+                <a href="https://search.google.com/local/writereview?placeid=ChIJM_t8bEGnK4cRQPN1UACaRtA"
+                   id="leave-review-btn" class="btn btn-review" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                         alt="" width="20" height="20" aria-hidden="true">
+                    Leave a Google Review
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         PHOTO GALLERY
+         Showcases photos of your plumbing work with SEO
+         metadata and accessibility descriptions.
+
+         HOW TO ADD PHOTOS:
+         1. Copy image files into the images/gallery/ folder
+         2. Open js/script.js and find the GALLERY_PHOTOS array
+         3. Add a new object for each photo:
+            {
+              src:      "images/gallery/filename.jpg",
+              alt:      "Detailed accessibility description",  ← for screen readers & SEO
+              title:    "Short display title",
+              caption:  "Caption shown on hover",
+              keywords: "keyword1, keyword2, keyword3",         ← stored as data attribute for SEO
+              category: "drain|pipes|water-heater|remodel|emergency",
+            }
+
+         HOW TO ADD A NEW CATEGORY:
+         Add a new <button> in .gallery-filters below with a matching data-filter value,
+         then use that value as the category in your GALLERY_PHOTOS entries.
+         ============================================= -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+
+            <h2 class="section-title">Our Work</h2>
+            <p class="section-subtitle">A sample of our plumbing projects across the service area.</p>
+
+            <!-- Category filter buttons -->
+            <div class="gallery-filters" role="group" aria-label="Filter gallery by category">
+                <button class="filter-btn active" data-filter="all" onclick="filterGallery('all')">All</button>
+                <button class="filter-btn" data-filter="drain" onclick="filterGallery('drain')">Drain</button>
+                <button class="filter-btn" data-filter="pipes" onclick="filterGallery('pipes')">Pipes</button>
+                <button class="filter-btn" data-filter="water-heater" onclick="filterGallery('water-heater')">Water Heater</button>
+                <button class="filter-btn" data-filter="remodel" onclick="filterGallery('remodel')">Remodel</button>
+                <button class="filter-btn" data-filter="emergency" onclick="filterGallery('emergency')">Emergency</button>
+            </div>
+
+            <!-- Gallery grid — populated by JavaScript from the GALLERY_PHOTOS array in script.js -->
+            <div id="gallery-grid" class="gallery-grid" role="list" aria-label="Photo gallery of plumbing work">
+                <!-- Populated by renderGallery() in script.js -->
+            </div>
+
+        </div>
+
+        <!-- Lightbox overlay for enlarged photo view -->
+        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightbox()">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&times;</button>
+            <button class="lightbox-prev" onclick="lightboxNav(-1, event)" aria-label="Previous photo">&#8249;</button>
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <img id="lightbox-img" src="" alt="">
+                <p id="lightbox-caption" class="lightbox-caption"></p>
+            </div>
+            <button class="lightbox-next" onclick="lightboxNav(1, event)" aria-label="Next photo">&#8250;</button>
+        </div>
+
+    </section>
+
+
+    <!-- =============================================
+         FOOTER
+         Update phone number, license number, and social links.
+         ============================================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <!-- Brand column -->
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="footer-logo" onerror="this.style.display='none'">
+                <p class="footer-company-name">Plunge, a Plumbing Co.</p>
+                <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
+                <!-- Replace with your contractor license number -->
+                <p class="footer-license">License #: XXXXXXXXX</p>
+            </div>
+
+            <!-- Quick links column -->
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#booking">Book a Service</a></li>
+                    <li><a href="#hours">Business Hours</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#gallery">Our Work</a></li>
+                    <li><a href="cities/">Service Areas</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact column -->
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <!-- Replace with your actual contact details -->
+                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+14808780808">(480) 878-0808</a></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year"></span> Plunge, a Plumbing Co. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">Privacy Policy</a>
+                &nbsp;|&nbsp;
+                <a href="terms.html">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- =============================================
+         JAVASCRIPT
+         ============================================= -->
+    <script src="js/script.js"></script>
+
+
+</body>
+</html>

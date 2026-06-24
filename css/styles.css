@@ -1,0 +1,1279 @@
+/* =============================================
+   PLUNGE, A PLUMBING CO. — Main Stylesheet
+   -----------------------------------------------
+   COLOR PALETTE (60 / 30 / 10 Rule):
+     60%  Grey   rgb(168, 168, 168) — page bg, cards, neutral sections
+     30%  Blue   rgb(58, 100, 158)  — header, footer, nav, primary buttons
+     10%  Orange rgb(235, 149, 74)  — CTAs, accents, highlights, hover states
+   ============================================= */
+
+
+/* =============================================
+   CSS CUSTOM PROPERTIES (variables)
+   ============================================= */
+:root {
+
+    /* -- Brand Colors -- */
+    --grey:         rgb(168, 168, 168);   /* 60% dominant background */
+    --grey-light:   rgb(192, 192, 192);
+    --grey-mid:     rgb(155, 155, 155);
+    --grey-dark:    rgb(120, 120, 120);
+    --grey-card:    rgb(180, 180, 180);
+
+    --blue:         rgb(58, 100, 158);    /* 30% primary — header, footer, nav */
+    --blue-light:   rgb(82, 130, 200);
+    --blue-dark:    rgb(38, 72, 120);
+    --blue-overlay: rgba(38, 72, 120, 0.9);
+
+    --orange:       rgb(235, 149, 74);    /* 10% accent — CTAs, highlights */
+    --orange-dark:  rgb(210, 122, 45);
+    --orange-light: rgb(245, 175, 110);
+
+    /* -- Neutrals -- */
+    --white:        #ffffff;
+    --black:        #111111;
+    --text-dark:    #2c2c2c;
+    --text-mid:     #555555;
+    --text-light:   #f5f5f5;
+
+    /* -- Typography -- */
+    --font-heading: 'Courier New', monospace;
+    --font-body:    'Courier New', monospace;
+
+    /* -- Spacing scale -- */
+    --space-xs:  0.4rem;
+    --space-sm:  0.875rem;
+    --space-md:  1.5rem;
+    --space-lg:  2.5rem;
+    --space-xl:  4.5rem;
+
+    /* -- Border radius -- */
+    --radius:    6px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+
+    /* -- Shadows -- */
+    --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.14);
+    --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.18);
+    --shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.22);
+
+    /* -- Transitions -- */
+    --ease:       all 0.25s ease;
+    --ease-slow:  all 0.4s ease;
+}
+
+
+/* =============================================
+   RESET & BASE STYLES
+   ============================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #3a3a3a;     /* Uniform dark gray throughout */
+    color: var(--text-dark);
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+    transition: var(--ease);
+}
+
+a:hover {
+    color: var(--orange);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+
+/* Centered, max-width page wrapper */
+.container {
+    width: 90%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+}
+
+/* Section headings — blue per 30% rule */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+/* Left-aligned variant used in cards */
+.section-title--left {
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-lg);
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Required field asterisk */
+.required {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+
+/* =============================================
+   BUTTON SYSTEM
+   60/30/10:
+     btn-call   = orange (10% CTA accent)
+     btn-book   = blue   (30% primary action)
+     btn-submit = blue   (30% primary)
+     btn-review = white  (neutral)
+   ============================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--ease);
+    white-space: nowrap;
+}
+
+/* Call Now — orange (10% accent) */
+.btn-call {
+    background-color: var(--orange);
+    color: var(--white);
+}
+.btn-call:hover {
+    background-color: var(--orange-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Book Online — blue (30% primary) */
+.btn-book {
+    background-color: var(--blue);
+    color: var(--white);
+}
+.btn-book:hover {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Form submit — blue (30%) */
+.btn-submit {
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--space-sm);
+}
+.btn-submit:hover {
+    background-color: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.btn-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Google Review — white with border */
+.btn-review {
+    background-color: var(--white);
+    color: var(--text-dark);
+    border: 2px solid var(--grey-mid);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+.btn-review:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* =============================================
+   HEADER
+   Background: blue (30%)
+   Logo + company name centered together.
+   Menu button pinned top-right.
+   ============================================= */
+.site-header {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;        /* centers the brand group */
+    padding: 0.6rem var(--space-lg);
+    min-height: 78px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Logo + name link wrapper */
+.header-brand-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.header-brand-link:hover {
+    opacity: 0.85;
+}
+
+/* Logo + name — horizontally side by side, centered in header */
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.header-logo {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    margin-right: 0.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-company-name {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.header-tagline {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0.5px;
+}
+
+/* Menu button — absolute top-left, orange (10% accent) */
+.menu-btn {
+    position: absolute;
+    left: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--ease);
+}
+.menu-btn:hover {
+    background: var(--orange-dark);
+    box-shadow: var(--shadow-sm);
+}
+
+.menu-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+
+/* =============================================
+   NAVIGATION OVERLAY & DRAWER
+   Drawer slides in from the right when Menu is clicked.
+   Background: dark blue (30% zone)
+   ============================================= */
+
+/* Dim overlay behind open drawer */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 950;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Slide-in drawer */
+.city-nav {
+    position: fixed;
+    top: 0;
+    left: -350px;                  /* hidden off-screen to the left */
+    width: 320px;
+    height: 100%;
+    background: var(--blue-dark);
+    color: var(--white);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-md);
+    overflow-y: auto;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+}
+.city-nav.open {
+    left: 0;
+}
+
+.city-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--orange);   /* orange accent line */
+}
+
+.city-nav-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--white);
+}
+
+.close-nav-btn {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0.2rem 0.5rem;
+    transition: color 0.2s;
+}
+.close-nav-btn:hover { color: var(--orange); }
+
+.city-nav-subtitle {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: var(--space-md);
+}
+
+/* City link list */
+.city-nav-list {
+    flex: 1;
+}
+
+.city-nav-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.city-nav-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 0.4rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.98rem;
+    transition: var(--ease);
+}
+.city-nav-list a:hover {
+    color: var(--orange);
+    padding-left: 0.9rem;
+}
+
+.city-nav-list .fa {
+    color: var(--orange);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    width: 14px;
+}
+
+/* Bottom of drawer */
+.city-nav-footer {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.city-nav-all-link {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s;
+}
+.city-nav-all-link:hover { color: var(--white); }
+
+/* Call Now inside drawer */
+.call-btn-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--orange);
+    color: var(--white);
+    padding: 0.85rem;
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: var(--ease);
+}
+.call-btn-nav:hover {
+    background: var(--orange-dark);
+    color: var(--white);
+}
+
+
+/* =============================================
+   ABOUT US SECTION
+   Background: dark gray
+   Uses Playfair Display for heading
+   ============================================= */
+.about-section {
+    background: #3a3a3a;
+    color: var(--white);
+    padding: var(--space-xl) var(--space-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* About Us headline — Courier New */
+.about-headline {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    color: var(--white);
+    letter-spacing: -1px;
+}
+
+/* Full-width text layout */
+.about-grid {
+    display: block;
+    margin-bottom: var(--space-xl);
+}
+
+.about-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.about-text p {
+    margin-bottom: var(--space-sm);
+}
+
+.about-text p:first-child {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+/* Stats boxes */
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem var(--space-sm);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 600;
+}
+
+/* CTA buttons below about text */
+.about-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* =============================================
+   BOOKING SECTION
+   Background: grey (60%)
+   Form card: white with blue top border
+   ============================================= */
+.booking-section {
+    background: #3a3a3a;
+    padding: var(--space-xl) 0;
+}
+
+.booking-form {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 860px;
+    margin: 0 auto;
+    border-top: 5px solid var(--blue);    /* blue top accent bar */
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+/* Double-width field */
+.form-group--wide { flex: 2; }
+
+/* Narrow field (state, zip) */
+.form-group--small { flex: 0.6; }
+
+/* Section label within the form */
+.form-section-label {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: var(--space-sm) 0 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--grey);
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--grey-mid);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: #f8f8f8;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(58, 100, 158, 0.14);
+    background: var(--white);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submission status message */
+.booking-status {
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    margin: 0.75rem 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: none;
+}
+.booking-status.success {
+    display: block;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #b8dfc5;
+}
+.booking-status.error {
+    display: block;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+}
+
+.form-disclaimer {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+
+/* =============================================
+   BUSINESS HOURS & CONTACT SECTION
+   Background: slightly darker grey (still 60% zone)
+   ============================================= */
+.hours-section {
+    background: #3a3a3a;
+    padding: var(--space-xl) 0;
+}
+
+/* Two-column grid: hours left, contact right */
+.hours-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    align-items: start;
+}
+
+.hours-card,
+.contact-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Hours table */
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-sm);
+}
+
+.hours-table th,
+.hours-table td {
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--grey-light);
+    font-size: 0.94rem;
+}
+
+.hours-table th {
+    font-weight: 700;
+    color: var(--blue);
+    width: 45%;
+}
+
+.row-closed td {
+    color: var(--grey-dark);
+    font-style: italic;
+}
+
+/* Emergency row — orange accent (10%) */
+.row-emergency th,
+.row-emergency td {
+    color: var(--orange);
+    font-weight: 700;
+    border-top: 2px solid var(--orange-light);
+}
+
+/* Large Call Now button in contact card */
+.btn-call--large {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 1.1rem 1.5rem;
+    margin: var(--space-sm) 0 var(--space-md);
+    gap: 0.85rem;
+}
+
+.btn-call--large span {
+    text-align: left;
+}
+
+.btn-call--large strong {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.btn-call--large small {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.88;
+}
+
+/* Social media links */
+.social-links h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-mid);
+    margin-bottom: 0.75rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    color: var(--white) !important;
+    font-size: 1.05rem;
+    transition: var(--ease);
+    flex-shrink: 0;
+}
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Platform brand colors */
+.social-icon--facebook  { background: #1877F2; }
+.social-icon--instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon--yelp      { background: #D32323; }
+.social-icon--nextdoor  { background: #00B246; }
+.social-icon--youtube   { background: #FF0000; }
+
+
+/* =============================================
+   GOOGLE REVIEWS SECTION
+   Background: grey (60%)
+   ============================================= */
+.reviews-section {
+    background: #3a3a3a;
+    padding: var(--space-xl) 0;
+}
+
+/* Google Maps embed iframe container */
+.maps-embed-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-lg);
+}
+
+.maps-embed-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+}
+
+/* Leave a Review box — blue background (30%) */
+.leave-review-box {
+    background: var(--blue);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+}
+
+.leave-review-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    margin-bottom: 0.4rem;
+}
+
+.leave-review-box p {
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: var(--space-md);
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.95rem;
+}
+
+.leave-review-box .btn-review {
+    margin: 0 auto;
+}
+
+
+/* =============================================
+   PHOTO GALLERY SECTION
+   Background: slightly darker grey (60% zone)
+   ============================================= */
+.gallery-section {
+    background: #3a3a3a;
+    padding: var(--space-xl) 0;
+}
+
+/* Category filter pills */
+.gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+}
+
+.filter-btn {
+    padding: 0.45rem 1.2rem;
+    border-radius: 2rem;
+    border: 2px solid var(--blue);
+    background: transparent;
+    color: var(--blue);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: var(--ease);
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--blue);
+    color: var(--white);
+}
+
+/* Photo grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    aspect-ratio: 4 / 3;
+    background: #3a3a3a;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover,
+.gallery-item:focus {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    outline: 3px solid var(--orange);      /* orange focus ring (10%) */
+    outline-offset: 2px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* Caption overlay — fades in on hover */
+.gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(38, 72, 120, 0.88), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--white);
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.gallery-item-caption {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin-top: 0.15rem;
+}
+
+/* Empty state */
+.gallery-empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.88);
+    padding: var(--space-lg);
+    grid-column: 1 / -1;
+    font-size: 1rem;
+}
+
+/* ---- LIGHTBOX ---- */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.93);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 85vw;
+    max-height: 90vh;
+    text-align: center;
+}
+
+.lightbox-content img {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: var(--radius);
+    object-fit: contain;
+    box-shadow: var(--shadow-lg);
+}
+
+.lightbox-caption {
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2.5rem;
+    line-height: 1;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
+
+.lightbox-prev,
+.lightbox-next {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--white);
+    font-size: 3rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(235, 149, 74, 0.45);    /* orange tint (10%) */
+}
+
+
+/* =============================================
+   FOOTER
+   Background: dark blue (30%)
+   ============================================= */
+.site-footer {
+    background: var(--blue-dark);
+    color: rgba(255, 255, 255, 0.82);
+    padding-top: var(--space-lg);
+}
+
+/* Three-column footer grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-logo {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px;
+    margin-bottom: 0.6rem;
+}
+
+.footer-company-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+}
+
+.footer-tagline,
+.footer-license {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 0.15rem;
+}
+
+/* Column headings — orange accent (10%) */
+.footer-links h3,
+.footer-contact h3 {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.45rem;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.88rem;
+    transition: color 0.2s;
+}
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: var(--orange);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.88rem;
+}
+
+.footer-contact .fa {
+    color: var(--orange);
+    width: 14px;
+}
+
+/* Footer social icon row */
+.footer-social {
+    display: flex;
+    gap: 0.55rem;
+    margin-top: 0.75rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.85rem;
+    transition: var(--ease);
+}
+.footer-social a:hover {
+    background: var(--orange);
+    color: var(--white) !important;
+}
+
+/* Bottom copyright bar */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.22);
+    padding: 1rem var(--space-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.5);
+}
+.footer-bottom a:hover {
+    color: var(--orange);
+}
+
+
+/* =============================================
+   RESPONSIVE — TABLET  (≤ 900px)
+   ============================================= */
+@media (max-width: 900px) {
+
+    .hours-contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =============================================
+   RESPONSIVE — MOBILE  (≤ 620px)
+   ============================================= */
+@media (max-width: 620px) {
+
+    .site-header {
+        padding: 0.5rem 1rem;
+        min-height: 64px;
+    }
+
+    .header-company-name { font-size: 1.3rem; }
+    .header-tagline      { font-size: 0.78rem; }
+    .header-logo         { width: 44px; height: 44px; }
+
+    .menu-btn {
+        right: 0.75rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.82rem;
+    }
+
+    /* Hide "Menu" label — show only hamburger icon on small screens */
+    .menu-label { display: none; }
+
+    .about-section {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .about-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn { width: 100%; justify-content: center; }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .booking-form {
+        padding: var(--space-sm) var(--space-sm);
+    }
+
+    .maps-embed-wrapper iframe {
+        height: 420px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .city-nav {
+        width: 88vw;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 2rem;
+        padding: 0.75rem 0.9rem;
+    }
+
+}

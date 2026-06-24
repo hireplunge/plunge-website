@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+    CITY PAGE TEMPLATE — Plunge, a Plumbing Co.
+    =============================================
+    HOW TO CREATE A NEW CITY PAGE:
+    1. Make a copy of this file in the cities/ folder
+       e.g.  cp city-template.html santa-monica.html
+    2. Find every instance of [CITY NAME] and replace it
+       with the actual city name  (e.g. "Santa Monica")
+    3. Find every instance of [CITY-SLUG] and replace with
+       the URL-safe name  (e.g. "santa-monica")
+    4. Find every instance of [STATE] and replace with the
+       state abbreviation  (e.g. "CA")
+    5. Add the city to the <ul> in the city-nav drawer
+       (in both this file AND index.html)
+    6. Update the canonical URL and Schema data below
+    7. (Optional) Customize the services list and body copy
+       to highlight anything specific to that city
+    =============================================
+-->
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- =============================================
+         SEO META — update per city for local search ranking
+         ============================================= -->
+    <meta name="description" content="Plunge plumbing services in [CITY NAME], [STATE]. Licensed, insured plumbers available 7 days a week. Book online or call for same-day service.">
+    <meta name="keywords" content="[CITY NAME] plumber, [CITY NAME] plumbing, plumbing services [CITY NAME], emergency plumber [CITY NAME], drain cleaning [CITY NAME]">
+    <title>[CITY NAME] Plumbing Services | Plunge, a Plumbing Co.</title>
+
+    <!-- Canonical prevents duplicate-content penalties when the same content
+         appears at multiple URLs. Replace yourwebsite.com with your domain. -->
+    <link rel="canonical" href="https://yourwebsite.com/cities/[CITY-SLUG].html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Parent stylesheet first, then city-specific additions -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/city.css">
+
+    <!-- =============================================
+         SCHEMA.ORG STRUCTURED DATA
+         Helps Google understand this is a local service page.
+         Update name/city/URL/phone with real values.
+         ============================================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Plumber",
+      "name": "Plunge, a Plumbing Co.",
+      "description": "Professional plumbing services in [CITY NAME], [STATE]",
+      "url": "https://yourwebsite.com/cities/[CITY-SLUG].html",
+      "telephone": "+1XXXXXXXXXX",
+      "email": "info@hireplunge.com",
+      "areaServed": {
+        "@type": "City",
+        "name": "[CITY NAME]",
+        "addressRegion": "[STATE]"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "07:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ]
+    }
+    </script>
+
+</head>
+<body>
+
+    <!-- Nav overlay (dims background when drawer is open) -->
+    <div id="nav-overlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+
+    <!-- =============================================
+         HEADER — identical across all pages
+         ============================================= -->
+    <header class="site-header">
+        <div class="header-brand">
+            <a href="../index.html" class="header-brand-link" aria-label="Return to home page">
+                <div class="header-brand">
+                    <img src="../images/logo.jpg" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.style.display='none'">
+                    <div class="header-title">
+                        <span class="header-company-name">Plunge</span>
+                        <span class="header-tagline">a Plumbing Co.</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
+            <span class="menu-icon" aria-hidden="true">&#9776;</span>
+            <span class="menu-label">Menu</span>
+        </button>
+    </header>
+
+
+    <!-- =============================================
+         CITY NAVIGATION DRAWER
+         Keep this list in sync with index.html
+         ============================================= -->
+    <nav id="city-nav" class="city-nav" aria-label="City Service Areas" role="navigation">
+        <div class="city-nav-header">
+            <h2>Service Areas</h2>
+            <button class="close-nav-btn" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <p class="city-nav-subtitle">Professional plumbing in your city</p>
+        <ul class="city-nav-list">
+            <!-- Keep this list identical to the one in index.html -->
+            <li><a href="los-angeles.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Los Angeles</a></li>
+            <li><a href="long-beach.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Long Beach</a></li>
+            <li><a href="pasadena.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Pasadena</a></li>
+            <li><a href="glendale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Glendale</a></li>
+            <li><a href="burbank.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Burbank</a></li>
+            <li><a href="torrance.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Torrance</a></li>
+            <li><a href="compton.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Compton</a></li>
+            <li><a href="inglewood.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Inglewood</a></li>
+            <!-- Add more cities here -->
+        </ul>
+        <div class="city-nav-footer">
+            <a href="../cities/" class="city-nav-all-link">View All Service Areas &rarr;</a>
+            <a href="tel:+1XXXXXXXXXX" class="call-btn-nav">
+                <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- =============================================
+         CITY HERO
+         ============================================= -->
+    <section class="city-hero">
+        <div class="city-hero-content container">
+
+            <!-- Breadcrumb trail for SEO and navigation -->
+            <nav class="city-breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../cities/">Service Areas</a>
+                <span>/</span>
+                <span aria-current="page">[CITY NAME]</span>
+            </nav>
+
+            <h1>[CITY NAME] Plumbing Services</h1>
+            <p>Fast, licensed plumbers serving [CITY NAME] and surrounding [STATE] communities. Available 7 days a week — emergency service 24/7.</p>
+
+            <div class="hero-cta-group">
+                <!-- Replace +1XXXXXXXXXX with your phone number -->
+                <a href="tel:+1XXXXXXXXXX" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                </a>
+                <a href="../index.html#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         SERVICES LIST
+         Customize descriptions for each city as needed.
+         ============================================= -->
+    <section class="city-services">
+        <div class="container">
+
+            <h2 class="section-title">Plumbing Services in [CITY NAME]</h2>
+            <p class="section-subtitle">We offer a full range of residential and commercial plumbing services throughout [CITY NAME], [STATE].</p>
+
+            <div class="services-grid">
+
+                <!-- Add or remove service cards as needed -->
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-tint" aria-hidden="true"></i></div>
+                    <h3>Drain Cleaning</h3>
+                    <p>Fast drain clearing and hydro-jetting for kitchen, bathroom, and main sewer line drains in [CITY NAME].</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-wrench" aria-hidden="true"></i></div>
+                    <h3>Pipe Repair &amp; Replacement</h3>
+                    <p>Pinhole leaks, burst pipes, galvanized-to-copper upgrades. All pipe materials and sizes.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
+                    <h3>Water Heater Services</h3>
+                    <p>Installation, repair, and replacement of tank and tankless water heaters throughout [CITY NAME].</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-toilet" aria-hidden="true"></i></div>
+                    <h3>Toilet &amp; Fixture Repair</h3>
+                    <p>Toilet, faucet, showerhead, and sink repair or full replacement for homes and businesses.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-home" aria-hidden="true"></i></div>
+                    <h3>Sewer Line Services</h3>
+                    <p>Camera inspection, sewer line cleaning, root removal, and trenchless pipe repair.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-bolt" aria-hidden="true"></i></div>
+                    <h3>Emergency Plumbing</h3>
+                    <p>24/7 emergency response for pipe bursts, severe leaks, and flooding. [CITY NAME] crews on standby.</p>
+                </div>
+
+                <!-- Optional additional service cards -->
+                <!--
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa fa-shower" aria-hidden="true"></i></div>
+                    <h3>Bathroom Remodeling</h3>
+                    <p>Full plumbing rough-in and finish work for bathroom remodel projects in [CITY NAME].</p>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         WHY CHOOSE US — trust signals for this city
+         ============================================= -->
+    <section class="city-why">
+        <div class="container">
+
+            <h2 class="section-title">Why [CITY NAME] Residents Choose Plunge</h2>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <h3>Same-Day Service</h3>
+                    <p>Most [CITY NAME] calls scheduled and serviced the same day you call.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-shield-alt" aria-hidden="true"></i>
+                    <h3>Licensed &amp; Insured</h3>
+                    <p>Fully licensed [STATE] plumbing contractor. Fully insured for your protection.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-dollar-sign" aria-hidden="true"></i>
+                    <h3>Upfront Pricing</h3>
+                    <p>No hidden fees. You get a clear price before we start any work.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <h3>5-Star Rated</h3>
+                    <p>Hundreds of verified 5-star Google reviews from satisfied customers.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         CALL TO ACTION
+         ============================================= -->
+    <section class="city-cta">
+        <div class="container">
+            <h2>Ready to Book a Plumber in [CITY NAME]?</h2>
+            <p>Fill out our quick online form or give us a call — we're ready when you need us.</p>
+            <div class="hero-cta-group">
+                <a href="tel:+1XXXXXXXXXX" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> (XXX) XXX-XXXX
+                </a>
+                <a href="../index.html#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         FOOTER — identical across all pages
+         ============================================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="../images/logo.jpg" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <p class="footer-company-name">Plunge, a Plumbing Co.</p>
+                <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
+                <p class="footer-license">License #: XXXXXXXXX</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#booking">Book a Service</a></li>
+                    <li><a href="../index.html#hours">Business Hours</a></li>
+                    <li><a href="../index.html#reviews">Reviews</a></li>
+                    <li><a href="../cities/">All Service Areas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span class="footer-year"></span> Plunge, a Plumbing Co. All rights reserved.</p>
+            <p><a href="../privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+    <script>
+        /* Set copyright year in footer */
+        document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+</body>
+</html>
