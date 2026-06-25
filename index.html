@@ -188,7 +188,7 @@
                      CRM so bookings route to the correct job type automatically.
                      ========================================================= -->
                 <div class="booking-step">
-                    <h3 class="form-section-label">What do you need?</h3>
+                    <h3 class="form-section-label">What can we do for you?</h3>
 
                     <div class="form-row">
                         <div class="form-group form-group--wide">
@@ -236,6 +236,12 @@
                                 <option value="false">No, returning customer</option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="booking-step-continue">
+                        <button type="button" id="booking-continue-btn" class="btn btn-call">
+                            Continue <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -455,59 +461,40 @@
 
 
     <!-- =============================================
-         PHOTO GALLERY
-         Showcases photos of your plumbing work with SEO
-         metadata and accessibility descriptions.
+         BEFORE / AFTER CAROUSEL
+         A rotating carousel of before-and-after project photos.
+         Each "step" shows a Before and an After image side by side,
+         sliding in from the right.
 
          HOW TO ADD PHOTOS:
          1. Copy image files into the images/gallery/ folder
-         2. Open js/script.js and find the GALLERY_PHOTOS array
-         3. Add a new object for each photo:
-            {
-              src:      "images/gallery/filename.jpg",
-              alt:      "Detailed accessibility description",  ← for screen readers & SEO
-              title:    "Short display title",
-              caption:  "Caption shown on hover",
-              keywords: "keyword1, keyword2, keyword3",         ← stored as data attribute for SEO
-              category: "drain|pipes|water-heater|remodel|emergency",
-            }
-
-         HOW TO ADD A NEW CATEGORY:
-         Add a new <button> in .gallery-filters below with a matching data-filter value,
-         then use that value as the category in your GALLERY_PHOTOS entries.
+         2. Open js/script.js and find the BEFORE_AFTER_PROJECTS array
+         3. Fill in the before/after src paths for each step. Any
+            step left with an empty src shows an "Add photo here"
+            placeholder until a real image is added.
          ============================================= -->
     <section id="gallery" class="gallery-section">
         <div class="container">
 
             <h2 class="section-title">Expert Work by Our Professionals</h2>
-            <p class="section-subtitle">A sample of our plumbing projects across the service area.</p>
+            <p class="section-subtitle">Examples of Our Skilled Technician's Work</p>
 
-            <!-- Category filter buttons -->
-            <div class="gallery-filters" role="group" aria-label="Filter gallery by category">
-                <button class="filter-btn active" data-filter="all" onclick="filterGallery('all')">All</button>
-                <button class="filter-btn" data-filter="drain" onclick="filterGallery('drain')">Drain</button>
-                <button class="filter-btn" data-filter="pipes" onclick="filterGallery('pipes')">Pipes</button>
-                <button class="filter-btn" data-filter="water-heater" onclick="filterGallery('water-heater')">Water Heater</button>
-                <button class="filter-btn" data-filter="remodel" onclick="filterGallery('remodel')">Remodel</button>
-                <button class="filter-btn" data-filter="emergency" onclick="filterGallery('emergency')">Emergency</button>
+            <!-- Before / After carousel — slides injected by initCarousel() in script.js.
+                 Each step shows a Before and an After photo side by side. -->
+            <div class="ba-carousel" id="ba-carousel">
+                <button class="ba-arrow ba-arrow--prev" id="ba-prev" type="button" aria-label="Previous example">&#8249;</button>
+
+                <div class="ba-viewport">
+                    <div class="ba-track" id="ba-track" aria-live="polite">
+                        <!-- Populated by initCarousel() in script.js -->
+                    </div>
+                </div>
+
+                <button class="ba-arrow ba-arrow--next" id="ba-next" type="button" aria-label="Next example">&#8250;</button>
+
+                <div class="ba-dots" id="ba-dots" role="tablist" aria-label="Choose an example to view"></div>
             </div>
 
-            <!-- Gallery grid — populated by JavaScript from the GALLERY_PHOTOS array in script.js -->
-            <div id="gallery-grid" class="gallery-grid" role="list" aria-label="Photo gallery of plumbing work">
-                <!-- Populated by renderGallery() in script.js -->
-            </div>
-
-        </div>
-
-        <!-- Lightbox overlay for enlarged photo view -->
-        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="closeLightbox()">
-            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&times;</button>
-            <button class="lightbox-prev" onclick="lightboxNav(-1, event)" aria-label="Previous photo">&#8249;</button>
-            <div class="lightbox-content" onclick="event.stopPropagation()">
-                <img id="lightbox-img" src="" alt="">
-                <p id="lightbox-caption" class="lightbox-caption"></p>
-            </div>
-            <button class="lightbox-next" onclick="lightboxNav(1, event)" aria-label="Next photo">&#8250;</button>
         </div>
 
     </section>

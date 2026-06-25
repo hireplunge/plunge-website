@@ -6,10 +6,9 @@
      2. NAVIGATION         — menu drawer open/close
      3. BOOKING FORM       — ServiceTitan API submission
      4. GOOGLE REVIEWS     — Places API review cards + map embed
-     5. PHOTO GALLERY      — config array, render, filter
-     6. LIGHTBOX           — full-screen photo viewer
-     7. UTILITIES          — XSS helpers, date helpers
-     8. PAGE INIT          — runs on DOMContentLoaded
+     5. BEFORE/AFTER       — rotating before & after carousel
+     6. UTILITIES          — XSS helpers, date helpers
+     7. PAGE INIT          — runs on DOMContentLoaded
    ============================================= */
 
 
@@ -113,11 +112,10 @@ function closeMenu() {
     document.body.style.overflow = '';
 }
 
-// Close on Escape key
+// Close menu on Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeMenu();
-        closeLightbox();
     }
 });
 
@@ -259,36 +257,35 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
    form from looking like an overwhelming wall of inputs.
    ----------------------------------------------- */
 (function initBookingReveal() {
+    const continueBtn   = document.getElementById('booking-continue-btn');
     const serviceSelect = document.getElementById('service-type');
+    const dateInput     = document.getElementById('preferred-date');
     const step2         = document.getElementById('booking-step-2');
     const form          = document.getElementById('booking-form');
-    if (!serviceSelect || !step2) return;
+    if (!continueBtn || !step2) return;
 
-    let wasOpen = false;
-
-    function syncStep2() {
-        const chosen = !!serviceSelect.value;
-        step2.classList.toggle('open', chosen);
-        step2.setAttribute('aria-hidden', String(!chosen));
-
-        /* Scroll the revealed fields into view, but only on the
-           first open (avoids jumping when changing the service). */
-        if (chosen && !wasOpen) {
-            requestAnimationFrame(() => {
-                step2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            });
-        }
-        wasOpen = chosen;
+    function openStep2() {
+        step2.classList.add('open');
+        step2.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+            step2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
     }
 
-    serviceSelect.addEventListener('change', syncStep2);
+    function closeStep2() {
+        step2.classList.remove('open');
+        step2.setAttribute('aria-hidden', 'true');
+    }
 
-    /* On reset (e.g. after a successful submit) the service
-       clears, so collapse Step 2 again on the next tick. */
-    form?.addEventListener('reset', () => setTimeout(syncStep2, 0));
+    continueBtn.addEventListener('click', function () {
+        /* Validate Step 1 required fields before revealing Step 2 */
+        const serviceOk = serviceSelect.reportValidity();
+        const dateOk    = dateInput.reportValidity();
+        if (serviceOk && dateOk) openStep2();
+    });
 
-    /* Sync on load in case the browser restored a value. */
-    syncStep2();
+    /* Collapse Step 2 after a successful submit/reset */
+    form?.addEventListener('reset', () => setTimeout(closeStep2, 0));
 })();
 
 
@@ -493,231 +490,159 @@ function initGoogleMaps() {
 
 
 /* =============================================
-   5. PHOTO GALLERY — Configuration & Rendering
+   5. BEFORE / AFTER CAROUSEL
    -----------------------------------------------
-   HOW TO ADD A PHOTO:
-   1. Copy the image file into images/gallery/
-   2. Add a new object to GALLERY_PHOTOS below:
+   A rotating carousel of before-and-after project
+   photos. Each step shows a Before and an After
+   image side by side and slides in from the right.
+
+   HOW TO ADD PHOTOS:
+   Fill in the before/after src paths in the
+   BEFORE_AFTER_PROJECTS array below. Any slot left
+   with an empty src ('') shows an "Add photo here"
+   placeholder until a real image is added.
+
       {
-        src:      "images/gallery/filename.jpg",   ← file path
-        alt:      "Descriptive sentence for screen readers and SEO",
-        title:    "Short display title",
-        caption:  "Caption shown on hover",
-        keywords: "keyword1, keyword2, keyword3",   ← written to data-keywords for SEO
-        category: "drain|pipes|water-heater|remodel|emergency",
+        before: { src: 'images/gallery/job1-before.jpg', alt: 'Describe the before photo' },
+        after:  { src: 'images/gallery/job1-after.jpg',  alt: 'Describe the after photo' },
       }
 
    GOOD alt text example:
-     "Plunge plumber replacing corroded galvanized pipe under kitchen
-      sink in a Los Angeles residential home"
+     "Corroded galvanized pipe under a kitchen sink before replacement"
    POOR alt text example:
      "plumbing photo"
-
-   HOW TO ADD A NEW FILTER CATEGORY:
-   1. Add a <button class="filter-btn"> in index.html with a new data-filter value
-   2. Use that same value as the category in GALLERY_PHOTOS entries
    ============================================= */
-const GALLERY_PHOTOS = [
+const BEFORE_AFTER_PROJECTS = [
 
     /* =============================================
-       ADD YOUR PHOTOS HERE
-       The entries below are placeholder examples.
-       Replace src paths with real image files in
-       the images/gallery/ folder.
+       PLACEHOLDER STEPS
+       Each step needs a `before` and an `after`.
+       Leave src empty ('') to show an "Add photo
+       here" placeholder. Fill in src + alt when the
+       real photos are ready.
        ============================================= */
 
     {
-        src:      'images/gallery/drain-cleaning-1.jpg',
-        alt:      'Plunge plumber performing professional drain cleaning on a blocked kitchen sink in a residential home',
-        title:    'Kitchen Drain Cleaning',
-        caption:  'Professional drain clearing service',
-        keywords: 'drain cleaning, kitchen drain, blocked sink, plumbing',
-        category: 'drain',
+        before: { src: '', alt: 'Before photo of plumbing project' },
+        after:  { src: '', alt: 'After photo of plumbing project' },
     },
     {
-        src:      'images/gallery/sewer-jetting-1.jpg',
-        alt:      'Hydro-jetting equipment clearing grease buildup from main sewer line at a commercial property',
-        title:    'Sewer Hydro-Jetting',
-        caption:  'High-pressure sewer line cleaning',
-        keywords: 'hydro jetting, sewer cleaning, main line, commercial plumbing',
-        category: 'drain',
+        before: { src: '', alt: 'Before photo of plumbing project' },
+        after:  { src: '', alt: 'After photo of plumbing project' },
     },
     {
-        src:      'images/gallery/pipe-replacement-1.jpg',
-        alt:      'New copper pipe installation replacing corroded galvanized pipe under a kitchen sink',
-        title:    'Copper Pipe Replacement',
-        caption:  'Galvanized to copper upgrade',
-        keywords: 'pipe repair, copper pipe, galvanized pipe, pipe replacement, plumbing',
-        category: 'pipes',
-    },
-    {
-        src:      'images/gallery/leak-repair-1.jpg',
-        alt:      'Technician repairing a pinhole leak in a water supply line behind a bathroom wall',
-        title:    'Pinhole Leak Repair',
-        caption:  'Expert leak detection and repair',
-        keywords: 'leak repair, pipe leak, water damage, plumbing repair',
-        category: 'pipes',
-    },
-    {
-        src:      'images/gallery/water-heater-install-1.jpg',
-        alt:      'New tankless water heater mounted on wall and installed by Plunge plumbing technician',
-        title:    'Tankless Water Heater Install',
-        caption:  'Energy-efficient hot water upgrade',
-        keywords: 'water heater installation, tankless water heater, hot water, energy efficient',
-        category: 'water-heater',
-    },
-    {
-        src:      'images/gallery/water-heater-repair-1.jpg',
-        alt:      'Technician servicing and flushing a 50-gallon tank water heater to remove sediment buildup',
-        title:    'Water Heater Maintenance',
-        caption:  'Tank flush and inspection service',
-        keywords: 'water heater repair, water heater maintenance, sediment flush, plumbing service',
-        category: 'water-heater',
-    },
-    {
-        src:      'images/gallery/bathroom-remodel-1.jpg',
-        alt:      'Complete bathroom rough-in plumbing with new supply lines and drain pipes for a full remodel',
-        title:    'Bathroom Remodel Rough-In',
-        caption:  'Full bathroom plumbing rough-in',
-        keywords: 'bathroom remodel, plumbing rough-in, new construction, bathroom plumbing',
-        category: 'remodel',
-    },
-    {
-        src:      'images/gallery/kitchen-remodel-1.jpg',
-        alt:      'New kitchen plumbing layout including island drain and disposal connection during remodel',
-        title:    'Kitchen Remodel Plumbing',
-        caption:  'Island plumbing and disposal install',
-        keywords: 'kitchen remodel, plumbing remodel, kitchen island plumbing, garbage disposal',
-        category: 'remodel',
-    },
-    {
-        src:      'images/gallery/emergency-burst-1.jpg',
-        alt:      'Emergency pipe burst repair — burst pipe in utility room repaired within hours of customer call',
-        title:    'Emergency Pipe Burst Repair',
-        caption:  '24/7 emergency response',
-        keywords: 'emergency plumbing, pipe burst, water damage, emergency repair, 24 hour plumber',
-        category: 'emergency',
+        before: { src: '', alt: 'Before photo of plumbing project' },
+        after:  { src: '', alt: 'After photo of plumbing project' },
     },
 
-    /* Add more photos here — copy and paste a block above */
+    /* Add more steps here — copy and paste a block above */
 
 ];
 
 
-/* ---- Gallery state ---- */
-let activeGalleryPhotos = [...GALLERY_PHOTOS];   // currently visible photos (after filter)
-let lightboxIndex       = 0;                     // index of currently open lightbox photo
+/* ---- Carousel state ---- */
+let carouselIndex = 0;          // index of the currently visible step
+let carouselTimer = null;       // auto-advance interval handle
+const CAROUSEL_INTERVAL = 5000; // ms between automatic slides
 
 
 /**
- * Renders the gallery grid from GALLERY_PHOTOS (or the filtered subset).
+ * Builds one Before/After photo slot. Shows the real image
+ * when a src is provided, otherwise an "Add photo here" placeholder.
  */
-function renderGallery(filter = 'all') {
-
-    const grid = document.getElementById('gallery-grid');
-    if (!grid) return;
-
-    activeGalleryPhotos = filter === 'all'
-        ? [...GALLERY_PHOTOS]
-        : GALLERY_PHOTOS.filter(p => p.category === filter);
-
-    if (activeGalleryPhotos.length === 0) {
-        grid.innerHTML = '<p class="gallery-empty">No photos in this category yet.</p>';
-        return;
+function buildPhotoSlot(photo, label) {
+    if (photo && photo.src) {
+        return `
+            <div class="ba-photo">
+                <span class="ba-badge">${label}</span>
+                <img src="${escapeHTMLAttr(photo.src)}" alt="${escapeHTMLAttr(photo.alt || label + ' photo')}" loading="lazy" decoding="async">
+            </div>`;
     }
+    return `
+        <div class="ba-photo ba-photo--placeholder">
+            <span class="ba-badge">${label}</span>
+            <i class="fa fa-image ba-placeholder-icon" aria-hidden="true"></i>
+            <span class="ba-placeholder-text">Add photo here</span>
+        </div>`;
+}
 
-    /* Build each gallery item as a <figure> for semantic HTML */
-    grid.innerHTML = activeGalleryPhotos.map((photo, index) => `
-        <figure
-            class="gallery-item"
-            role="listitem"
-            tabindex="0"
-            onclick="openLightbox(${index})"
-            onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox(${index})"
-            aria-label="${escapeHTMLAttr(photo.alt)}"
-            data-keywords="${escapeHTMLAttr(photo.keywords)}"
-            data-category="${escapeHTMLAttr(photo.category)}"
-        >
-            <img
-                src="${escapeHTMLAttr(photo.src)}"
-                alt="${escapeHTMLAttr(photo.alt)}"
-                title="${escapeHTMLAttr(photo.title)}"
-                loading="lazy"
-                decoding="async"
-                onerror="this.closest('.gallery-item').style.display='none'"
-            >
-            <figcaption class="gallery-item-overlay" aria-hidden="true">
-                <span class="gallery-item-title">${escapeHTML(photo.title)}</span>
-                <span class="gallery-item-caption">${escapeHTML(photo.caption)}</span>
-            </figcaption>
-        </figure>
+/**
+ * Renders the before/after carousel slides and dot indicators,
+ * then starts the auto-advance timer.
+ */
+function initCarousel() {
+    const track = document.getElementById('ba-track');
+    const dots  = document.getElementById('ba-dots');
+    if (!track || !dots) return;
+
+    /* Build each step as a slide with a Before + After pair */
+    track.innerHTML = BEFORE_AFTER_PROJECTS.map(step => `
+        <div class="ba-slide">
+            ${buildPhotoSlot(step.before, 'Before')}
+            ${buildPhotoSlot(step.after,  'After')}
+        </div>
     `).join('');
+
+    /* Build a dot for each step */
+    dots.innerHTML = BEFORE_AFTER_PROJECTS.map((_, i) => `
+        <button type="button" class="ba-dot${i === 0 ? ' active' : ''}" role="tab"
+            aria-label="Go to example ${i + 1}" onclick="goToSlide(${i})"></button>
+    `).join('');
+
+    /* Wire up the prev/next arrows */
+    document.getElementById('ba-prev')?.addEventListener('click', () => moveCarousel(-1));
+    document.getElementById('ba-next')?.addEventListener('click', () => moveCarousel(1));
+
+    /* Pause auto-advance while the visitor is hovering the carousel */
+    const carousel = document.getElementById('ba-carousel');
+    carousel?.addEventListener('mouseenter', stopCarousel);
+    carousel?.addEventListener('mouseleave', startCarousel);
+
+    updateCarousel();
+    startCarousel();
 }
 
-/**
- * Filters the gallery by category and updates the active filter button.
- * Called by the filter <button> elements above the gallery grid.
- */
-function filterGallery(category) {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === category);
+/** Moves the track to the current step and syncs the dots. */
+function updateCarousel() {
+    const track = document.getElementById('ba-track');
+    if (track) track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+
+    document.querySelectorAll('.ba-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === carouselIndex);
     });
-    renderGallery(category);
+}
+
+/** Advances the carousel by `direction` (+1 next, -1 prev), wrapping around. */
+function moveCarousel(direction) {
+    const count = BEFORE_AFTER_PROJECTS.length;
+    carouselIndex = (carouselIndex + direction + count) % count;
+    updateCarousel();
+    restartCarousel();
+}
+
+/** Jumps directly to a specific step (used by the dots). */
+function goToSlide(index) {
+    carouselIndex = index;
+    updateCarousel();
+    restartCarousel();
+}
+
+/** Starts / stops the auto-advance timer. */
+function startCarousel() {
+    if (BEFORE_AFTER_PROJECTS.length < 2) return;   // nothing to rotate
+    stopCarousel();
+    carouselTimer = setInterval(() => moveCarousel(1), CAROUSEL_INTERVAL);
+}
+function stopCarousel() {
+    if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
+}
+function restartCarousel() {
+    startCarousel();
 }
 
 
 /* =============================================
-   6. LIGHTBOX — Full-Screen Photo Viewer
-   ============================================= */
-
-/** Opens the lightbox to the photo at the given index. */
-function openLightbox(index) {
-    lightboxIndex = index;
-    const photo   = activeGalleryPhotos[index];
-    const lb      = document.getElementById('lightbox');
-
-    document.getElementById('lightbox-img').src            = photo.src;
-    document.getElementById('lightbox-img').alt            = photo.alt;
-    document.getElementById('lightbox-caption').textContent = photo.caption || photo.title;
-
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-
-/** Closes the lightbox. */
-function closeLightbox() {
-    document.getElementById('lightbox')?.classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-/**
- * Navigates to the previous (-1) or next (+1) photo while lightbox is open.
- * Wraps around at the ends of the gallery.
- */
-function lightboxNav(direction, event) {
-    event?.stopPropagation();
-
-    const count   = activeGalleryPhotos.length;
-    lightboxIndex = (lightboxIndex + direction + count) % count;
-    const photo   = activeGalleryPhotos[lightboxIndex];
-
-    document.getElementById('lightbox-img').src            = photo.src;
-    document.getElementById('lightbox-img').alt            = photo.alt;
-    document.getElementById('lightbox-caption').textContent = photo.caption || photo.title;
-}
-
-/* Arrow key navigation inside an open lightbox */
-document.addEventListener('keydown', (e) => {
-    const lb = document.getElementById('lightbox');
-    if (!lb?.classList.contains('open')) return;
-
-    if (e.key === 'ArrowLeft')  lightboxNav(-1, null);
-    if (e.key === 'ArrowRight') lightboxNav(1,  null);
-});
-
-
-/* =============================================
-   7. UTILITIES
+   6. UTILITIES
    ============================================= */
 
 /**
@@ -744,7 +669,7 @@ function escapeHTMLAttr(str) {
 
 
 /* =============================================
-   8. PAGE INITIALIZATION
+   7. PAGE INITIALIZATION
    Runs once the DOM is fully loaded.
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
@@ -756,8 +681,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Initialize the booking date minimum to today */
     setMinDate();
 
-    /* Render the photo gallery (all categories) */
-    renderGallery();
+    /* Build the before/after carousel */
+    initCarousel();
 
     /* Load Google Reviews — falls back to placeholders if API not yet loaded */
     if (typeof google === 'undefined') {
