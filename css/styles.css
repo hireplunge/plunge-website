@@ -602,6 +602,26 @@ button {
     border-top: 5px solid var(--blue);    /* blue top accent bar */
 }
 
+/* Step 2 progressive reveal — the CSS grid 0fr→1fr trick
+   animates the container's height smoothly with no fixed
+   max-height guesswork. The inner wrapper must have
+   overflow:hidden and min-height:0 for the collapse to work. */
+.booking-step-2 {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.45s ease, opacity 0.4s ease;
+}
+.booking-step-2.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: var(--space-sm);
+}
+.booking-step-2-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
 .form-row {
     display: flex;
     gap: 1rem;

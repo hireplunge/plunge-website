@@ -250,6 +250,48 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
     }
 });
 
+/* -----------------------------------------------
+   BOOKING — Step 2 progressive reveal
+   -----------------------------------------------
+   First-time visitors see only Step 1 ("What do you
+   need?"). As soon as a service is chosen, the customer
+   detail fields slide down into view. This keeps the
+   form from looking like an overwhelming wall of inputs.
+   ----------------------------------------------- */
+(function initBookingReveal() {
+    const serviceSelect = document.getElementById('service-type');
+    const step2         = document.getElementById('booking-step-2');
+    const form          = document.getElementById('booking-form');
+    if (!serviceSelect || !step2) return;
+
+    let wasOpen = false;
+
+    function syncStep2() {
+        const chosen = !!serviceSelect.value;
+        step2.classList.toggle('open', chosen);
+        step2.setAttribute('aria-hidden', String(!chosen));
+
+        /* Scroll the revealed fields into view, but only on the
+           first open (avoids jumping when changing the service). */
+        if (chosen && !wasOpen) {
+            requestAnimationFrame(() => {
+                step2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        }
+        wasOpen = chosen;
+    }
+
+    serviceSelect.addEventListener('change', syncStep2);
+
+    /* On reset (e.g. after a successful submit) the service
+       clears, so collapse Step 2 again on the next tick. */
+    form?.addEventListener('reset', () => setTimeout(syncStep2, 0));
+
+    /* Sync on load in case the browser restored a value. */
+    syncStep2();
+})();
+
+
 /** Sets the minimum selectable date to today on the date input. */
 function setMinDate() {
     const dateInput = document.getElementById('preferred-date');

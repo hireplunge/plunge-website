@@ -180,115 +180,138 @@
 
             <form id="booking-form" class="booking-form" novalidate>
 
-                <!-- Customer Information -->
-                <h3 class="form-section-label">Your Information</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first-name">First Name <span class="required">*</span></label>
-                        <input type="text" id="first-name" name="firstName" required placeholder="John" autocomplete="given-name">
+                <!-- =========================================================
+                     STEP 1 — "What do you need?"  (always visible)
+                     These fields define the job. The service dropdown maps to
+                     a ServiceTitan job type via data-st-job-type — fill those
+                     in with real ServiceTitan job type IDs when wiring up the
+                     CRM so bookings route to the correct job type automatically.
+                     ========================================================= -->
+                <div class="booking-step">
+                    <h3 class="form-section-label">What do you need?</h3>
+
+                    <div class="form-row">
+                        <div class="form-group form-group--wide">
+                            <label for="service-type">Type of Service <span class="required">*</span></label>
+                            <select id="service-type" name="serviceType" required>
+                                <option value="" disabled selected>Select a service&hellip;</option>
+                                <!-- =============================================
+                                     PLACEHOLDER services — replace with the real
+                                     list later. data-st-job-type holds the
+                                     ServiceTitan job type ID for CRM auto-mapping.
+                                     ============================================= -->
+                                <option value="drain-cleaning"   data-st-job-type="">Drain Cleaning</option>
+                                <option value="leak-repair"      data-st-job-type="">Leak Detection &amp; Repair</option>
+                                <option value="water-heater"     data-st-job-type="">Water Heater Service</option>
+                                <option value="toilet-repair"    data-st-job-type="">Toilet Repair / Replacement</option>
+                                <option value="pipe-repair"      data-st-job-type="">Pipe Repair / Replacement</option>
+                                <option value="sewer-line"       data-st-job-type="">Sewer Line Service</option>
+                                <option value="garbage-disposal" data-st-job-type="">Garbage Disposal</option>
+                                <option value="faucet"           data-st-job-type="">Faucet Repair / Replacement</option>
+                                <option value="remodel"          data-st-job-type="">Plumbing Remodel</option>
+                                <option value="emergency"        data-st-job-type="">Emergency Service</option>
+                                <option value="other"            data-st-job-type="">Other (describe below)</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="last-name">Last Name <span class="required">*</span></label>
-                        <input type="text" id="last-name" name="lastName" required placeholder="Smith" autocomplete="family-name">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="john@email.com" autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555" autocomplete="tel">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preferred-date">Preferred Date <span class="required">*</span></label>
+                            <input type="date" id="preferred-date" name="preferredDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferred-time">Preferred Time Window</label>
+                            <select id="preferred-time" name="preferredTime">
+                                <option value="">No preference</option>
+                                <option value="morning">Morning (8am – 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm – 4pm)</option>
+                                <option value="evening">Evening (4pm – 7pm)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="is-new-customer">Are you a new customer?</label>
+                            <select id="is-new-customer" name="isNewCustomer">
+                                <option value="true">Yes, new customer</option>
+                                <option value="false">No, returning customer</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Service Address -->
-                <h3 class="form-section-label">Service Address</h3>
-                <div class="form-row">
-                    <div class="form-group form-group--wide">
-                        <label for="address">Street Address <span class="required">*</span></label>
-                        <input type="text" id="address" name="street" required placeholder="123 Main Street" autocomplete="street-address">
-                    </div>
-                    <div class="form-group">
-                        <label for="unit">Unit / Apt</label>
-                        <input type="text" id="unit" name="unit" placeholder="Apt 4B" autocomplete="address-line2">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="city-field">City <span class="required">*</span></label>
-                        <input type="text" id="city-field" name="city" required placeholder="Los Angeles" autocomplete="address-level2">
-                    </div>
-                    <div class="form-group form-group--small">
-                        <label for="state">State <span class="required">*</span></label>
-                        <input type="text" id="state" name="state" required placeholder="CA" maxlength="2" autocomplete="address-level1">
-                    </div>
-                    <div class="form-group form-group--small">
-                        <label for="zip">ZIP Code <span class="required">*</span></label>
-                        <input type="text" id="zip" name="zip" required placeholder="90001" autocomplete="postal-code" maxlength="10">
-                    </div>
-                </div>
+                <!-- =========================================================
+                     STEP 2 — Customer details (revealed once a service is
+                     chosen). Collapsed via CSS grid 0fr→1fr for a smooth
+                     slide-down. JS toggles the .open class — see script.js.
+                     ========================================================= -->
+                <div class="booking-step-2" id="booking-step-2" aria-hidden="true">
+                    <div class="booking-step-2-inner">
 
-                <!-- Service Details -->
-                <h3 class="form-section-label">Service Details</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="service-type">Type of Service <span class="required">*</span></label>
-                        <select id="service-type" name="serviceType" required>
-                            <option value="" disabled selected>Select a service&hellip;</option>
-                            <!-- =============================================
-                                 UPDATE these options to match your ServiceTitan
-                                 job types. The values can match your job type IDs.
-                                 ============================================= -->
-                            <option value="drain-cleaning">Drain Cleaning</option>
-                            <option value="leak-repair">Leak Detection &amp; Repair</option>
-                            <option value="water-heater">Water Heater Service</option>
-                            <option value="toilet-repair">Toilet Repair / Replacement</option>
-                            <option value="pipe-repair">Pipe Repair / Replacement</option>
-                            <option value="sewer-line">Sewer Line Service</option>
-                            <option value="garbage-disposal">Garbage Disposal</option>
-                            <option value="faucet">Faucet Repair / Replacement</option>
-                            <option value="remodel">Plumbing Remodel</option>
-                            <option value="emergency">Emergency Service</option>
-                            <option value="other">Other (describe below)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="preferred-date">Preferred Date <span class="required">*</span></label>
-                        <input type="date" id="preferred-date" name="preferredDate" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="preferred-time">Preferred Time Window</label>
-                        <select id="preferred-time" name="preferredTime">
-                            <option value="">No preference</option>
-                            <option value="morning">Morning (8am – 12pm)</option>
-                            <option value="afternoon">Afternoon (12pm – 4pm)</option>
-                            <option value="evening">Evening (4pm – 7pm)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="is-new-customer">Are you a new customer?</label>
-                        <select id="is-new-customer" name="isNewCustomer">
-                            <option value="true">Yes, new customer</option>
-                            <option value="false">No, returning customer</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="notes">Describe the Issue</label>
-                    <textarea id="notes" name="notes" rows="4" placeholder="Please describe the plumbing issue you are experiencing&hellip;"></textarea>
-                </div>
+                        <!-- Customer Information -->
+                        <h3 class="form-section-label">Your Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" required placeholder="John" autocomplete="given-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" required placeholder="Smith" autocomplete="family-name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="john@email.com" autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555" autocomplete="tel">
+                            </div>
+                        </div>
 
-                <!-- Status message shown after form submission -->
-                <div id="booking-status" class="booking-status" role="alert" aria-live="polite"></div>
+                        <!-- Service Address -->
+                        <h3 class="form-section-label">Service Address</h3>
+                        <div class="form-row">
+                            <div class="form-group form-group--wide">
+                                <label for="address">Street Address <span class="required">*</span></label>
+                                <input type="text" id="address" name="street" required placeholder="123 Main Street" autocomplete="street-address">
+                            </div>
+                            <div class="form-group">
+                                <label for="unit">Unit / Apt</label>
+                                <input type="text" id="unit" name="unit" placeholder="Apt 4B" autocomplete="address-line2">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city-field">City <span class="required">*</span></label>
+                                <input type="text" id="city-field" name="city" required placeholder="Los Angeles" autocomplete="address-level2">
+                            </div>
+                            <div class="form-group form-group--small">
+                                <label for="state">State <span class="required">*</span></label>
+                                <input type="text" id="state" name="state" required placeholder="CA" maxlength="2" autocomplete="address-level1">
+                            </div>
+                            <div class="form-group form-group--small">
+                                <label for="zip">ZIP Code <span class="required">*</span></label>
+                                <input type="text" id="zip" name="zip" required placeholder="90001" autocomplete="postal-code" maxlength="10">
+                            </div>
+                        </div>
 
-                <button type="submit" class="btn btn-submit">
-                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Request Booking
-                </button>
-                <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour during business hours.</p>
+                        <div class="form-group">
+                            <label for="notes">Describe the Issue</label>
+                            <textarea id="notes" name="notes" rows="4" placeholder="Please describe the plumbing issue you are experiencing&hellip;"></textarea>
+                        </div>
+
+                        <!-- Status message shown after form submission -->
+                        <div id="booking-status" class="booking-status" role="alert" aria-live="polite"></div>
+
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Request Booking
+                        </button>
+                        <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour during business hours.</p>
+
+                    </div>
+                </div>
 
             </form>
 
