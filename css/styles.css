@@ -1114,12 +1114,26 @@ textarea {
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* One step = a Before + After pair filling the viewport width */
+/* One step fills the viewport width */
 .ba-slide {
     min-width: 100%;
+}
+
+/* Before + After photos side by side */
+.ba-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+/* Caption beneath each step's photo pair */
+.ba-caption {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: var(--space-sm);
 }
 
 .ba-photo {
@@ -1204,26 +1218,56 @@ textarea {
 .ba-arrow--prev { left: 0.5rem; }
 .ba-arrow--next { right: 0.5rem; }
 
-/* Dot indicators below the carousel */
+/* Progress dots below the carousel — the active one widens
+   into a pill with a fill bar that tracks the time until the
+   next slide (like a video/story progress indicator). */
 .ba-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.5rem;
     margin-top: var(--space-md);
 }
 
 .ba-dot {
+    position: relative;
     width: 11px;
     height: 11px;
     padding: 0;
     border: none;
-    border-radius: 50%;
+    border-radius: 6px;
     background: rgba(255, 255, 255, 0.3);
-    transition: var(--ease);
+    overflow: hidden;
+    transition: width 0.4s ease;
 }
 .ba-dot.active {
+    width: 46px;     /* widen into a pill */
+}
+
+/* The fill bar — animates 0 → 100% over one interval.
+   Only top/left are pinned (not right) so the width animation
+   isn't over-constrained and can actually grow. */
+.ba-dot-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
     background: var(--orange);
-    transform: scale(1.2);
+    border-radius: inherit;
+}
+.ba-dot.active .ba-dot-fill {
+    animation: ba-fill var(--ba-interval, 5s) linear forwards;
+}
+
+/* Freeze the progress bar while the visitor hovers the carousel */
+.ba-carousel.is-paused .ba-dot.active .ba-dot-fill {
+    animation-play-state: paused;
+}
+
+@keyframes ba-fill {
+    from { width: 0; }
+    to   { width: 100%; }
 }
 
 
@@ -1442,7 +1486,7 @@ textarea {
     }
 
     /* Stack Before / After vertically on small screens */
-    .ba-slide {
+    .ba-pair {
         grid-template-columns: 1fr;
     }
 

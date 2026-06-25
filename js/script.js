@@ -516,23 +516,27 @@ const BEFORE_AFTER_PROJECTS = [
 
     /* =============================================
        PLACEHOLDER STEPS
-       Each step needs a `before` and an `after`.
-       Leave src empty ('') to show an "Add photo
-       here" placeholder. Fill in src + alt when the
-       real photos are ready.
+       Each step needs a `before`, an `after`, and a
+       `caption`. Leave src empty ('') to show an
+       "Add photo here" placeholder. Fill in src +
+       alt + caption when the real photos are ready.
+       Caption example: 'Burst pipe repair — Pasadena'
        ============================================= */
 
     {
-        before: { src: '', alt: 'Before photo of plumbing project' },
-        after:  { src: '', alt: 'After photo of plumbing project' },
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
     },
     {
-        before: { src: '', alt: 'Before photo of plumbing project' },
-        after:  { src: '', alt: 'After photo of plumbing project' },
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
     },
     {
-        before: { src: '', alt: 'Before photo of plumbing project' },
-        after:  { src: '', alt: 'After photo of plumbing project' },
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
     },
 
     /* Add more steps here — copy and paste a block above */
@@ -542,8 +546,7 @@ const BEFORE_AFTER_PROJECTS = [
 
 /* ---- Carousel state ---- */
 let carouselIndex = 0;          // index of the currently visible step
-let carouselTimer = null;       // auto-advance interval handle
-const CAROUSEL_INTERVAL = 5000; // ms between automatic slides
+const CAROUSEL_INTERVAL = 5000; // ms each step stays before auto-advancing
 
 
 /**
@@ -567,42 +570,59 @@ function buildPhotoSlot(photo, label) {
 }
 
 /**
- * Renders the before/after carousel slides and dot indicators,
- * then starts the auto-advance timer.
+ * Renders the before/after carousel slides and progress dots.
+ * Auto-advance is driven by the active dot's progress-bar
+ * animation finishing (see the animationend handler below),
+ * which keeps the bar and the slide change perfectly in sync.
  */
 function initCarousel() {
-    const track = document.getElementById('ba-track');
-    const dots  = document.getElementById('ba-dots');
-    if (!track || !dots) return;
+    const track    = document.getElementById('ba-track');
+    const dots     = document.getElementById('ba-dots');
+    const carousel = document.getElementById('ba-carousel');
+    if (!track || !dots || !carousel) return;
 
-    /* Build each step as a slide with a Before + After pair */
+    /* Keep the progress-bar duration in sync with one source of truth */
+    carousel.style.setProperty('--ba-interval', `${CAROUSEL_INTERVAL}ms`);
+
+    /* Build each step: a Before + After pair with a caption beneath */
     track.innerHTML = BEFORE_AFTER_PROJECTS.map(step => `
         <div class="ba-slide">
-            ${buildPhotoSlot(step.before, 'Before')}
-            ${buildPhotoSlot(step.after,  'After')}
+            <div class="ba-pair">
+                ${buildPhotoSlot(step.before, 'Before')}
+                ${buildPhotoSlot(step.after,  'After')}
+            </div>
+            ${step.caption ? `<p class="ba-caption">${escapeHTML(step.caption)}</p>` : ''}
         </div>
     `).join('');
 
-    /* Build a dot for each step */
+    /* Build a progress dot for each step (pill + fill bar) */
     dots.innerHTML = BEFORE_AFTER_PROJECTS.map((_, i) => `
         <button type="button" class="ba-dot${i === 0 ? ' active' : ''}" role="tab"
-            aria-label="Go to example ${i + 1}" onclick="goToSlide(${i})"></button>
+            aria-label="Go to example ${i + 1}" onclick="goToSlide(${i})">
+            <span class="ba-dot-fill"></span>
+        </button>
     `).join('');
 
     /* Wire up the prev/next arrows */
     document.getElementById('ba-prev')?.addEventListener('click', () => moveCarousel(-1));
     document.getElementById('ba-next')?.addEventListener('click', () => moveCarousel(1));
 
-    /* Pause auto-advance while the visitor is hovering the carousel */
-    const carousel = document.getElementById('ba-carousel');
-    carousel?.addEventListener('mouseenter', stopCarousel);
-    carousel?.addEventListener('mouseleave', startCarousel);
+    /* When the active progress bar finishes filling, advance a step */
+    dots.addEventListener('animationend', (e) => {
+        if (e.animationName === 'ba-fill' && BEFORE_AFTER_PROJECTS.length > 1) {
+            moveCarousel(1);
+        }
+    });
+
+    /* Pause the progress bar (and thus auto-advance) on hover */
+    carousel.addEventListener('mouseenter', () => carousel.classList.add('is-paused'));
+    carousel.addEventListener('mouseleave', () => carousel.classList.remove('is-paused'));
 
     updateCarousel();
-    startCarousel();
 }
 
-/** Moves the track to the current step and syncs the dots. */
+/** Moves the track to the current step, syncs the dots, and
+    restarts the active step's progress bar from zero. */
 function updateCarousel() {
     const track = document.getElementById('ba-track');
     if (track) track.style.transform = `translateX(-${carouselIndex * 100}%)`;
@@ -610,6 +630,17 @@ function updateCarousel() {
     document.querySelectorAll('.ba-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === carouselIndex);
     });
+
+    restartActiveFill();
+}
+
+/** Restarts the progress-bar animation on the currently active dot. */
+function restartActiveFill() {
+    const fill = document.querySelector('.ba-dot.active .ba-dot-fill');
+    if (!fill) return;
+    fill.style.animation = 'none';   // cancel any running animation
+    void fill.offsetWidth;           // force reflow so it restarts
+    fill.style.animation = '';       // hand back to the stylesheet rule
 }
 
 /** Advances the carousel by `direction` (+1 next, -1 prev), wrapping around. */
@@ -617,27 +648,12 @@ function moveCarousel(direction) {
     const count = BEFORE_AFTER_PROJECTS.length;
     carouselIndex = (carouselIndex + direction + count) % count;
     updateCarousel();
-    restartCarousel();
 }
 
 /** Jumps directly to a specific step (used by the dots). */
 function goToSlide(index) {
     carouselIndex = index;
     updateCarousel();
-    restartCarousel();
-}
-
-/** Starts / stops the auto-advance timer. */
-function startCarousel() {
-    if (BEFORE_AFTER_PROJECTS.length < 2) return;   // nothing to rotate
-    stopCarousel();
-    carouselTimer = setInterval(() => moveCarousel(1), CAROUSEL_INTERVAL);
-}
-function stopCarousel() {
-    if (carouselTimer) { clearInterval(carouselTimer); carouselTimer = null; }
-}
-function restartCarousel() {
-    startCarousel();
 }
 
 
