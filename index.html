@@ -43,8 +43,7 @@
       "telephone": "+14808780808",
       "email": "info@hireplunge.com",
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
       ]
     }
     </script>
@@ -157,14 +156,69 @@
                     </p>
                 </div>
             </div>
-            <div class="about-cta">
-                <!-- CALL NOW — replace +14808780808 with your phone number (digits only) -->
-                <a href="tel:+14808780808" class="btn btn-call">
-                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
-                </a>
-                <a href="#booking" class="btn btn-book">
-                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
-                </a>
+            <!-- Business Hours & Contact cards -->
+            <div class="hours-contact-grid" id="hours">
+
+                <!-- Business Hours card -->
+                <div class="hours-card">
+                    <h2 class="section-title section-title--left">
+                        <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
+                    </h2>
+                    <div class="hours-open">
+                        <span class="hours-open-headline">Open 24 Hours a Day</span>
+                        <span class="hours-open-sub">7 Days a Week</span>
+                    </div>
+                    <div class="hours-emergency">
+                        <i class="fa fa-bolt" aria-hidden="true"></i>
+                        <span>24/7 Emergency Service Available</span>
+                    </div>
+                </div>
+
+                <!-- Contact card -->
+                <div class="contact-card">
+                    <h2 class="section-title section-title--left">
+                        <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
+                    </h2>
+
+                    <!-- Call Now + Book Online buttons -->
+                    <div class="contact-cta">
+                        <!-- CALL NOW — replace +14808780808 with your phone number (digits only) -->
+                        <a href="tel:+14808780808" class="btn btn-call">
+                            <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                        </a>
+                        <a href="#booking" class="btn btn-book">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                        </a>
+                    </div>
+
+                    <!-- =============================================
+                         SOCIAL MEDIA LINKS
+                         Replace each # with your actual profile URL.
+                         Remove any platforms you don't use.
+                         ============================================= -->
+                    <div class="social-links">
+                        <h3><i class="fa fa-share-nodes" aria-hidden="true"></i> Follow Us</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="social-icon social-icon--yelp" aria-label="Plunge on Yelp" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-yelp" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="social-icon social-icon--nextdoor" aria-label="Plunge on Nextdoor" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-home" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="social-icon social-icon--youtube" aria-label="Plunge on YouTube" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </section>
@@ -184,7 +238,7 @@
         <div class="container">
 
             <h2 class="section-title">Book a Service</h2>
-            <p class="section-subtitle">Schedule your plumbing service online — we'll confirm within 1 hour during business hours.</p>
+            <p class="section-subtitle">Schedule your plumbing service online — we'll call to confirm within 1 hour, any time of day.</p>
 
             <form id="booking-form" class="booking-form" novalidate>
 
@@ -322,7 +376,7 @@
                         <button type="submit" class="btn btn-submit">
                             <i class="fa fa-calendar-check" aria-hidden="true"></i> Request Booking
                         </button>
-                        <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour during business hours.</p>
+                        <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour, any time of day.</p>
 
                     </div>
                 </div>
@@ -342,82 +396,6 @@
                 PASTE YOUR SERVICETITAN BOOKING WIDGET EMBED CODE HERE
             </div>
             -->
-
-        </div>
-    </section>
-
-
-    <!-- =============================================
-         BUSINESS HOURS & CONTACT
-         Update times and phone number to match your actual schedule.
-         ============================================= -->
-    <section id="hours" class="hours-section">
-        <div class="container hours-contact-grid">
-
-            <!-- Business Hours card -->
-            <div class="hours-card">
-                <h2 class="section-title section-title--left">
-                    <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
-                </h2>
-                <table class="hours-table" aria-label="Business Hours">
-                    <tbody>
-                        <!-- =============================================
-                             UPDATE HOURS TO MATCH YOUR SCHEDULE
-                             ============================================= -->
-                        <tr><th scope="row">Monday</th><td>7:00 AM – 6:00 PM</td></tr>
-                        <tr><th scope="row">Tuesday</th><td>7:00 AM – 6:00 PM</td></tr>
-                        <tr><th scope="row">Wednesday</th><td>7:00 AM – 6:00 PM</td></tr>
-                        <tr><th scope="row">Thursday</th><td>7:00 AM – 6:00 PM</td></tr>
-                        <tr><th scope="row">Friday</th><td>7:00 AM – 6:00 PM</td></tr>
-                        <tr><th scope="row">Saturday</th><td>8:00 AM – 4:00 PM</td></tr>
-                        <tr class="row-closed"><th scope="row">Sunday</th><td>Closed</td></tr>
-                        <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Contact / Call Now card -->
-            <div class="contact-card">
-                <h2 class="section-title section-title--left">
-                    <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
-                </h2>
-
-                <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
-                <a href="tel:+14808780808" class="btn btn-call btn-call--large">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span>
-                        <strong>Call Now</strong>
-                        <small>(480) 878-0808</small>
-                    </span>
-                </a>
-
-                <!-- =============================================
-                     SOCIAL MEDIA LINKS
-                     Replace each # with your actual profile URL.
-                     Remove any platforms you don't use.
-                     ============================================= -->
-                <div class="social-links">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-icon social-icon--yelp" aria-label="Plunge on Yelp" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-yelp" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-icon social-icon--nextdoor" aria-label="Plunge on Nextdoor" target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-home" aria-hidden="true"></i>
-                        </a>
-                        <a href="#" class="social-icon social-icon--youtube" aria-label="Plunge on YouTube" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-youtube" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
 
         </div>
     </section>
@@ -485,7 +463,7 @@
         <div class="container">
 
             <h2 class="section-title">Expert Work by Our Professionals</h2>
-            <p class="section-subtitle">Examples of Our Skilled Technician's Work</p>
+            <p class="section-subtitle">Examples of Our Skilled Technicians' Work</p>
 
             <!-- Before / After carousel — slides injected by initCarousel() in script.js.
                  Each step shows a Before and an After photo side by side. -->

@@ -227,7 +227,7 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
         /* Success */
         statusEl.className   = 'booking-status success';
-        statusEl.textContent = '✓ Your booking request was received! We\'ll call to confirm within 1 hour during business hours.';
+        statusEl.textContent = '✓ Your booking request was received! We\'ll call to confirm within 1 hour, any time of day.';
         form.reset();
         setMinDate();
 
@@ -334,8 +334,6 @@ function loadGoogleReviews() {
             fields:  ['name', 'rating', 'user_ratings_total', 'reviews'],
         },
         (place, status) => {
-
-            console.log('Places API status:', status);
 
             if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
                 container.innerHTML =
@@ -482,10 +480,6 @@ function displayPlaceholderReviews() {
         `;
         container.appendChild(article);
     });
-}
-
-function initGoogleMaps() {
-    loadGoogleReviews();
 }
 
 
