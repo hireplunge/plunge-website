@@ -111,19 +111,26 @@
 
     <!-- HEADER -->
     <header class="site-header">
-        <div class="header-brand">
-            <a href="../index.html" aria-label="Return to home page">
-                <img src="../images/logo.jpg" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.style.display='none'">
-            </a>
-            <div class="header-title">
-                <span class="header-company-name">Plunge</span>
-                <span class="header-tagline">a Plumbing Co.</span>
+        <a href="../index.html" class="header-brand-link" aria-label="Return to home page">
+            <div class="header-brand">
+                <div class="header-logo-wrap">
+                    <img src="../images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="header-title">
+                    <span class="header-company-name">Plunge</span>
+                    <span class="header-tagline">a Plumbing Co.</span>
+                </div>
             </div>
-        </div>
+        </a>
         <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
             <span class="menu-icon" aria-hidden="true">&#9776;</span>
-            <span class="menu-label">Menu</span>
+            <span class="menu-label">Service Areas</span>
         </button>
+        <!-- Call Now — top-right — always present on every page -->
+        <a href="tel:+14808780808" class="header-call-btn" aria-label="Call Plunge now">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="header-call-label">Call Now</span>
+        </a>
     </header>
 
     <!-- CITY NAV DRAWER -->

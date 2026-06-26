@@ -15,26 +15,20 @@
 
     /* -- Brand Colors -- */
     --grey:         rgb(168, 168, 168);   /* 60% dominant background */
-    --grey-light:   rgb(192, 192, 192);
     --grey-mid:     rgb(155, 155, 155);
     --grey-dark:    rgb(120, 120, 120);
-    --grey-card:    rgb(180, 180, 180);
 
     --blue:         rgb(58, 100, 158);    /* 30% primary — header, footer, nav */
-    --blue-light:   rgb(82, 130, 200);
     --blue-dark:    rgb(38, 72, 120);
-    --blue-overlay: rgba(38, 72, 120, 0.9);
 
     --orange:       rgb(235, 149, 74);    /* 10% accent — CTAs, highlights */
     --orange-dark:  rgb(210, 122, 45);
-    --orange-light: rgb(245, 175, 110);
 
     /* -- Neutrals -- */
+    --bg-dark:      #3a3a3a;   /* uniform dark grey used across all page sections */
     --white:        #ffffff;
-    --black:        #111111;
     --text-dark:    #2c2c2c;
     --text-mid:     #555555;
-    --text-light:   #f5f5f5;
 
     /* -- Typography -- */
     --font-heading: 'Courier New', monospace;
@@ -52,14 +46,16 @@
     --radius-lg: 14px;
     --radius-xl: 20px;
 
+    /* Shared height for the Business Hours card + Book Online button
+       so they read as matching twins */
+    --hours-card-h: 92px;
+
     /* -- Shadows -- */
     --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.14);
     --shadow-md:  0 4px 20px rgba(0, 0, 0, 0.18);
-    --shadow-lg:  0 8px 40px rgba(0, 0, 0, 0.22);
 
     /* -- Transitions -- */
     --ease:       all 0.25s ease;
-    --ease-slow:  all 0.4s ease;
 }
 
 
@@ -81,7 +77,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: #3a3a3a;     /* Uniform dark gray throughout */
+    background-color: var(--bg-dark);     /* Uniform dark gray throughout */
     color: var(--text-dark);
     line-height: 1.65;
     overflow-x: hidden;
@@ -322,6 +318,7 @@ button {
     left: var(--space-lg);
     top: 50%;
     transform: translateY(-50%);
+    height: 38px;
     background: var(--orange);
     color: var(--white);
     border: none;
@@ -343,6 +340,35 @@ button {
 .menu-icon {
     font-size: 1.2rem;
     line-height: 1;
+}
+
+/* Call Now button — absolute top-right, mirrors the menu button
+   so it's always present on every page (desktop & mobile) */
+.header-call-btn {
+    position: absolute;
+    right: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    height: 38px;               /* same height as the menu button */
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    transition: var(--ease);
+}
+.header-call-btn:hover {
+    background: var(--orange-dark);
+    color: var(--white);
+    box-shadow: var(--shadow-sm);
 }
 
 
@@ -493,7 +519,7 @@ button {
    Uses Playfair Display for heading
    ============================================= */
 .about-section {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     color: var(--white);
     padding: var(--space-xl) var(--space-md);
     position: relative;
@@ -577,7 +603,7 @@ button {
    Form card: white with blue top border
    ============================================= */
 .booking-section {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     padding: var(--space-xl) 0;
 }
 
@@ -718,37 +744,34 @@ textarea {
    (Lives inside the About section's dark grey background)
    ============================================= */
 
-/* Two-column grid: hours left, contact right.
-   align-items: stretch makes both columns equal height. */
+/* Two-column grid: hours left, contact right. Columns are
+   top-aligned so the Business Hours card and the Book Online
+   button line up as matching twins. */
 .hours-contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-md);
-    align-items: stretch;
+    align-items: start;
 }
 
 /* No card background — the labels and contents sit directly
-   on the section's dark grey background. Each column is a flex
-   column so its contents can fill the equal-height cell. */
+   on the section's dark grey background. */
 .hours-card,
 .contact-card {
     display: flex;
     flex-direction: column;
 }
 
-/* In the Contact column, push the social links to the bottom so
-   the column fills its full height neatly. */
-.social-links {
-    margin-top: auto;
-}
-
-/* "Open 24 Hours a Day" statement */
+/* Business Hours card — single blue card, two lines.
+   --hours-card-h keeps it the same height as the Book Online
+   button so the two columns read as matching twins. */
 .hours-open {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    min-height: var(--hours-card-h, 92px);
     padding: 0.8rem var(--space-sm);
     background: var(--blue);
     border-radius: var(--radius-lg);
@@ -770,41 +793,22 @@ textarea {
     margin-top: 0.3rem;
 }
 
-/* 24/7 emergency callout — orange accent (10%) */
-.hours-emergency {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    margin-top: auto;            /* pin to the bottom so the column fills evenly */
-    padding: 0.9rem var(--space-sm);
-    border: 2px solid var(--orange-light);
-    border-radius: var(--radius-lg);
+/* The orange bolt accent on the emergency line */
+.hours-open-sub .fa {
     color: var(--orange);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.05rem;
-    text-align: center;
 }
 
-.hours-emergency .fa {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-}
-
-/* Call Now + Book Online buttons inside the Contact card —
-   side by side, sharing the width equally */
+/* Book Online button — full width, sized to match the
+   Business Hours card (same height via --hours-card-h) */
 .contact-cta {
-    display: flex;
-    gap: 0.6rem;
     margin: 0 0 var(--space-md);
 }
 .contact-cta .btn {
-    flex: 1;
+    width: 100%;
+    min-height: var(--hours-card-h, 92px);
     justify-content: center;
     font-size: 1.1rem;
-    padding: 1.8rem 1.5rem;     /* taller, to match the "Open 24 Hours" panel */
-    border-radius: var(--radius-lg);   /* match the Business Hours panels */
+    border-radius: var(--radius-lg);   /* match the Business Hours card */
 }
 
 /* "Follow Us" label — matches the "Business Hours" / "Contact Us"
@@ -853,7 +857,7 @@ textarea {
    Background: grey (60%)
    ============================================= */
 .reviews-section {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     padding: var(--space-xl) 0;
 }
 
@@ -1089,7 +1093,7 @@ textarea {
    Background: slightly darker grey (60% zone)
    ============================================= */
 .gallery-section {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     padding: var(--space-xl) 0;
 }
 
@@ -1429,13 +1433,20 @@ textarea {
     .header-logo-wrap    { width: 44px; height: 44px; }
 
     .menu-btn {
+        left: 0.75rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.82rem;
+    }
+
+    .header-call-btn {
         right: 0.75rem;
         padding: 0.4rem 0.65rem;
         font-size: 0.82rem;
     }
 
-    /* Hide "Menu" label — show only hamburger icon on small screens */
-    .menu-label { display: none; }
+    /* Show only the icons on small screens — hide both button labels */
+    .menu-label,
+    .header-call-label { display: none; }
 
     .about-section {
         padding: var(--space-lg) var(--space-sm);
@@ -1447,11 +1458,6 @@ textarea {
     }
 
     .btn { width: 100%; justify-content: center; }
-
-    /* Stack the Call Now / Book Online buttons on phones */
-    .contact-cta {
-        flex-direction: column;
-    }
 
     .form-row {
         flex-direction: column;
