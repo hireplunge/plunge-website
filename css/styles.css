@@ -783,37 +783,45 @@ textarea {
     padding: var(--space-xl) 0;
 }
 
-/* 2×2 grid: Business Hours / Contact Us on top, Find Us / Follow Us below.
-   Equal-height rows + stretch keep all four cards the same size. */
-.hours-contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 1fr;
-    gap: var(--space-md);
-    align-items: stretch;
-}
-
-/* Shared card shell for all four info cards */
+/* Base card shell */
 .info-card {
-    background: var(--white);
     border-radius: var(--radius-lg);
-    padding: var(--space-md);
-    box-shadow: var(--shadow-sm);
-    border-top: 5px solid var(--blue);    /* blue top accent — matches the booking card */
+    padding: var(--space-lg) var(--space-md);
     display: flex;
     flex-direction: column;
-    min-height: 300px;
 }
-
-/* Heading pinned to the top; body fills the rest so cards balance
-   and the map can stretch to fill its card. */
 .info-card .section-title--left {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 .info-card-body {
-    flex: 1;
     display: flex;
     flex-direction: column;
+}
+
+/* Get In Touch — single centered card on dark blue with an orange
+   accent bar across the top and a soft orange-tinted glow. */
+.getintouch-card {
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--blue-dark);
+    color: var(--white);
+    border-top: 6px solid var(--orange);             /* orange accent bar */
+    box-shadow: 0 6px 26px rgba(235, 149, 74, 0.4);  /* orange-tinted glow */
+    text-align: center;
+}
+.getintouch-card .section-title--left {
+    color: var(--white);
+    text-align: center;
+}
+
+/* Buttons + social row + hours note spacing inside the card */
+.getintouch-card .info-card-body {
+    gap: var(--space-sm);
+    align-items: center;
+}
+.getintouch-card .btn-call--large {
+    width: 100%;
+    margin: 0;
 }
 
 /* Hours table */
@@ -867,63 +875,29 @@ textarea {
     opacity: 0.88;
 }
 
-/* Social media links (Follow Us card) */
+/* Social media links (Get In Touch card) — centered row */
 .social-icons {
     display: flex;
     gap: 0.7rem;
     flex-wrap: wrap;
-}
-
-/* Center the icon row within the Follow Us card body */
-.follow-card .social-body {
-    justify-content: center;
-}
-.follow-card .social-icons {
     justify-content: center;
 }
 
-/* Contact Us — secondary details (email, address) under the call button */
-.contact-details {
-    list-style: none;
-    margin-top: var(--space-sm);
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
+/* Hours summary at the bottom of the Get In Touch card */
+.getintouch-hours {
+    margin-top: var(--space-xs);
+    line-height: 1.55;
 }
-.contact-details li {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    font-size: 0.9rem;
-    color: var(--text-mid);
+.getintouch-hours p {
+    margin: 0;
 }
-.contact-details .fa {
+.getintouch-hours .hours-everyday {
+    color: var(--white);
+    font-weight: 700;
+}
+.getintouch-hours .hours-emergency {
     color: var(--orange);
-    width: 16px;
-    text-align: center;
-    flex-shrink: 0;
-}
-.contact-details a {
-    color: var(--text-mid);
-    word-break: break-word;
-}
-.contact-details a:hover {
-    color: var(--orange);
-}
-
-/* Find Us — the Google map fills the card body */
-.findus-card .maps-embed-wrapper {
-    flex: 1;
-    display: flex;
-    margin-bottom: 0;
-    box-shadow: none;
-    min-height: 220px;
-}
-.findus-card .maps-embed-wrapper iframe {
-    flex: 1;
-    width: 100%;
-    height: auto;
-    min-height: 220px;
+    font-weight: 700;
 }
 
 .social-icon {

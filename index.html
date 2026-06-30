@@ -384,29 +384,15 @@
          BUSINESS HOURS & CONTACT
          ============================================= -->
     <section id="hours" class="hours-section">
-        <div class="container hours-contact-grid">
+        <div class="container">
 
-            <!-- Business Hours card -->
-            <div class="info-card hours-card">
+            <!-- Get In Touch card — call/email buttons, social links, hours -->
+            <div class="info-card getintouch-card">
                 <h2 class="section-title section-title--left">
-                    <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
+                    <i class="fa fa-handshake" aria-hidden="true"></i> Get In Touch
                 </h2>
                 <div class="info-card-body">
-                    <table class="hours-table" aria-label="Business Hours">
-                        <tbody>
-                            <tr><th scope="row">Every Day</th><td>Open 24 Hours</td></tr>
-                            <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- Contact Us card -->
-            <div class="info-card contact-card">
-                <h2 class="section-title section-title--left">
-                    <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
-                </h2>
-                <div class="info-card-body">
                     <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
                     <a href="tel:+14808780808" class="btn btn-call btn-call--large">
                         <i class="fa fa-phone" aria-hidden="true"></i>
@@ -416,47 +402,20 @@
                         </span>
                     </a>
 
-                    <!-- Secondary contact details -->
-                    <ul class="contact-details">
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></li>
-                        <li><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></li>
-                    </ul>
-                </div>
-            </div>
+                    <!-- SEND US AN EMAIL — replace with your email address -->
+                    <a href="mailto:info@hireplunge.com" class="btn btn-call btn-call--large">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <span>
+                            <strong>Send Us an Email</strong>
+                            <small>info@hireplunge.com</small>
+                        </span>
+                    </a>
 
-            <!-- Find Us card — Google Maps location -->
-            <div class="info-card findus-card">
-                <h2 class="section-title section-title--left">
-                    <i class="fa fa-location-dot" aria-hidden="true"></i> Find Us
-                </h2>
-                <div class="info-card-body">
-                    <!-- Google Maps embed — shows business location -->
-                    <div class="maps-embed-wrapper">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.6191586226868!2d-111.84297760000001!3d33.4108159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba7416c7cfb33%3A0xd0469a005075f340!2sPlunge%2C%20a%20plumbing%20co.%20llc!5e0!3m2!1sen!2sus!4v1782321275716!5m2!1sen!2sus"
-                            width="100%"
-                            height="100%"
-                            style="border:0;"
-                            allowfullscreen
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Plunge Plumbing — Google Maps">
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Follow Us card — social media -->
-            <div class="info-card follow-card">
-                <h2 class="section-title section-title--left">
-                    <i class="fa fa-share-nodes" aria-hidden="true"></i> Follow Us
-                </h2>
-                <!-- =============================================
-                     SOCIAL MEDIA LINKS
-                     Replace each # with your actual profile URL.
-                     Remove any platforms you don't use.
-                     ============================================= -->
-                <div class="info-card-body social-body">
+                    <!-- =============================================
+                         SOCIAL MEDIA LINKS
+                         Replace each # with your actual profile URL.
+                         Remove any platforms you don't use.
+                         ============================================= -->
                     <div class="social-icons">
                         <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
@@ -474,6 +433,13 @@
                             <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
                     </div>
+
+                    <!-- Hours summary -->
+                    <div class="getintouch-hours">
+                        <p class="hours-everyday">Open 24 Hours a Day, 7 Days a Week</p>
+                        <p class="hours-emergency">Emergency Service Available 24/7</p>
+                    </div>
+
                 </div>
             </div>
 
@@ -514,6 +480,20 @@
                 <div class="reviews-loading">
                     <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading reviews&hellip;
                 </div>
+            </div>
+
+            <!-- Google Maps embed — shows business location -->
+            <div class="maps-embed-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.6191586226868!2d-111.84297760000001!3d33.4108159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba7416c7cfb33%3A0xd0469a005075f340!2sPlunge%2C%20a%20plumbing%20co.%20llc!5e0!3m2!1sen!2sus!4v1782321275716!5m2!1sen!2sus"
+                    width="100%"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Plunge Plumbing — Google Maps">
+                </iframe>
             </div>
 
         </div>
