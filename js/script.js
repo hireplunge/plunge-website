@@ -289,6 +289,34 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 })();
 
 
+/* -----------------------------------------------
+   BOOKING — bold fields once they hold a value
+   -----------------------------------------------
+   Adds/removes the .is-filled class on each field so
+   empty fields render in normal weight and filled ones
+   (typed text, picked date, chosen dropdown option) render
+   bold. Works uniformly across inputs, selects, and the
+   textarea — including the date picker, which has no
+   text placeholder for CSS to key off of.
+   ----------------------------------------------- */
+(function initBookingBold() {
+    const form = document.getElementById('booking-form');
+    if (!form) return;
+
+    const fields = form.querySelectorAll('input, select, textarea');
+    const sync = (el) => el.classList.toggle('is-filled', el.value.trim() !== '');
+
+    fields.forEach((el) => {
+        sync(el);                                  // initial state (e.g. the locked AZ field)
+        el.addEventListener('input',  () => sync(el));
+        el.addEventListener('change', () => sync(el));
+    });
+
+    /* Re-sync after a reset (e.g. following a successful submit) */
+    form.addEventListener('reset', () => setTimeout(() => fields.forEach(sync), 0));
+})();
+
+
 /** Sets the minimum selectable date to today on the date input. */
 function setMinDate() {
     const dateInput = document.getElementById('preferred-date');

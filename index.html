@@ -112,17 +112,19 @@
 
         <ul class="city-nav-list">
             <!-- =============================================
-                 ADD OR REMOVE CITY LINKS HERE
+                 SERVICE AREAS — KEEP THIS LIST IN SYNC everywhere it appears:
+                   1. This nav drawer (here AND in every cities/*.html page)
+                   2. The booking form city dropdown (further down in this file)
+                   3. The Service Areas directory cards (cities/index.html)
+                 These are PLACEHOLDER Phoenix-metro cities — update them
+                 when the real service-area list is finalized.
                  ============================================= -->
-            <li><a href="cities/los-angeles.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Los Angeles</a></li>
-            <li><a href="cities/long-beach.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Long Beach</a></li>
-            <li><a href="cities/pasadena.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Pasadena</a></li>
-            <li><a href="cities/glendale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Glendale</a></li>
-            <li><a href="cities/burbank.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Burbank</a></li>
-            <li><a href="cities/torrance.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Torrance</a></li>
-            <li><a href="cities/compton.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Compton</a></li>
-            <li><a href="cities/inglewood.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Inglewood</a></li>
-            <!-- Add more cities here -->
+            <li><a href="cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <li><a href="cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
         </ul>
 
         <div class="city-nav-footer">
@@ -162,61 +164,14 @@
                     </p>
                 </div>
             </div>
-            <!-- Business Hours & Contact cards -->
-            <div class="hours-contact-grid" id="hours">
-
-                <!-- Business Hours card -->
-                <div class="hours-card">
-                    <h2 class="section-title section-title--left">
-                        <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
-                    </h2>
-                    <div class="hours-open">
-                        <span class="hours-open-headline">Open 24/7</span>
-                        <span class="hours-open-sub"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency Services Available</span>
-                    </div>
-                </div>
-
-                <!-- Contact card -->
-                <div class="contact-card">
-                    <h2 class="section-title section-title--left">
-                        <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
-                    </h2>
-
-                    <!-- Book Online button — sized to match the Business Hours card -->
-                    <div class="contact-cta">
-                        <a href="#booking" class="btn btn-book">
-                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
-                        </a>
-                    </div>
-
-                    <!-- =============================================
-                         SOCIAL MEDIA LINKS
-                         Replace each # with your actual profile URL.
-                         Remove any platforms you don't use.
-                         ============================================= -->
-                    <div class="social-links">
-                        <h3><i class="fa fa-share-nodes" aria-hidden="true"></i> Follow Us</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="social-icon social-icon--yelp" aria-label="Plunge on Yelp" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-yelp" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="social-icon social-icon--nextdoor" aria-label="Plunge on Nextdoor" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-home" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="social-icon social-icon--youtube" aria-label="Plunge on YouTube" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
+            <div class="about-cta">
+                <!-- CALL NOW — replace +14808780808 with your phone number (digits only) -->
+                <a href="tel:+14808780808" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                </a>
+                <a href="#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
             </div>
         </div>
     </section>
@@ -283,15 +238,16 @@
                         <div class="form-group">
                             <label for="preferred-time">Preferred Time Window</label>
                             <select id="preferred-time" name="preferredTime">
-                                <option value="">No preference</option>
+                                <option value="" disabled selected>Select a window&hellip;</option>
                                 <option value="morning">Morning (8am – 12pm)</option>
                                 <option value="afternoon">Afternoon (12pm – 4pm)</option>
                                 <option value="evening">Evening (4pm – 7pm)</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="is-new-customer">Are you a new customer?</label>
-                            <select id="is-new-customer" name="isNewCustomer">
+                            <label for="is-new-customer">Are you a new customer? <span class="required">*</span></label>
+                            <select id="is-new-customer" name="isNewCustomer" required>
+                                <option value="" disabled selected>Select an option&hellip;</option>
                                 <option value="true">Yes, new customer</option>
                                 <option value="false">No, returning customer</option>
                             </select>
@@ -351,15 +307,32 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="city-field">City <span class="required">*</span></label>
-                                <input type="text" id="city-field" name="city" required placeholder="Los Angeles" autocomplete="address-level2">
+                                <!-- =============================================
+                                     PLACEHOLDER SERVICE AREAS (Phoenix metro)
+                                     KEEP IN SYNC with the other service-area lists:
+                                       1. The nav drawer above (and in every cities/*.html)
+                                       2. The Service Areas directory cards (cities/index.html)
+                                     Replace all of them together with the real
+                                     service-area cities once finalized.
+                                     ============================================= -->
+                                <select id="city-field" name="city" required autocomplete="address-level2">
+                                    <option value="" disabled selected>Select a city&hellip;</option>
+                                    <option value="Mesa">Mesa</option>
+                                    <option value="Tempe">Tempe</option>
+                                    <option value="Chandler">Chandler</option>
+                                    <option value="Gilbert">Gilbert</option>
+                                    <option value="Scottsdale">Scottsdale</option>
+                                    <option value="Queen Creek">Queen Creek</option>
+                                </select>
                             </div>
                             <div class="form-group form-group--small">
-                                <label for="state">State <span class="required">*</span></label>
-                                <input type="text" id="state" name="state" required placeholder="CA" maxlength="2" autocomplete="address-level1">
+                                <label for="state">State</label>
+                                <!-- State locked to AZ (non-interactive) — update if we ever expand beyond Arizona. -->
+                                <input type="text" id="state" name="state" value="AZ" readonly required tabindex="-1" aria-readonly="true" class="state-locked" autocomplete="address-level1">
                             </div>
                             <div class="form-group form-group--small">
                                 <label for="zip">ZIP Code <span class="required">*</span></label>
-                                <input type="text" id="zip" name="zip" required placeholder="90001" autocomplete="postal-code" maxlength="10">
+                                <input type="text" id="zip" name="zip" required placeholder="85201" autocomplete="postal-code" maxlength="10">
                             </div>
                         </div>
 
@@ -374,7 +347,7 @@
                         <button type="submit" class="btn btn-submit">
                             <i class="fa fa-calendar-check" aria-hidden="true"></i> Request Booking
                         </button>
-                        <p class="form-disclaimer"><span class="required">*</span> Required fields. We'll call to confirm within 1 hour, any time of day.</p>
+                        <p class="form-disclaimer"><span class="required">*</span> Required fields</p>
 
                     </div>
                 </div>
@@ -394,6 +367,72 @@
                 PASTE YOUR SERVICETITAN BOOKING WIDGET EMBED CODE HERE
             </div>
             -->
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         BUSINESS HOURS & CONTACT
+         ============================================= -->
+    <section id="hours" class="hours-section">
+        <div class="container hours-contact-grid">
+
+            <!-- Business Hours card -->
+            <div class="hours-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
+                </h2>
+                <table class="hours-table" aria-label="Business Hours">
+                    <tbody>
+                        <tr><th scope="row">Every Day</th><td>Open 24 Hours</td></tr>
+                        <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contact / Call Now card -->
+            <div class="contact-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
+                </h2>
+
+                <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
+                <a href="tel:+14808780808" class="btn btn-call btn-call--large">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                        <strong>Call Now</strong>
+                        <small>(480) 878-0808</small>
+                    </span>
+                </a>
+
+                <!-- =============================================
+                     SOCIAL MEDIA LINKS
+                     Replace each # with your actual profile URL.
+                     Remove any platforms you don't use.
+                     ============================================= -->
+                <div class="social-links">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--yelp" aria-label="Plunge on Yelp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-yelp" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--nextdoor" aria-label="Plunge on Nextdoor" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-icon social-icon--youtube" aria-label="Plunge on YouTube" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </section>

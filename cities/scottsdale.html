@@ -1,22 +1,9 @@
 <!DOCTYPE html>
 <!--
-    CITY PAGE TEMPLATE — Plunge, a Plumbing Co.
-    =============================================
-    HOW TO CREATE A NEW CITY PAGE:
-    1. Make a copy of this file in the cities/ folder
-       e.g.  cp city-template.html santa-monica.html
-    2. Find every instance of [CITY NAME] and replace it
-       with the actual city name  (e.g. "Santa Monica")
-    3. Find every instance of [CITY-SLUG] and replace with
-       the URL-safe name  (e.g. "santa-monica")
-    4. Find every instance of [STATE] and replace with the
-       state abbreviation  (e.g. "CA")
-    5. Add the city to the <ul> in the city-nav drawer
-       (in both this file AND index.html)
-    6. Update the canonical URL and Schema data below
-    7. (Optional) Customize the services list and body copy
-       to highlight anything specific to that city
-    =============================================
+    Scottsdale service-area page (Plunge, a Plumbing Co.)
+    Generated from city-template.html.
+    SERVICE AREAS must stay in sync across: this nav drawer, every city page,
+    the booking form city dropdown (index.html), and cities/index.html.
 -->
 <html lang="en">
 <head>
@@ -27,9 +14,9 @@
     <!-- =============================================
          SEO META — update per city for local search ranking
          ============================================= -->
-    <meta name="description" content="Plunge plumbing services in [CITY NAME], [STATE]. Licensed, insured plumbers available 7 days a week. Book online or call for same-day service.">
-    <meta name="keywords" content="[CITY NAME] plumber, [CITY NAME] plumbing, plumbing services [CITY NAME], emergency plumber [CITY NAME], drain cleaning [CITY NAME]">
-    <title>[CITY NAME] Plumbing Services | Plunge, a Plumbing Co.</title>
+    <meta name="description" content="Plunge plumbing services in Scottsdale, AZ. Licensed, insured plumbers available 7 days a week. Book online or call for same-day service.">
+    <meta name="keywords" content="Scottsdale plumber, Scottsdale plumbing, plumbing services Scottsdale, emergency plumber Scottsdale, drain cleaning Scottsdale">
+    <title>Scottsdale Plumbing Services | Plunge, a Plumbing Co.</title>
 
     <!-- Browser tab icons (favicons), iOS home-screen icon, and PWA manifest -->
     <link rel="icon" href="../favicon.ico" sizes="any">
@@ -41,7 +28,7 @@
 
     <!-- Canonical prevents duplicate-content penalties when the same content
          appears at multiple URLs. Replace yourwebsite.com with your domain. -->
-    <link rel="canonical" href="https://yourwebsite.com/cities/[CITY-SLUG].html">
+    <link rel="canonical" href="https://yourwebsite.com/cities/scottsdale.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,14 +49,14 @@
       "@context": "https://schema.org",
       "@type": "Plumber",
       "name": "Plunge, a Plumbing Co.",
-      "description": "Professional plumbing services in [CITY NAME], [STATE]",
-      "url": "https://yourwebsite.com/cities/[CITY-SLUG].html",
+      "description": "Professional plumbing services in Scottsdale, AZ",
+      "url": "https://yourwebsite.com/cities/scottsdale.html",
       "telephone": "+14808780808",
       "email": "info@hireplunge.com",
       "areaServed": {
         "@type": "City",
-        "name": "[CITY NAME]",
-        "addressRegion": "[STATE]"
+        "name": "Scottsdale",
+        "addressRegion": "AZ"
       },
       "openingHoursSpecification": [
         {
@@ -168,11 +155,11 @@
                 <span>/</span>
                 <a href="../cities/">Service Areas</a>
                 <span>/</span>
-                <span aria-current="page">[CITY NAME]</span>
+                <span aria-current="page">Scottsdale</span>
             </nav>
 
-            <h1>[CITY NAME] Plumbing Services</h1>
-            <p>Fast, licensed plumbers serving [CITY NAME] and surrounding [STATE] communities. Available 7 days a week — emergency service 24/7.</p>
+            <h1>Scottsdale Plumbing Services</h1>
+            <p>Fast, licensed plumbers serving Scottsdale and surrounding AZ communities. Available 7 days a week — emergency service 24/7.</p>
 
             <div class="hero-cta-group">
                 <a href="tel:+14808780808" class="btn btn-call">
@@ -194,8 +181,8 @@
     <section class="city-services">
         <div class="container">
 
-            <h2 class="section-title">Plumbing Services in [CITY NAME]</h2>
-            <p class="section-subtitle">We offer a full range of residential and commercial plumbing services throughout [CITY NAME], [STATE].</p>
+            <h2 class="section-title">Plumbing Services in Scottsdale</h2>
+            <p class="section-subtitle">We offer a full range of residential and commercial plumbing services throughout Scottsdale, AZ.</p>
 
             <div class="services-grid">
 
@@ -204,7 +191,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa fa-tint" aria-hidden="true"></i></div>
                     <h3>Drain Cleaning</h3>
-                    <p>Fast drain clearing and hydro-jetting for kitchen, bathroom, and main sewer line drains in [CITY NAME].</p>
+                    <p>Fast drain clearing and hydro-jetting for kitchen, bathroom, and main sewer line drains in Scottsdale.</p>
                 </div>
 
                 <div class="service-card">
@@ -216,7 +203,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa fa-fire" aria-hidden="true"></i></div>
                     <h3>Water Heater Services</h3>
-                    <p>Installation, repair, and replacement of tank and tankless water heaters throughout [CITY NAME].</p>
+                    <p>Installation, repair, and replacement of tank and tankless water heaters throughout Scottsdale.</p>
                 </div>
 
                 <div class="service-card">
@@ -234,7 +221,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa fa-bolt" aria-hidden="true"></i></div>
                     <h3>Emergency Plumbing</h3>
-                    <p>24/7 emergency response for pipe bursts, severe leaks, and flooding. [CITY NAME] crews on standby.</p>
+                    <p>24/7 emergency response for pipe bursts, severe leaks, and flooding. Scottsdale crews on standby.</p>
                 </div>
 
                 <!-- Optional additional service cards -->
@@ -242,7 +229,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fa fa-shower" aria-hidden="true"></i></div>
                     <h3>Bathroom Remodeling</h3>
-                    <p>Full plumbing rough-in and finish work for bathroom remodel projects in [CITY NAME].</p>
+                    <p>Full plumbing rough-in and finish work for bathroom remodel projects in Scottsdale.</p>
                 </div>
                 -->
 
@@ -257,18 +244,18 @@
     <section class="city-why">
         <div class="container">
 
-            <h2 class="section-title">Why [CITY NAME] Residents Choose Plunge</h2>
+            <h2 class="section-title">Why Scottsdale Residents Choose Plunge</h2>
 
             <div class="why-grid">
                 <div class="why-item">
                     <i class="fa fa-clock" aria-hidden="true"></i>
                     <h3>Same-Day Service</h3>
-                    <p>Most [CITY NAME] calls scheduled and serviced the same day you call.</p>
+                    <p>Most Scottsdale calls scheduled and serviced the same day you call.</p>
                 </div>
                 <div class="why-item">
                     <i class="fa fa-shield-alt" aria-hidden="true"></i>
                     <h3>Licensed &amp; Insured</h3>
-                    <p>Fully licensed [STATE] plumbing contractor. Fully insured for your protection.</p>
+                    <p>Fully licensed AZ plumbing contractor. Fully insured for your protection.</p>
                 </div>
                 <div class="why-item">
                     <i class="fa fa-dollar-sign" aria-hidden="true"></i>
@@ -291,7 +278,7 @@
          ============================================= -->
     <section class="city-cta">
         <div class="container">
-            <h2>Ready to Book a Plumber in [CITY NAME]?</h2>
+            <h2>Ready to Book a Plumber in Scottsdale?</h2>
             <p>Fill out our quick online form or give us a call — we're ready when you need us.</p>
             <div class="hero-cta-group">
                 <a href="tel:+14808780808" class="btn btn-call">
