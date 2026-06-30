@@ -317,6 +317,218 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 })();
 
 
+/* -----------------------------------------------
+   BOOKING — custom desktop calendar (date picker)
+   -----------------------------------------------
+   PROGRESSIVE ENHANCEMENT — read this before editing.
+
+   The real <input type="date"> is never removed. It stays the
+   single source of truth: it holds the value, gets submitted to
+   the CRM, and enforces "required" + the today minimum. This code
+   only adds a styled calendar popup *on top of* that input, on
+   desktop, and writes the chosen date back into it.
+
+   Safety guarantees:
+     • The whole setup is wrapped in try/catch. If anything throws,
+       it bails out and the NATIVE browser picker keeps working —
+       the field can never end up dead.
+     • The native icon is hidden (via the .date-enhanced class)
+       ONLY after the calendar is successfully built, so a failure
+       leaves the native picker fully intact.
+     • Mobile (≤ 620px) is untouched: the trigger icon is hidden in
+       CSS and every interaction below is gated behind a desktop
+       width check, so phones use their native picker as before.
+   ----------------------------------------------- */
+(function initCustomDatePicker() {
+    const input = document.getElementById('preferred-date');
+    if (!input) return;
+    const group = input.closest('.form-group');
+    if (!group) return;
+
+    /* Only enhance on desktop widths — matches the 620px CSS breakpoint */
+    const isDesktop = () => window.matchMedia('(min-width: 621px)').matches;
+
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    const WEEKDAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+    let popup, viewYear, viewMonth, isOpen = false;
+
+    try {
+        build();
+    } catch (err) {
+        /* Native picker remains fully functional — see safety notes above */
+        console.error('Custom date picker could not initialize; native date input is still active.', err);
+        return;
+    }
+
+    /* ---- Build the popup + trigger icon and wire up events ---- */
+    function build() {
+        const icon = document.createElement('button');
+        icon.type = 'button';
+        icon.className = 'date-trigger-icon';
+        icon.setAttribute('aria-label', 'Open calendar');
+        icon.tabIndex = -1;
+        group.appendChild(icon);
+
+        popup = document.createElement('div');
+        popup.className = 'date-popup';
+        popup.setAttribute('role', 'dialog');
+        popup.setAttribute('aria-label', 'Choose a preferred date');
+        popup.hidden = true;
+        group.appendChild(popup);
+
+        /* Open on click of the field or our icon (desktop only) */
+        input.addEventListener('click', () => { if (isDesktop()) openCal(); });
+        icon.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isDesktop()) toggleCal();
+        });
+
+        /* Keyboard: open with Enter / Space / Down arrow (desktop only) */
+        input.addEventListener('keydown', (e) => {
+            if (isDesktop() && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown')) {
+                e.preventDefault();
+                openCal();
+            }
+        });
+
+        /* Close on outside click or Escape */
+        document.addEventListener('click', (e) => {
+            if (isOpen && !group.contains(e.target)) closeCal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (isOpen && e.key === 'Escape') closeCal();
+        });
+
+        /* Keep the calendar in sync if the user types into the field */
+        input.addEventListener('change', () => { if (isOpen) render(); });
+
+        /* Mark enhanced LAST — only now do we hide the native icon (desktop).
+           If any step above had thrown, this line is never reached and the
+           native picker stays fully intact (see safety notes at the top). */
+        group.classList.add('date-enhanced');
+    }
+
+    /* ---- Open / close ---- */
+    function openCal() {
+        const base = parseValue(input.value) || todayParts();
+        viewYear = base.y;
+        viewMonth = base.m;
+        render();
+        popup.hidden = false;
+        isOpen = true;
+    }
+    function closeCal() {
+        popup.hidden = true;
+        isOpen = false;
+    }
+    function toggleCal() {
+        isOpen ? closeCal() : openCal();
+    }
+
+    /* ---- Render the current month ---- */
+    function render() {
+        const min    = minParts();
+        const today  = todayParts();
+        const sel    = parseValue(input.value);
+        const minNum = num(min);
+
+        /* Disable the prev arrow once we reach the minimum month */
+        const atMinMonth = (viewYear * 12 + viewMonth) <= (min.y * 12 + min.m);
+
+        const firstWeekday = new Date(viewYear, viewMonth, 1).getDay();
+        const daysInMonth  = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+        let html = '';
+
+        /* Header */
+        html += '<div class="date-popup-header">';
+        html += `<button type="button" class="date-popup-nav" data-nav="-1" aria-label="Previous month"${atMinMonth ? ' disabled' : ''}>&#8249;</button>`;
+        html += `<span class="date-popup-title">${MONTHS[viewMonth]} ${viewYear}</span>`;
+        html += '<button type="button" class="date-popup-nav" data-nav="1" aria-label="Next month">&#8250;</button>';
+        html += '</div>';
+
+        /* Weekday labels */
+        html += '<div class="date-popup-weekdays">';
+        WEEKDAYS.forEach(d => { html += `<span class="date-popup-weekday">${d}</span>`; });
+        html += '</div>';
+
+        /* Day grid */
+        html += '<div class="date-popup-grid">';
+        for (let i = 0; i < firstWeekday; i++) {
+            html += '<span class="date-popup-day is-empty"></span>';
+        }
+        for (let day = 1; day <= daysInMonth; day++) {
+            const cell      = { y: viewYear, m: viewMonth, d: day };
+            const disabled  = num(cell) < minNum;
+            const isToday   = today.y === viewYear && today.m === viewMonth && today.d === day;
+            const isSel     = sel && sel.y === viewYear && sel.m === viewMonth && sel.d === day;
+            const classes   = ['date-popup-day'];
+            if (isToday) classes.push('is-today');
+            if (isSel)   classes.push('is-selected');
+            html += `<button type="button" class="${classes.join(' ')}" data-day="${day}"${disabled ? ' disabled' : ''}>${day}</button>`;
+        }
+        html += '</div>';
+
+        popup.innerHTML = html;
+
+        /* Month navigation */
+        popup.querySelectorAll('[data-nav]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                shiftMonth(parseInt(btn.dataset.nav, 10));
+            });
+        });
+
+        /* Day selection */
+        popup.querySelectorAll('[data-day]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectDay(parseInt(btn.dataset.day, 10));
+            });
+        });
+    }
+
+    function shiftMonth(delta) {
+        viewMonth += delta;
+        if (viewMonth < 0)  { viewMonth = 11; viewYear--; }
+        if (viewMonth > 11) { viewMonth = 0;  viewYear++; }
+        render();
+    }
+
+    function selectDay(day) {
+        /* Write the value into the real input in the native YYYY-MM-DD
+           format, then fire input + change so the bold "is-filled"
+           styling and any validation listeners react exactly as if the
+           native picker had been used. */
+        input.value = ymd(viewYear, viewMonth, day);
+        input.dispatchEvent(new Event('input',  { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        closeCal();
+    }
+
+    /* ---- Date helpers (built from local parts to avoid timezone drift) ---- */
+    function parseValue(s) {
+        const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+        return m ? { y: +m[1], m: +m[2] - 1, d: +m[3] } : null;
+    }
+    function todayParts() {
+        const n = new Date();
+        return { y: n.getFullYear(), m: n.getMonth(), d: n.getDate() };
+    }
+    function minParts() {
+        return parseValue(input.min) || todayParts();
+    }
+    function num(p) {
+        return p.y * 10000 + p.m * 100 + p.d;
+    }
+    function ymd(y, m, d) {
+        return `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    }
+})();
+
+
 /** Sets the minimum selectable date to today on the date input. */
 function setMinDate() {
     const dateInput = document.getElementById('preferred-date');
