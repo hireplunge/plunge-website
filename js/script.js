@@ -750,13 +750,32 @@ const BEFORE_AFTER_PROJECTS = [
 
     /* =============================================
        PLACEHOLDER STEPS
-       Each step needs a `before`, an `after`, and a
-       `caption`. Leave src empty ('') to show an
-       "Add photo here" placeholder. Fill in src +
-       alt + caption when the real photos are ready.
-       Caption example: 'Burst pipe repair — Pasadena'
+       Each step needs a `before`, an `after`, and a `caption`.
+       Leave src empty ('') to show an "Add photo here" placeholder.
+       Fill in src + alt + caption when the real photos are ready.
+
+       When you add a real photo, write the `alt` as a natural sentence
+       describing what the photo actually shows — that one description
+       doubles as the image's accessibility text (for screen readers)
+       and its SEO text (for Google).
+       Caption example: 'Burst pipe repair — Mesa, AZ'
        ============================================= */
 
+    {
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
+    },
+    {
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
+    },
+    {
+        before:  { src: '', alt: 'Before photo of plumbing project' },
+        after:   { src: '', alt: 'After photo of plumbing project' },
+        caption: 'Project caption goes here',
+    },
     {
         before:  { src: '', alt: 'Before photo of plumbing project' },
         after:   { src: '', alt: 'After photo of plumbing project' },

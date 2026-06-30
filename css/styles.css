@@ -218,17 +218,18 @@ button {
     transform: none;
 }
 
-/* Google Review — white with border */
+/* Google Review — orange (matches the site's 10% accent) */
 .btn-review {
-    background-color: var(--white);
-    color: var(--text-dark);
-    border: 2px solid var(--grey-mid);
+    background-color: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--orange);
     padding: 0.75rem 1.5rem;
     font-size: 0.95rem;
 }
 .btn-review:hover {
-    border-color: var(--blue);
-    color: var(--blue);
+    background-color: var(--orange-dark);
+    border-color: var(--orange-dark);
+    color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
 }
@@ -705,7 +706,23 @@ textarea:focus {
     outline: none;
     border-color: var(--blue);
     box-shadow: 0 0 0 3px rgba(58, 100, 158, 0.14);
-    background: var(--white);
+    background-color: var(--white);   /* background-color (not the shorthand) so the custom select arrow survives focus */
+}
+
+/* Dropdown arrows — replace the native OS arrow with a custom chevron so
+   it can be positioned the same distance from the right edge (0.9rem) as
+   the option text sits from the left (0.9rem), for a balanced look. The
+   native pop-up list still opens normally; only the closed box is restyled.
+   Applies on desktop and mobile for a consistent appearance. */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    background-size: 14px;
+    padding-right: 2.2rem;            /* keeps option text clear of the arrow */
+    cursor: pointer;
 }
 
 /* Booking fields turn bold once they hold a value. The .is-filled
@@ -766,21 +783,37 @@ textarea {
     padding: var(--space-xl) 0;
 }
 
-/* Two-column grid: hours left, contact right */
+/* 2×2 grid: Business Hours / Contact Us on top, Find Us / Follow Us below.
+   Equal-height rows + stretch keep all four cards the same size. */
 .hours-contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
     gap: var(--space-md);
-    align-items: start;
+    align-items: stretch;
 }
 
-.hours-card,
-.contact-card {
+/* Shared card shell for all four info cards */
+.info-card {
     background: var(--white);
     border-radius: var(--radius-lg);
     padding: var(--space-md);
     box-shadow: var(--shadow-sm);
     border-top: 5px solid var(--blue);    /* blue top accent — matches the booking card */
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+/* Heading pinned to the top; body fills the rest so cards balance
+   and the map can stretch to fill its card. */
+.info-card .section-title--left {
+    margin-bottom: var(--space-sm);
+}
+.info-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Hours table */
@@ -834,21 +867,63 @@ textarea {
     opacity: 0.88;
 }
 
-/* Social media links */
-.social-links h3 {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-mid);
-    margin-bottom: 0.75rem;
-}
-
+/* Social media links (Follow Us card) */
 .social-icons {
     display: flex;
     gap: 0.7rem;
     flex-wrap: wrap;
+}
+
+/* Center the icon row within the Follow Us card body */
+.follow-card .social-body {
+    justify-content: center;
+}
+.follow-card .social-icons {
+    justify-content: center;
+}
+
+/* Contact Us — secondary details (email, address) under the call button */
+.contact-details {
+    list-style: none;
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.contact-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+}
+.contact-details .fa {
+    color: var(--orange);
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.contact-details a {
+    color: var(--text-mid);
+    word-break: break-word;
+}
+.contact-details a:hover {
+    color: var(--orange);
+}
+
+/* Find Us — the Google map fills the card body */
+.findus-card .maps-embed-wrapper {
+    flex: 1;
+    display: flex;
+    margin-bottom: 0;
+    box-shadow: none;
+    min-height: 220px;
+}
+.findus-card .maps-embed-wrapper iframe {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    min-height: 220px;
 }
 
 .social-icon {
@@ -903,26 +978,48 @@ textarea {
     line-height: 1.1;
 }
 
+/* Title + subtitle stack on the left; rating badge stays to the right */
+.reviews-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.reviews-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+}
+
 /* Overall rating badge */
+/* Solid orange badge. Logo + stars stay blue; score + count are white. */
 .google-rating-badge {
     display: flex;
-    align-items: center;
-    gap: 1.1rem;
-    background: var(--white);
+    flex-direction: column;        /* main row on top, review count beneath */
+    align-items: flex-start;
+    gap: 0.35rem;
+    background: var(--orange);
     border-radius: var(--radius-xl);
     padding: 1rem 1.75rem;
     box-shadow: var(--shadow-sm);
     flex-shrink: 0;
 }
 
+/* Logo and the score/stars block, centered against each other */
+.rating-main {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
 .google-logo {
-    font-size: 2.4rem;
-    color: #4285F4;
+    font-size: 3.6rem;             /* enlarged to match the score+stars height */
+    color: #4285F4;                /* keep Google blue */
     flex-shrink: 0;
     line-height: 1;
 }
 
-.rating-info {
+.rating-score {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -932,20 +1029,20 @@ textarea {
     font-family: var(--font-heading);
     font-size: 2.4rem;
     font-weight: 800;
-    color: var(--text-dark);
+    color: var(--white);
     line-height: 1;
 }
 
 .star-rating {
     display: flex;
     gap: 2px;
-    color: var(--orange);
+    color: #4285F4;                /* blue, matching the Google logo */
     font-size: 1.1rem;
 }
 
 .review-count {
     font-size: 0.82rem;
-    color: var(--grey-dark);
+    color: var(--white);
 }
 
 /* Review cards grid — fixed 3 columns */
@@ -1461,17 +1558,20 @@ textarea {
    white background, no frame, blue accent bar across the top. */
 .date-popup {
     position: absolute;
-    top: calc(100% + 8px);
+    /* Opens overlapping the field rather than fully below it, so the
+       calendar sits a little higher and stays on-screen even when the
+       form is near the bottom of the viewport. */
+    top: calc(100% - 1.6rem);
     left: 0;
     z-index: 50;
-    width: 300px;
+    width: 268px;
     max-width: calc(100vw - 2rem);
     background: var(--white);
     border: none;                          /* no thin frame */
     border-top: 5px solid var(--blue);     /* blue accent bar on top */
     border-radius: var(--radius-lg);       /* rounded like the cards */
     box-shadow: var(--shadow-md);
-    padding: 0.85rem;
+    padding: 0.7rem;
     font-family: var(--font-body);
     user-select: none;
 }
@@ -1490,7 +1590,7 @@ textarea {
 .date-popup-title {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.98rem;
+    font-size: 0.92rem;
     color: var(--blue);
 }
 
@@ -1549,7 +1649,8 @@ textarea {
     background: transparent;
     color: var(--text-dark);
     font-family: var(--font-body);
-    font-size: 0.88rem;
+    font-size: 0.84rem;
+    font-weight: 700;              /* bold day numbers */
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
 }

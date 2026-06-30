@@ -42,6 +42,14 @@
       "url": "https://yourwebsite.com",
       "telephone": "+14808780808",
       "email": "info@hireplunge.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "555 W 2nd Ave B7",
+        "addressLocality": "Mesa",
+        "addressRegion": "AZ",
+        "postalCode": "85210",
+        "addressCountry": "US"
+      },
       "openingHoursSpecification": [
         { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
       ]
@@ -379,40 +387,76 @@
         <div class="container hours-contact-grid">
 
             <!-- Business Hours card -->
-            <div class="hours-card">
+            <div class="info-card hours-card">
                 <h2 class="section-title section-title--left">
                     <i class="fa fa-clock" aria-hidden="true"></i> Business Hours
                 </h2>
-                <table class="hours-table" aria-label="Business Hours">
-                    <tbody>
-                        <tr><th scope="row">Every Day</th><td>Open 24 Hours</td></tr>
-                        <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
-                    </tbody>
-                </table>
+                <div class="info-card-body">
+                    <table class="hours-table" aria-label="Business Hours">
+                        <tbody>
+                            <tr><th scope="row">Every Day</th><td>Open 24 Hours</td></tr>
+                            <tr class="row-emergency"><th scope="row"><i class="fa fa-bolt" aria-hidden="true"></i> Emergency</th><td>24 / 7 Available</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <!-- Contact / Call Now card -->
-            <div class="contact-card">
+            <!-- Contact Us card -->
+            <div class="info-card contact-card">
                 <h2 class="section-title section-title--left">
                     <i class="fa fa-phone" aria-hidden="true"></i> Contact Us
                 </h2>
+                <div class="info-card-body">
+                    <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
+                    <a href="tel:+14808780808" class="btn btn-call btn-call--large">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <span>
+                            <strong>Call Now</strong>
+                            <small>(480) 878-0808</small>
+                        </span>
+                    </a>
 
-                <!-- CALL NOW BUTTON — replace +14808780808 and display number -->
-                <a href="tel:+14808780808" class="btn btn-call btn-call--large">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span>
-                        <strong>Call Now</strong>
-                        <small>(480) 878-0808</small>
-                    </span>
-                </a>
+                    <!-- Secondary contact details -->
+                    <ul class="contact-details">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></li>
+                        <li><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></li>
+                    </ul>
+                </div>
+            </div>
 
+            <!-- Find Us card — Google Maps location -->
+            <div class="info-card findus-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-location-dot" aria-hidden="true"></i> Find Us
+                </h2>
+                <div class="info-card-body">
+                    <!-- Google Maps embed — shows business location -->
+                    <div class="maps-embed-wrapper">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.6191586226868!2d-111.84297760000001!3d33.4108159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba7416c7cfb33%3A0xd0469a005075f340!2sPlunge%2C%20a%20plumbing%20co.%20llc!5e0!3m2!1sen!2sus!4v1782321275716!5m2!1sen!2sus"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Plunge Plumbing — Google Maps">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow Us card — social media -->
+            <div class="info-card follow-card">
+                <h2 class="section-title section-title--left">
+                    <i class="fa fa-share-nodes" aria-hidden="true"></i> Follow Us
+                </h2>
                 <!-- =============================================
                      SOCIAL MEDIA LINKS
                      Replace each # with your actual profile URL.
                      Remove any platforms you don't use.
                      ============================================= -->
-                <div class="social-links">
-                    <h3>Follow Us</h3>
+                <div class="info-card-body social-body">
                     <div class="social-icons">
                         <a href="#" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
@@ -431,7 +475,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -446,14 +489,23 @@
 
             <!-- Title and rating badge sit side by side -->
             <div class="reviews-header">
-                <h2 class="reviews-title">Check Out Our Reviews</h2>
+                <div class="reviews-heading">
+                    <h2 class="reviews-title">Check Out Our Reviews</h2>
+                    <!-- PLACEHOLDER subtitle — replace the text below when ready -->
+                    <p class="reviews-subtitle">[add something here later]</p>
+                </div>
                 <div id="google-rating-badge" class="google-rating-badge">
-                    <i class="fab fa-google google-logo" aria-hidden="true"></i>
-                    <div class="rating-info">
-                        <span id="overall-rating" class="overall-rating">—</span>
-                        <div id="overall-stars" class="star-rating" aria-label="Loading rating..."></div>
-                        <span id="review-count" class="review-count">Loading reviews&hellip;</span>
+                    <!-- Logo + score/stars sit in one row so the logo can be
+                         sized and centered against the score+stars together;
+                         the review count sits below that row. -->
+                    <div class="rating-main">
+                        <i class="fab fa-google google-logo" aria-hidden="true"></i>
+                        <div class="rating-score">
+                            <span id="overall-rating" class="overall-rating">—</span>
+                            <div id="overall-stars" class="star-rating" aria-label="Loading rating..."></div>
+                        </div>
                     </div>
+                    <span id="review-count" class="review-count">Loading reviews&hellip;</span>
                 </div>
             </div>
 
@@ -463,21 +515,6 @@
                     <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading reviews&hellip;
                 </div>
             </div>
-
-            <!-- Google Maps embed — shows business location -->
-            <div class="maps-embed-wrapper">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d832.6191586226868!2d-111.84297760000001!3d33.4108159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872ba7416c7cfb33%3A0xd0469a005075f340!2sPlunge%2C%20a%20plumbing%20co.%20llc!5e0!3m2!1sen!2sus!4v1782321275716!5m2!1sen!2sus"
-                    width="100%"
-                    height="400"
-                    style="border:0;"
-                    allowfullscreen
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Plunge Plumbing — Google Maps">
-                </iframe>
-            </div>
-
 
         </div>
     </section>
@@ -557,6 +594,7 @@
                 <!-- Replace with your actual contact details -->
                 <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+14808780808">(480) 878-0808</a></p>
                 <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></p>
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                     <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
