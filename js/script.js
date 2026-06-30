@@ -257,16 +257,19 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
    form from looking like an overwhelming wall of inputs.
    ----------------------------------------------- */
 (function initBookingReveal() {
-    const continueBtn   = document.getElementById('booking-continue-btn');
-    const serviceSelect = document.getElementById('service-type');
-    const dateInput     = document.getElementById('preferred-date');
-    const step2         = document.getElementById('booking-step-2');
-    const form          = document.getElementById('booking-form');
+    const continueBtn     = document.getElementById('booking-continue-btn');
+    const serviceSelect   = document.getElementById('service-type');
+    const dateInput       = document.getElementById('preferred-date');
+    const step2           = document.getElementById('booking-step-2');
+    const step1Disclaimer = document.getElementById('step1-disclaimer');
+    const form            = document.getElementById('booking-form');
     if (!continueBtn || !step2) return;
 
     function openStep2() {
         step2.classList.add('open');
         step2.setAttribute('aria-hidden', 'false');
+        /* Step 2 carries its own "Required fields" line, so hide the Step 1 one */
+        if (step1Disclaimer) step1Disclaimer.hidden = true;
         requestAnimationFrame(() => {
             step2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
@@ -275,6 +278,8 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
     function closeStep2() {
         step2.classList.remove('open');
         step2.setAttribute('aria-hidden', 'true');
+        /* Back to Step 1 only — show its disclaimer again */
+        if (step1Disclaimer) step1Disclaimer.hidden = false;
     }
 
     continueBtn.addEventListener('click', function () {

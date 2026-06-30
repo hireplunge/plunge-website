@@ -185,13 +185,13 @@ button {
     box-shadow: var(--shadow-md);
 }
 
-/* Book Online — blue (30% primary) */
+/* Book Online — orange */
 .btn-book {
-    background-color: var(--blue);
+    background-color: var(--orange);
     color: var(--white);
 }
 .btn-book:hover {
-    background-color: var(--blue-dark);
+    background-color: var(--orange-dark);
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -601,6 +601,12 @@ button {
     flex-wrap: wrap;
 }
 
+/* Slightly larger CTA buttons */
+.about-cta .btn {
+    font-size: 1.15rem;
+    padding: 1.05rem 2.1rem;
+}
+
 
 /* =============================================
    BOOKING SECTION
@@ -619,7 +625,8 @@ button {
     box-shadow: var(--shadow-md);
     max-width: 860px;
     margin: 0 auto;
-    border-top: 5px solid var(--blue);    /* blue top accent bar */
+    border-top: 5px solid var(--orange);    /* orange accent bars — top + left */
+    border-left: 5px solid var(--orange);
 }
 
 .booking-step-continue {
@@ -659,6 +666,23 @@ button {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+}
+
+/* Anchor each field to the bottom of its group. Fields in a row stretch
+   to equal height, so when some labels wrap to more lines than others
+   (on narrow/tall windows) every input and dropdown still lines up along
+   the same baseline — fully responsive to any window shape. */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    margin-top: auto;
+}
+
+/* One explicit height for every single-line field so the date input and
+   the dropdowns are always exactly the same height as one another. */
+.form-group input,
+.form-group select {
+    height: 2.75rem;
 }
 
 /* Double-width field */
@@ -805,8 +829,9 @@ textarea {
     margin: 0 auto;
     background: var(--blue-dark);
     color: var(--white);
-    border-top: 6px solid var(--orange);             /* orange accent bar */
-    box-shadow: 0 6px 26px rgba(235, 149, 74, 0.4);  /* orange-tinted glow */
+    border-top: 6px solid var(--orange);   /* orange accent bars — top + left */
+    border-left: 6px solid var(--orange);
+    box-shadow: var(--shadow-md);          /* standard card shadow (no orange halo) */
     text-align: center;
 }
 .getintouch-card .section-title--left {
@@ -822,6 +847,27 @@ textarea {
 .getintouch-card .btn-call--large {
     width: 100%;
     margin: 0;
+}
+
+/* Icon sits inline with the top line as one centered row; both
+   text lines are centered. */
+.getintouch-card .btn-call--large span {
+    text-align: center;
+}
+/* Center the icon vertically against the text (centers aligned, not
+   baselines), so the icon's bottom sits a little lower than the text. */
+.getintouch-card .btn-call--large strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.getintouch-card .btn-call--large strong i {
+    margin-right: 0.4rem;
+}
+/* The phone glyph is naturally taller than the envelope at the same
+   font size; shrink it a touch so both icons read as equal height. */
+.getintouch-card .btn-call--large .fa-phone {
+    font-size: 0.9rem;
 }
 
 /* Hours table */
@@ -966,34 +1012,29 @@ textarea {
 }
 
 /* Overall rating badge */
-/* Solid orange badge. Logo + stars stay blue; score + count are white. */
+/* Dark-blue badge (matches the review cards). Logo + stars are orange;
+   score + count are white, with the count aligned under the rating text. */
 .google-rating-badge {
     display: flex;
-    flex-direction: column;        /* main row on top, review count beneath */
-    align-items: flex-start;
-    gap: 0.35rem;
-    background: var(--orange);
+    align-items: center;           /* logo centered against the rating block */
+    gap: 1.1rem;
+    background: var(--blue-dark);
     border-radius: var(--radius-xl);
+    border-top: 4px solid var(--orange);   /* orange accent bars — top + left */
+    border-left: 4px solid var(--orange);
     padding: 1rem 1.75rem;
     box-shadow: var(--shadow-sm);
     flex-shrink: 0;
 }
 
-/* Logo and the score/stars block, centered against each other */
-.rating-main {
-    display: flex;
-    align-items: center;
-    gap: 1.1rem;
-}
-
 .google-logo {
-    font-size: 3.6rem;             /* enlarged to match the score+stars height */
-    color: #4285F4;                /* keep Google blue */
+    width: 3.4rem;
+    height: 3.4rem;
     flex-shrink: 0;
-    line-height: 1;
 }
 
-.rating-score {
+/* Score, stars, and review count stacked + left-aligned together */
+.rating-info {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -1010,13 +1051,14 @@ textarea {
 .star-rating {
     display: flex;
     gap: 2px;
-    color: #4285F4;                /* blue, matching the Google logo */
+    color: var(--orange);          /* orange */
     font-size: 1.1rem;
 }
 
 .review-count {
     font-size: 0.82rem;
     color: var(--white);
+    font-weight: 700;              /* bold */
 }
 
 /* Review cards grid — fixed 3 columns */
@@ -1032,6 +1074,7 @@ textarea {
     border-radius: var(--radius-lg);
     padding: 1.2rem;
     box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--orange);   /* orange accent bars — top + left */
     border-left: 4px solid var(--orange);
 }
 
@@ -1125,6 +1168,7 @@ textarea {
     border-radius: var(--radius-lg);
     padding: 1.2rem;
     box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--orange);   /* orange accent bars — top + left */
     border-left: 4px solid var(--orange);
 }
 
@@ -1542,7 +1586,8 @@ textarea {
     max-width: calc(100vw - 2rem);
     background: var(--white);
     border: none;                          /* no thin frame */
-    border-top: 5px solid var(--blue);     /* blue accent bar on top */
+    border-top: 5px solid var(--orange);   /* orange accent bars — top + left */
+    border-left: 5px solid var(--orange);
     border-radius: var(--radius-lg);       /* rounded like the cards */
     box-shadow: var(--shadow-md);
     padding: 0.7rem;
