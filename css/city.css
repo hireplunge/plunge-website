@@ -47,7 +47,7 @@
    Background: blue gradient (30%)
    ============================================= */
 .city-hero {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     color: var(--white);
     padding: var(--space-xl) 0 var(--space-lg);
 }
@@ -102,7 +102,7 @@
    Background section: grey (60%)
    ============================================= */
 .city-services {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     padding: var(--space-xl) 0;
 }
 
@@ -114,11 +114,12 @@
 }
 
 .service-card {
-    background: var(--white);
+    background: var(--blue-dark);   /* matches the Google review cards */
     border-radius: var(--radius-lg);
     padding: var(--space-md);
     box-shadow: var(--shadow-sm);
-    border-top: 4px solid var(--blue);          /* blue accent (30%) */
+    border-top: 4px solid var(--orange);   /* orange accent bars — top + left, matches homepage cards */
+    border-left: 4px solid var(--orange);
     transition: var(--ease);
 }
 
@@ -148,13 +149,13 @@
     font-family: var(--font-heading);
     font-size: 1rem;
     font-weight: 700;
-    color: var(--blue);
+    color: var(--white);
     margin-bottom: 0.35rem;
 }
 
 .service-card p {
     font-size: 0.88rem;
-    color: var(--text-mid);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.55;
 }
 
@@ -164,7 +165,7 @@
    Background: slightly darker grey (60% zone)
    ============================================= */
 .city-why {
-    background: #3a3a3a;
+    background: var(--bg-dark);
     padding: var(--space-xl) 0;
 }
 
@@ -176,11 +177,13 @@
 }
 
 .why-item {
-    background: var(--white);
+    background: var(--blue-dark);   /* matches the Google review cards */
     border-radius: var(--radius-lg);
     padding: var(--space-md) var(--space-sm);
     text-align: center;
     box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--orange);   /* orange accent bars — top + left, matches homepage cards */
+    border-left: 4px solid var(--orange);
     transition: var(--ease);
 }
 
@@ -189,10 +192,10 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Large icon above each trust signal — blue (30%) */
+/* Large icon above each trust signal — white, so it stays visible on the dark blue card */
 .why-item > .fa {
     font-size: 2.2rem;
-    color: var(--blue);
+    color: var(--white);
     margin-bottom: 0.75rem;
     display: block;
 }
@@ -201,13 +204,13 @@
     font-family: var(--font-heading);
     font-size: 1rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--white);
     margin-bottom: 0.3rem;
 }
 
 .why-item p {
     font-size: 0.85rem;
-    color: var(--text-mid);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.5;
 }
 
@@ -217,7 +220,7 @@
    Background: blue (30%)
    ============================================= */
 .city-cta {
-    background: var(--blue);
+    background: var(--blue-dark);   /* matches the site's dark-blue blocks: header, footer, Get In Touch, review cards */
     color: var(--white);
     padding: var(--space-xl) 0;
     text-align: center;

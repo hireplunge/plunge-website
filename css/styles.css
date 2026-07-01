@@ -1189,6 +1189,8 @@ textarea {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
+    border-top: 5px solid var(--blue);     /* blue accent bars — top + left */
+    border-left: 5px solid var(--blue);
     margin-bottom: var(--space-lg);
 }
 

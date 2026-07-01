@@ -33,7 +33,7 @@
     <style>
         /* ---- City directory page ---- */
         .cities-directory {
-            background: var(--grey);
+            background: var(--bg-dark);   /* matches every section background on the homepage */
             padding: var(--space-xl) 0;
         }
 
@@ -45,29 +45,35 @@
             margin-top: var(--space-lg);
         }
 
+        /* The whole card is now the link (an <a>), not just the "View
+           Services" button — text-decoration/cursor set explicitly since
+           this is now an anchor element. */
         .city-card {
-            background: var(--white);
+            background: var(--blue-dark);   /* matches the Google review cards */
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             padding: var(--space-md) var(--space-sm);
             text-align: center;
-            border-top: 4px solid var(--blue);
+            border-top: 4px solid var(--orange);   /* orange accent bars — top + left, matches homepage cards */
+            border-left: 4px solid var(--orange);
             transition: var(--ease);
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .city-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
-            border-top-color: var(--orange);   /* orange accent on hover (10%) */
         }
 
-        .city-card .fa {
+        /* Map pin icon — always orange */
+        .city-card > .fa {
             font-size: 1.8rem;
-            color: var(--blue);
+            color: var(--orange);
             margin-bottom: 0.25rem;
         }
 
@@ -75,12 +81,12 @@
             font-family: var(--font-heading);
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--white);
         }
 
         .city-card p {
             font-size: 0.82rem;
-            color: var(--text-mid);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.45;
         }
 
@@ -92,10 +98,22 @@
             font-family: var(--font-heading);
             font-weight: 700;
             font-size: 0.85rem;
-            color: var(--blue);
+            color: var(--white);
             transition: color 0.2s;
         }
-        .city-card-link:hover { color: var(--orange); }
+
+        /* Arrow matches the link's text size and follows its color
+           (white by default, orange on hover) instead of a fixed color. */
+        .city-card-link .fa {
+            font-size: 0.85rem;
+            color: inherit;
+        }
+
+        /* Hovering anywhere on the card — not just the link — highlights
+           "View Services" and its arrow in orange. */
+        .city-card:hover .city-card-link {
+            color: var(--orange);
+        }
 
         @media (max-width: 480px) {
             .cities-grid {
@@ -196,47 +214,47 @@
                      Each card needs a matching cities/<slug>.html page.
                      ============================================= -->
 
-                <div class="city-card">
+                <a href="mesa.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Mesa</h3>
                     <p>Residential and commercial plumbing across Mesa.</p>
-                    <a href="mesa.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
-                <div class="city-card">
+                <a href="tempe.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Tempe</h3>
                     <p>Fast, reliable plumbing for Tempe homes and businesses.</p>
-                    <a href="tempe.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
-                <div class="city-card">
+                <a href="chandler.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Chandler</h3>
                     <p>Trusted local plumbers serving Chandler and nearby areas.</p>
-                    <a href="chandler.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
-                <div class="city-card">
+                <a href="gilbert.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Gilbert</h3>
                     <p>Full-service plumbing throughout Gilbert.</p>
-                    <a href="gilbert.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
-                <div class="city-card">
+                <a href="scottsdale.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Scottsdale</h3>
                     <p>Professional plumbing service across Scottsdale.</p>
-                    <a href="scottsdale.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
-                <div class="city-card">
+                <a href="queen-creek.html" class="city-card">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Queen Creek</h3>
                     <p>Licensed plumbers serving Queen Creek 7 days a week.</p>
-                    <a href="queen-creek.html" class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
+                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </a>
 
                 <!-- Add more city cards here -->
 
