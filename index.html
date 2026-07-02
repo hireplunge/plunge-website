@@ -120,19 +120,23 @@
 
         <ul class="city-nav-list">
             <!-- =============================================
-                 SERVICE AREAS — KEEP THIS LIST IN SYNC everywhere it appears:
-                   1. This nav drawer (here AND in every cities/*.html page)
-                   2. The booking form city dropdown (further down in this file)
-                   3. The Service Areas directory cards (cities/index.html)
-                 These are PLACEHOLDER Phoenix-metro cities — update them
-                 when the real service-area list is finalized.
+                 SIDEBAR SERVICE AREAS — a curated shortlist only.
+                 The FULL city list lives on the Service Areas directory
+                 page (cities/index.html) and in the booking form's city
+                 dropdown (further down in this file) — this sidebar is
+                 intentionally shorter to avoid a cluttered menu.
                  ============================================= -->
             <li><a href="cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
-            <li><a href="cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch — see cities/ahwatukee.html for details. -->
+            <li><a href="cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
             <li><a href="cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
             <li><a href="cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
-            <li><a href="cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="cities/paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
+            <li><a href="cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
             <li><a href="cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="cities/san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
+            <li><a href="cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
             <li><a href="pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
         </ul>
 
@@ -330,12 +334,27 @@
                                      ============================================= -->
                                 <select id="city-field" name="city" required autocomplete="address-level2">
                                     <option value="" disabled selected>Select a city&hellip;</option>
-                                    <option value="Mesa">Mesa</option>
-                                    <option value="Tempe">Tempe</option>
+                                    <option value="Apache Junction">Apache Junction</option>
+
+                                    <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch. -->
+                                    <option value="ahwahtookey">ahwahtookey</option>
+                                    <option value="Biltmore">Biltmore</option>
+                                    <option value="Buckeye">Buckeye</option>
                                     <option value="Chandler">Chandler</option>
                                     <option value="Gilbert">Gilbert</option>
-                                    <option value="Scottsdale">Scottsdale</option>
+                                    <option value="Glendale">Glendale</option>
+                                    <option value="Goodyear">Goodyear</option>
+                                    <option value="Maricopa County">Maricopa County</option>
+                                    <option value="Mesa">Mesa</option>
+                                    <option value="Paradise Valley">Paradise Valley</option>
+                                    <option value="Peoria">Peoria</option>
+                                    <option value="Phoenix">Phoenix</option>
                                     <option value="Queen Creek">Queen Creek</option>
+                                    <option value="Red Mountain Ranch">Red Mountain Ranch</option>
+                                    <option value="San Tan Valley">San Tan Valley</option>
+                                    <option value="Scottsdale">Scottsdale</option>
+                                    <option value="Sun City">Sun City</option>
+                                    <option value="Tempe">Tempe</option>
                                 </select>
                             </div>
                             <div class="form-group form-group--small">

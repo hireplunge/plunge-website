@@ -37,22 +37,36 @@
             padding: var(--space-xl) 0;
         }
 
-        /* Grid of city cards */
+        /* Grid of city cards — 4 per row on tablet/desktop, 2 per row on
+           phones (see the mobile override below at the site's usual
+           620px breakpoint). */
         .cities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
             margin-top: var(--space-lg);
+            /* Cards size to their own content instead of stretching to match
+               the tallest card in their row — keeps short-name cards compact
+               even when a longer city name wraps to two lines next door. */
+            align-items: start;
+        }
+
+        @media (max-width: 620px) {
+            .cities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         /* The whole card is now the link (an <a>), not just the "View
            Services" button — text-decoration/cursor set explicitly since
-           this is now an anchor element. */
+           this is now an anchor element. Shortened: the pin sits beside
+           the city name instead of above it, and the description line
+           was removed in favor of the "View 24/7 Services" link. */
         .city-card {
             background: var(--blue-dark);   /* matches the Google review cards */
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            padding: var(--space-md) var(--space-sm);
+            padding: 0.9rem 0.35rem;
             text-align: center;
             border-top: 4px solid var(--orange);   /* orange accent bars — top + left, matches homepage cards */
             border-left: 4px solid var(--orange);
@@ -60,7 +74,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             text-decoration: none;
             cursor: pointer;
         }
@@ -70,11 +84,19 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* Pin icon + city name sit side by side in one row */
+        .city-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
         /* Map pin icon — always orange */
-        .city-card > .fa {
-            font-size: 1.8rem;
+        .city-card-head .fa {
+            font-size: 1.1rem;
             color: var(--orange);
-            margin-bottom: 0.25rem;
+            flex-shrink: 0;
         }
 
         .city-card h3 {
@@ -84,20 +106,13 @@
             color: var(--white);
         }
 
-        .city-card p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.45;
-        }
-
+        /* Plain inline text (not flex) so the arrow wraps together with the
+           last word instead of being pinned in its own column — that flex
+           layout was forcing the text into an extra, awkward third line. */
         .city-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            margin-top: 0.5rem;
             font-family: var(--font-heading);
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--white);
             transition: color 0.2s;
         }
@@ -105,20 +120,15 @@
         /* Arrow matches the link's text size and follows its color
            (white by default, orange on hover) instead of a fixed color. */
         .city-card-link .fa {
-            font-size: 0.85rem;
+            font-size: 0.72rem;
             color: inherit;
+            margin-left: 0.15rem;
         }
 
         /* Hovering anywhere on the card — not just the link — highlights
            "View Services" and its arrow in orange. */
         .city-card:hover .city-card-link {
             color: var(--orange);
-        }
-
-        @media (max-width: 480px) {
-            .cities-grid {
-                grid-template-columns: 1fr 1fr;
-            }
         }
     </style>
 
@@ -159,14 +169,19 @@
         </div>
         <p class="city-nav-subtitle">Professional plumbing in your city</p>
         <ul class="city-nav-list">
-            <!-- SERVICE AREAS — keep in sync with index.html nav drawer,
-                 the booking form city dropdown, and the city cards below. -->
+            <!-- SIDEBAR shows a curated shortlist of cities only.
+                 The full list is in the directory cards below on this page. -->
             <li><a href="mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
-            <li><a href="tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch — see cities/ahwatukee.html for details. -->
+            <li><a href="ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
             <li><a href="chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
             <li><a href="gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
-            <li><a href="scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
+            <li><a href="phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
             <li><a href="queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
+            <li><a href="scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
             <li><a href="../pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
         </ul>
         <div class="city-nav-footer">
@@ -216,137 +231,156 @@
                      ============================================= -->
 
                 <a href="apache-junction.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Apache Junction</h3>
-                    <p>24/7 licensed plumbing service in Apache Junction, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <!-- REMINDER: "ahwahtookey" is an intentional office-joke misspelling — change back to "Ahwatukee" before launch (URL stays ahwatukee.html). -->
                 <a href="ahwatukee.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>ahwahtookey</h3>
-                    <p>24/7 licensed plumbing service in ahwahtookey, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="biltmore.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Biltmore</h3>
-                    <p>24/7 licensed plumbing service in Biltmore, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="buckeye.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Buckeye</h3>
-                    <p>24/7 licensed plumbing service in Buckeye, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="chandler.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Chandler</h3>
-                    <p>24/7 licensed plumbing service in Chandler, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="gilbert.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Gilbert</h3>
-                    <p>24/7 licensed plumbing service in Gilbert, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="glendale.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Glendale</h3>
-                    <p>24/7 licensed plumbing service in Glendale, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="goodyear.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Goodyear</h3>
-                    <p>24/7 licensed plumbing service in Goodyear, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="maricopa-county.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Maricopa County</h3>
-                    <p>24/7 licensed plumbing service in Maricopa County, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="mesa.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Mesa</h3>
-                    <p>24/7 licensed plumbing service in Mesa, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="paradise-valley.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Paradise Valley</h3>
-                    <p>24/7 licensed plumbing service in Paradise Valley, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="peoria.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Peoria</h3>
-                    <p>24/7 licensed plumbing service in Peoria, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="phoenix.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Phoenix</h3>
-                    <p>24/7 licensed plumbing service in Phoenix, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="queen-creek.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Queen Creek</h3>
-                    <p>24/7 licensed plumbing service in Queen Creek, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="red-mountain-ranch.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Red Mountain Ranch</h3>
-                    <p>24/7 licensed plumbing service in Red Mountain Ranch, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="san-tan-valley.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>San Tan Valley</h3>
-                    <p>24/7 licensed plumbing service in San Tan Valley, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="scottsdale.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Scottsdale</h3>
-                    <p>24/7 licensed plumbing service in Scottsdale, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="sun-city.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Sun City</h3>
-                    <p>24/7 licensed plumbing service in Sun City, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <a href="tempe.html" class="city-card">
+                    <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Tempe</h3>
-                    <p>24/7 licensed plumbing service in Tempe, AZ.</p>
-                    <span class="city-card-link">View Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                </div>
+                <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
                 <!-- Add more city cards here -->

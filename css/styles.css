@@ -456,7 +456,7 @@ button {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.8rem 0.4rem;
+    padding: 0.5rem 0.4rem;   /* tighter top/bottom spacing — text/icon size unchanged */
     color: rgba(255, 255, 255, 0.88);
     font-size: 0.98rem;
     transition: var(--ease);
