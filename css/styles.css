@@ -473,6 +473,28 @@ button {
     width: 14px;
 }
 
+/* Two-paw-print "trail" icon — styled after the 🐾 emoji, but drawn as a
+   plain shape so it can be recolored (an actual emoji character ignores
+   CSS color). Sits diagonally via the 45° rotation. Use this class
+   wherever the paw-print icon appears; each usage keeps its own local
+   color and size by inheriting from its surrounding context (fill:
+   currentColor + em-based sizing), same as the old Font Awesome icon did. */
+.paw-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* Sidebar instance — fixed size + orange, same as before */
+.city-nav-list .nav-paw-icon {
+    color: var(--orange);
+    width: 16px;
+    height: 16px;
+}
+
 /* Bottom of drawer */
 .city-nav-footer {
     margin-top: var(--space-md);
