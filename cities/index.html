@@ -6,6 +6,17 @@
 <html lang="en">
 <head>
 
+    <!-- =============================================
+         REMINDER: internal links in this file use RELATIVE paths
+         (e.g. "cities/mesa.html") on purpose. The site is currently
+         only reachable at hireplunge.github.io/plunge-website/ (a
+         GitHub Pages "project site" served from a subfolder), not
+         from a domain root — root-relative paths (e.g.
+         "/cities/mesa.html") would break there.
+         Once hireplunge.com is connected as a custom domain (which
+         serves from the true root), switch every link in this file
+         back to root-relative paths for easier long-term upkeep.
+         ============================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plunge plumbing service areas — licensed plumbers serving Mesa, Tempe, Chandler, Gilbert, Scottsdale, Queen Creek, and the greater Phoenix area.">
@@ -13,11 +24,11 @@
     <title>Service Areas | Plunge, a Plumbing Co.</title>
 
     <!-- Browser tab icons (favicons), iOS home-screen icon, and PWA manifest -->
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#264878">
 
     <!-- TODO (before launch): replace the placeholder "yourwebsite.com" in the URL(s) on this page (canonical link / Schema.org data) with the real domain, e.g. hireplunge.com, for correct SEO. -->
@@ -27,8 +38,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/city.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/city.css">
 
     <!-- Extra styles specific to the city directory grid -->
     <style>
@@ -140,10 +151,10 @@
 
     <!-- HEADER -->
     <header class="site-header">
-        <a href="/index.html" class="header-brand-link" aria-label="Return to home page">
+        <a href="../index.html" class="header-brand-link" aria-label="Return to home page">
             <div class="header-brand">
                 <div class="header-logo-wrap">
-                    <img src="/images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                    <img src="../images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
                 </div>
                 <div class="header-title">
                     <span class="header-company-name">Plunge</span>
@@ -172,21 +183,21 @@
         <ul class="city-nav-list">
             <!-- SIDEBAR shows a curated shortlist of cities only.
                  The full list is in the directory cards below on this page. -->
-            <li><a href="/cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <li><a href="mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
             <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch — see cities/ahwatukee.html for details. -->
-            <li><a href="/cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
-            <li><a href="/cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
-            <li><a href="/cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
-            <li><a href="/cities/paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
-            <li><a href="/cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
-            <li><a href="/cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
-            <li><a href="/cities/san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
-            <li><a href="/cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
-            <li><a href="/cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
-            <li><a href="/pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
+            <li><a href="ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
+            <li><a href="chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
+            <li><a href="phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
+            <li><a href="queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
+            <li><a href="scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="../pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
         </ul>
         <div class="city-nav-footer">
-            <a href="/cities/" class="city-nav-all-link" aria-current="page">Viewing All Service Areas</a>
+            <a href="./" class="city-nav-all-link" aria-current="page">Viewing All Service Areas</a>
             <a href="tel:+14808780808" class="call-btn-nav">
                 <i class="fa fa-phone" aria-hidden="true"></i> Call Now
             </a>
@@ -197,7 +208,7 @@
     <section class="city-hero">
         <div class="city-hero-content container">
             <nav class="city-breadcrumb" aria-label="Breadcrumb">
-                <a href="/index.html">Home</a>
+                <a href="../index.html">Home</a>
                 <span>/</span>
                 <span aria-current="page">Service Areas</span>
             </nav>
@@ -207,7 +218,7 @@
                 <a href="tel:+14808780808" class="btn btn-call">
                     <i class="fa fa-phone" aria-hidden="true"></i> Call Now
                 </a>
-                <a href="/index.html#booking" class="btn btn-book">
+                <a href="../index.html#booking" class="btn btn-book">
                     <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
                 </a>
             </div>
@@ -231,7 +242,7 @@
                      Each card needs a matching cities/<slug>.html page.
                      ============================================= -->
 
-                <a href="/cities/apache-junction.html" class="city-card">
+                <a href="apache-junction.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Apache Junction</h3>
@@ -240,7 +251,7 @@
                 </a>
 
                 <!-- REMINDER: "ahwahtookey" is an intentional office-joke misspelling — change back to "Ahwatukee" before launch (URL stays ahwatukee.html). -->
-                <a href="/cities/ahwatukee.html" class="city-card">
+                <a href="ahwatukee.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>ahwahtookey</h3>
@@ -248,7 +259,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/biltmore.html" class="city-card">
+                <a href="biltmore.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Biltmore</h3>
@@ -256,7 +267,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/buckeye.html" class="city-card">
+                <a href="buckeye.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Buckeye</h3>
@@ -264,7 +275,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/chandler.html" class="city-card">
+                <a href="chandler.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Chandler</h3>
@@ -272,7 +283,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/gilbert.html" class="city-card">
+                <a href="gilbert.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Gilbert</h3>
@@ -280,7 +291,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/glendale.html" class="city-card">
+                <a href="glendale.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Glendale</h3>
@@ -288,7 +299,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/goodyear.html" class="city-card">
+                <a href="goodyear.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Goodyear</h3>
@@ -296,7 +307,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/maricopa-county.html" class="city-card">
+                <a href="maricopa-county.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Maricopa County</h3>
@@ -304,7 +315,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/mesa.html" class="city-card">
+                <a href="mesa.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Mesa</h3>
@@ -312,7 +323,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/paradise-valley.html" class="city-card">
+                <a href="paradise-valley.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Paradise Valley</h3>
@@ -320,7 +331,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/peoria.html" class="city-card">
+                <a href="peoria.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Peoria</h3>
@@ -328,7 +339,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/phoenix.html" class="city-card">
+                <a href="phoenix.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Phoenix</h3>
@@ -336,7 +347,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/queen-creek.html" class="city-card">
+                <a href="queen-creek.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Queen Creek</h3>
@@ -344,7 +355,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/red-mountain-ranch.html" class="city-card">
+                <a href="red-mountain-ranch.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Red Mountain Ranch</h3>
@@ -352,7 +363,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/san-tan-valley.html" class="city-card">
+                <a href="san-tan-valley.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>San Tan Valley</h3>
@@ -360,7 +371,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/scottsdale.html" class="city-card">
+                <a href="scottsdale.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Scottsdale</h3>
@@ -368,7 +379,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/sun-city.html" class="city-card">
+                <a href="sun-city.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Sun City</h3>
@@ -376,7 +387,7 @@
                 <span class="city-card-link">View 24/7 Services <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
                 </a>
 
-                <a href="/cities/tempe.html" class="city-card">
+                <a href="tempe.html" class="city-card">
                     <div class="city-card-head">
                     <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                     <h3>Tempe</h3>
@@ -399,7 +410,7 @@
                 <a href="tel:+14808780808" class="btn btn-call">
                     <i class="fa fa-phone" aria-hidden="true"></i> (480) 878-0808
                 </a>
-                <a href="/index.html#booking" class="btn btn-book">
+                <a href="../index.html#booking" class="btn btn-book">
                     <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
                 </a>
             </div>
@@ -410,7 +421,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="/images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <img src="../images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
                 <p class="footer-company-name">Plunge, a Plumbing Co.</p>
                 <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
                 <p class="footer-license">License #: XXXXXXXXX</p>
@@ -418,11 +429,11 @@
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/index.html#booking">Book a Service</a></li>
-                    <li><a href="/index.html#hours">Business Hours</a></li>
-                    <li><a href="/index.html#reviews">Reviews</a></li>
-                    <li><a href="/cities/">All Service Areas</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#booking">Book a Service</a></li>
+                    <li><a href="../index.html#hours">Business Hours</a></li>
+                    <li><a href="../index.html#reviews">Reviews</a></li>
+                    <li><a href="./">All Service Areas</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -439,11 +450,11 @@
         <div class="footer-bottom">
             <!-- TODO (before launch): privacy.html and terms.html do not exist yet — the two links below will 404 until those pages are created. -->
             <p>&copy; <span class="footer-year"></span> Plunge, a Plumbing Co. All rights reserved.</p>
-            <p><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a></p>
+            <p><a href="../privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../terms.html">Terms of Service</a></p>
         </div>
     </footer>
 
-    <script src="/js/script.js"></script>
+    <script src="../js/script.js"></script>
     <script>
         document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
     </script>

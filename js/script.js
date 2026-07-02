@@ -842,14 +842,17 @@ function initCarousel() {
     /* Keep the progress-bar duration in sync with one source of truth */
     carousel.style.setProperty('--ba-interval', `${CAROUSEL_INTERVAL}ms`);
 
-    /* Build each step: a Before + After pair with a caption beneath */
+    /* Build each step: just the Before + After photo pair. The caption
+       lives outside the viewport (see updateCarousel()) so its text
+       doesn't add to the viewport's height — otherwise the prev/next
+       arrows, which center on the viewport, would sit off-center from
+       the photos whenever a caption was present. */
     track.innerHTML = BEFORE_AFTER_PROJECTS.map(step => `
         <div class="ba-slide">
             <div class="ba-pair">
                 ${buildPhotoSlot(step.before, 'Before')}
                 ${buildPhotoSlot(step.after,  'After')}
             </div>
-            ${step.caption ? `<p class="ba-caption">${escapeHTML(step.caption)}</p>` : ''}
         </div>
     `).join('');
 
@@ -879,8 +882,8 @@ function initCarousel() {
     updateCarousel();
 }
 
-/** Moves the track to the current step, syncs the dots, and
-    restarts the active step's progress bar from zero. */
+/** Moves the track to the current step, syncs the dots and caption,
+    and restarts the active step's progress bar from zero. */
 function updateCarousel() {
     const track = document.getElementById('ba-track');
     if (track) track.style.transform = `translateX(-${carouselIndex * 100}%)`;
@@ -888,6 +891,15 @@ function updateCarousel() {
     document.querySelectorAll('.ba-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === carouselIndex);
     });
+
+    /* Caption lives outside the sliding track (see initCarousel()) —
+       swap its text to match the current step. */
+    const captionEl = document.getElementById('ba-caption');
+    if (captionEl) {
+        const caption = BEFORE_AFTER_PROJECTS[carouselIndex]?.caption || '';
+        captionEl.textContent = caption;
+        captionEl.style.display = caption ? '' : 'none';
+    }
 
     restartActiveFill();
 }

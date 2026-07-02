@@ -1267,6 +1267,7 @@ textarea {
 
 /* Clipping window — slides move within this */
 .ba-viewport {
+    position: relative;   /* so the prev/next arrows center on the photos, not the whole carousel (caption + dots included) */
     overflow: hidden;
     border-radius: var(--radius-lg);
 }

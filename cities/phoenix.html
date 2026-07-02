@@ -3,6 +3,17 @@
 <html lang="en">
 <head>
 
+    <!-- =============================================
+         REMINDER: internal links in this file use RELATIVE paths
+         (e.g. "cities/mesa.html") on purpose. The site is currently
+         only reachable at hireplunge.github.io/plunge-website/ (a
+         GitHub Pages "project site" served from a subfolder), not
+         from a domain root — root-relative paths (e.g.
+         "/cities/mesa.html") would break there.
+         Once hireplunge.com is connected as a custom domain (which
+         serves from the true root), switch every link in this file
+         back to root-relative paths for easier long-term upkeep.
+         ============================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,11 +25,11 @@
     <title>24 Hour Plumbing in Phoenix, AZ | Plunge, a Plumbing Co.</title>
 
     <!-- Browser tab icons (favicons), iOS home-screen icon, and PWA manifest -->
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#264878">
 
     <!-- Canonical prevents duplicate-content penalties when the same content
@@ -32,8 +43,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Parent stylesheet first, then city-specific additions -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/city.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/city.css">
 
     <!-- =============================================
          SCHEMA.ORG STRUCTURED DATA
@@ -76,10 +87,10 @@
          HEADER — identical across all pages
          ============================================= -->
     <header class="site-header">
-        <a href="/index.html" class="header-brand-link" aria-label="Return to home page">
+        <a href="../index.html" class="header-brand-link" aria-label="Return to home page">
             <div class="header-brand">
                 <div class="header-logo-wrap">
-                    <img src="/images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                    <img src="../images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
                 </div>
                 <div class="header-title">
                     <span class="header-company-name">Plunge</span>
@@ -92,7 +103,7 @@
                 <span class="menu-icon" aria-hidden="true">&#9776;</span>
                 <span class="menu-label">Service Areas</span>
             </button>
-            <a href="/index.html" class="home-btn" aria-label="Return to homepage">
+            <a href="../index.html" class="home-btn" aria-label="Return to homepage">
                 <i class="fa fa-home" aria-hidden="true"></i>
             </a>
         </div>
@@ -122,21 +133,21 @@
                  dropdown (index.html) — this sidebar is intentionally
                  shorter to avoid a cluttered menu.
                  ============================================= -->
-            <li><a href="/cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <li><a href="mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
             <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch — see cities/ahwatukee.html for details. -->
-            <li><a href="/cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
-            <li><a href="/cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
-            <li><a href="/cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
-            <li><a href="/cities/paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
-            <li><a href="/cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
-            <li><a href="/cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
-            <li><a href="/cities/san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
-            <li><a href="/cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
-            <li><a href="/cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
-            <li><a href="/pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
+            <li><a href="ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
+            <li><a href="chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="paradise-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Paradise Valley</a></li>
+            <li><a href="phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
+            <li><a href="queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="san-tan-valley.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> San Tan Valley</a></li>
+            <li><a href="scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="../pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
         </ul>
         <div class="city-nav-footer">
-            <a href="/cities/" class="city-nav-all-link">View All Service Areas &rarr;</a>
+            <a href="./" class="city-nav-all-link">View All Service Areas &rarr;</a>
             <a href="tel:+14808780808" class="call-btn-nav">
                 <i class="fa fa-phone" aria-hidden="true"></i> Call Now
             </a>
@@ -152,9 +163,9 @@
 
             <!-- Breadcrumb trail for SEO and navigation -->
             <nav class="city-breadcrumb" aria-label="Breadcrumb">
-                <a href="/index.html">Home</a>
+                <a href="../index.html">Home</a>
                 <span>/</span>
-                <a href="/cities/">Service Areas</a>
+                <a href="./">Service Areas</a>
                 <span>/</span>
                 <span aria-current="page">Phoenix</span>
             </nav>
@@ -174,7 +185,7 @@
                         <a href="tel:+14808780808" class="btn btn-call">
                             <i class="fa fa-phone" aria-hidden="true"></i> Call Now
                         </a>
-                        <a href="/index.html#booking" class="btn btn-book">
+                        <a href="../index.html#booking" class="btn btn-book">
                             <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
                         </a>
                     </div>
@@ -244,7 +255,7 @@
                 <h3>Call Plunge, a plumbing co. LLC now!</h3>
                 <p>Call Plunge at <strong>(480) 878-0808</strong> to request immediate service in Phoenix, AZ.</p>
                 <a href="tel:+14808780808" class="btn btn-call">
-                    <i class="fa fa-phone" aria-hidden="true"></i> Call (480) 878-0808
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
                 </a>
             </div>
 
@@ -259,7 +270,7 @@
         <div class="container footer-grid">
 
             <div class="footer-brand">
-                <img src="/images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <img src="../images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
                 <p class="footer-company-name">Plunge, a Plumbing Co.</p>
                 <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
                 <p class="footer-license">License #: XXXXXXXXX</p>
@@ -268,11 +279,11 @@
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="/index.html">Home</a></li>
-                    <li><a href="/index.html#booking">Book a Service</a></li>
-                    <li><a href="/index.html#hours">Business Hours</a></li>
-                    <li><a href="/index.html#reviews">Reviews</a></li>
-                    <li><a href="/cities/">All Service Areas</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#booking">Book a Service</a></li>
+                    <li><a href="../index.html#hours">Business Hours</a></li>
+                    <li><a href="../index.html#reviews">Reviews</a></li>
+                    <li><a href="./">All Service Areas</a></li>
                 </ul>
             </div>
 
@@ -292,12 +303,12 @@
         <div class="footer-bottom">
             <!-- TODO (before launch): privacy.html and terms.html do not exist yet — the two links below will 404 until those pages are created. -->
             <p>&copy; <span class="footer-year"></span> Plunge, a Plumbing Co. All rights reserved.</p>
-            <p><a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a></p>
+            <p><a href="../privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../terms.html">Terms of Service</a></p>
         </div>
     </footer>
 
 
-    <script src="/js/script.js"></script>
+    <script src="../js/script.js"></script>
     <script>
         /* Set copyright year in footer */
         document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
