@@ -402,8 +402,8 @@ button {
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    padding: var(--space-md);
-    overflow-y: auto;
+    padding: 1.1rem var(--space-md);   /* tighter top/bottom than the sides, to help everything fit without scrolling */
+    overflow-y: auto;                  /* safety net for unusually short screens — kept tight so it's rarely needed */
     transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
 }
@@ -415,14 +415,14 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: var(--space-sm);
-    margin-bottom: var(--space-xs);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
     border-bottom: 2px solid var(--orange);   /* orange accent line */
 }
 
 .city-nav-header h2 {
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     color: var(--white);
 }
 
@@ -440,7 +440,7 @@ button {
 .city-nav-subtitle {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.55);
-    margin-bottom: var(--space-md);
+    margin-bottom: 0.75rem;
 }
 
 /* City link list */
@@ -456,7 +456,7 @@ button {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.5rem 0.4rem;   /* tighter top/bottom spacing — text/icon size unchanged */
+    padding: 0.4rem;   /* tighter top/bottom spacing — text/icon size unchanged */
     color: rgba(255, 255, 255, 0.88);
     font-size: 0.98rem;
     transition: var(--ease);
@@ -495,23 +495,46 @@ button {
     height: 16px;
 }
 
-/* Bottom of drawer */
+/* Bottom of drawer — "Areas" pill stacked on top of "Call Now" */
 .city-nav-footer {
-    margin-top: var(--space-md);
+    margin-top: 0.85rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
+/* "View All Areas" — a dashed, translucent pill (not another solid
+   orange/blue button) with a map icon. Same corner radius as the Call
+   Now button below it. Fills and brightens on hover so it reads as
+   clearly interactive, not a quiet text link. */
 .city-nav-all-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    white-space: nowrap;      /* keep icon + text on one line */
     text-align: center;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.55);
-    transition: color 0.2s;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px dashed rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius);    /* matches the Call Now button's corner radius */
+    padding: 0.85rem;
+    transition: var(--ease);
 }
-.city-nav-all-link:hover { color: var(--white); }
+.city-nav-all-link .fa {
+    color: var(--orange);
+    font-size: 0.95rem;
+}
+.city-nav-all-link:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--orange);
+    border-style: solid;
+}
 
-/* Call Now inside drawer */
+/* Call Now inside drawer — reverted to its original styling */
 .call-btn-nav {
     display: flex;
     align-items: center;
