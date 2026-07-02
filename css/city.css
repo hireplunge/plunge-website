@@ -96,12 +96,22 @@
     margin-bottom: var(--space-md);
 }
 
-/* Meta line under the H1 (company | city | 24/7 | phone) */
-.city-hero-meta {
-    color: rgba(255,255,255,0.6);
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    margin-bottom: var(--space-md);
+/* Two-column hero layout: intro text + Call Now/Book Online sit on the
+   left, the video sits on the right — so every key element is visible
+   without scrolling. Stacks to a single column (text above video) on
+   tablet/mobile, matching the breakpoint used elsewhere on the site for
+   similar two-column layouts. */
+.city-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .city-hero-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Intro paragraphs; the lead line reads a bit larger + orange */
@@ -111,7 +121,8 @@
     font-size: 1.15rem !important;
 }
 
-/* Video placeholder — swap in a real embed later */
+/* Video placeholder — swap in a real embed later. Fills its grid column;
+   the max-width just caps it on very wide screens. */
 .video-placeholder {
     display: flex;
     flex-direction: column;
@@ -120,6 +131,7 @@
     gap: 0.5rem;
     aspect-ratio: 16 / 9;
     max-width: 720px;
+    width: 100%;
     background: var(--blue-dark);
     border: 2px dashed rgba(255,255,255,0.3);
     border-radius: var(--radius-lg);
