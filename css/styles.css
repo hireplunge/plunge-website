@@ -69,6 +69,9 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Stop iPhones from auto-inflating text when rotated to landscape */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -405,9 +408,15 @@ button {
 .city-nav {
     position: fixed;
     top: 0;
-    left: -350px;                  /* hidden off-screen to the left */
+    left: 0;
+    /* Hidden off-screen by its OWN width (translateX(-100%)) rather than a
+       fixed pixel offset — on mobile the drawer is 88vw wide, so a fixed
+       -350px left a sliver of it visible along the left edge of larger
+       phones. The extra 40px keeps its drop shadow off-screen too. */
+    transform: translateX(calc(-100% - 40px));
     width: 320px;
     height: 100%;
+    height: 100dvh;                    /* phones: cover the full screen even as the browser toolbar collapses */
     background: var(--blue-dark);
     color: var(--white);
     z-index: 1000;
@@ -415,11 +424,11 @@ button {
     flex-direction: column;
     padding: 1.1rem var(--space-md);   /* tighter top/bottom than the sides, to help everything fit without scrolling */
     overflow-y: auto;                  /* safety net for unusually short screens — kept tight so it's rarely needed */
-    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
 }
 .city-nav.open {
-    left: 0;
+    transform: translateX(0);
 }
 
 .city-nav-header {
@@ -803,6 +812,38 @@ select {
     background-size: 14px;
     padding-right: 2.2rem;            /* keeps option text clear of the arrow */
     cursor: pointer;
+}
+
+/* Date field — iPhones/iPads render date inputs with their own native
+   look, ignoring the input styles above (no border, own size/shape) and
+   letting the box spill outside the form card. Stripping the native
+   appearance makes the date field obey the same styling as every other
+   field. Tapping it still opens the phone's native date picker. */
+input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    min-width: 0;
+    text-align: left;
+}
+
+/* iOS centers the chosen date inside the field — align it left to match
+   the text in all the other fields. */
+input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+    margin: 0;
+}
+
+/* Phones/tablets leave an EMPTY date field completely blank (desktop
+   browsers show a "mm/dd/yyyy" hint), which looks broken next to the
+   dropdowns' "Select a…" placeholders. Supply our own hint text until a
+   date is picked (the field is required, so empty = :invalid). Applies
+   only to touch devices; desktop browsers show their own hint text and
+   ignore ::before on inputs anyway. */
+@media (pointer: coarse) {
+    input[type="date"][required]:invalid::before {
+        content: 'Select a date\2026';
+    }
 }
 
 /* Booking fields turn bold once they hold a value. The .is-filled
