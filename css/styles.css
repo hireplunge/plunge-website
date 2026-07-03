@@ -132,6 +132,17 @@ button {
     font-size: 1.4rem;
 }
 
+/* "Book a Service" and "Expert Work by Our Professionals" — sized and
+   colored to match the "About Plunge" heading (font-family already
+   matches via --font-heading, so only size + color need to change here).
+   Scoped to just these two sections so every other .section-title
+   elsewhere on the site is unaffected. */
+#booking .section-title,
+#gallery .section-title {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    color: var(--white);
+}
+
 .section-subtitle {
     text-align: center;
     color: rgba(255, 255, 255, 0.88);
