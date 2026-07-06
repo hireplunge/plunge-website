@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!-- Drain Cleaning in Mesa — service landing page.
+     =============================================
+     GENERATED FILE — DO NOT EDIT BY HAND.
+     Built by _generator/generate.py from _generator/services.json,
+     _generator/cities.json, and _generator/template.html.
+     To change this page: edit those files, then re-run
+       python3 _generator/generate.py
+     (see _generator/README.md).
+     ============================================= -->
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO meta — unique per service + city -->
+    <meta name="description" content="Fast drain cleaning in Mesa, AZ. Kitchen, bathroom, floor, and main-line clogs cleared right, 24/7. Licensed local plumbers. Call (480) 878-0808.">
+    <meta name="keywords" content="drain cleaning Mesa, drain cleaning Mesa AZ, Mesa plumber, plumber Mesa AZ">
+    <title>Drain Cleaning in Mesa, AZ | Plunge, a Plumbing Co. LLC</title>
+
+    <!-- Browser tab icons (favicons), iOS home-screen icon, and PWA manifest -->
+    <link rel="icon" href="../../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../images/icons/apple-touch-icon.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <meta name="theme-color" content="#264878">
+
+    <!-- TODO (before launch): replace the placeholder "yourwebsite.com" in the URL(s) on this page (canonical link / Schema.org data) with the real domain, e.g. hireplunge.com, for correct SEO. -->
+    <link rel="canonical" href="https://yourwebsite.com/services/mesa/drain-cleaning.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Parent stylesheets first, then landing-page additions -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/city.css">
+    <link rel="stylesheet" href="../../css/service.css">
+
+    <!-- Schema.org: this specific service, offered in this specific city -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Drain Cleaning",
+  "provider": {
+    "@type": "Plumber",
+    "name": "Plunge, a Plumbing Co. LLC",
+    "telephone": "+14808780808",
+    "email": "info@hireplunge.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "555 W 2nd Ave B7",
+      "addressLocality": "Mesa",
+      "addressRegion": "AZ",
+      "postalCode": "85210",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Mesa",
+    "addressRegion": "AZ"
+  },
+  "url": "https://yourwebsite.com/services/mesa/drain-cleaning.html"
+}
+    </script>
+
+    <!-- Schema.org: the FAQ section below, in Google's preferred format -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do my drains keep clogging?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Repeat clogs usually mean a partial blockage deeper in the line \u2014 grease buildup, scale from our hard water, a root intrusion, or a bellied pipe. A camera inspection finds the real cause so you stop paying to treat the symptom."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is chemical drain cleaner safe to try first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We'd skip it. Caustic cleaners rarely clear a real blockage, they damage older pipes, and they make the line hazardous for whoever opens it next. Mechanical cleaning is safer and actually works."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you clear main sewer line clogs too?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes \u2014 main-line stoppages are an emergency (nothing in the house drains), and we run 24/7 for exactly that reason. If roots or a break are involved, we'll show you on camera before recommending anything."
+      }
+    }
+  ]
+}
+    </script>
+
+</head>
+<body>
+
+    <!-- Nav overlay (dims background when drawer is open) -->
+    <div id="nav-overlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+
+    <!-- =============================================
+         HEADER — identical across all pages
+         ============================================= -->
+    <header class="site-header">
+        <a href="../../index.html" class="header-brand-link" aria-label="Return to home page">
+            <div class="header-brand">
+                <div class="header-logo-wrap">
+                    <img src="../../images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="header-title">
+                    <span class="header-company-name">Plunge</span>
+                    <span class="header-tagline">a Plumbing Co. LLC</span>
+                </div>
+            </div>
+        </a>
+        <div class="header-left-btns">
+            <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
+                <span class="menu-icon" aria-hidden="true">&#9776;</span>
+                <span class="menu-label">Service Areas</span>
+            </button>
+            <a href="../../index.html" class="home-btn" aria-label="Return to homepage">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
+        <!-- Call Now — top-right — always present on every page -->
+        <a href="tel:+14808780808" class="header-call-btn" aria-label="Call Plunge now">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="header-call-label">Call Now</span>
+        </a>
+    </header>
+
+
+    <!-- =============================================
+         CITY NAVIGATION DRAWER
+         Keep this list in sync with index.html
+         ============================================= -->
+    <nav id="city-nav" class="city-nav" aria-label="City Service Areas" role="navigation">
+        <div class="city-nav-header">
+            <h2>Service Areas</h2>
+            <button class="close-nav-btn" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <p class="city-nav-subtitle">Professional plumbing in your city</p>
+        <ul class="city-nav-list">
+            <li><a href="../../cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <!-- REMINDER (office joke): "ahwahtookey" should be "Ahwatukee" before launch — see cities/ahwatukee.html for details. -->
+            <li><a href="../../cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> ahwahtookey</a></li>
+            <li><a href="../../cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="../../cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="../../cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
+            <li><a href="../../cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="../../cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="../../cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="../../pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
+        </ul>
+        <div class="city-nav-footer">
+            <a href="../../cities/" class="city-nav-all-link"><i class="fa fa-map-marked-alt" aria-hidden="true"></i> View All Areas</a>
+            <a href="tel:+14808780808" class="call-btn-nav">
+                <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- =============================================
+         HERO — the searcher's landing view:
+         what they searched for, where, and two ways to act on it.
+         ============================================= -->
+    <section class="city-hero">
+        <div class="city-hero-content container">
+
+            <nav class="city-breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../cities/">Service Areas</a>
+                <span>/</span>
+                <a href="../../cities/mesa.html">Mesa</a>
+                <span>/</span>
+                <span aria-current="page">Drain Cleaning</span>
+            </nav>
+
+            <h1>Drain Cleaning in Mesa, AZ</h1>
+
+            <div class="svc-hero-text">
+                <p class="city-intro-lead">A slow drain is annoying. A stopped one can shut down your whole household — we clear both, any hour of the day.</p>
+                <p>Between hard-water scale, kitchen grease, tree roots hunting for moisture, and the grit that monsoon storms wash in, East Valley drains earn their clogs honestly. We clear kitchen and bathroom drains, laundry lines, floor drains, and main lines — using the right tool for the job, from augers to hydro-jetting — and we make sure the line actually flows before we leave.</p>
+                <p>If the same drain keeps clogging, that's a symptom, not bad luck. We can camera-inspect the line and show you exactly what's going on inside the pipe, so you can fix the cause instead of renting a snake every three months.</p>
+
+                <div class="hero-cta-group">
+                    <a href="tel:+14808780808" class="btn btn-call">
+                        <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                    </a>
+                    <a href="../../index.html#booking" class="btn btn-book">
+                        <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         LOCAL NOTE + TRUST SIGNALS
+         The local card is written per-city in cities.json — it's what
+         makes this page genuinely about Mesa, not boilerplate.
+         ============================================= -->
+    <section class="svc-section">
+        <div class="container">
+
+            <div class="service-card svc-local-card">
+                <h3><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa is our home base</h3>
+                <p>Plunge is headquartered right here in Mesa — 555 W 2nd Ave, near downtown. When you call us, you're calling a neighbor, not a dispatch center three cities away, and our response times around Mesa show it.</p>
+                <p>We work in every corner of the city: mid-century homes near Main Street and Dobson Ranch, where original galvanized pipe and slab-era plumbing are reaching the end of their lifespan, out to the newer builds in Eastmark and Las Sendas. And like the rest of the East Valley, Mesa's notoriously hard water is behind a huge share of the scale buildup, clogs, and worn-out fixtures we get called for every day.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                    <h3>Licensed &amp; Insured</h3>
+                    <p>AZ License #332623515. Real credentials, real accountability.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <h3>Open 24/7</h3>
+                    <p>Nights, weekends, holidays — plumbing problems don't wait, and neither do we.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                    <h3>Genuinely Local</h3>
+                    <p>Mesa born and based — we serve the whole East Valley from right here.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fa fa-file-invoice-dollar" aria-hidden="true"></i>
+                    <h3>Upfront Pricing</h3>
+                    <p>You approve the quote before any work begins. No surprises.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         FAQ — service-specific questions & answers
+         ============================================= -->
+    <section class="svc-section">
+        <div class="container">
+            <h2 class="svc-h2">Drain Cleaning Questions, Answered</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Why do my drains keep clogging?</summary>
+                    <p>Repeat clogs usually mean a partial blockage deeper in the line — grease buildup, scale from our hard water, a root intrusion, or a bellied pipe. A camera inspection finds the real cause so you stop paying to treat the symptom.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is chemical drain cleaner safe to try first?</summary>
+                    <p>We'd skip it. Caustic cleaners rarely clear a real blockage, they damage older pipes, and they make the line hazardous for whoever opens it next. Mechanical cleaning is safer and actually works.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you clear main sewer line clogs too?</summary>
+                    <p>Yes — main-line stoppages are an emergency (nothing in the house drains), and we run 24/7 for exactly that reason. If roots or a break are involved, we'll show you on camera before recommending anything.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         RELATED SERVICES — keeps the landing pages
+         interlinked instead of orphaned (better for SEO)
+         ============================================= -->
+    <section class="svc-section">
+        <div class="container">
+            <h2 class="svc-h2">More Plumbing Services in Mesa</h2>
+            <div class="related-links">
+                <a class="related-chip" href="sewer-cleaning.html">Sewer Cleaning</a>
+                <a class="related-chip" href="sewer-repair.html">Sewer Repair</a>
+                <a class="related-chip" href="garbage-disposal-repair.html">Garbage Disposal Repair</a>
+                <a class="related-chip" href="plumbing-leak-detection.html">Plumbing Leak Detection</a>
+                <a class="related-chip related-chip--all" href="../../cities/mesa.html">All Mesa Services <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         FINAL CALL-TO-ACTION
+         ============================================= -->
+    <section class="city-cta">
+        <div class="container">
+            <h2>Need Drain Cleaning in Mesa?</h2>
+            <p>Call now, or book online and we'll call to confirm within 1 hour — any time of day.</p>
+            <div class="hero-cta-group">
+                <a href="tel:+14808780808" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> (480) 878-0808
+                </a>
+                <a href="../../index.html#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         FOOTER — identical across all pages
+         ============================================= -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="../../images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <p class="footer-company-name">Plunge, a Plumbing Co. LLC</p>
+                <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
+                <p class="footer-license">License #: 332623515</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#booking">Book a Service</a></li>
+                    <li><a href="../../index.html#hours">Business Hours</a></li>
+                    <li><a href="../../index.html#reviews">Reviews</a></li>
+                    <li><a href="../../index.html#gallery">Our Work</a></li>
+                    <li><a href="../../cities/">Service Areas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+14808780808">(480) 878-0808</a></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/hireplunge/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/p/Plunge-A-Plumbing-Company-LLC-61568241644216/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.yelp.com/biz/plunge-a-plumbing-company-mesa" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
+                    <a href="https://nextdoor.com/page/plunge-a-plumbing-company-llc-mesa-az?utm_campaign=1783093631810&amp;share_action_id=8a22cfef-040b-4fc6-bc21-13088bc6ab80" aria-label="Nextdoor" target="_blank" rel="noopener noreferrer"><i class="fas fa-home" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@Plungeaplumbingcollc1" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <!-- TODO (before launch): privacy.html and terms.html do not exist yet — the two links below will 404 until those pages are created. -->
+            <p>&copy; <span class="footer-year"></span> Plunge, a Plumbing Co. LLC All rights reserved.</p>
+            <p><a href="../../privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="../../terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+
+    <script src="../../js/script.js"></script>
+    <script>
+        /* Set copyright year in footer */
+        document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+</body>
+</html>

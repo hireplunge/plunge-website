@@ -691,6 +691,11 @@ function displayPlaceholderReviews() {
     const starsEl   = document.getElementById('overall-stars');
     const countEl   = document.getElementById('review-count');
 
+    /* Only the homepage has the reviews section — on every other page
+       (city pages, service landing pages) there is nothing to fill in,
+       so bail out quietly instead of throwing a console error. */
+    if (!container || !ratingEl || !starsEl || !countEl) return;
+
     const samples = [
         { name: 'Sarah M.',  rating: 5, date: 'January 2025',   text: 'Plunge came out the same day and fixed our leaking pipe quickly and cleanly. Very professional and fair pricing. Highly recommend!' },
         { name: 'James R.',  rating: 5, date: 'December 2024',  text: 'Our water heater stopped working on a Friday evening. Plunge had someone out within 2 hours. Incredible service!' },

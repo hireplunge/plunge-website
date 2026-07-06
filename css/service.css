@@ -1,0 +1,153 @@
+/* =============================================
+   PLUNGE, A PLUMBING CO. — Service Landing Pages
+   For the generated pages in services/<city>/.
+   Extends styles.css and city.css — load those FIRST.
+   ============================================= */
+
+
+/* Hero body text — keep the line length readable */
+.svc-hero-text {
+    max-width: 720px;
+}
+
+
+/* Shared section shell (dark background, consistent spacing) */
+.svc-section {
+    background: var(--bg-dark);
+    padding: var(--space-lg) 0;
+}
+
+/* Section headings on the dark background */
+.svc-h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: var(--space-md);
+}
+
+
+/* =============================================
+   LOCAL NOTE CARD — the per-city paragraph block
+   (visual style comes from .service-card in city.css)
+   ============================================= */
+.svc-local-card {
+    max-width: 760px;
+    margin: 0 auto var(--space-lg);
+}
+.svc-local-card:hover {
+    transform: none;              /* it's not a link — don't lift on hover */
+    box-shadow: var(--shadow-sm);
+}
+.svc-local-card h3 {
+    font-size: 1.15rem;
+}
+.svc-local-card h3 .fa {
+    color: var(--orange);
+    margin-right: 0.4rem;
+}
+.svc-local-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.65;
+}
+.svc-local-card p + p {
+    margin-top: 0.6rem;
+}
+
+
+/* =============================================
+   FAQ — native <details> accordions, no JS needed
+   ============================================= */
+.faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.faq-item {
+    background: var(--blue-dark);
+    border-radius: var(--radius-lg);
+    border-top: 4px solid var(--orange);    /* orange accent bars — top + left, matches site cards */
+    border-left: 4px solid var(--orange);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.faq-item summary {
+    list-style: none;                 /* hide the default triangle marker */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+}
+.faq-item summary::-webkit-details-marker {
+    display: none;                    /* Safari's default triangle */
+}
+
+/* Our own +/× indicator on the right */
+.faq-item summary::after {
+    content: '+';
+    color: var(--orange);
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    padding: 0 1.1rem 0.95rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+
+/* =============================================
+   RELATED SERVICES — pill links to sibling pages
+   ============================================= */
+.related-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.related-chip {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--white);
+    background: var(--blue-dark);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    transition: var(--ease);
+}
+.related-chip:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+/* "All <city> services" chip — dashed, like the drawer's View All pill */
+.related-chip--all {
+    border-style: dashed;
+}
+.related-chip--all .fa {
+    font-size: 0.75rem;
+    margin-left: 0.2rem;
+}

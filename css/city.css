@@ -179,6 +179,17 @@
     flex-shrink: 0;
 }
 
+/* Checklist items link to the per-service landing pages in
+   services/<city>/. Links inherit the checklist's normal text style so
+   the page looks completely unchanged; they turn orange on hover/tap,
+   matching every other link on the site. */
+.services-checklist a {
+    color: inherit;
+}
+.services-checklist a:hover {
+    color: var(--orange);
+}
+
 /* "Call Plunge now" block below the checklist */
 .services-cta {
     text-align: center;
