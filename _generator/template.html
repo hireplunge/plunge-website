@@ -134,37 +134,36 @@ __SERVICE_SCHEMA__
 
             <h1>__H1__</h1>
 
-            <div class="svc-hero-text">
-                <p class="city-intro-lead">__LEAD__</p>
+            <!-- Two-column grid (reused from city.css's .city-hero-grid):
+                 hero text on the left, the local-note card on the right —
+                 keeps the card up near the top of the page instead of its
+                 own full-width section further down. Stacks to one column
+                 on tablet/mobile, same breakpoint as everywhere else it's used. -->
+            <div class="city-hero-grid">
+
+                <div class="svc-hero-text">
+                    <p class="city-intro-lead">__LEAD__</p>
 __BODY_HTML__
 
-                <div class="hero-cta-group">
-                    <a href="tel:+14808780808" class="btn btn-call">
-                        <i class="fa fa-phone" aria-hidden="true"></i> Call Now
-                    </a>
-                    <a href="../../index.html#booking" class="btn btn-book">
-                        <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
-                    </a>
+                    <div class="hero-cta-group">
+                        <a href="tel:+14808780808" class="btn btn-call">
+                            <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                        </a>
+                        <a href="../../index.html#booking" class="btn btn-book">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
-
-
-    <!-- =============================================
-         LOCAL NOTE
-         Written per-city in cities.json — it's what makes this page
-         genuinely about __CITY_NAME__ rather than boilerplate, which
-         is what keeps a set of city pages from reading as near-identical
-         "doorway pages" that search engines demote.
-         ============================================= -->
-    <section class="svc-section">
-        <div class="container">
-
-            <div class="service-card svc-local-card">
-                <h3><i class="fa fa-map-marker-alt" aria-hidden="true"></i> __CITY_NOTE_TITLE__</h3>
+                <!-- Written per-city in cities.json — it's what makes this
+                     page genuinely about __CITY_NAME__ rather than boilerplate,
+                     which is what keeps a set of city pages from reading as
+                     near-identical "doorway pages" that search engines demote. -->
+                <div class="service-card svc-local-card">
+                    <h3><i class="fa fa-map-marker-alt" aria-hidden="true"></i> __CITY_NOTE_TITLE__</h3>
 __CITY_NOTE_HTML__
+                </div>
+
             </div>
 
         </div>
@@ -195,7 +194,7 @@ __RELATED_HTML__
             <p>Call now, or book online any time — we're here around the clock.</p>
             <div class="hero-cta-group">
                 <a href="tel:+14808780808" class="btn btn-call">
-                    <i class="fa fa-phone" aria-hidden="true"></i> (480) 878-0808
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
                 </a>
                 <a href="../../index.html#booking" class="btn btn-book">
                     <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online

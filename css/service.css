@@ -31,10 +31,11 @@
 /* =============================================
    LOCAL NOTE CARD — the per-city paragraph block
    (visual style comes from .service-card in city.css)
+   Sits in the right column of .city-hero-grid alongside the hero text,
+   so its width is set by the grid column, not a fixed max-width.
    ============================================= */
 .svc-local-card {
-    max-width: 760px;
-    margin: 0 auto var(--space-lg);
+    align-self: start;
 }
 .svc-local-card:hover {
     transform: none;              /* it's not a link — don't lift on hover */
@@ -54,64 +55,6 @@
 }
 .svc-local-card p + p {
     margin-top: 0.6rem;
-}
-
-
-/* =============================================
-   FAQ — native <details> accordions, no JS needed
-   ============================================= */
-.faq-list {
-    max-width: 760px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.faq-item {
-    background: var(--blue-dark);
-    border-radius: var(--radius-lg);
-    border-top: 4px solid var(--orange);    /* orange accent bars — top + left, matches site cards */
-    border-left: 4px solid var(--orange);
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-}
-
-.faq-item summary {
-    list-style: none;                 /* hide the default triangle marker */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.9rem 1.1rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--white);
-}
-.faq-item summary::-webkit-details-marker {
-    display: none;                    /* Safari's default triangle */
-}
-
-/* Our own +/× indicator on the right */
-.faq-item summary::after {
-    content: '+';
-    color: var(--orange);
-    font-size: 1.4rem;
-    line-height: 1;
-    flex-shrink: 0;
-    transition: transform 0.25s ease;
-}
-.faq-item[open] summary::after {
-    transform: rotate(45deg);
-}
-
-.faq-item p {
-    padding: 0 1.1rem 0.95rem;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
 }
 
 

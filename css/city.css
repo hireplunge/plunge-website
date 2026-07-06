@@ -114,6 +114,25 @@
     }
 }
 
+/* Call Now + Book Online button pair under the hero text. Flex + gap keeps
+   an even space between them whether they sit side by side (desktop) or
+   stack full-width (mobile, where .btn becomes width:100%). Without this the
+   stacked buttons touch edge to edge. */
+.hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-md);
+}
+
+/* In the centered bottom call-to-action, center the button pair. The flex
+   default (flex-start) would otherwise pin them left, ignoring the section's
+   text-align: center. The hero version above stays left-aligned to match its
+   left-aligned text. */
+.city-cta .hero-cta-group {
+    justify-content: center;
+}
+
 /* Intro paragraphs; the lead line reads a bit larger + orange */
 .city-intro-lead {
     color: var(--orange) !important;
@@ -347,6 +366,13 @@
    RESPONSIVE ADJUSTMENTS FOR CITY PAGES
    ============================================= */
 @media (max-width: 620px) {
+
+    /* Hide the orange Home button on phones only. The header is tight on
+       small screens, and the logo/company name already links home, so the
+       separate button is redundant here. Desktop keeps it unchanged. */
+    .home-btn {
+        display: none;
+    }
 
     .city-hero {
         padding: var(--space-lg) 0 var(--space-md);

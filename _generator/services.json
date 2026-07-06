@@ -1,582 +1,335 @@
 [
   {
-    "slug": "backflow-cage-installation",
-    "name": "Backflow Cage Installation",
-    "meta": "Protect your backflow preventer from theft and damage with professional steel cage installation in {city}, AZ. Licensed plumbers, upfront pricing. (480) 878-0808.",
-    "lead": "Copper theft is a real problem across the Valley — a steel backflow cage is the cheapest insurance your {city} property's backflow preventer can get.",
-    "paras": [
-      "Backflow preventers sit exposed above ground, and their brass and copper make them a favorite target for thieves. Replacing a stolen assembly can cost many times what a cage does — plus the water shutoff and inspection headaches that come with it. A properly anchored, powder-coated cage secures the assembly without blocking the access that testing and repairs require.",
-      "Plunge installs cages sized to your specific assembly and anchored into concrete, for {city} homes, businesses, and HOA common areas. We can bundle the cage install with a backflow preventer test or repair visit so everything is handled in one trip."
-    ],
-    "faqs": [
-      { "q": "Will a cage interfere with backflow testing?", "a": "No — we size and position cages so certified testers can reach the test cocks and shutoff valves without removing the cage. Locked access keeps it serviceable and secure at the same time." },
-      { "q": "Do HOAs and businesses in {city} really need cages?", "a": "They're the most frequent victims: backflow assemblies on commercial buildings and community irrigation systems are larger, more valuable, and often out of sight. Many insurers and property managers now expect cages on unattended assemblies." },
-      { "q": "How long does installation take?", "a": "Most cage installs are done in a single short visit. If the concrete pad needs work or anchors need time to cure, we'll tell you upfront before any work begins." }
-    ],
-    "related": ["backflow-preventer-installation-and-repair", "commercial-kitchen-plumbing", "new-construction-plumbing", "plumbing-pipe-repair"]
-  },
-  {
-    "slug": "backflow-preventer-installation-and-repair",
-    "name": "Backflow Preventer Installation and Repair",
-    "meta": "Backflow preventer installation, repair, and replacement in {city}, AZ. Keep your water safe and your property code-compliant. Call Plunge at (480) 878-0808.",
-    "lead": "Your backflow preventer is the one device standing between {city}'s clean drinking water and whatever is in your irrigation or fire lines — it has to work.",
-    "paras": [
-      "Arizona water providers require working backflow prevention on many commercial properties, irrigation systems, and fire lines, and a failed annual test usually comes with a repair deadline. Whether your assembly failed a test, froze on a rare cold snap, sprang a leak, or was stolen, we repair and replace all common assembly types.",
-      "Plunge handles new installations too — sized correctly, installed to code, and ready to pass inspection. If you're not sure what the notice from your water company means, call us and we'll walk you through it in plain English."
-    ],
-    "faqs": [
-      { "q": "My backflow assembly failed its annual test. Now what?", "a": "That's usually a worn check valve or relief valve — very repairable. We replace the failed internals with manufacturer parts and get you retested so you meet the water provider's deadline." },
-      { "q": "Do residential properties in {city} need backflow preventers?", "a": "Most single-family homes don't need a testable assembly, but properties with irrigation systems tied to potable water, pool fill lines, or wells often do. We can tell you exactly what applies to your setup." },
-      { "q": "Can you replace a stolen backflow preventer?", "a": "Yes — it's one of the most common commercial calls we get. We replace the assembly and strongly recommend adding a security cage at the same time, which we can do in the same visit." }
-    ],
-    "related": ["backflow-cage-installation", "commercial-kitchen-plumbing", "underground-gas-leak-detection-and-repair", "plumbing-pipe-repair"]
-  },
-  {
-    "slug": "commercial-kitchen-plumbing",
-    "name": "Commercial Kitchen Plumbing",
-    "meta": "Commercial kitchen plumbing in {city}, AZ — grease traps, gas lines, floor drains, fixtures, and code compliance. 24/7 service so your kitchen keeps cooking. (480) 878-0808.",
-    "lead": "When your kitchen's plumbing goes down, you're not losing convenience — you're losing revenue by the hour.",
-    "paras": [
-      "Commercial kitchens punish their plumbing: grease, heat, constant use, and health-code scrutiny. Plunge services the whole back-of-house — floor drains and floor sinks, grease traps and interceptors, pre-rinse stations, dish machines, hand sinks, water heaters, and gas connections — and we understand that a health inspection or a dinner rush doesn't wait for a plumber's schedule.",
-      "We're available around the clock for {city} restaurants and commercial kitchens, and we work clean and tidy so you can stay open — or get back open — with as little disruption as we can manage."
-    ],
-    "faqs": [
-      { "q": "Can you work around our service hours?", "a": "Yes. For working kitchens we routinely schedule around prep and service windows, including overnight work, so you never have to close for a repair that can be done at 2 am." },
-      { "q": "Why does my floor drain back up during the dinner rush?", "a": "Usually a grease-choked line between the floor sink and the grease interceptor. Cleaning the line gets you through the week; right-sizing the trap and a maintenance schedule keeps it from happening again." },
-      { "q": "Do you handle health-code plumbing corrections?", "a": "Yes — air gaps, backflow protection, hand-sink placement, indirect waste connections, and the other items inspectors flag. Send us the inspection report and we'll quote the corrections." }
-    ],
-    "related": ["grease-trap-cleaning-and-replacement", "restaurant-plumbing-systems", "drain-cleaning", "tenant-improvements"]
-  },
-  {
-    "slug": "drain-cleaning",
-    "name": "Drain Cleaning",
-    "meta": "Drain cleaning in {city}, AZ. Kitchen, bathroom, floor, and main-line clogs cleared right, 24/7. Licensed local plumbers. Call (480) 878-0808.",
-    "lead": "A slow drain is annoying. A stopped one can shut down your whole household — we clear both, any hour of the day.",
-    "paras": [
-      "Between hard-water scale, kitchen grease, tree roots hunting for moisture, and the grit that monsoon storms wash in, East Valley drains earn their clogs honestly. We clear kitchen and bathroom drains, laundry lines, floor drains, and main lines — using the right tool for the job, from augers to hydro-jetting — and we make sure the line actually flows before we leave.",
-      "If the same drain keeps clogging, that's a symptom, not bad luck. We can camera-inspect the line and show you exactly what's going on inside the pipe, so you can fix the cause instead of renting a snake every three months."
-    ],
-    "faqs": [
-      { "q": "Why do my drains keep clogging?", "a": "Repeat clogs usually mean a partial blockage deeper in the line — grease buildup, scale from our hard water, a root intrusion, or a bellied pipe. A camera inspection finds the real cause so you stop paying to treat the symptom." },
-      { "q": "Is chemical drain cleaner safe to try first?", "a": "We'd skip it. Caustic cleaners rarely clear a real blockage, they damage older pipes, and they make the line hazardous for whoever opens it next. Mechanical cleaning is safer and actually works." },
-      { "q": "Do you clear main sewer line clogs too?", "a": "Yes — main-line stoppages are an emergency (nothing in the house drains), and we run 24/7 for exactly that reason. If roots or a break are involved, we'll show you on camera before recommending anything." }
-    ],
-    "related": ["sewer-cleaning", "sewer-repair", "garbage-disposal-repair", "plumbing-leak-detection"]
-  },
-  {
     "slug": "faucet-installation",
     "name": "Faucet Installation",
-    "meta": "Professional faucet installation in {city}, AZ for kitchens, bathrooms, and outdoor spigots. Clean installs with no leaks. Call (480) 878-0808.",
-    "lead": "A new faucet should be a five-year upgrade, not a weekend of swearing under the sink.",
+    "lead": "A new faucet in {city} should be a five-minute joy every morning, not a five-year regret.",
     "paras": [
-      "Whether it's a kitchen upgrade, a new bathroom vanity, a bar sink, or a hose bibb out back, we install all faucet types and brands — mounted square, sealed right, with supply lines and shutoff valves checked and replaced if they're the crusty originals. Hard water is rough on fixtures here, so we'll also tell you honestly which faucets hold up in {city} and which ones don't.",
-      "Bought your own faucet already? Great — we'll install it. Want a recommendation? We'll point you toward fixtures with metal internals and replaceable cartridges instead of the big-box special that fails in two years."
-    ],
-    "faqs": [
-      { "q": "Can you install a faucet I bought myself?", "a": "Absolutely — customer-supplied fixtures are welcome. We'll look it over before removing your old faucet, so if anything's missing or damaged in the box you're not left without a working sink." },
-      { "q": "Should I replace the shutoff valves at the same time?", "a": "If they're original multi-turn valves more than a decade old, yes — they're cheap to replace during a faucet install, and they're what saves you during a future leak. Corroded valves that won't close are a classic Arizona problem." },
-      { "q": "How long does a faucet installation take?", "a": "Most straightforward swaps take about an hour. Corroded mounting nuts, undersized supply lines, or a first-time installation (like adding a pot filler) take longer — we'll give you the real picture before starting." }
-    ],
-    "related": ["faucet-repair", "faucet-replacement", "garbage-disposal-installation", "reverse-osmosis-units"]
+      "We install faucets in kitchens, bathrooms, and utility sinks — mounted square, sealed tight, with the shut-off valves checked and leak-tested before we call it done. Bring your own fixture or let us help you pick one; either way it goes in right the first time.",
+      "Because {city}'s hard water is unkind to cheap internals, we'll steer you toward faucets built to actually survive it, not just look good on day one."
+    ]
   },
   {
     "slug": "faucet-repair",
     "name": "Faucet Repair",
-    "meta": "Dripping or broken faucet? Faucet repair in {city}, AZ — cartridges, seals, valves, and low-pressure fixes from licensed plumbers. (480) 878-0808.",
-    "lead": "That drip you've learned to ignore is quietly padding your water bill — and it only gets worse.",
+    "lead": "That drip under the {city} kitchen sink is quietly running up your water bill — and it only gets louder.",
     "paras": [
-      "Most faucet problems trace back to a handful of parts: worn cartridges, hardened O-rings, corroded valve seats, or aerators choked with hard-water scale. We carry common cartridges and parts on the truck, so most repairs happen in one visit — drips stopped, handles turning smoothly again, and pressure restored.",
-      "We'll also give you a straight answer on repair versus replace. A quality faucet is worth repairing; a builder-grade unit on its third cartridge usually isn't, and we'll tell you which one you have before any money changes hands."
-    ],
-    "faqs": [
-      { "q": "Why is my faucet dripping even when it's off?", "a": "The internal cartridge or washer isn't sealing anymore — often because hard-water grit has scored it. Replacing the cartridge fixes it; ignoring it wastes hundreds of gallons a month and eventually damages the valve body." },
-      { "q": "Why is water pressure low at just one faucet?", "a": "Nine times out of ten in the Valley it's scale clogging the aerator or the cartridge inlet — a quick fix. If pressure is low everywhere, that's a different conversation, and one worth having soon." },
-      { "q": "Is it worth repairing an older faucet?", "a": "If it's a quality brand with available parts, usually yes. If it's a low-end unit that's already been repaired before, replacement is often cheaper over five years. We'll quote both so you can decide." }
-    ],
-    "related": ["faucet-replacement", "faucet-installation", "plumbing-leak-repair", "water-softener-installation"]
+      "Most faucet trouble comes down to a handful of worn parts: cartridges, stems, seats, and O-rings. We carry the common ones on the truck, so a leaking, dripping, or noisy faucet usually gets fixed in one visit — and if the fixture itself is too far gone, we'll install a new one on the spot.",
+      "We'll always give you the honest read on repair versus replace before any money changes hands."
+    ]
   },
   {
     "slug": "faucet-replacement",
     "name": "Faucet Replacement",
-    "meta": "Faucet replacement in {city}, AZ — out with the leaky, corroded, or outdated, in with a fixture that lasts. Honest advice, clean installs. (480) 878-0808.",
-    "lead": "When a faucet is corroded, discontinued, or on its third repair, swapping it beats fighting it.",
+    "lead": "When a {city} faucet is corroded, discontinued, or on its third repair, replacing it beats fighting it.",
     "paras": [
-      "Replacement is the right call when the finish is pitted, parts are no longer made, the base is leaking into the cabinet, or the style dates the whole room. We pull the old fixture, clean up the mounting surface, and install the new one with fresh supply lines — plus a hard look at the shutoff valves while everything's apart.",
-      "Because {city}'s hard water eats cheap fixtures, we'll steer you toward faucets that survive it: solid bodies, ceramic cartridges, finishes that shrug off scale. Bring your own or let us supply one — either way it goes in square, sealed, and leak-free."
-    ],
-    "faqs": [
-      { "q": "How do I know it's time to replace instead of repair?", "a": "Three signs: parts are discontinued, the body or base is leaking (not just the spout), or it's a budget fixture that's already failed once. Any of those and replacement is the better spend." },
-      { "q": "Can you match the existing holes in my sink or counter?", "a": "Almost always. Faucet hole layouts are standardized (single-hole, centerset, widespread), and deck plates cover most transitions. We'll confirm what fits before you buy anything." },
-      { "q": "Will you haul away the old faucet?", "a": "Yes — old fixture, packaging, and any replaced parts leave with us. The only thing left behind is a working faucet and a dry cabinet." }
-    ],
-    "related": ["faucet-installation", "faucet-repair", "shower-repair", "water-softener-installation"]
-  },
-  {
-    "slug": "garbage-disposal-installation",
-    "name": "Garbage Disposal Installation",
-    "meta": "Garbage disposal installation in {city}, AZ — new installs and upgrades, plumbed and wired right the first time. Call Plunge at (480) 878-0808.",
-    "lead": "A properly installed disposal is quiet, doesn't leak, and doesn't trip the breaker every Thanksgiving.",
-    "paras": [
-      "Whether you're adding a disposal to a sink that never had one or upgrading a struggling builder-grade unit, we handle the full install: mounting, drain reconnection, dishwasher tie-in, high loop or air gap, and the electrical connection. We'll size the unit to your household — a bigger motor isn't always the answer, but an undersized one is always the wrong one.",
-      "We install customer-supplied units and can supply quality disposals ourselves. Either way, the install includes checking the trap and drain line, because a new disposal on a half-clogged line just makes expensive noise."
-    ],
-    "faqs": [
-      { "q": "What size disposal do I actually need?", "a": "For most households, 1/2 to 3/4 horsepower with stainless components is the sweet spot. We'll match the unit to how you cook, your sink setup, and whether you're on a septic system." },
-      { "q": "Can you add a disposal where there's never been one?", "a": "Usually yes — it needs a power source and a compatible drain setup, both of which we can add. We'll confirm feasibility and quote it before any cutting happens." },
-      { "q": "Why does my new disposal smell already?", "a": "Odors come from the splash guard and trap, not the unit itself. Run cold water while grinding, feed it citrus peel occasionally, and skip fibrous stuff like celery and corn husks — the same habits that prevent jams." }
-    ],
-    "related": ["garbage-disposal-repair", "drain-cleaning", "faucet-installation", "commercial-kitchen-plumbing"]
-  },
-  {
-    "slug": "garbage-disposal-repair",
-    "name": "Garbage Disposal Repair",
-    "meta": "Garbage disposal repair in {city}, AZ — jams, leaks, humming units, and resets fixed by licensed plumbers. Call (480) 878-0808.",
-    "lead": "A humming, jammed, or leaking disposal usually isn't dead — it's asking for a plumber, not a replacement.",
-    "paras": [
-      "Most disposal calls end well: jams cleared, stuck flywheels freed, leaking sink flanges resealed, and worn splash guards swapped. We diagnose before we replace, because half of the 'broken' disposals we see just need a proper repair.",
-      "That said, when the motor's burned out or the housing is cracked and leaking, we'll say so plainly and walk you through a replacement, so your {city} kitchen gets back to normal without the guesswork."
-    ],
-    "faqs": [
-      { "q": "My disposal hums but won't spin. Is it toast?", "a": "Usually it's just jammed — something hard is wedged between the impeller and the grind ring. Don't keep hitting the switch (that's how motors actually burn out). We clear the jam and check the bearings while we're in there." },
-      { "q": "Water is leaking from the bottom of the unit. Can that be fixed?", "a": "A leak from the very bottom of the housing usually means an internal seal has failed, and that does mean replacement. Leaks from the top flange or side connections, though, are very fixable." },
-      { "q": "Why does my disposal keep tripping its reset button?", "a": "Chronic overload: a partial jam, a failing motor, or a unit too small for the workload. If a clear-and-reset doesn't hold, we'll find out which one it is — before you're stuck doing the reset dance every week." }
-    ],
-    "related": ["garbage-disposal-installation", "drain-cleaning", "faucet-repair", "plumbing-leak-repair"]
-  },
-  {
-    "slug": "grease-trap-cleaning-and-replacement",
-    "name": "Grease Trap Cleaning + Replacement",
-    "meta": "Grease trap cleaning, repair, and replacement for {city}, AZ restaurants and commercial kitchens. Stay compliant and stay open. Call (480) 878-0808.",
-    "lead": "A neglected grease trap will eventually pick its own moment to shut your kitchen down — always the worst one.",
-    "paras": [
-      "Grease interceptors only work when they're maintained: pumped and cleaned on schedule, baffles intact, flow rates right for the fixtures they serve. We clean and service traps, repair failing baffles and fittings, and replace undersized or corroded units — with the paperwork trail that municipal grease programs and inspectors expect.",
-      "If backups, odors, or a citation brought you here, we'll get the immediate problem handled, then put you on a maintenance interval that matches your {city} kitchen's actual volume — not a generic calendar."
-    ],
-    "faqs": [
-      { "q": "How often should our grease trap be cleaned?", "a": "The honest answer is 'when it's about a quarter full of grease and solids' — for busy kitchens that can be monthly, for lighter operations quarterly. We'll gauge yours and recommend an interval based on what we actually find." },
-      { "q": "What are the signs our trap is failing, not just full?", "a": "Grease showing up downstream of the trap, water backing into floor sinks right after a cleaning, visible corrosion or leaks, and odors that return within days. Any of those means it's time to talk repair or replacement." },
-      { "q": "Can you replace a trap without closing the kitchen for days?", "a": "In most cases yes — we schedule the swap for closed hours, have the new unit staged, and keep downtime to a single window. We'll walk the site first so there are no surprises mid-job." }
-    ],
-    "related": ["commercial-kitchen-plumbing", "restaurant-plumbing-systems", "drain-cleaning", "sewer-cleaning"]
-  },
-  {
-    "slug": "new-construction-plumbing",
-    "name": "New Construction Plumbing",
-    "meta": "New construction plumbing in {city}, AZ — rough-in through finish for custom homes, additions, and commercial builds. Licensed & insured. (480) 878-0808.",
-    "lead": "Plumbing is the trade your build only notices when it's wrong — we make sure it never is.",
-    "paras": [
-      "From underground rough-in to finish fixtures, Plunge plumbs new builds to spec and to code: water distribution, drain-waste-vent systems, gas lines, water heaters, and fixture setting, coordinated with your schedule and your inspections. Our plumbers bring decades of combined experience across custom homes, additions, casitas, and light commercial projects in and around {city}.",
-      "Valley-specific knowledge matters here: slab construction, caliche soil, and our water quality all shape smart material choices. We'll flag the decisions during rough-in — manifold locations, cleanout access, softener loops, recirculation lines — that cost almost nothing now and save real money later."
-    ],
-    "faqs": [
-      { "q": "Do you work with owner-builders and small GCs?", "a": "Yes, both. We're comfortable being the plumbing sub on a GC's schedule, or walking an owner-builder through what the phases and inspections look like." },
-      { "q": "Should I rough in a water softener loop and RO line?", "a": "In the East Valley, absolutely — our hard water makes a softener loop one of the cheapest pre-installs with the biggest payoff, even if you don't install the equipment on day one." },
-      { "q": "Can you handle the gas lines too?", "a": "Yes — we run and pressure-test gas piping for ranges, water heaters, dryers, fireplaces, and outdoor kitchens as part of the same scope, so you're not coordinating a second contractor." }
-    ],
-    "related": ["tenant-improvements", "remodels", "water-heater-installation", "water-softener-installation"]
+      "We remove the old fixture and install a new, high-quality kitchen, bathroom, or utility sink faucet in its place — mounting surface cleaned up, supply lines fresh, everything sealed and leak-tested.",
+      "Local water is hard on cheap fittings, so we'll help you pick a replacement built to actually last in {city}, not just look good in the box."
+    ]
   },
   {
     "slug": "plumbing-leak-detection",
     "name": "Plumbing Leak Detection",
-    "meta": "Plumbing leak detection in {city}, AZ — slab leaks, hidden line leaks, and mystery water bills found without tearing your house apart. (480) 878-0808.",
-    "lead": "A water bill that jumped for no reason is usually a leak you can't see yet — finding it early is everything.",
+    "lead": "A water bill that jumped for no reason usually means a leak you can't see yet — finding it early in {city} is everything.",
     "paras": [
-      "Hidden leaks announce themselves sideways: a spiking bill, a warm spot on the floor, the sound of running water at 3 am, a meter that spins with everything off. We locate leaks in slabs, walls, yards, and service lines using acoustic listening, pressure isolation, and thermal imaging — pinpointing the problem before anyone opens up concrete or drywall.",
-      "Slab-built homes are the norm across {city}, which makes precise location the difference between a targeted repair and an exploratory demolition. We find it first, then talk options: spot repair, reroute, or repipe, with honest numbers for each."
-    ],
-    "faqs": [
-      { "q": "How do I check if I have a hidden leak?", "a": "Turn off every fixture and water-using appliance, then watch your meter — if the low-flow indicator still turns, water is going somewhere. That test plus a jumpy bill is enough reason to get a real detection done." },
-      { "q": "What does a slab leak feel like from inside the house?", "a": "Warm patches on the floor (hot-line leaks), damp carpet edges, buckling flooring, the sound of water running when nothing's on, or a water heater that never seems to stop. Any of these deserves a same-week look." },
-      { "q": "Once you find the leak, do you fix it too?", "a": "Yes — detection and repair from one company, so nobody hands you off. Depending on pipe condition we'll lay out spot repair versus reroute versus repipe, and you pick with real information." }
-    ],
-    "related": ["plumbing-leak-repair", "plumbing-pipe-repair", "sewer-repair", "underground-gas-leak-detection-and-repair"]
+      "Using acoustic and pressure-testing equipment, we locate hidden leaks inside walls, under slabs, and in underground lines without guesswork, then give you an accurate diagnosis and a clean repair plan.",
+      "{city}'s slab-built homes make precise location the difference between a small, targeted fix and an exploratory mess — we find it first, then talk options."
+    ]
   },
   {
     "slug": "plumbing-leak-repair",
     "name": "Plumbing Leak Repair",
-    "meta": "Plumbing leak repair in {city}, AZ — slab leaks, pinhole leaks, fittings, and fixtures repaired by licensed plumbers, 24/7. Licensed & insured. (480) 878-0808.",
-    "lead": "Water damage compounds by the hour — the repair itself is almost always cheaper than the waiting.",
+    "lead": "Water damage compounds by the hour in {city} — the repair is almost always cheaper than the wait.",
     "paras": [
-      "From pinhole leaks in copper (a Valley classic, thanks to our water chemistry) to failed fittings, slab leaks, and leaking angle stops, we repair them all — and we're available around the clock, because burst lines don't respect business hours. First move if water is actively flowing: shut off the main, then call.",
-      "We fix the leak you have and look for the one you're about to have: if a section of pipe shows widespread corrosion or repeated pinholes, we'll show you the evidence and price a reroute or repipe honestly against a string of future spot repairs."
-    ],
-    "faqs": [
-      { "q": "Where is my main water shutoff?", "a": "Most {city} homes have one near a hose bibb at the front of the house, plus the city's angle stop at the meter box by the street. Finding yours before an emergency is worth two minutes today — we'll happily show you during any visit." },
-      { "q": "Why does copper pipe get pinhole leaks here?", "a": "Our water's mineral content and chemistry slowly corrode copper from the inside, especially on hot lines and recirculating loops. One pinhole is a repair; several in a year is a repipe conversation." },
-      { "q": "Does homeowners insurance cover leak repairs?", "a": "Policies typically cover the water damage, not the failed pipe itself — and coverage often hinges on showing the leak was sudden rather than neglected. We document what we find to support your claim either way." }
-    ],
-    "related": ["plumbing-leak-detection", "plumbing-pipe-repair", "faucet-repair", "water-heater-repair"]
+      "We quickly locate and repair leaks in pipes, fixtures, and water lines, working to minimize damage to the walls, flooring, or slab around them.",
+      "If a section shows signs of repeated failure, we'll say so and talk through the options rather than patch the same spot again."
+    ]
   },
   {
     "slug": "plumbing-pipe-repair",
     "name": "Plumbing Pipe Repair",
-    "meta": "Plumbing pipe repair in {city}, AZ — burst, corroded, frozen, or root-damaged pipes repaired or rerouted by licensed plumbers, 24/7. (480) 878-0808.",
-    "lead": "Whatever broke the pipe — age, roots, a nail, or that one freezing night nobody expected — we put it back better.",
+    "lead": "Whatever broke the pipe — age, corrosion, or one unlucky freeze — we put {city} plumbing back together right.",
     "paras": [
-      "We repair water, drain, and gas piping in all the materials Valley homes actually contain: copper, PEX, CPVC, galvanized steel, ABS, cast iron, and the occasional surprise. That includes older {city} houses with original galvanized lines rusting shut from the inside, and 80s–90s builds with polybutylene that's overdue for attention.",
-      "Every repair comes with an honest read on the rest of the line. Patching one bad spot in an otherwise healthy system is smart; patching the third failure on a corroded run is throwing money at a pipe that's telling you something."
-    ],
-    "faqs": [
-      { "q": "What is polybutylene and should I worry about it?", "a": "A grey plastic pipe used widely from the late 70s through the mid 90s that fails unpredictably at its fittings. If your home has it, your insurer may care, and a proactive repipe is worth pricing — we'll identify it for free during any service call." },
-      { "q": "My galvanized pipes have low pressure. Can they be repaired?", "a": "Sections can be, but galvanized fails by rusting shut internally, so pressure problems mean the whole run is narrowing. Spot repairs buy time; a repipe to PEX or copper fixes it permanently." },
-      { "q": "Do pipes really freeze in Arizona?", "a": "A few nights a year, yes — exposed hose bibbs, irrigation manifolds, and lines in attics or exterior walls are the usual casualties. Insulating exposed pipe is cheap; the burst it prevents is not." }
-    ],
-    "related": ["plumbing-leak-repair", "plumbing-leak-detection", "sewer-repair", "new-construction-plumbing"]
-  },
-  {
-    "slug": "pool-plumbing-repair",
-    "name": "Pool Plumbing Repair",
-    "meta": "Pool plumbing repair in {city}, AZ — suction and return line leaks, valves, autofills, and equipment-pad plumbing fixed by licensed plumbers. (480) 878-0808.",
-    "lead": "When your pool is losing water faster than the desert can explain, the plumbing between pool and pad is the usual suspect.",
-    "paras": [
-      "Backyard pools are practically standard equipment in {city}, and their plumbing works hard year-round: suction lines pulling debris, pressurized returns, autofill valves quietly running (or quietly failing), and equipment-pad manifolds baking in the sun. We repair leaking and broken pool lines, replace brittle valves and fittings, fix autofill systems, and re-plumb equipment pads.",
-      "Not sure if you're losing water to a leak or to evaporation? A simple bucket test settles it — and if it points to a leak, we'll isolate whether it's plumbing or structure before anyone starts cutting deck."
-    ],
-    "faqs": [
-      { "q": "How can I tell evaporation from a real leak?", "a": "Set a bucket of water on a pool step, mark both water levels, and wait 24 hours with the pump off. If the pool dropped noticeably more than the bucket, you have a leak, not an evaporation problem." },
-      { "q": "My autofill runs constantly. Is that bad?", "a": "It's masking something — either the autofill valve has failed, or it's quietly covering a leak while inflating your water bill. Either way it deserves attention before summer rates make it expensive." },
-      { "q": "Do you replace pool equipment like pumps and heaters?", "a": "We handle the plumbing side: the lines, valves, and connections serving pumps, filters, and heaters. We work alongside your pool tech — they do the equipment internals, we make sure everything feeding it holds pressure." }
-    ],
-    "related": ["plumbing-leak-detection", "plumbing-pipe-repair", "plumbing-leak-repair", "underground-gas-leak-detection-and-repair"]
-  },
-  {
-    "slug": "remodels",
-    "name": "Remodels",
-    "h1name": "Plumbing Remodels",
-    "meta": "Remodel plumbing in {city}, AZ — kitchens, bathrooms, and whole-home projects, from moving lines to setting the final fixtures. (480) 878-0808.",
-    "lead": "The prettiest remodel is only as good as the plumbing hiding behind the tile.",
-    "paras": [
-      "Moving a sink, adding an island, converting a tub to a walk-in shower, splitting a master bath — remodel plumbing is where design meets what the slab and walls will actually allow. We handle relocation of supply and drain lines, venting done right (not 'creatively'), gas line changes, and finish fixture installation, coordinated with your contractor or directly with you.",
-      "In {city}'s slab-built homes, moving drains means cutting concrete — worth doing well and worth planning carefully. We'll tell you early which layout ideas are cheap, which are expensive, and which are hiding a surprise, so design decisions get made with real numbers."
-    ],
-    "faqs": [
-      { "q": "Can plumbing really be moved anywhere in a slab home?", "a": "Almost anywhere — it's concrete cutting, not magic, and the question is cost rather than possibility. Small shifts are often simple; moving a toilet across the room is a bigger conversation. We quote it before demo starts." },
-      { "q": "When should the plumber get involved in a remodel?", "a": "At design time, before anything's final. Ten minutes with the layout can save thousands — we've seen too many projects where the 'perfect' island location doubled the plumbing budget." },
-      { "q": "Do you pull permits for remodel plumbing?", "a": "Yes, when the scope requires it — and in most municipalities, moving or adding plumbing does. Permitted work protects your resale value and your insurance coverage." }
-    ],
-    "related": ["shower-installation", "toilet-installation", "new-construction-plumbing", "tenant-improvements"]
-  },
-  {
-    "slug": "restaurant-plumbing-systems",
-    "name": "Restaurant Plumbing Systems",
-    "meta": "Restaurant plumbing systems in {city}, AZ — design, install, repair, and maintenance for the whole back-of-house. 24/7 emergency service. (480) 878-0808.",
-    "lead": "A restaurant's plumbing is a production system — when one piece fails, the whole line feels it.",
-    "paras": [
-      "We build and service complete restaurant plumbing systems: grease interceptors, floor sinks and indirect waste, three-compartment sinks, dish machine connections, water filtration for espresso and steam equipment, high-recovery water heaters, and the gas lines feeding the cook line. New build-out, remodel, or a failing system that limps through every Friday — we've seen it.",
-      "For working restaurants in {city}, we schedule around service and are available 24/7, because a Saturday-night backup is a right-now problem, not a Monday problem."
-    ],
-    "faqs": [
-      { "q": "Can you plumb a new restaurant build-out from plans?", "a": "Yes — we do full tenant-improvement plumbing from architect drawings through health and building inspections, coordinating with your GC, hood installer, and equipment supplier." },
-      { "q": "Our water heater can't keep up with the dish machine. Options?", "a": "High-temp commercial dish machines need serious recovery capacity. Depending on your setup, the fix is a properly sized commercial heater, a dedicated booster, or both — we'll size it from your equipment specs, not a guess." },
-      { "q": "Do you offer maintenance plans for restaurants?", "a": "We set up recurring service for the failure-prone items — grease trap cleaning, drain maintenance, water heater checks — timed to your volume, so problems get caught during prep hours instead of the dinner rush." }
-    ],
-    "related": ["commercial-kitchen-plumbing", "grease-trap-cleaning-and-replacement", "water-heater-installation", "tenant-improvements"]
-  },
-  {
-    "slug": "reverse-osmosis-units",
-    "name": "Reverse Osmosis Units",
-    "h1name": "Reverse Osmosis Systems",
-    "meta": "Reverse osmosis system installation and service in {city}, AZ. Clean, great-tasting drinking water from your own tap. Call Plunge at (480) 878-0808.",
-    "lead": "If you're buying bottled water in {city}, you're paying monthly for what an under-sink RO system does better.",
-    "paras": [
-      "Valley tap water is safe, but nobody brags about the taste — it carries some of the highest mineral content in the country. A reverse osmosis system under the kitchen sink strips dissolved solids, chlorine taste, and odors, feeding a dedicated faucet (and your fridge's ice maker, if you like) with genuinely clean water for pennies a gallon.",
-      "We install, repair, and service RO units: new installations with their own dedicated faucet, fridge line tie-ins, annual filter changes, membrane replacements, and fixes for low flow, constant draining, or bad-tasting output from an aging system."
-    ],
-    "faqs": [
-      { "q": "How often do RO filters and membranes need changing?", "a": "Pre- and post-filters roughly annually, the membrane every 2–5 years depending on usage and water hardness. Given local water, err toward the earlier end — we can put you on a reminder schedule." },
-      { "q": "Why is my RO faucet flowing so slowly?", "a": "Usually a depleted storage-tank bladder, clogged filters, or a scaled membrane. All fixable — and much cheaper than replacing the whole system, which is what the big-box route usually recommends." },
-      { "q": "Does an RO system pair well with a water softener?", "a": "Perfectly — the softener protects the whole house (and the RO membrane) from scale, while the RO polishes your drinking water. The combination is the standard East Valley setup for a reason." }
-    ],
-    "related": ["whole-house-water-filtration", "water-softener-installation", "water-softener-repair", "faucet-installation"]
-  },
-  {
-    "slug": "sewer-cleaning",
-    "name": "Sewer Cleaning",
-    "meta": "Sewer cleaning in {city}, AZ — main line clogs, root intrusion, and grease blockages cleared with augers and hydro-jetting, 24/7. (480) 878-0808.",
-    "lead": "When every drain in the building backs up at once, that's not a clog — that's your sewer main calling.",
-    "paras": [
-      "The main sewer line is the one pipe every fixture depends on, and it collects everything: grease, roots probing through joints for water, scale, and wipes that were never actually 'flushable.' We clear mains with the right tool for the blockage — cable machines for roots and hard stoppages, hydro-jetting to scour grease and sludge off the pipe walls instead of just poking a hole through them.",
-      "After clearing, a camera pass shows what caused it and what shape the line is in. Mature trees and aging clay or cast-iron lines in older {city} neighborhoods make roots a repeat offender — and knowing is cheaper than guessing."
-    ],
-    "faqs": [
-      { "q": "How do I know it's the main line and not just one drain?", "a": "Multiple fixtures backing up together — especially the lowest drains in the house, like showers and floor drains — or a toilet that gurgles when the washing machine drains. One slow drain: branch line. Everything at once: main." },
-      { "q": "What's the difference between snaking and hydro-jetting?", "a": "A cable machine cuts through the blockage and gets flow moving; hydro-jetting power-washes the pipe's interior walls clean. Roots and hard objects want the cable; grease and years of buildup want the jetter. Sometimes the answer is both." },
-      { "q": "How often do roots come back after clearing?", "a": "Roots regrow into the same joints, typically within one to three years. Regular maintenance cleanings manage it; a spot repair or liner at the intrusion point ends it. The camera tells us which conversation to have." }
-    ],
-    "related": ["sewer-repair", "drain-cleaning", "grease-trap-cleaning-and-replacement", "plumbing-leak-detection"]
-  },
-  {
-    "slug": "sewer-repair",
-    "name": "Sewer Repair",
-    "meta": "Sewer repair in {city}, AZ — broken, root-invaded, and collapsed sewer lines repaired or replaced, with camera-verified diagnosis first. (480) 878-0808.",
-    "lead": "Nobody plans for sewer repair — but with a camera-verified diagnosis, at least you'll never pay for guesswork.",
-    "paras": [
-      "Repeat backups, soggy or oddly green patches in the yard, sewer smell, or slow drains everywhere are how buried sewer problems introduce themselves. We camera-inspect and locate the exact failure — root intrusion, a separated joint, a belly holding waste, or a crushed section — and mark its position and depth before quoting anything.",
-      "Older {city} neighborhoods with clay or cast-iron laterals see the most trouble, but even newer ABS lines get crushed by settling or construction. Depending on what the camera shows, we'll price a targeted spot repair against a fuller replacement honestly — including the trenching realities of our caliche soil."
-    ],
-    "faqs": [
-      { "q": "What are the signs my sewer line is broken, not just clogged?", "a": "Backups that return soon after a cleaning, wet or unusually lush spots over the line's path, sewer odor outdoors, and cleanings that pull back mud. Any of those points to a breach, and a camera confirms it in about an hour." },
-      { "q": "Will you have to dig up my whole yard?", "a": "Rarely. Because we locate failures precisely, most repairs are a targeted excavation over the bad section. We'll show you the camera footage and the locate marks so the scope is obvious before a shovel touches dirt." },
-      { "q": "Who's responsible for the sewer line — me or the city?", "a": "As a rule in the Valley, the homeowner owns the lateral from the house to the tap at the city main. That's exactly the stretch we diagnose and repair." }
-    ],
-    "related": ["sewer-cleaning", "drain-cleaning", "plumbing-pipe-repair", "plumbing-leak-detection"]
+      "We repair copper, PEX, and PVC piping wherever it fails: inside walls, overhead in ceilings, or buried under the slab. Fast, clean repairs with minimal disruption to the rest of your home.",
+      "If a section shows repeated failures, we'll say so plainly rather than patch the same spot twice."
+    ]
   },
   {
     "slug": "shower-installation",
     "name": "Shower Installation",
-    "meta": "Shower installation in {city}, AZ — new showers, tub-to-shower conversions, and custom valve work, plumbed right behind the tile. (480) 878-0808.",
-    "lead": "A great shower is built in the wall, not picked off a shelf — the valve and drain work decide everything.",
+    "lead": "A great {city} shower starts with the valve behind the tile, not the fixture in the store.",
     "paras": [
-      "Whether it's a new bathroom, a tub-to-shower conversion, or an upgrade to a rain head and body sprays, we handle the plumbing that makes it work: correctly set valves, properly sloped and sealed drains, pressure-balanced or thermostatic mixing, and supply lines sized so the 'spa shower' actually feels like one.",
-      "Conversions are our most-requested shower project in {city} — and they live or die on drain relocation and waterproofing prep. We coordinate cleanly with your tile installer or contractor so the plumbing lands exactly where the finished design needs it."
-    ],
-    "faqs": [
-      { "q": "Can you convert my bathtub to a walk-in shower?", "a": "Yes — it's one of the most popular bathroom upgrades, especially for accessibility. The plumbing work involves relocating the drain and setting a new valve; we'll flag anything about your slab or framing that affects cost before demo." },
-      { "q": "What's a thermostatic valve and is it worth it?", "a": "It holds your set temperature regardless of what the rest of the house is doing — no cold shock when a toilet flushes. For multi-head or high-end showers it's absolutely worth it; we'll quote both options." },
-      { "q": "My current shower has weak pressure. Can installation fix that?", "a": "Usually yes — undersized supply lines, a restrictive old valve, or scale buildup are the common culprits. Fixing it during installation is far cheaper than after the tile is up, which is why we size lines for the heads you actually want." }
-    ],
-    "related": ["shower-repair", "remodels", "toilet-installation", "water-heater-installation"]
+      "We install new shower valves, shower heads, hand showers, and complete shower systems as part of new bathrooms, remodels, and tub-to-shower conversions.",
+      "We'll size the plumbing to the shower experience you actually want, so the pressure and temperature perform the way the showroom promised."
+    ]
   },
   {
     "slug": "shower-repair",
     "name": "Shower Repair",
-    "meta": "Shower repair in {city}, AZ — dripping heads, dead valves, temperature swings, and hidden leaks fixed by licensed plumbers. (480) 878-0808.",
-    "lead": "A dripping shower head or a valve that can't find 'warm' isn't a quirk — it's a repair that pays for itself.",
+    "lead": "A shower that won't hold its temperature — or won't stop dripping — isn't something to live with in {city}.",
     "paras": [
-      "We fix the full range of shower problems: cartridges that stiffen and drip (hard water strikes again), diverters that send water everywhere except where you aimed, temperature swings when other fixtures run, low flow from scaled heads and valves, and leaks hiding behind the wall or under the pan.",
-      "Behind-the-wall shower leaks deserve urgency in {city}'s slab homes — water tracks along framing and flooring long before it shows itself. If you've got a mystery stain on an adjacent wall, or a musty smell near the bathroom, have it looked at now — not after the flooring buckles."
-    ],
-    "faqs": [
-      { "q": "Why does my shower drip for minutes after I turn it off?", "a": "Some after-drip is normal drainage from the head, but a persistent drip means the valve cartridge isn't sealing — a straightforward replacement that stops the water waste and the stain forming below." },
-      { "q": "Why does the temperature jump when someone runs water elsewhere?", "a": "Your valve lacks (or has a failing) pressure-balance mechanism. Replacing the cartridge or upgrading the valve fixes it — a modest job that ends the scalding lottery." },
-      { "q": "How do I know if my shower is leaking behind the wall?", "a": "Look for paint bubbling or stains on the wall behind the valve, warm or damp baseboards, a musty smell, or flooring changes nearby. Any of those warrants a leak check before it becomes a drywall-and-flooring project." }
-    ],
-    "related": ["shower-installation", "faucet-repair", "plumbing-leak-detection", "plumbing-leak-repair"]
-  },
-  {
-    "slug": "sump-pump-repair",
-    "name": "Sump Pump Repair",
-    "meta": "Sump pump repair in {city}, AZ — failed pumps, stuck floats, and check valves fixed before the next monsoon tests them. (480) 878-0808.",
-    "lead": "In Arizona, your sump pump sits quiet for months — then monsoon season asks it for everything at once.",
-    "paras": [
-      "Sump and lift pumps around the Valley protect basements (rare but real), elevator pits, window wells, low patios, and commercial sumps — and because they run so rarely here, failures hide until the exact moment water arrives. We repair and replace pumps, stuck or waterlogged floats, failed check valves, and dead switches, and we test the whole pit properly instead of just watching the light come on.",
-      "If your pump is original to the house or hasn't run in memory, a pre-monsoon test is cheap insurance. We'll also quote battery backup options — the storm that floods your pit loves knocking the power out first."
-    ],
-    "faqs": [
-      { "q": "How do I test my sump pump before monsoon season?", "a": "Pour a bucket of water into the pit until the float rises: the pump should kick on, evacuate the water, and shut off without chattering. If it hums, cycles rapidly, or the water drains back in — call us." },
-      { "q": "Do homes here even need sump pumps?", "a": "Fewer than back east, but the ones that have them really need them: below-grade rooms, elevator pits, sunken patios, and properties at the bottom of a grade. If your house came with one, it's there for a reason." },
-      { "q": "Why does my pump run every few minutes even when it's dry?", "a": "Usually a failed check valve letting pumped water fall straight back into the pit, or a float set wrong. Both are quick fixes that spare the motor an early death." }
-    ],
-    "related": ["plumbing-leak-detection", "sewer-cleaning", "drain-cleaning", "plumbing-pipe-repair"]
-  },
-  {
-    "slug": "tankless-water-heater",
-    "name": "Tankless Water Heater",
-    "h1name": "Tankless Water Heaters",
-    "meta": "Tankless water heater installation and service in {city}, AZ — endless hot water, lower bills, and descaling service for hard water. (480) 878-0808.",
-    "lead": "Endless hot water and a smaller gas bill — tankless earns its hype, if it's sized and maintained for {city} water.",
-    "paras": [
-      "A tankless unit heats water only when you're using it: no 50-gallon tank cycling all day, no cold shower because the third person got up last. We size units to your fixtures and gas supply (that part matters — an undersized unit or a starving gas line is where tankless horror stories come from), handle venting and condensate correctly, and install recirculation where you want instant hot water at the tap.",
-      "One honest caveat for the East Valley: our hard water scales tankless heat exchangers, so an annual descaling flush is part of ownership here — or pair the unit with a softener and largely retire the problem. We service and repair existing units too, including error codes, igniters, and flow sensors."
-    ],
-    "faqs": [
-      { "q": "Will a tankless really keep up with a big household?", "a": "Yes, when sized to your simultaneous demand — showers, laundry, dishwasher — rather than a brochure number. Sometimes the right answer is one large unit, sometimes two smaller ones; we'll run your numbers." },
-      { "q": "How often does a tankless need maintenance here?", "a": "With our water hardness, plan on a descaling flush roughly once a year — or install a softener and stretch that considerably. It's a quick service that protects the heat exchanger, which is the expensive part." },
-      { "q": "My tankless shows an error code or runs cold intermittently. Repairable?", "a": "Usually — common causes are scale buildup, a dirty inlet filter, gas supply issues, or a failing flow sensor. We diagnose by code and symptom, and most repairs cost a fraction of replacement." }
-    ],
-    "related": ["water-heater-installation", "water-heater-repair", "water-heater-replacement", "water-softener-installation"]
-  },
-  {
-    "slug": "tenant-improvements",
-    "name": "Tenant Improvements",
-    "h1name": "Tenant Improvement Plumbing",
-    "meta": "Tenant improvement plumbing in {city}, AZ — build-outs, suite conversions, and code corrections for commercial spaces, on schedule. (480) 878-0808.",
-    "lead": "Your TI schedule has no slack in it — the plumbing sub can't be the reason inspection slips.",
-    "paras": [
-      "Converting a shell or an outdated suite into a restaurant, salon, medical office, or retail space almost always means plumbing: new fixture counts to meet occupancy code, ADA-compliant restrooms, break rooms, floor drains, grease interceptors, water heater upgrades, and gas lines. We work from your plans, coordinate with the GC and other trades, and hit inspection milestones.",
-      "We're straightforward about existing conditions, too — older {city} commercial buildings hide surprises under the slab, and finding them early (with a camera, not a jackhammer) keeps your budget honest."
-    ],
-    "faqs": [
-      { "q": "Can you tell us early if our concept fits the building's plumbing?", "a": "Yes — a feasibility walk before you sign a lease or finalize plans can reveal deal-changers: sewer depth and location, water service size, grease interceptor requirements. It's the cheapest hour of the whole project." },
-      { "q": "Do you coordinate with our GC and architect?", "a": "That's our normal mode: bid from drawings, flag conflicts during rough-in, keep the inspector's checklist in mind the whole way, and communicate schedule like the professional sub you'd want." },
-      { "q": "What trips up most TI plumbing inspections?", "a": "Fixture counts versus occupancy load, ADA clearances, indirect waste and air gaps for food service, and undersized water heaters for the use class. We design against all four from day one." }
-    ],
-    "related": ["commercial-kitchen-plumbing", "restaurant-plumbing-systems", "new-construction-plumbing", "remodels"]
+      "We fix leaking showers, replace worn shower valves, repair or replace shower heads, and resolve mixing-valve issues that cause scalding or temperature swings.",
+      "If the leak is hiding behind the wall, we'll find it before it becomes a bigger repair than the shower itself."
+    ]
   },
   {
     "slug": "toilet-installation",
     "name": "Toilet Installation",
-    "meta": "Toilet installation in {city}, AZ — new toilets fitted, sealed, and level, with old units hauled away. Honest advice on what to buy. (480) 878-0808.",
-    "lead": "A toilet install looks simple right up until the flange is broken, the floor isn't level, or the wax ring seals wrong.",
+    "lead": "A toilet install looks simple right up until the flange is cracked or the floor isn't level — we handle both.",
     "paras": [
-      "We install all toilet types — standard, comfort-height, elongated, dual-flush, wall-hung, and bidet-seat-ready — set level, sealed at the flange, and bolted so nothing rocks. Cracked or corroded flanges get fixed during the install, not discovered by your flooring a year later, and the old unit leaves with us.",
-      "Replacing an old water-guzzler? Modern high-efficiency toilets flush better than the 3.5-gallon relics while using a fraction of the water — a meaningful saving in the desert. We'll recommend models that actually clear the bowl on one flush, because 'efficient but flush twice' helps nobody in {city}."
-    ],
-    "faqs": [
-      { "q": "Can you install a bidet seat or wall-hung toilet?", "a": "Yes to both. Bidet seats need a nearby outlet and a supply tee (quick to add); wall-hung units need an in-wall carrier, which is a bigger project — we'll scope your bathroom and quote it straight." },
-      { "q": "Why does my brand-new toilet rock slightly?", "a": "It shouldn't — rocking means an uneven floor or a flange that wasn't shimmed and sealed correctly, and it will eventually break the wax seal. Done right, a toilet is rock-solid on day one and year ten." },
-      { "q": "Is a comfort-height toilet worth it?", "a": "For most adults, yes — the couple of extra inches are noticeably easier on the knees, which is why they've become the default in remodels. We'll help you match height and bowl shape to who's actually using the bathroom." }
-    ],
-    "related": ["toilet-repair", "remodels", "shower-installation", "drain-cleaning"]
+      "We install standard, comfort-height, dual-flush, wall-hung, and commercial toilets for {city} homes and businesses, with a proper wax ring seal and a full leak test before we leave.",
+      "Replacing an old water-guzzler pays off fast on a {city} water bill — we'll help you pick a model that actually clears the bowl on one flush."
+    ]
   },
   {
     "slug": "toilet-repair",
     "name": "Toilet Repair",
-    "meta": "Toilet repair in {city}, AZ — running, leaking, rocking, and clogging toilets fixed by licensed local plumbers. Call (480) 878-0808.",
-    "lead": "A running toilet can quietly waste more water than every other fixture in your house combined.",
+    "lead": "A running toilet can waste more water than every other fixture in a {city} home combined.",
     "paras": [
-      "We fix all of it: phantom refills and constant running (usually a flapper or fill valve that hard water has finished off), weak or incomplete flushes, clogs that keep returning, leaks at the base or supply line, rocking bowls, and toilets that whistle, groan, or hammer when they refill.",
-      "Base leaks and rocking deserve fast attention in {city}'s slab homes — a failed wax seal lets every flush wick under the flooring where you can't see it. If there's discoloration or softness around the base, call before the repair becomes a flooring project."
-    ],
-    "faqs": [
-      { "q": "Why does my toilet run every few minutes?", "a": "The flapper isn't sealing (water escapes, the tank refills, repeat) or the fill valve won't shut off. Mineral-heavy water chews through both parts — it's a fast, inexpensive fix that can save thousands of gallons a month." },
-      { "q": "Why does my toilet clog so often?", "a": "Could be the toilet (early low-flow models are notorious), could be the drain — a partial blockage or a venting issue. We figure out which before recommending anything, because replacing a toilet doesn't fix a drain problem." },
-      { "q": "Water around the base — is that an emergency?", "a": "Treat it like one: stop using that toilet and call. It's usually the wax seal, sometimes a cracked base or a sweating supply line — but all three put water under your flooring with every use." }
-    ],
-    "related": ["toilet-installation", "drain-cleaning", "plumbing-leak-repair", "sewer-cleaning"]
-  },
-  {
-    "slug": "underground-gas-leak-detection-and-repair",
-    "name": "Underground Gas Leak Detection and Repair",
-    "meta": "Underground gas leak detection and repair in {city}, AZ — buried gas lines to pools, BBQs, and homes located and fixed by licensed pros. (480) 878-0808.",
-    "lead": "If you smell gas outdoors or your meter creeps with everything off, treat it as urgent — buried gas leaks don't fix themselves.",
-    "paras": [
-      "Underground gas lines feed more than the house here — pool heaters, built-in BBQs, fire pits, and casitas all run buried lines that age in our rocky, shifting soil. We locate leaks precisely with gas detection instruments and pressure isolation, then repair or replace the failed section with properly rated, protected pipe.",
-      "Safety first, always: if you smell strong gas, leave the area and call the gas company's emergency line before anyone else — they'll make it safe. Then we handle the located repair, the permits, and the pressure test that gets your {city} property's service restored."
-    ],
-    "faqs": [
-      { "q": "What are the signs of an underground gas leak?", "a": "Gas odor outdoors (especially after rain), a hissing sound near the line's path, a patch of dead grass or plants along it, bubbles in puddles, or gas usage that doesn't match the season. Any of these deserves a same-day check." },
-      { "q": "The gas company shut off my service because of a leak. Now what?", "a": "That's where we come in — the utility stops at the meter; the lines past it are yours. We locate the leak, repair or replace the section, pressure-test, coordinate inspection, and get the utility to relight you." },
-      { "q": "Can you run a new gas line to a pool heater or BBQ island?", "a": "Yes — sizing, trenching, rated pipe with tracer wire, and pressure testing are all part of the same trade. If we're repairing an old line, it's a good moment to ask what else you'd like gas run to." }
-    ],
-    "related": ["plumbing-leak-detection", "plumbing-pipe-repair", "pool-plumbing-repair", "new-construction-plumbing"]
+      "We repair and service standard toilets, dual-flush systems, wall-hung units, and commercial flushometer valves — running, leaking, rocking, or clogging, we sort out the actual cause before recommending anything.",
+      "Water around the base gets treated as urgent, since it means water is getting under your flooring with every flush."
+    ]
   },
   {
     "slug": "water-heater-installation",
     "name": "Water Heater Installation",
-    "meta": "Water heater installation in {city}, AZ — gas, electric, and hybrid units sized right and installed to code by licensed plumbers. (480) 878-0808.",
-    "lead": "The average water heater here lives a shorter life than the brochure promises — hard water sees to that. Install day is your best defense.",
+    "lead": "The right water heater for a {city} home isn't always the one that was there before.",
     "paras": [
-      "We install gas, electric, and heat-pump (hybrid) water heaters, sized to your household instead of just matching whatever was there before. A correct install in Arizona includes the details that actually determine lifespan and safety: expansion tank, proper T&P discharge, drip pan where required, seismic strapping, correct venting, and a code-compliant stand in garages.",
-      "A tank rarely dies on a convenient schedule — it's usually discovered mid-shower — so we make the replacement as straightforward as we can. We'll also talk frankly about whether tankless or hybrid makes sense for your {city} home, or whether a standard tank is honestly the best value."
-    ],
-    "faqs": [
-      { "q": "What size water heater does my household need?", "a": "It's about peak usage, not people-count alone: back-to-back showers, big tubs, and laundry habits matter. Fifty gallons suits many families, but we size from your actual routine — upsizing at install is cheap; regretting it isn't." },
-      { "q": "Do I really need an expansion tank?", "a": "If you have a pressure regulator or check valve (most newer Valley homes do), yes — heated water needs somewhere to expand, and without the tank your T&P valve and plumbing absorb that pressure. Inspectors look for it too." },
-      { "q": "Gas or electric — which is better here?", "a": "Usually whichever your home is already set up for, since swapping fuel types adds cost. That said, heat-pump water heaters are compelling in our climate — your garage heat becomes hot water — and utility rebates can sweeten them considerably." }
-    ],
-    "related": ["water-heater-replacement", "water-heater-repair", "tankless-water-heater", "water-softener-installation"]
+      "We install tank-style, tankless, hybrid heat pump, solar, and high-efficiency water heaters for homes and businesses, sized to how the household actually uses hot water, not just a like-for-like swap.",
+      "{city}'s hard water shortens the life of a poorly matched unit — we'll help you avoid buying that problem twice."
+    ]
   },
   {
     "slug": "water-heater-repair",
     "name": "Water Heater Repair",
-    "meta": "Water heater repair in {city}, AZ — no hot water, leaks, noise, or pilot problems diagnosed and fixed, 24/7. Call (480) 878-0808.",
-    "lead": "No hot water is a right-now problem — and half the time, the fix is a part, not a whole new tank.",
+    "lead": "No hot water in {city} is a right-now problem, and half the time the fix is a part, not a whole new tank.",
     "paras": [
-      "We repair the failures that actually strand you cold: dead heating elements and thermostats, pilot and igniter problems, failed thermocouples, gas valve issues, leaking drain valves and fittings, and the popping, rumbling soundtrack of a tank full of hard-water sediment. Diagnosis first, honest verdict second.",
-      "That verdict matters: a leaking fitting is a repair; a leaking tank seam is a replacement, no matter what anyone promises. We'll tell you which one you have, show you, and price both paths when repair is borderline — your call, made with real information."
-    ],
-    "faqs": [
-      { "q": "Why is my water heater making popping or rumbling noises?", "a": "Sediment — our hard water's minerals settle and harden on the tank bottom, and the noise is water boiling up through it. A flush helps if caught early; left for years, it shortens the tank's life and your hot showers." },
-      { "q": "Why does my hot water run out so fast lately?", "a": "Usually a failed lower element (electric), heavy sediment displacing capacity, or a broken dip tube mixing cold water into your hot outlet. All three are diagnosable in one visit — and all three are repairs, not replacements." },
-      { "q": "My pilot light won't stay lit. Is that dangerous?", "a": "It's designed to fail safe — the thermocouple shuts the gas off when the flame dies, which is exactly what's happening. The repair is typically a thermocouple or pilot assembly; don't keep relighting it for weeks, just have it fixed." }
-    ],
-    "related": ["water-heater-replacement", "water-heater-installation", "tankless-water-heater", "plumbing-leak-repair"]
+      "We diagnose and repair tank and tankless water heaters, replace heating elements and thermostats, and troubleshoot both gas and electric systems.",
+      "We'll tell you plainly when a repair makes sense and when it doesn't — no guessing, no upselling."
+    ]
   },
   {
     "slug": "water-heater-replacement",
     "name": "Water Heater Replacement",
-    "meta": "Water heater replacement in {city}, AZ — failing tanks swapped out, hauled away, and upgraded to code by licensed plumbers. (480) 878-0808.",
-    "lead": "When a tank starts leaking from the seam, it isn't asking for a repair — it's giving you notice.",
+    "lead": "When a {city} water heater starts leaking from the tank itself, that's not a repair — it's notice.",
     "paras": [
-      "Tanks in the Valley typically retire earlier than the national averages — hard-water sediment works them harder. When yours is leaking from the tank body, rusting at the base, or simply past its service life and misbehaving, we replace it: old unit drained and hauled off, new one installed to current code with expansion tank, pan, strapping, and venting done right.",
-      "Replacement is also the moment to upgrade smart: a size that matches how your household actually lives, a hybrid heat-pump unit that thrives in a hot {city} garage, or a switch to tankless if endless hot water is the goal. We'll lay out the real costs and paybacks without pushing you anywhere."
-    ],
-    "faqs": [
-      { "q": "How do I know it's time to replace instead of repair?", "a": "Age past 8–12 years plus any tank-body leak, rust in the hot water, or a second major repair quote — that combination says replace. A leak from a fitting or valve, though, is just a repair; we'll always tell you which you're looking at." },
-      { "q": "My water heater is leaking right now. What do I do?", "a": "Close the cold inlet valve on top of the tank (or your main shutoff), kill the breaker or set the gas valve to off, and call us — we treat active tank leaks as same-day work." },
-      { "q": "What does 'to code' add to a replacement?", "a": "Expansion tank, proper temperature-and-pressure discharge piping, drip pan and drain where required, strapping, and correct venting or garage elevation. It isn't padding — it's what keeps the new tank safe, warrantied, and insurable." }
-    ],
-    "related": ["water-heater-installation", "water-heater-repair", "tankless-water-heater", "water-tank-installation"]
+      "We remove the old unit and replace it with a new high-efficiency tank or tankless model, sized correctly and installed to current code.",
+      "Replacement is also the moment to fix whatever the old setup got wrong — we'll walk you through what actually fits your {city} household."
+    ]
   },
   {
-    "slug": "water-softener-installation",
-    "name": "Water Softener Installation",
-    "meta": "Water softener installation in {city}, AZ — end hard-water scale, spots, and appliance wear. Sized and installed by licensed plumbers. (480) 878-0808.",
-    "lead": "In {city}, a water softener isn't a luxury — it's the cheapest protection your entire plumbing system can buy.",
+    "slug": "drain-cleaning",
+    "name": "Drain Cleaning",
+    "lead": "A slow drain is annoying. A stopped one can shut down a whole {city} household.",
     "paras": [
-      "East Valley water is among the hardest in the country, and every fixture shows it: scale-crusted faucets and shower heads, spotted glassware, stiff laundry, dry skin, and water heaters that die young. A properly sized softener stops the damage at the point of entry, protecting everything downstream — pipes, appliances, fixtures, and that new tankless unit.",
-      "We size the system to your household and your measured hardness, install it with a bypass and proper drain, and set it up to regenerate efficiently instead of wasting salt and water. Already have a softener loop? Perfect. No loop? We can add one."
-    ],
-    "faqs": [
-      { "q": "How hard is the water here, really?", "a": "Most East Valley readings land firmly in the 'very hard' range — high enough that appliance manufacturers shorten warranty expectations over it. We'll test your actual tap so the system is sized on data, not folklore." },
-      { "q": "Salt-based or salt-free — what's the honest difference?", "a": "Salt-based softeners actually remove hardness minerals; 'salt-free conditioners' only reduce scale adhesion, not hardness itself. Conditioners have their place, but if you want spot-free glass and protected appliances, ion-exchange is the real answer." },
-      { "q": "How much maintenance does a softener need?", "a": "Add salt every month or two, and give it a checkup every couple of years. We service what we install, and we'll show you how to read the brine tank so refills take thirty seconds." }
-    ],
-    "related": ["water-softener-repair", "whole-house-water-filtration", "reverse-osmosis-units", "tankless-water-heater"]
+      "We clear clogged drains, sewer lines, and grease traps in homes, restaurants, and commercial buildings using hydro jetting and other professional-grade equipment — not a store-bought snake.",
+      "If the same drain keeps clogging, that's a symptom worth investigating, not a monthly chore to accept."
+    ]
   },
   {
-    "slug": "water-softener-repair",
-    "name": "Water Softener Repair",
-    "meta": "Water softener repair in {city}, AZ — salt bridges, resin failures, stuck valves, and constant regeneration fixed by licensed plumbers. (480) 878-0808.",
-    "lead": "If spots are back on the glasses and the salt level never moves, your softener has quietly stopped doing its job.",
+    "slug": "garbage-disposal-installation",
+    "name": "Garbage Disposal Installation",
+    "lead": "A properly installed disposal in a {city} kitchen is quiet, leak-free, and doesn't trip the breaker.",
     "paras": [
-      "Softeners fail politely — no puddles, no noise, just hard water sneaking back into your {city} home. We repair the usual suspects: salt bridges and mushed salt clogging the brine tank, exhausted or fouled resin beds, stuck or leaking control valves, timers regenerating at the wrong times (or constantly), and bypass valves left half-open since the last time someone moved a garden hose.",
-      "If the unit is a decade-plus old with failing resin, we'll price the repair honestly against a modern high-efficiency replacement — sometimes the repair wins, sometimes it's throwing salt at a lost cause, and we'll show you which."
-    ],
-    "faqs": [
-      { "q": "How can I tell my softener stopped working?", "a": "Spots on dishes, scale reappearing on fixtures, soap that won't lather, and a salt level that hasn't dropped in months. A quick hardness test at the tap settles it definitively." },
-      { "q": "What's a salt bridge and can I fix it myself?", "a": "A hard crust that forms above the water line, leaving a hollow beneath — the tank looks full but no brine is being made. You can carefully break it up with a broom handle; if it keeps re-forming, humidity or salt type is the cause and we'll sort it out." },
-      { "q": "My softener regenerates constantly or drains nonstop. What's wrong?", "a": "Usually a stuck control valve or a torn seal keeping water running to the drain — which quietly wastes a lot of water. Flip its bypass and call; the repair usually pays for itself on the next water bill." }
-    ],
-    "related": ["water-softener-installation", "whole-house-water-filtration", "reverse-osmosis-units", "faucet-repair"]
+      "We install new garbage disposals and make sure the electrical and plumbing connections are done right the first time — mounting, drain reconnection, and dishwasher tie-in included.",
+      "Bring your own unit or let us help you pick one sized to how your {city} household actually cooks."
+    ]
+  },
+  {
+    "slug": "garbage-disposal-repair",
+    "name": "Garbage Disposal Repair",
+    "lead": "A jammed, leaking, or humming disposal in {city} usually isn't dead — it's asking for a repair, not a replacement.",
+    "paras": [
+      "We repair jammed, leaking, and malfunctioning garbage disposals and troubleshoot the electrical and plumbing connections behind them, diagnosing before we ever recommend a new unit.",
+      "If it really is beyond repair, we'll say so honestly and get a new one installed the same visit."
+    ]
+  },
+  {
+    "slug": "outdoor-plumbing-system-repair",
+    "name": "Outdoor Plumbing System Repair",
+    "lead": "The plumbing running through your {city} yard takes a beating you never see — until it fails.",
+    "paras": [
+      "We repair leaking hose bibbs, exterior shutoff valves, yard hydrants, and damaged outdoor water lines, wherever they've cracked, corroded, or been nicked by a shovel.",
+      "A rare cold snap or years of sun exposure are usually to blame in {city} — we'll fix what broke and flag what's likely to be next."
+    ]
+  },
+  {
+    "slug": "pool-plumbing-installation",
+    "name": "Pool Plumbing Installation",
+    "lead": "Backyard pools are practically standard equipment in {city}, and the plumbing behind them deserves the same care as the water in front.",
+    "paras": [
+      "We install pool pumps, filters, valves, and underground pool plumbing lines for new builds and pool renovations, sized and routed to work with your equipment pad.",
+      "Getting this right at install avoids the leak-hunting headaches that come with poorly plumbed pools later."
+    ]
+  },
+  {
+    "slug": "pool-plumbing-repair",
+    "name": "Pool Plumbing Repair",
+    "lead": "When a {city} pool is losing water faster than the desert sun can explain, the plumbing is the usual suspect.",
+    "paras": [
+      "We repair and replace pool pumps, filters, valves, and underground pool plumbing lines — tracking down suction and return leaks before anyone starts cutting into the deck.",
+      "A simple bucket test tells us evaporation from a real leak; from there we isolate whether it's the plumbing or the structure."
+    ]
+  },
+  {
+    "slug": "sewer-cleaning",
+    "name": "Sewer Cleaning",
+    "lead": "When every drain in a {city} home backs up at once, that's the sewer main talking.",
+    "paras": [
+      "We clear stubborn sewer line blockages, tree roots, and years of buildup using high-pressure hydro jetting — scouring the pipe walls clean instead of just poking a hole through the clog.",
+      "Mature trees and older clay or cast-iron lines make roots a repeat visitor in parts of {city} — we'll show you what we find before recommending anything further."
+    ]
+  },
+  {
+    "slug": "sewer-repair",
+    "name": "Sewer Repair",
+    "lead": "Nobody plans for sewer repair, but a {city} homeowner deserves an honest diagnosis before any digging starts.",
+    "paras": [
+      "We repair and replace damaged sewer lines, handle main-line issues, and perform trenchless repairs when the pipe and site allow for it.",
+      "We locate the exact failure first, so the repair is targeted instead of a guess-and-dig job in your {city} yard."
+    ]
+  },
+  {
+    "slug": "sump-pump-installation",
+    "name": "Sump Pump Installation",
+    "lead": "A sump pump sits quiet for months in {city} — until monsoon season asks it for everything at once.",
+    "paras": [
+      "We install primary sump pumps, battery backup systems, and large commercial sump pumps for basements, elevator pits, window wells, and low-lying patios.",
+      "Sizing the pump and backup correctly now is what keeps a summer storm from becoming a flooded property later."
+    ]
+  },
+  {
+    "slug": "sump-pump-repair",
+    "name": "Sump Pump Repair",
+    "lead": "A pump that hums, cycles constantly, or never seems to shut off is telling you something before {city}'s next storm does.",
+    "paras": [
+      "We repair and service primary sump pumps, battery backup systems, and large commercial sump pumps — testing the whole pit, not just confirming the light comes on.",
+      "If yours hasn't run in memory, a pre-monsoon check is cheap insurance for the water damage it's meant to prevent."
+    ]
   },
   {
     "slug": "water-tank-installation",
     "name": "Water Tank Installation",
-    "meta": "Water tank installation in {city}, AZ — storage tanks, pressure tanks, and expansion tanks sized, plumbed, and secured properly. (480) 878-0808.",
-    "lead": "Whether it's storage, pressure, or expansion, a tank only earns its keep when it's sized and plumbed correctly.",
+    "lead": "A water storage tank only earns its keep in {city} if it's sized and installed correctly from day one.",
     "paras": [
-      "We install the tank family that keeps water systems healthy: thermal expansion tanks (code-required alongside most modern water heater setups), pressure tanks for {city} homes and properties on wells or booster pumps, and potable storage tanks where supply or pressure needs a buffer. Each gets sized to the system it serves, mounted and supported properly, and set to the right precharge.",
-      "Tanks are one of those quiet components people only meet when one fails — a waterlogged pressure tank short-cycling a well pump to death, or a missing expansion tank hammering a whole house. Getting them right at install is cheap; the alternatives aren't."
-    ],
-    "faqs": [
-      { "q": "What does an expansion tank actually do?", "a": "When your water heater heats, the water expands — and in a home with a closed system (pressure regulator or check valve), that pressure has nowhere to go. The expansion tank absorbs it, sparing your T&P valve, fixtures, and pipe joints." },
-      { "q": "How do I know what size pressure tank I need?", "a": "It's driven by your pump's flow rate and desired cycle times, not just house size — an undersized tank makes the pump start constantly, which is what wears pumps out. We size from the pump specs and your usage." },
-      { "q": "Does every home need one of these tanks?", "a": "Not every one — but homes with pressure regulators or check valves generally need an expansion tank, and any home on a well or booster pump needs a healthy pressure tank. We'll tell you plainly which applies to yours." }
-    ],
-    "related": ["water-tank-repair", "water-heater-installation", "water-heater-replacement", "new-construction-plumbing"]
+      "We install pressure tanks, expansion tanks, and large water storage tanks for well systems and commercial buildings, matched to the system they're actually serving.",
+      "An undersized or missing tank is one of the quiet causes behind short-cycling pumps and hammering pipes in older properties."
+    ]
   },
   {
     "slug": "water-tank-repair",
     "name": "Water Tank Repair",
-    "meta": "Water tank repair in {city}, AZ — waterlogged pressure tanks, failed bladders, leaks, and precharge problems diagnosed and fixed. (480) 878-0808.",
-    "lead": "Short-cycling pumps, hammering pipes, and swinging pressure all point the same direction — a tank that needs attention.",
+    "lead": "A waterlogged tank or a failing pressure tank rarely announces itself loudly in {city} — it just makes everything around it work harder.",
     "paras": [
-      "We diagnose and repair the tank problems that wreck the equipment around them: waterlogged pressure tanks (failed or leaking bladders), incorrect air precharge, leaking fittings and relief valves, corrosion at connections, and expansion tanks that have silently died and left the water heater to absorb the pressure.",
-      "Some tank problems are true repairs — fittings, valves, precharge — and some, like a ruptured bladder in a sealed tank, mean replacement. The diagnosis takes minutes with a pressure gauge and a knuckle-tap, and we'll show you exactly what we found before recommending anything."
-    ],
-    "faqs": [
-      { "q": "Why does my well pump click on and off constantly?", "a": "Classic waterlogged tank — the air cushion is gone, so pressure swings instantly and the pump short-cycles. Fixing it promptly matters: tanks are much cheaper than well pumps, and short-cycling is how you end up buying the pump." },
-      { "q": "Can a tank bladder be replaced?", "a": "On some larger tanks yes; on most residential sealed tanks the bladder isn't serviceable and replacement is the honest answer. We'll check your model — and if it's repairable, we repair it." },
-      { "q": "What should my tank's air precharge be?", "a": "Typically about 2 psi below the pump's cut-in pressure, checked with the system drained. It drifts over time, and an annual check is a five-minute job that meaningfully extends pump life." }
-    ],
-    "related": ["water-tank-installation", "water-heater-repair", "plumbing-leak-repair", "plumbing-pipe-repair"]
+      "We repair pressure tanks, expansion tanks, and large water storage tanks, diagnosing precharge, bladder, and fitting issues before anything gets replaced unnecessarily.",
+      "Catching this early is what protects the more expensive equipment — pumps and water heaters — sitting downstream of it."
+    ]
+  },
+  {
+    "slug": "new-installation",
+    "name": "New Installation",
+    "lead": "New construction plumbing in {city} is the trade nobody notices when it's done right.",
+    "paras": [
+      "We provide complete plumbing installation for new homes, commercial buildings, remodels, and tenant improvements — from underground rough-in through finished fixtures.",
+      "{city}'s slab construction and water quality both shape smart material choices; we flag the decisions that cost little now and save real money later."
+    ]
+  },
+  {
+    "slug": "underground-gas-leak-detection-and-repair",
+    "name": "Underground Gas Leak Detection & Repair",
+    "lead": "A gas smell outdoors in {city} deserves urgent attention, not a wait-and-see.",
+    "paras": [
+      "We locate and safely repair underground gas line leaks using specialized detection equipment, whether the line feeds the house, a pool heater, or a built-in BBQ.",
+      "If you smell gas strongly, leave the area and call the gas company's emergency line first — we handle the located repair once the site is safe."
+    ]
+  },
+  {
+    "slug": "grease-trap-cleaning",
+    "name": "Grease Trap Cleaning",
+    "lead": "A neglected grease trap in a {city} kitchen will pick its own moment to shut things down — always the worst one.",
+    "paras": [
+      "We provide regular grease trap cleaning for restaurants and commercial kitchens, keeping blockages away and keeping you compliant with local health department requirements.",
+      "A cleaning schedule matched to your actual kitchen volume beats a generic calendar every time."
+    ]
+  },
+  {
+    "slug": "water-softener-installation",
+    "name": "Water Softener Installation",
+    "lead": "In {city}, a water softener isn't a luxury — it's cheap insurance for every pipe and appliance downstream of it.",
+    "paras": [
+      "We install water softeners and salt delivery systems sized to your property's actual water usage, not a one-size-fits-all unit.",
+      "Given how hard the water runs through this part of Arizona, getting the sizing right from day one saves real money over the system's life."
+    ]
+  },
+  {
+    "slug": "water-softener-repair",
+    "name": "Water Softener Repair",
+    "lead": "If the spots are back on the glassware in {city}, your softener has quietly stopped doing its job.",
+    "paras": [
+      "We service and repair water softeners and salt delivery systems — salt bridges, resin issues, and stuck control valves are the usual culprits.",
+      "We'll tell you honestly when a repair makes sense and when an aging unit is better replaced."
+    ]
+  },
+  {
+    "slug": "reverse-osmosis-units",
+    "name": "Reverse Osmosis Units",
+    "lead": "If you're buying bottled water in {city}, an under-sink system pays for itself fast.",
+    "paras": [
+      "We install under-sink drinking water systems as well as larger commercial reverse osmosis units, giving you clean, better-tasting water straight from the tap.",
+      "Local tap water carries some of the heavier mineral content around — an RO system is the most direct fix for the taste."
+    ]
+  },
+  {
+    "slug": "commercial-kitchen-plumbing",
+    "name": "Commercial Kitchen Plumbing",
+    "lead": "A {city} kitchen's plumbing is a production system — when one piece fails, the whole line feels it.",
+    "paras": [
+      "We install and maintain plumbing for restaurants and commercial kitchens, including sinks, grease traps, dishwashers, and stainless steel under-counter plumbing.",
+      "We understand a health inspection or a dinner rush doesn't wait for a plumber's schedule, and we work with that reality."
+    ]
+  },
+  {
+    "slug": "backflow-preventer-installation",
+    "name": "Backflow Preventer Installation",
+    "lead": "A backflow preventer is one device standing between {city}'s clean water supply and whatever's in your irrigation or fire lines.",
+    "paras": [
+      "We install backflow prevention devices sized and set up to meet code requirements, protecting the water supply for homes and businesses alike.",
+      "Getting the installation right the first time means an easier pass on the annual test that follows."
+    ]
+  },
+  {
+    "slug": "backflow-preventer-repair",
+    "name": "Backflow Preventer Repair",
+    "lead": "A failed backflow test in {city} usually comes with a repair deadline — we move fast on the diagnosis, not the promises.",
+    "paras": [
+      "We repair and test backflow prevention devices to keep them code-compliant, including the annual testing many properties are required to schedule.",
+      "Worn check valves and relief valves are the most common culprits, and usually very repairable."
+    ]
   },
   {
     "slug": "whole-house-water-filtration",
     "name": "Whole House Water Filtration",
-    "meta": "Whole house water filtration in {city}, AZ — chlorine, taste, odor, and sediment handled at the point of entry. Honest system advice. (480) 878-0808.",
-    "lead": "One system at the point of entry, and every tap, shower, and appliance in the house gets better water.",
+    "lead": "One filtration system at the point of entry, and every tap in a {city} home benefits.",
     "paras": [
-      "Whole-house filtration treats water where it enters the home, so everything downstream benefits: chlorine taste and odor gone from showers and taps, sediment stopped before it reaches fixtures and appliance valves, and — paired with a softener — scale handled too. We install carbon systems, sediment filtration, and combination setups matched to what's actually in your water.",
-      "The honest part: no single cartridge does everything, and the 'whole-house RO' pitch is usually oversold for {city} homes. We test first, then build the right stack — often softener + carbon + drinking-water RO — and skip whatever your water doesn't need."
-    ],
-    "faqs": [
-      { "q": "What's the difference between filtration and softening?", "a": "Filtration removes chlorine, sediment, and taste-and-odor compounds; softening removes hardness minerals. They solve different problems, which is why the standard Valley setup uses both — each doing the job it's actually built for." },
-      { "q": "How often do whole-house filters need service?", "a": "Sediment and carbon media have service lives measured in months to years depending on type and usage. We'll set you up with a realistic schedule — and size the system so you're not changing cartridges every six weeks." },
-      { "q": "Will filtration fix the taste of my tap water?", "a": "Chlorine taste and odor, yes — dramatically. The mineral 'heaviness' of desert water is a softener-and-RO job. Tell us what bothers you about your water and we'll aim the system at that, not at a package on a shelf." }
-    ],
-    "related": ["reverse-osmosis-units", "water-softener-installation", "water-softener-repair", "water-heater-installation"]
+      "We install high-capacity filtration systems that remove sediment, chlorine, and other contaminants from all the water entering the home.",
+      "Paired with a softener, it's the combination most {city} homes with hard water end up needing anyway."
+    ]
+  },
+  {
+    "slug": "backflow-cage-installation",
+    "name": "Backflow Cage Installation",
+    "lead": "Copper theft is a real problem in {city} — a steel cage is the cheapest insurance a backflow preventer can get.",
+    "paras": [
+      "We install protective enclosures and cages around backflow devices to meet city code requirements and prevent damage or theft.",
+      "A cage sized and anchored correctly still leaves full access for testing and repairs — it just keeps the assembly from walking off."
+    ]
+  },
+  {
+    "slug": "emergency-plumbing",
+    "name": "Emergency Plumbing",
+    "lead": "Plumbing emergencies don't wait for business hours in {city}, and neither do we.",
+    "paras": [
+      "We're on call 24/7 to handle burst pipes, blocked drains, failed water heaters, gas leaks, leaking taps, toilets, flooding, and more.",
+      "Fast response, reliable repairs — day or night, any day of the week."
+    ]
   }
 ]

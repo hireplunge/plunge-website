@@ -4,6 +4,15 @@
 Reads services.json + cities.json + template.html (all in this folder)
 and writes one finished page per (city x service) pair.
 
+services.json holds slug, name, lead, and paras (1-2 body paragraphs) per
+service — real content grounded in the business's own service list
+(originally sourced from a Google Sheet transfer of their GBP services), but
+written to vary per city via the {city} token, so no two cities show
+identical body text (bad for SEO — duplicate-content pages rank worse).
+Meta tags and related-service links are still derived mechanically at build
+time, not hand-authored, so adding a city or service never requires touching
+this script.
+
 Usage (from the project root or anywhere):
     python3 _generator/generate.py
 
@@ -14,6 +23,7 @@ import html
 import json
 import pathlib
 import re
+import shutil
 import sys
 
 BASE = pathlib.Path(__file__).resolve().parent
@@ -23,7 +33,20 @@ cities = json.loads((BASE / "cities.json").read_text(encoding="utf-8"))
 services = json.loads((BASE / "services.json").read_text(encoding="utf-8"))
 template = (BASE / "template.html").read_text(encoding="utf-8")
 
-service_slugs = {s["slug"] for s in services}
+PHONE_DISPLAY = "(480) 878-0808"
+
+# Longest/most-specific suffixes first, so "X Detection & Repair" doesn't
+# get mis-stripped down to "X Detection &".
+FAMILY_SUFFIXES = [
+    " Installation & Repair",
+    " Detection & Repair",
+    " Installation",
+    " Replacement",
+    " Repair",
+    " Cleaning",
+    " Detection",
+    " Units",
+]
 
 
 def esc(text: str) -> str:
@@ -36,12 +59,39 @@ def fill(city: dict, text: str) -> str:
     return text.replace("{city}", city["name"])
 
 
+def family_key(name: str) -> str:
+    """Groups sibling services (e.g. 'Water Heater Installation' and
+    'Water Heater Repair') so related-service links can be derived from
+    the service list itself instead of hand-curated per entry."""
+    for suffix in FAMILY_SUFFIXES:
+        if name.endswith(suffix):
+            return name[: -len(suffix)]
+    return name
+
+
+def build_related(svc: dict) -> list:
+    """Same-family siblings first (e.g. other Water Heater services).
+    Services with no siblings (singletons) fall back to a fixed rotation
+    of other singletons, so no page is left with zero related links."""
+    key = family_key(svc["name"])
+    siblings = [s for s in services if s is not svc and family_key(s["name"]) == key]
+    if siblings:
+        return siblings[:4]
+
+    singletons = [s for s in services if s is not svc and not any(
+        s is not other and family_key(other["name"]) == family_key(s["name"])
+        for other in services
+    )]
+    start = singletons.index(svc) if svc in singletons else 0
+    rotated = singletons[start:] + singletons[:start]
+    return [s for s in rotated if s is not svc][:4]
+
+
 def build_page(city: dict, svc: dict) -> str:
-    h1name = svc.get("h1name", svc["name"])
-    h1 = f"{h1name} in {city['name']}, {city['state']}"
+    h1 = f"{svc['name']} in {city['name']}, {city['state']}"
     title = f"{h1} | Plunge, a Plumbing Co. LLC"
-    meta = fill(city, svc["meta"])
     lead = fill(city, svc["lead"])
+    meta = f"{h1} — {lead} Call {PHONE_DISPLAY}."
 
     body_html = "\n".join(
         f"                <p>{esc(fill(city, p))}</p>" for p in svc["paras"]
@@ -51,17 +101,10 @@ def build_page(city: dict, svc: dict) -> str:
         f"                <p>{esc(p)}</p>" for p in city["notePs"]
     )
 
-    related_html = ""
-    for slug in svc["related"]:
-        if slug not in service_slugs:
-            print(f"  WARNING: {svc['slug']} lists unknown related service '{slug}'")
-            continue
-        rel = next(s for s in services if s["slug"] == slug)
-        related_html += (
-            f"                <a class=\"related-chip\" "
-            f"href=\"{slug}.html\">{esc(rel['name'])}</a>\n"
-        )
-    related_html = related_html.rstrip("\n")
+    related_html = "\n".join(
+        f"                <a class=\"related-chip\" href=\"{rel['slug']}.html\">{esc(rel['name'])}</a>"
+        for rel in build_related(svc)
+    )
 
     svc_lower = svc["name"].lower()
     keywords = (
@@ -74,6 +117,7 @@ def build_page(city: dict, svc: dict) -> str:
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": svc["name"],
+            "description": lead,
             "provider": {
                 "@type": "Plumber",
                 "name": "Plunge, a Plumbing Co. LLC",
@@ -132,6 +176,8 @@ def main() -> int:
     total = 0
     for city in cities:
         outdir = ROOT / "services" / city["slug"]
+        if outdir.exists():
+            shutil.rmtree(outdir)  # clear stale pages from services no longer listed
         outdir.mkdir(parents=True, exist_ok=True)
         for svc in services:
             (outdir / f"{svc['slug']}.html").write_text(

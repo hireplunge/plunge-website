@@ -1926,8 +1926,31 @@ textarea {
         grid-template-columns: 1fr;
     }
 
+    /* Mobile footer: Quick Links and Contact stack as full-width rows
+       (Quick Links on top, Contact beneath it), rather than side-by-side
+       columns. The brand block (logo, name, license) still drops to the very
+       bottom via order. Desktop layout is unaffected. */
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    /* Quick Links' six links form two columns of three rows, filling DOWN
+       each column first — Home / Book a Service / Business Hours in column
+       one, then Reviews / Our Work / Service Areas in column two — so each
+       column keeps the original top-to-bottom reading order. */
+    .footer-links ul {
+        display: grid;
+        grid-template-rows: repeat(3, auto);
+        grid-auto-flow: column;
+        justify-content: start;      /* columns hug the left, not stretched apart */
+        column-gap: var(--space-lg);
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        order: 1;              /* pushed past Quick Links + Contact, to the bottom */
+        margin-top: var(--space-xs);
     }
 
     .footer-bottom {
