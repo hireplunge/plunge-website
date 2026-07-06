@@ -38,7 +38,7 @@
     "lead": "When your kitchen's plumbing goes down, you're not losing convenience — you're losing revenue by the hour.",
     "paras": [
       "Commercial kitchens punish their plumbing: grease, heat, constant use, and health-code scrutiny. Plunge services the whole back-of-house — floor drains and floor sinks, grease traps and interceptors, pre-rinse stations, dish machines, hand sinks, water heaters, and gas connections — and we understand that a health inspection or a dinner rush doesn't wait for a plumber's schedule.",
-      "We're available around the clock for {city} restaurants and commercial kitchens, and we work clean and fast so you can stay open — or get back open — as quickly as possible."
+      "We're available around the clock for {city} restaurants and commercial kitchens, and we work clean and tidy so you can stay open — or get back open — with as little disruption as we can manage."
     ],
     "faqs": [
       { "q": "Can you work around our service hours?", "a": "Yes. For working kitchens we routinely schedule around prep and service windows, including overnight work, so you never have to close for a repair that can be done at 2 am." },
@@ -50,7 +50,7 @@
   {
     "slug": "drain-cleaning",
     "name": "Drain Cleaning",
-    "meta": "Fast drain cleaning in {city}, AZ. Kitchen, bathroom, floor, and main-line clogs cleared right, 24/7. Licensed local plumbers. Call (480) 878-0808.",
+    "meta": "Drain cleaning in {city}, AZ. Kitchen, bathroom, floor, and main-line clogs cleared right, 24/7. Licensed local plumbers. Call (480) 878-0808.",
     "lead": "A slow drain is annoying. A stopped one can shut down your whole household — we clear both, any hour of the day.",
     "paras": [
       "Between hard-water scale, kitchen grease, tree roots hunting for moisture, and the grit that monsoon storms wash in, East Valley drains earn their clogs honestly. We clear kitchen and bathroom drains, laundry lines, floor drains, and main lines — using the right tool for the job, from augers to hydro-jetting — and we make sure the line actually flows before we leave.",
@@ -130,11 +130,11 @@
   {
     "slug": "garbage-disposal-repair",
     "name": "Garbage Disposal Repair",
-    "meta": "Garbage disposal repair in {city}, AZ — jams, leaks, humming units, and resets fixed fast by licensed plumbers. Call (480) 878-0808.",
+    "meta": "Garbage disposal repair in {city}, AZ — jams, leaks, humming units, and resets fixed by licensed plumbers. Call (480) 878-0808.",
     "lead": "A humming, jammed, or leaking disposal usually isn't dead — it's asking for a plumber, not a replacement.",
     "paras": [
       "Most disposal calls end well: jams cleared, stuck flywheels freed, leaking sink flanges resealed, and worn splash guards swapped. We diagnose before we replace, because half of the 'broken' disposals we see just need a proper repair.",
-      "That said, when the motor's burned out or the housing is cracked and leaking, we'll say so plainly and quote a replacement on the spot — installed the same visit in most cases, so your {city} kitchen isn't out of commission for days."
+      "That said, when the motor's burned out or the housing is cracked and leaking, we'll say so plainly and walk you through a replacement, so your {city} kitchen gets back to normal without the guesswork."
     ],
     "faqs": [
       { "q": "My disposal hums but won't spin. Is it toast?", "a": "Usually it's just jammed — something hard is wedged between the impeller and the grind ring. Don't keep hitting the switch (that's how motors actually burn out). We clear the jam and check the bearings while we're in there." },
@@ -150,7 +150,7 @@
     "lead": "A neglected grease trap will eventually pick its own moment to shut your kitchen down — always the worst one.",
     "paras": [
       "Grease interceptors only work when they're maintained: pumped and cleaned on schedule, baffles intact, flow rates right for the fixtures they serve. We clean and service traps, repair failing baffles and fittings, and replace undersized or corroded units — with the paperwork trail that municipal grease programs and inspectors expect.",
-      "If backups, odors, or a citation brought you here, we'll get the immediate problem handled fast, then put you on a maintenance interval that matches your {city} kitchen's actual volume — not a generic calendar."
+      "If backups, odors, or a citation brought you here, we'll get the immediate problem handled, then put you on a maintenance interval that matches your {city} kitchen's actual volume — not a generic calendar."
     ],
     "faqs": [
       { "q": "How often should our grease trap be cleaned?", "a": "The honest answer is 'when it's about a quarter full of grease and solids' — for busy kitchens that can be monthly, for lighter operations quarterly. We'll gauge yours and recommend an interval based on what we actually find." },
@@ -194,7 +194,7 @@
   {
     "slug": "plumbing-leak-repair",
     "name": "Plumbing Leak Repair",
-    "meta": "Plumbing leak repair in {city}, AZ — slab leaks, pinhole leaks, fittings, and fixtures fixed fast, 24/7. Licensed & insured. (480) 878-0808.",
+    "meta": "Plumbing leak repair in {city}, AZ — slab leaks, pinhole leaks, fittings, and fixtures repaired by licensed plumbers, 24/7. Licensed & insured. (480) 878-0808.",
     "lead": "Water damage compounds by the hour — the repair itself is almost always cheaper than the waiting.",
     "paras": [
       "From pinhole leaks in copper (a Valley classic, thanks to our water chemistry) to failed fittings, slab leaks, and leaking angle stops, we repair them all — and we're available around the clock, because burst lines don't respect business hours. First move if water is actively flowing: shut off the main, then call.",
@@ -263,7 +263,7 @@
     "lead": "A restaurant's plumbing is a production system — when one piece fails, the whole line feels it.",
     "paras": [
       "We build and service complete restaurant plumbing systems: grease interceptors, floor sinks and indirect waste, three-compartment sinks, dish machine connections, water filtration for espresso and steam equipment, high-recovery water heaters, and the gas lines feeding the cook line. New build-out, remodel, or a failing system that limps through every Friday — we've seen it.",
-      "For working restaurants in {city}, we schedule around service and offer genuine 24/7 response, because a Saturday-night backup is a right-now problem, not a Monday problem."
+      "For working restaurants in {city}, we schedule around service and are available 24/7, because a Saturday-night backup is a right-now problem, not a Monday problem."
     ],
     "faqs": [
       { "q": "Can you plumb a new restaurant build-out from plans?", "a": "Yes — we do full tenant-improvement plumbing from architect drawings through health and building inspections, coordinating with your GC, hood installer, and equipment supplier." },
@@ -422,7 +422,7 @@
   {
     "slug": "toilet-repair",
     "name": "Toilet Repair",
-    "meta": "Toilet repair in {city}, AZ — running, leaking, rocking, and clogging toilets fixed fast by licensed local plumbers. Call (480) 878-0808.",
+    "meta": "Toilet repair in {city}, AZ — running, leaking, rocking, and clogging toilets fixed by licensed local plumbers. Call (480) 878-0808.",
     "lead": "A running toilet can quietly waste more water than every other fixture in your house combined.",
     "paras": [
       "We fix all of it: phantom refills and constant running (usually a flapper or fill valve that hard water has finished off), weak or incomplete flushes, clogs that keep returning, leaks at the base or supply line, rocking bowls, and toilets that whistle, groan, or hammer when they refill.",
@@ -454,11 +454,11 @@
   {
     "slug": "water-heater-installation",
     "name": "Water Heater Installation",
-    "meta": "Water heater installation in {city}, AZ — gas, electric, and hybrid units sized right and installed to code, same-day in most cases. (480) 878-0808.",
+    "meta": "Water heater installation in {city}, AZ — gas, electric, and hybrid units sized right and installed to code by licensed plumbers. (480) 878-0808.",
     "lead": "The average water heater here lives a shorter life than the brochure promises — hard water sees to that. Install day is your best defense.",
     "paras": [
       "We install gas, electric, and heat-pump (hybrid) water heaters, sized to your household instead of just matching whatever was there before. A correct install in Arizona includes the details that actually determine lifespan and safety: expansion tank, proper T&P discharge, drip pan where required, seismic strapping, correct venting, and a code-compliant stand in garages.",
-      "Most replacements happen same-day or next-day — because discovering the tank died usually happens in the shower, not on a convenient schedule. We'll also talk frankly about whether tankless or hybrid makes sense for your {city} home, or whether a straightforward tank is honestly the best value."
+      "A tank rarely dies on a convenient schedule — it's usually discovered mid-shower — so we make the replacement as straightforward as we can. We'll also talk frankly about whether tankless or hybrid makes sense for your {city} home, or whether a standard tank is honestly the best value."
     ],
     "faqs": [
       { "q": "What size water heater does my household need?", "a": "It's about peak usage, not people-count alone: back-to-back showers, big tubs, and laundry habits matter. Fifty gallons suits many families, but we size from your actual routine — upsizing at install is cheap; regretting it isn't." },
@@ -470,7 +470,7 @@
   {
     "slug": "water-heater-repair",
     "name": "Water Heater Repair",
-    "meta": "Water heater repair in {city}, AZ — no hot water, leaks, noise, or pilot problems diagnosed and fixed fast, 24/7. Call (480) 878-0808.",
+    "meta": "Water heater repair in {city}, AZ — no hot water, leaks, noise, or pilot problems diagnosed and fixed, 24/7. Call (480) 878-0808.",
     "lead": "No hot water is a right-now problem — and half the time, the fix is a part, not a whole new tank.",
     "paras": [
       "We repair the failures that actually strand you cold: dead heating elements and thermostats, pilot and igniter problems, failed thermocouples, gas valve issues, leaking drain valves and fittings, and the popping, rumbling soundtrack of a tank full of hard-water sediment. Diagnosis first, honest verdict second.",
@@ -486,10 +486,10 @@
   {
     "slug": "water-heater-replacement",
     "name": "Water Heater Replacement",
-    "meta": "Water heater replacement in {city}, AZ — failing tanks swapped fast, hauled away, and upgraded to code. Same-day service in most cases. (480) 878-0808.",
+    "meta": "Water heater replacement in {city}, AZ — failing tanks swapped out, hauled away, and upgraded to code by licensed plumbers. (480) 878-0808.",
     "lead": "When a tank starts leaking from the seam, it isn't asking for a repair — it's giving you notice.",
     "paras": [
-      "Tanks in the Valley typically retire earlier than the national averages — hard-water sediment works them harder. When yours is leaking from the tank body, rusting at the base, or simply past its service life and misbehaving, we replace it fast: old unit drained and hauled off, new one installed to current code with expansion tank, pan, strapping, and venting done right.",
+      "Tanks in the Valley typically retire earlier than the national averages — hard-water sediment works them harder. When yours is leaking from the tank body, rusting at the base, or simply past its service life and misbehaving, we replace it: old unit drained and hauled off, new one installed to current code with expansion tank, pan, strapping, and venting done right.",
       "Replacement is also the moment to upgrade smart: a size that matches how your household actually lives, a hybrid heat-pump unit that thrives in a hot {city} garage, or a switch to tankless if endless hot water is the goal. We'll lay out the real costs and paybacks without pushing you anywhere."
     ],
     "faqs": [

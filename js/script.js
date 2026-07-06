@@ -26,27 +26,19 @@ const CONFIG = {
     /* -----------------------------------------------
        SERVICETITAN — Online Booking API
        -----------------------------------------------
-       Where to get these values:
-         Tenant ID  → ServiceTitan > Settings > Company
-         App Key    → developer.servicetitan.io > My Apps
-         Client ID / Secret → developer.servicetitan.io > My Apps > OAuth
+       ON HOLD — no backend is deployed at PROXY_ENDPOINT right now,
+       so every submission fails and shows the "please call us"
+       message below (see the submit handler's catch block). That's
+       intentional for now, not a bug: the form fails honestly instead
+       of pretending to work.
 
-       IMPORTANT: Never put CLIENT_SECRET in frontend code.
-       Use Option A (backend proxy) so the secret stays server-side.
+       When this gets picked back up, the backend proxy is where
+       ServiceTitan credentials belong — Tenant ID, App Key, Client
+       ID, Client Secret — as environment variables on whatever
+       server runs it. They must NEVER be added as fields here;
+       anything in js/script.js is public, downloaded by every visitor.
        ----------------------------------------------- */
     SERVICETITAN: {
-        TENANT_ID:     'YOUR_TENANT_ID',     // e.g. "1234567"
-        APP_KEY:       'YOUR_APP_KEY',       // e.g. "ak1ab2cd3ef4..."
-        CLIENT_ID:     'YOUR_CLIENT_ID',
-        CLIENT_SECRET: 'YOUR_CLIENT_SECRET', // ← keep on server, never exposed here
-        API_BASE:      'https://api.servicetitan.io',
-        AUTH_BASE:     'https://auth.servicetitan.io',
-
-        /* Your backend proxy endpoint for booking submissions.
-           Set this up as a serverless function or server route that
-           exchanges the form data for a ServiceTitan access token
-           and POSTs to the ServiceTitan Booking API on your behalf.
-           See the comment block in submitBooking() below for details. */
         PROXY_ENDPOINT: '/api/book-servicetitan',
     },
 
@@ -227,7 +219,7 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
         /* Success */
         statusEl.className   = 'booking-status success';
-        statusEl.textContent = '✓ Your booking request was received! We\'ll call to confirm within 1 hour, any time of day.';
+        statusEl.textContent = '✓ Your booking request was received! We\'ll be in touch to confirm the details.';
         form.reset();
         setMinDate();
 

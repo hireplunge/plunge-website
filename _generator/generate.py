@@ -51,14 +51,6 @@ def build_page(city: dict, svc: dict) -> str:
         f"                <p>{esc(p)}</p>" for p in city["notePs"]
     )
 
-    faq_html = "\n".join(
-        "                <details class=\"faq-item\">\n"
-        f"                    <summary>{esc(fill(city, f['q']))}</summary>\n"
-        f"                    <p>{esc(fill(city, f['a']))}</p>\n"
-        "                </details>"
-        for f in svc["faqs"]
-    )
-
     related_html = ""
     for slug in svc["related"]:
         if slug not in service_slugs:
@@ -106,34 +98,7 @@ def build_page(city: dict, svc: dict) -> str:
         indent=2,
     )
 
-    faq_schema = json.dumps(
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": fill(city, f["q"]),
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": fill(city, f["a"]),
-                    },
-                }
-                for f in svc["faqs"]
-            ],
-        },
-        indent=2,
-    )
-
-    # "Genuinely Local" trust card — phrased differently for Mesa itself
-    # (we're headquartered there) than for the other service areas.
-    if city["slug"] == "mesa":
-        local_line = "Mesa born and based — we serve the whole East Valley from right here."
-    else:
-        local_line = f"Based in nearby Mesa, serving {city['name']} and the whole Valley."
-
     tokens = {
-        "__LOCAL_LINE__": esc(local_line),
         "__SERVICE_NAME__": esc(svc["name"]),
         "__SERVICE_SLUG__": svc["slug"],
         "__CITY_NAME__": esc(city["name"]),
@@ -147,10 +112,8 @@ def build_page(city: dict, svc: dict) -> str:
         "__BODY_HTML__": body_html,
         "__CITY_NOTE_TITLE__": esc(city["noteTitle"]),
         "__CITY_NOTE_HTML__": note_html,
-        "__FAQ_HTML__": faq_html,
         "__RELATED_HTML__": related_html,
         "__SERVICE_SCHEMA__": service_schema,
-        "__FAQ_SCHEMA__": faq_schema,
     }
 
     page = template
