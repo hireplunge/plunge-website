@@ -88,10 +88,16 @@ def build_related(svc: dict) -> list:
 
 
 def build_page(city: dict, svc: dict) -> str:
-    h1 = f"{svc['name']} in {city['name']}, {city['state']}"
-    title = f"{h1} | Plunge, a Plumbing Co. LLC"
+    # Visible on-page heading drops the state for a cleaner look ("... in Mesa").
+    h1 = f"{svc['name']} in {city['name']}"
+    # The <title> tag and meta description KEEP the state — "Mesa, AZ" in the
+    # browser tab and Google search snippet still helps local-search ranking,
+    # which is the whole point of these pages. (Change seo_heading to h1 here
+    # if you ever want the state gone from those too.)
+    seo_heading = f"{svc['name']} in {city['name']}, {city['state']}"
+    title = f"{seo_heading} | Plunge, a Plumbing Co. LLC"
     lead = fill(city, svc["lead"])
-    meta = f"{h1} — {lead} Call {PHONE_DISPLAY}."
+    meta = f"{seo_heading} — {lead} Call {PHONE_DISPLAY}."
 
     body_html = "\n".join(
         f"                <p>{esc(fill(city, p))}</p>" for p in svc["paras"]

@@ -578,7 +578,6 @@ button {
 /* =============================================
    ABOUT US SECTION
    Background: dark gray
-   Uses Playfair Display for heading
    ============================================= */
 .about-section {
     background: var(--bg-dark);
@@ -644,7 +643,7 @@ button {
 }
 
 .stat-number {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);   /* Courier New — matches the rest of the site */
     font-size: 2.2rem;
     font-weight: 800;
     color: var(--orange);
