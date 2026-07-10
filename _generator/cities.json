@@ -1,0 +1,218 @@
+[
+  {
+    "slug": "mesa",
+    "name": "Mesa",
+    "state": "AZ",
+    "cityPage": "mesa.html",
+    "youtubeId": "",
+    "noteTitle": "Mesa Is Our Home Base",
+    "notePs": [
+      "Plunge is headquartered right here in Mesa. When you call us, you're reaching a local, family-run plumbing company that lives and works in the same community you do — not a dispatch center three cities away.",
+      "We work in every corner of the city, from its older mid-century neighborhoods — where original galvanized pipe and slab-era plumbing are reaching the end of their lifespan — out to its newest builds. And like the rest of the East Valley, Mesa's notoriously hard water is behind a huge share of the scale buildup, clogs, and worn-out fixtures we're called for."
+    ]
+  },
+  {
+    "slug": "ahwatukee",
+    "name": "Ahwatukee",
+    "state": "AZ",
+    "cityPage": "ahwatukee.html",
+    "youtubeId": "",
+    "noteTitle": "Local to Ahwatukee",
+    "notePs": [
+      "Ahwatukee is a short drive from our Mesa home base, so when you call Plunge you get a local, family-run plumbing company that already knows the area — not a dispatch center sending a stranger from the far side of the Valley.",
+      "A lot of Ahwatukee went up during the building booms of the 1980s and 90s, which means many homes are now reaching the age where original fixtures, shutoff valves, and water heaters start to give out. And as everywhere in the Valley, the hard water here is behind a big share of the scale, clogs, and worn parts we're called for."
+    ]
+  },
+  {
+    "slug": "apache-junction",
+    "name": "Apache Junction",
+    "state": "AZ",
+    "cityPage": "apache-junction.html",
+    "youtubeId": "",
+    "noteTitle": "Out East in Apache Junction",
+    "notePs": [
+      "Apache Junction sits at the eastern edge of the East Valley, a straightforward drive from our Mesa home base. You still get the same local, family-run Plunge team that knows the area — not a stranger routed from across the Valley.",
+      "Apache Junction has a mix you don't see everywhere: older established homes, manufactured homes, and rural properties, some on wells with their own pressure tanks and softeners. Combined with the Valley's hard water, that variety keeps us busy with everything from tank and softener work to aging fixtures and lines."
+    ]
+  },
+  {
+    "slug": "biltmore",
+    "name": "Biltmore",
+    "state": "AZ",
+    "cityPage": "biltmore.html",
+    "youtubeId": "",
+    "noteTitle": "Serving the Biltmore Area",
+    "notePs": [
+      "The Biltmore area sits in central Phoenix, an easy drive from our Mesa home base. Call Plunge and you get a local, family-run company that shows up and does the job right — not a rotating crew from a national service.",
+      "The Biltmore area is known for upscale homes, condos, and resort-style properties, which often means higher-end fixtures and more involved plumbing worth protecting. And the same hard water that works on every home in the Valley is behind much of the softener, water heater, and fixture work we handle here."
+    ]
+  },
+  {
+    "slug": "buckeye",
+    "name": "Buckeye",
+    "state": "AZ",
+    "cityPage": "buckeye.html",
+    "youtubeId": "",
+    "noteTitle": "Way West in Buckeye",
+    "notePs": [
+      "Buckeye is a longer haul from our Mesa home base, out at the western edge of the Valley — but it's a growing community we're glad to serve, with the same local, family-run team you'd get anywhere in our area.",
+      "Buckeye is one of the fastest-growing places in the whole country, turning open land into brand-new neighborhoods at a remarkable pace. New construction doesn't escape the Valley's hard water, though — it goes right to work on water heaters, softeners, and fixtures, which is a big part of what we're called for out here."
+    ]
+  },
+  {
+    "slug": "chandler",
+    "name": "Chandler",
+    "state": "AZ",
+    "cityPage": "chandler.html",
+    "youtubeId": "",
+    "noteTitle": "Right Down the Road in Chandler",
+    "notePs": [
+      "Chandler is practically next door to our Mesa home base, well within our home turf. Call Plunge and you reach a local, family-run team that works the East Valley every day — not a call center routing your job to whoever happens to be furthest away.",
+      "Chandler grew quickly from farm fields into one of the East Valley's busiest tech-and-family suburbs, so we see the full range: established homes from the 80s and 90s alongside much newer construction. And the Valley's notoriously hard water drives a huge share of the scale buildup, clogs, and failing fixtures we handle here."
+    ]
+  },
+  {
+    "slug": "gilbert",
+    "name": "Gilbert",
+    "state": "AZ",
+    "cityPage": "gilbert.html",
+    "youtubeId": "",
+    "noteTitle": "Gilbert Is on Our Home Turf",
+    "notePs": [
+      "Gilbert is a quick trip from our Mesa home base, so it sits squarely on our home turf. When you call Plunge, you're getting local, family-run plumbers who know the East Valley — not a distant dispatcher who's never worked the area.",
+      "Gilbert went from a small farming town to one of the Valley's largest master-planned suburbs in a single generation, so most of its homes are on the newer side. But newer homes aren't spared the Valley's hard water, which quietly scales up water heaters, fixtures, and softeners well before their time."
+    ]
+  },
+  {
+    "slug": "glendale",
+    "name": "Glendale",
+    "state": "AZ",
+    "cityPage": "glendale.html",
+    "youtubeId": "",
+    "noteTitle": "Serving Glendale",
+    "notePs": [
+      "Glendale is over on the west side of the Valley, a solid drive from our Mesa home base — and an area we're happy to cover with the same local, family-run service we bring closer to home.",
+      "Glendale is one of the older, more established West Valley cities, with a wide mix of housing from decades-old homes to newer builds. That older housing stock plus the Valley's hard water means we see plenty of tired galvanized lines, aging water heaters, and worn-out fixtures here."
+    ]
+  },
+  {
+    "slug": "goodyear",
+    "name": "Goodyear",
+    "state": "AZ",
+    "cityPage": "goodyear.html",
+    "youtubeId": "",
+    "noteTitle": "Out in Goodyear",
+    "notePs": [
+      "Goodyear sits on the west side of the Valley, a good drive from our Mesa home base, but firmly on our map. Call Plunge for a local, family-run crew rather than a faceless national dispatch line.",
+      "Goodyear has grown quickly into one of the West Valley's busier suburbs, with a lot of newer housing alongside its established neighborhoods. As everywhere in the Valley, the hard water here is behind a large share of the scale, worn fixtures, and struggling water heaters we get called for."
+    ]
+  },
+  {
+    "slug": "paradise-valley",
+    "name": "Paradise Valley",
+    "state": "AZ",
+    "cityPage": "paradise-valley.html",
+    "youtubeId": "",
+    "noteTitle": "Serving Paradise Valley",
+    "notePs": [
+      "Paradise Valley is an easy drive from our Mesa home base, and it's an area we're glad to cover. Call Plunge and you get a local, family-run company that treats your home with care — not a rotating cast from a national dispatch service.",
+      "Paradise Valley is known for larger, custom homes on generous lots, which often means more extensive plumbing runs, multiple water heaters, and higher-end fixtures worth protecting. And the Valley's hard water is as hard on a luxury home's plumbing as anyone's — a common reason we're called out here for softeners, water heaters, and fixture work."
+    ]
+  },
+  {
+    "slug": "peoria",
+    "name": "Peoria",
+    "state": "AZ",
+    "cityPage": "peoria.html",
+    "youtubeId": "",
+    "noteTitle": "Up in Peoria",
+    "notePs": [
+      "Peoria stretches across the northwest side of the Valley, a fair distance from our Mesa home base but well within reach. You get the same local, family-run Plunge team, not a call center.",
+      "Peoria runs from long-established neighborhoods in the south to newer growth pushing north, so we see the full range of ages and plumbing. What they share is the Valley's hard water, a steady source of the scale buildup, clogs, and worn fixtures we're called for."
+    ]
+  },
+  {
+    "slug": "phoenix",
+    "name": "Phoenix",
+    "state": "AZ",
+    "cityPage": "phoenix.html",
+    "youtubeId": "",
+    "noteTitle": "Serving Phoenix, Top to Bottom",
+    "notePs": [
+      "Phoenix is a straight shot from our Mesa home base, and it's a city we work in constantly. Call Plunge and you'll reach a local, family-run company rather than a national outfit routing your call through a distant center.",
+      "Phoenix covers just about every kind of home there is, from historic central districts with decades-old pipe to sprawling newer subdivisions on the edges of town. What ties them together is the same hard water the whole Valley shares — behind a large share of the clogs, scale, and worn-out fixtures we're called for."
+    ]
+  },
+  {
+    "slug": "queen-creek",
+    "name": "Queen Creek",
+    "state": "AZ",
+    "cityPage": "queen-creek.html",
+    "youtubeId": "",
+    "noteTitle": "Out in Queen Creek",
+    "notePs": [
+      "Queen Creek sits at the southeastern edge of our service area, an easy run from our Mesa home base. You still get the same local, family-run Plunge team — not a dispatcher who's never been out that way.",
+      "Queen Creek is one of the fastest-growing corners of the Southeast Valley, still turning former farmland into brand-new neighborhoods. Even on newer homes, the Valley's hard water goes to work early: scaling water heaters, clouding glass, and wearing out fixtures and softeners faster than you'd expect."
+    ]
+  },
+  {
+    "slug": "red-mountain-ranch",
+    "name": "Red Mountain Ranch",
+    "state": "AZ",
+    "cityPage": "red-mountain-ranch.html",
+    "youtubeId": "",
+    "noteTitle": "Local to Red Mountain Ranch",
+    "notePs": [
+      "Red Mountain Ranch is right in our backyard on the northeast side of Mesa — practically our home turf, since Mesa is where Plunge is based. You couldn't ask for a more local, family-run plumber.",
+      "Red Mountain Ranch is a master-planned community of largely newer homes, but newer construction is no match for the East Valley's hard water, which quietly scales up water heaters, fixtures, and softeners well before their expected lifespan — a common reason we're called out here."
+    ]
+  },
+  {
+    "slug": "san-tan-valley",
+    "name": "San Tan Valley",
+    "state": "AZ",
+    "cityPage": "san-tan-valley.html",
+    "youtubeId": "",
+    "noteTitle": "Down in San Tan Valley",
+    "notePs": [
+      "San Tan Valley is at the far southeastern reach of our service area, a longer run from our Mesa home base but well worth it — you get the same local, family-run Plunge crew, not a dispatcher who's never worked out there.",
+      "San Tan Valley is one of the newest, fastest-growing communities in the Southeast Valley, much of it built in the last couple of decades on former open desert. Even brand-new homes here run into the Valley's hard water early, which scales up water heaters and softeners and wears out fixtures sooner than homeowners expect."
+    ]
+  },
+  {
+    "slug": "scottsdale",
+    "name": "Scottsdale",
+    "state": "AZ",
+    "cityPage": "scottsdale.html",
+    "youtubeId": "",
+    "noteTitle": "At Home in Scottsdale",
+    "notePs": [
+      "Scottsdale is an easy drive from our Mesa home base and well within the East Valley territory we cover every day. Call Plunge for a local, family-run crew rather than a faceless dispatch service.",
+      "Scottsdale runs from long-established homes to newer builds stretching far to the north, and its hard water is as demanding as anywhere in the Valley — a major reason we get so many calls here for scaled-up water heaters, softeners, and fixtures."
+    ]
+  },
+  {
+    "slug": "sun-city",
+    "name": "Sun City",
+    "state": "AZ",
+    "cityPage": "sun-city.html",
+    "youtubeId": "",
+    "noteTitle": "Serving Sun City",
+    "notePs": [
+      "Sun City is on the northwest side of the Valley, a good drive from our Mesa home base — and a community we're glad to serve with a patient, respectful, family-run approach rather than a rushed national outfit.",
+      "Sun City is one of the Valley's original retirement communities, so much of its housing dates to the 1960s and 70s — an era when the plumbing, water heaters, and fixtures now being replaced were first installed. Decades of the Valley's hard water only accelerates that, which is a big part of what brings us out here."
+    ]
+  },
+  {
+    "slug": "tempe",
+    "name": "Tempe",
+    "state": "AZ",
+    "cityPage": "tempe.html",
+    "youtubeId": "",
+    "noteTitle": "Just Up the Road in Tempe",
+    "notePs": [
+      "Tempe sits right between us and the heart of the Valley, just up the road from our Mesa home base — about as local as it gets. Plunge is family-run, so you deal with us directly, not a call center.",
+      "Tempe is one of the older, more built-out cities in the East Valley, with plenty of established homes and rental properties whose original plumbing has been working for decades. Add in the Valley's hard water and it's no surprise how often we're called for aging fixtures, stubborn clogs, and tired water heaters here."
+    ]
+  }
+]

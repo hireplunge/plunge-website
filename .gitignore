@@ -1,0 +1,16 @@
+# =============================================
+# Plunge Website — files git should never track
+# =============================================
+
+# macOS Finder metadata (shouldn't ship to the live site)
+.DS_Store
+
+# iCloud placeholders and sync-conflict copies, e.g. "drain-cleaning 2.html".
+# These are the junk duplicates iCloud creates when the synced Desktop folder
+# conflicts across devices — ignoring them keeps them out of the repo for good.
+*.icloud
+* [0-9].html
+* [0-9][0-9].html
+
+# Machine-specific Claude Code settings (not part of the website)
+.claude/settings.local.json
