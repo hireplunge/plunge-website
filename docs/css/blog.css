@@ -161,11 +161,14 @@
     padding: var(--space-lg) 0 var(--space-xl);
 }
 
-/* Readable measure, centered; text sits on the dark background like the
-   service pages' body copy (no heavy card box around long-form reading). */
+/* Text sits on the dark background like the service pages' body copy (no
+   heavy card box around long-form reading). Left-aligned within the container
+   (not centered) and a little wider than before, so the title + body shift
+   left and leave room on the right for an optional magazine-style photo
+   column (see .blog-figure below). */
 .blog-article {
-    max-width: 720px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 0 auto 0 0;
 }
 
 .blog-article-title {
@@ -195,14 +198,84 @@
 .blog-article-body p {
     margin: 0 0 1.1rem;
 }
-.blog-article-body p:first-child {
-    /* Lead paragraph reads a touch larger, like the site's intro leads */
+/* Lead paragraph reads a touch larger, like the site's intro leads. Uses
+   first-of-type (not first-child) so it still applies when an optional
+   .blog-figure precedes the paragraphs in the body. */
+.blog-article-body > p:first-of-type {
     font-size: 1.12rem;
     color: var(--white);
 }
 
+/* ---- Magazine photo column ----
+   Floats to the right of the body text, its top level with the top of the
+   body; the text wraps down its left and then runs full-width once it passes
+   the bottom. Holds one or more stacked photos. Each .blog-photo-frame is a
+   fixed-ratio box that shows a "Picture coming soon" placeholder until a real
+   <img> is dropped in (via a post's "photos" list) — same box either way, so
+   turning a photo on causes no layout shift. */
+.blog-figure {
+    float: right;
+    width: 38%;
+    max-width: 340px;
+    margin: 0.35rem 0 var(--space-md) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+.blog-photo {
+    margin: 0;
+}
+.blog-photo-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    aspect-ratio: 4 / 3;
+    background: var(--blue-dark);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-lg);
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    overflow: hidden;
+}
+.blog-photo-frame .fa {
+    font-size: 2.1rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+/* Real photo (once a "src" is supplied) fills the exact same box */
+.blog-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: block;
+}
+.blog-photo-caption {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* On narrow screens the float would crush the text column, so the photo
+   column drops below the float: full width, stacked above the body text. */
+@media (max-width: 760px) {
+    .blog-figure {
+        float: none;
+        width: 100%;
+        max-width: none;
+        margin: 0 0 var(--space-md);
+    }
+}
+
 /* Foot of the article: back link + call-to-action buttons */
 .blog-article-foot {
+    clear: both; /* drop below the floated photo column if the body is short */
     margin-top: var(--space-lg);
     padding-top: var(--space-md);
     border-top: 1px solid rgba(255, 255, 255, 0.12);

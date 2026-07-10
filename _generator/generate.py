@@ -290,6 +290,42 @@ def build_blog_card(post: dict) -> str:
     )
 
 
+def build_blog_figure(post: dict) -> str:
+    """Optional 'magazine' photo column that floats to the right of a post's
+    body text (its top level with the top of the body; the text wraps beneath
+    it once it runs past the bottom). Same placeholder->real pattern as the
+    videos: a photo with an empty 'src' renders a "Picture coming soon"
+    placeholder; fill in its 'src' (e.g. "../images/blog/<slug>-1.jpg") + 'alt'
+    and re-run to show the real photo in the EXACT same box — no layout shift.
+    Supports multiple photos (stacked, newest idea: top-to-bottom) and an
+    optional per-photo 'caption'. Returns '' when a post has no 'photos', so
+    every existing post is untouched until images are added."""
+    photos = post.get("photos") or []
+    if not photos:
+        return ""
+    items = []
+    for photo in photos:
+        src = (photo.get("src") or "").strip()
+        if src:
+            frame = f'<img src="{esc(src)}" alt="{esc(photo.get("alt", ""))}" loading="lazy">'
+        else:
+            frame = (
+                '<i class="fa fa-image" aria-hidden="true"></i>\n'
+                '                            <span>Picture coming soon</span>'
+            )
+        caption = photo.get("caption", "")
+        cap_html = (
+            f'\n                        <figcaption class="blog-photo-caption">{esc(caption)}</figcaption>'
+            if caption else ""
+        )
+        items.append(
+            '                    <figure class="blog-photo">\n'
+            f'                        <div class="blog-photo-frame">{frame}</div>{cap_html}\n'
+            '                    </figure>'
+        )
+    return '<div class="blog-figure">\n' + "\n".join(items) + '\n                </div>'
+
+
 def build_blog_post_page(post: dict) -> str:
     body = "\n".join(f"                    <p>{esc(p)}</p>" for p in post["body"])
     tokens = {
@@ -298,6 +334,7 @@ def build_blog_post_page(post: dict) -> str:
         "__POST_EXCERPT__": esc(post["excerpt"]),
         "__POST_DATE__": esc(format_post_date(post.get("date", ""))),
         "__POST_AUTHOR__": esc(post.get("author", "The Plunge Team")),
+        "__POST_FIGURE__": build_blog_figure(post),
         "__POST_BODY__": body,
     }
     page = blog_post_template
