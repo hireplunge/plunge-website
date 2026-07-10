@@ -162,13 +162,12 @@
 }
 
 /* Text sits on the dark background like the service pages' body copy (no
-   heavy card box around long-form reading). Left-aligned within the container
-   (not centered) and a little wider than before, so the title + body shift
-   left and leave room on the right for an optional magazine-style photo
-   column (see .blog-figure below). */
+   heavy card box around long-form reading). Centered with equal margins on
+   both sides, and a little wider than before so there's room on the right for
+   an optional magazine-style photo column (see .blog-figure below). */
 .blog-article {
     max-width: 900px;
-    margin: 0 auto 0 0;
+    margin: 0 auto;
 }
 
 .blog-article-title {
@@ -215,15 +214,17 @@
    turning a photo on causes no layout shift. */
 .blog-figure {
     float: right;
-    width: 38%;
-    max-width: 340px;
+    width: 50%;
+    max-width: 440px;
     margin: 0.35rem 0 var(--space-md) var(--space-lg);
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap; /* photos sit side by side, wrapping to a new row for 3+ */
     gap: var(--space-sm);
 }
 .blog-photo {
     margin: 0;
+    flex: 1 1 130px; /* share the row width evenly */
+    min-width: 0;
 }
 .blog-photo-frame {
     display: flex;
