@@ -157,14 +157,39 @@ Answered," "Website Folder Review," "Choosing Your Blog Platform"):
 7. Build the blog (below) when ready — it slots into this generator
    without structural changes.
 
-## Blog plan (decided July 2026 — file-based at /blog)
+## Blog (file-based at /blog) — STARTED July 2026
 
 Supersedes both the earlier "external platform" placeholder links AND the
 Substack idea. Per "Choosing Your Blog Platform" (July 2026): Substack and
 Medium cannot live at hireplunge.com/blog, so posts there would build
 *their* domain authority, not ours — disqualifying for an SEO-first blog.
 
-The chosen setup extends this generator's existing pattern:
+**Built so far (design draft):** the blog index (`docs/blog/index.html`) and
+one page per post (`docs/blog/<slug>.html`), generated from
+`blog-posts.json` + `blog-index-template.html` + `blog-post-template.html`,
+styled by `docs/css/blog.css`. Currently seeded with 5 PLACEHOLDER posts and
+a placeholder intro paragraph (for design review). Posts show newest-first.
+
+### To add or edit a blog post
+
+1. Edit `_generator/blog-posts.json`. Each post is:
+   `{ "slug", "title", "date" (YYYY-MM-DD), "author", "excerpt", "body": [paragraphs] }`.
+2. Run `python3 _generator/generate.py`. The index re-sorts newest-first
+   automatically and a page is (re)built for each post.
+   (Note: `build_blog()` does NOT rmtree docs/blog/, so if you RENAME or
+   DELETE a post's slug, remove the stale `docs/blog/<old-slug>.html` by hand.)
+
+### Still TODO on the blog (not built yet)
+
+- **Wire up the links**: nav "Blog" + footer "Read Our Blog" still point at
+  the `REPLACE-WITH-BLOG-URL.example.com` placeholder (owner asked to keep
+  them dead until the design is approved). When ready: point them at
+  `blog/` (from root pages) / `../blog/` (from one-level-deep pages) and drop
+  `target="_blank"`.
+- **Scheduling** (future dates + build skip + Netlify build-hook trigger),
+  **sitemap.xml**, and **RSS** — all still to add (see below).
+
+### Original plan notes (still the direction)
 
 - Each post = a small text file (title, date, meta description, body) in
   the repo; a post template turns it into a static page at

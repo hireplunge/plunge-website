@@ -9,8 +9,8 @@
 # These are the junk duplicates iCloud creates when the synced Desktop folder
 # conflicts across devices — ignoring them keeps them out of the repo for good.
 *.icloud
-* [0-9].html
-* [0-9][0-9].html
+* [0-9].*
+* [0-9][0-9].*
 
-# Machine-specific Claude Code settings (not part of the website)
-.claude/settings.local.json
+# Claude Code tooling — local only, never part of the website or the repo
+.claude/

@@ -1,0 +1,188 @@
+/* =============================================
+   PLUNGE, A PLUMBING CO. — Blog
+   For the generated pages in docs/blog/ (index + per-post).
+   Extends styles.css and city.css — load those FIRST.
+   Reuses the site's design language: Courier New, orange accents,
+   dark-blue cards on the dark-grey background.
+   ============================================= */
+
+
+/* ---- Blog hero (title + intro) ---- */
+.blog-hero {
+    background: var(--bg-dark);
+    color: var(--white);
+    padding: var(--space-xl) 0 var(--space-lg);
+}
+
+.blog-hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--white);
+    margin: 0.4rem 0 var(--space-md);
+}
+
+.blog-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 720px;
+}
+.blog-intro em {
+    color: rgba(255, 255, 255, 0.55);
+    font-style: italic;
+}
+
+
+/* ---- Post list ---- */
+.blog-list-section {
+    background: var(--bg-dark);
+    padding: 0 0 var(--space-xl);
+}
+
+/* Single readable column, centered */
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* One card per post — mirrors the review/service cards (dark-blue with an
+   orange top + left accent bar) so it feels native to the rest of the site. */
+.blog-card {
+    background: var(--blue-dark);
+    border-radius: var(--radius-lg);
+    border-top: 4px solid var(--orange);
+    border-left: 4px solid var(--orange);
+    box-shadow: var(--shadow-sm);
+    transition: var(--ease);
+}
+.blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Whole card is clickable */
+.blog-card-link {
+    display: block;
+    padding: var(--space-md);
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-card-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin: 0 0 0.4rem;
+}
+
+.blog-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--white);
+    margin: 0 0 0.5rem;
+    transition: color 0.2s ease;
+}
+.blog-card:hover .blog-card-title {
+    color: var(--orange);
+}
+
+.blog-card-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0 0 0.75rem;
+}
+
+.blog-card-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--orange);
+}
+.blog-card-more .fa {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+.blog-card:hover .blog-card-more .fa {
+    transform: translateX(3px);
+}
+
+
+/* ---- Single post page ---- */
+.blog-article-section {
+    background: var(--bg-dark);
+    padding: var(--space-lg) 0 var(--space-xl);
+}
+
+/* Readable measure, centered; text sits on the dark background like the
+   service pages' body copy (no heavy card box around long-form reading). */
+.blog-article {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.blog-article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    margin: 0.4rem 0 0.5rem;
+}
+
+.blog-article-meta {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin: 0 0 var(--space-md);
+}
+
+.blog-article-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.88);
+}
+.blog-article-body p {
+    margin: 0 0 1.1rem;
+}
+.blog-article-body p:first-child {
+    /* Lead paragraph reads a touch larger, like the site's intro leads */
+    font-size: 1.12rem;
+    color: var(--white);
+}
+
+/* Foot of the article: back link + call-to-action buttons */
+.blog-article-foot {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.blog-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--orange);
+    margin-bottom: var(--space-md);
+}
+.blog-back:hover {
+    color: var(--white);
+}

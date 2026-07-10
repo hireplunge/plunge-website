@@ -29,6 +29,7 @@ import pathlib
 import re
 import shutil
 import sys
+from datetime import datetime
 
 BASE = pathlib.Path(__file__).resolve().parent
 ROOT = BASE.parent
@@ -37,6 +38,9 @@ cities = json.loads((BASE / "cities.json").read_text(encoding="utf-8"))
 services = json.loads((BASE / "services.json").read_text(encoding="utf-8"))
 template = (BASE / "template.html").read_text(encoding="utf-8")
 city_template = (BASE / "city-template.html").read_text(encoding="utf-8")
+blog_posts = json.loads((BASE / "blog-posts.json").read_text(encoding="utf-8"))
+blog_index_template = (BASE / "blog-index-template.html").read_text(encoding="utf-8")
+blog_post_template = (BASE / "blog-post-template.html").read_text(encoding="utf-8")
 
 PHONE_DISPLAY = "(480) 878-0808"
 
@@ -246,6 +250,78 @@ def build_city_page(city: dict) -> str:
     return page
 
 
+# =============================================
+# BLOG — index (newest first) + one page per post, from blog-posts.json.
+# File-based, generated, matching the site (see README "Blog plan").
+# =============================================
+
+def format_post_date(iso: str) -> str:
+    """'2026-07-14' -> 'July 14, 2026' (for display). Falls back to the raw
+    string if it isn't a plain ISO date, so a bad date never crashes a build."""
+    try:
+        return datetime.strptime(iso, "%Y-%m-%d").strftime("%B %-d, %Y")
+    except ValueError:
+        return iso
+
+
+def sorted_posts() -> list:
+    """Newest first, by date. Ties keep source order (stable sort)."""
+    return sorted(blog_posts, key=lambda p: p.get("date", ""), reverse=True)
+
+
+def build_blog_card(post: dict) -> str:
+    return (
+        '                <article class="blog-card">\n'
+        f'                    <a class="blog-card-link" href="{post["slug"]}.html">\n'
+        f'                        <p class="blog-card-date">{esc(format_post_date(post.get("date", "")))}</p>\n'
+        f'                        <h2 class="blog-card-title">{esc(post["title"])}</h2>\n'
+        f'                        <p class="blog-card-excerpt">{esc(post["excerpt"])}</p>\n'
+        '                        <span class="blog-card-more">Read article <i class="fa fa-arrow-right" aria-hidden="true"></i></span>\n'
+        '                    </a>\n'
+        '                </article>'
+    )
+
+
+def build_blog_post_page(post: dict) -> str:
+    body = "\n".join(f"                    <p>{esc(p)}</p>" for p in post["body"])
+    tokens = {
+        "__POST_TITLE__": esc(post["title"]),
+        "__POST_SLUG__": post["slug"],
+        "__POST_EXCERPT__": esc(post["excerpt"]),
+        "__POST_DATE__": esc(format_post_date(post.get("date", ""))),
+        "__POST_AUTHOR__": esc(post.get("author", "The Plunge Team")),
+        "__POST_BODY__": body,
+    }
+    page = blog_post_template
+    for token, value in tokens.items():
+        page = page.replace(token, value)
+    stray = re.findall(r"__[A-Z_]+__", page)
+    if stray:
+        print(f"  WARNING: unreplaced tokens in blog post {post['slug']}: {set(stray)}")
+    return page
+
+
+def build_blog() -> int:
+    outdir = ROOT / "docs" / "blog"
+    outdir.mkdir(parents=True, exist_ok=True)
+    posts = sorted_posts()
+
+    # Index (post list, newest first)
+    cards = "\n".join(build_blog_card(p) for p in posts)
+    index = blog_index_template.replace("__BLOG_POST_LIST__", cards)
+    stray = re.findall(r"__[A-Z_]+__", index)
+    if stray:
+        print(f"  WARNING: unreplaced tokens in blog index: {set(stray)}")
+    (outdir / "index.html").write_text(index, encoding="utf-8")
+
+    # One page per post
+    for post in posts:
+        (outdir / f"{post['slug']}.html").write_text(
+            build_blog_post_page(post), encoding="utf-8"
+        )
+    return len(posts)
+
+
 def main() -> int:
     total = 0
     for city in cities:
@@ -268,7 +344,13 @@ def main() -> int:
             )
             total += 1
         print(f"{city['name']}: 1 hub page + {len(services)} service pages")
-    print(f"Done. {len(cities)} city hub pages + {total} service pages generated.")
+
+    # 3) The blog: docs/blog/index.html + one page per post
+    n_posts = build_blog()
+    print(f"Blog: 1 index + {n_posts} post pages")
+
+    print(f"Done. {len(cities)} city hub pages + {total} service pages + "
+          f"1 blog index + {n_posts} blog posts generated.")
     return 0
 
 
