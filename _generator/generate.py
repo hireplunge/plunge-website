@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the per-city, per-service landing pages in services/<city>/.
+"""Builds the per-city, per-service landing pages in docs/services/<city>/.
 
 Reads services.json + cities.json + template.html (all in this folder)
 and writes one finished page per (city x service) pair.
@@ -17,6 +17,10 @@ Usage (from the project root or anywhere):
     python3 _generator/generate.py
 
 See README.md in this folder for how to add cities/services.
+
+PARKED / TODO (owner wants these back later — see README "Parked features"):
+  - collapsed FAQ per service (2-3 Q&A, <details> accordions, + FAQPage schema)
+  - trimmed trust-signals block (ROC license #, licensed/insured, 24/7)
 """
 
 import html
@@ -181,7 +185,9 @@ def build_page(city: dict, svc: dict) -> str:
 def main() -> int:
     total = 0
     for city in cities:
-        outdir = ROOT / "services" / city["slug"]
+        # Pages are written into docs/ — the ONLY folder that gets published
+        # (docs/ = the public website; everything else in the repo is private).
+        outdir = ROOT / "docs" / "services" / city["slug"]
         if outdir.exists():
             shutil.rmtree(outdir)  # clear stale pages from services no longer listed
         outdir.mkdir(parents=True, exist_ok=True)
