@@ -205,25 +205,37 @@
     color: var(--white);
 }
 
-/* ---- Magazine photo column ----
-   Floats to the right of the body text, its top level with the top of the
-   body; the text wraps down its left and then runs full-width once it passes
-   the bottom. Holds one or more stacked photos. Each .blog-photo-frame is a
-   fixed-ratio box that shows a "Picture coming soon" placeholder until a real
-   <img> is dropped in (via a post's "photos" list) — same box either way, so
-   turning a photo on causes no layout shift. */
+/* ---- Magazine photo figures ----
+   Each photo floats into the body text; figures alternate sides down the
+   article (first right, next left, and so on — set by generate.py). The text
+   wraps around each one, then runs full-width once it passes the bottom.
+   'clear: both' makes every figure start below the previous one, so photos
+   cascade down the page and never end up side by side — unless a figure is an
+   explicit group (multiple photos), which sit together inside a single float.
+   Each .blog-photo-frame is a fixed-ratio box showing a "Picture coming soon"
+   placeholder until a real <img> is dropped in (via a post's "photos" list) —
+   same box either way, so turning a photo on causes no layout shift. */
 .blog-figure {
-    float: right;
-    width: 50%;
-    max-width: 440px;
-    margin: 0.35rem 0 var(--space-md) var(--space-lg);
+    clear: both;
+    width: 46%;
+    max-width: 420px;
+    margin-top: 0.35rem;
+    margin-bottom: var(--space-md);
     display: flex;
-    flex-flow: row wrap; /* photos sit side by side, wrapping to a new row for 3+ */
+    flex-flow: row wrap; /* a lone photo fills the figure; a group sits side by side */
     gap: var(--space-sm);
+}
+.blog-figure--right {
+    float: right;
+    margin-left: var(--space-lg); /* text wraps down the left */
+}
+.blog-figure--left {
+    float: left;
+    margin-right: var(--space-lg); /* text wraps down the right */
 }
 .blog-photo {
     margin: 0;
-    flex: 1 1 130px; /* share the row width evenly */
+    flex: 1 1 130px; /* one photo fills the figure; grouped photos share the width */
     min-width: 0;
 }
 .blog-photo-frame {
@@ -263,10 +275,12 @@
     color: rgba(255, 255, 255, 0.55);
 }
 
-/* On narrow screens the float would crush the text column, so the photo
-   column drops below the float: full width, stacked above the body text. */
+/* On narrow screens a float would crush the text column, so every figure
+   drops the float and goes full width, sitting inline between paragraphs. */
 @media (max-width: 760px) {
-    .blog-figure {
+    .blog-figure,
+    .blog-figure--left,
+    .blog-figure--right {
         float: none;
         width: 100%;
         max-width: none;

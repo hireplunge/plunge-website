@@ -290,52 +290,80 @@ def build_blog_card(post: dict) -> str:
     )
 
 
-def build_blog_figure(post: dict) -> str:
-    """Optional 'magazine' photo column that floats to the right of a post's
-    body text (its top level with the top of the body; the text wraps beneath
-    it once it runs past the bottom). Same placeholder->real pattern as the
-    videos: a photo with an empty 'src' renders a "Picture coming soon"
-    placeholder; fill in its 'src' (e.g. "../images/blog/<slug>-1.jpg") + 'alt'
-    and re-run to show the real photo in the EXACT same box — no layout shift.
-    Supports multiple photos (stacked, newest idea: top-to-bottom) and an
-    optional per-photo 'caption'. Returns '' when a post has no 'photos', so
-    every existing post is untouched until images are added."""
-    photos = post.get("photos") or []
-    if not photos:
-        return ""
-    items = []
-    for photo in photos:
-        src = (photo.get("src") or "").strip()
-        if src:
-            frame = f'<img src="{esc(src)}" alt="{esc(photo.get("alt", ""))}" loading="lazy">'
-        else:
-            frame = (
-                '<i class="fa fa-image" aria-hidden="true"></i>\n'
-                '                            <span>Picture coming soon</span>'
-            )
-        caption = photo.get("caption", "")
-        cap_html = (
-            f'\n                        <figcaption class="blog-photo-caption">{esc(caption)}</figcaption>'
-            if caption else ""
+def render_photo(photo: dict) -> str:
+    """One photo's inner markup: a real <img> once its 'src' is filled in, or
+    the "Picture coming soon" placeholder until then — the same box either way,
+    so turning a photo on causes no layout shift. Optional 'caption'."""
+    src = (photo.get("src") or "").strip()
+    if src:
+        frame = f'<img src="{esc(src)}" alt="{esc(photo.get("alt", ""))}" loading="lazy">'
+    else:
+        frame = (
+            '<i class="fa fa-image" aria-hidden="true"></i>'
+            '<span>Picture coming soon</span>'
         )
-        items.append(
-            '                    <figure class="blog-photo">\n'
-            f'                        <div class="blog-photo-frame">{frame}</div>{cap_html}\n'
-            '                    </figure>'
-        )
-    return '<div class="blog-figure">\n' + "\n".join(items) + '\n                </div>'
+    caption = photo.get("caption", "")
+    cap_html = (
+        f'\n                            <figcaption class="blog-photo-caption">{esc(caption)}</figcaption>'
+        if caption else ""
+    )
+    return (
+        '                        <figure class="blog-photo">\n'
+        f'                            <div class="blog-photo-frame">{frame}</div>{cap_html}\n'
+        '                        </figure>'
+    )
+
+
+def build_blog_figure(item, index: int) -> str:
+    """One floated photo figure. 'item' is normally a single photo dict (one
+    large photo); it may instead be a LIST of photo dicts, an explicit
+    side-by-side group. Figures alternate sides down the article — the first
+    floats right, the next left, and so on — unless a single photo pins itself
+    with "side": "left" or "right"."""
+    if isinstance(item, list):
+        photos = item
+        side = "left" if index % 2 else "right"
+    else:
+        photos = [item]
+        side = (item.get("side") or "").strip() or ("left" if index % 2 else "right")
+    side_class = "blog-figure--left" if side == "left" else "blog-figure--right"
+    inner = "\n".join(render_photo(p) for p in photos)
+    return (
+        f'                    <div class="blog-figure {side_class}">\n'
+        f'{inner}\n'
+        '                    </div>'
+    )
+
+
+def build_blog_body(post: dict) -> str:
+    """Inner HTML of .blog-article-body: the post's paragraphs, with any photo
+    figures interleaved and spread evenly down the text so they alternate
+    right/left as the reader scrolls (magazine style). Posts with no 'photos'
+    are just paragraphs, exactly as before."""
+    paras = post["body"]
+    figures = post.get("photos") or []
+    # Assign each figure to a paragraph, spaced evenly through the body, so the
+    # photos are distributed down the article rather than clustered at the top.
+    placement = {}
+    n = len(figures)
+    for i, item in enumerate(figures):
+        para_idx = min((i * len(paras)) // n, len(paras) - 1) if n else 0
+        placement.setdefault(para_idx, []).append(build_blog_figure(item, i))
+    lines = []
+    for pi, para in enumerate(paras):
+        lines.extend(placement.get(pi, []))
+        lines.append(f"                    <p>{esc(para)}</p>")
+    return "\n".join(lines)
 
 
 def build_blog_post_page(post: dict) -> str:
-    body = "\n".join(f"                    <p>{esc(p)}</p>" for p in post["body"])
     tokens = {
         "__POST_TITLE__": esc(post["title"]),
         "__POST_SLUG__": post["slug"],
         "__POST_EXCERPT__": esc(post["excerpt"]),
         "__POST_DATE__": esc(format_post_date(post.get("date", ""))),
         "__POST_AUTHOR__": esc(post.get("author", "The Plunge Team")),
-        "__POST_FIGURE__": build_blog_figure(post),
-        "__POST_BODY__": body,
+        "__POST_BODY__": build_blog_body(post),
     }
     page = blog_post_template
     for token, value in tokens.items():
