@@ -35,6 +35,31 @@
     font-style: italic;
 }
 
+/* Hero layout: text on the left, video on the right. Collapses to a single
+   stacked column on narrower screens (video drops below the text). */
+.blog-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+.blog-hero-text {
+    min-width: 0;
+}
+/* The video (placeholder or real embed) fills its column here — override the
+   city-page cap/spacing so it sits flush beside the header text. */
+.blog-hero-media .video-placeholder,
+.blog-hero-media .video-embed {
+    max-width: none;
+    margin-bottom: 0;
+}
+@media (max-width: 820px) {
+    .blog-hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+}
+
 
 /* ---- Post list ---- */
 .blog-list-section {
@@ -42,13 +67,22 @@
     padding: 0 0 var(--space-xl);
 }
 
-/* Single readable column, centered */
+/* Two-wide grid, centered. Cards flow in source order (posts are emitted
+   newest-first), so the grid fills left-to-right then down: newest top-left,
+   next to its right, then the following pair on the row below, and so on.
+   Collapses to a single column on narrow screens. */
 .blog-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
-    max-width: 760px;
+    max-width: 1040px;
     margin: 0 auto;
+}
+@media (max-width: 700px) {
+    .blog-list {
+        grid-template-columns: 1fr;
+        max-width: 640px;
+    }
 }
 
 /* One card per post — mirrors the review/service cards (dark-blue with an

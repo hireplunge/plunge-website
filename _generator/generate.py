@@ -42,6 +42,11 @@ blog_posts = json.loads((BASE / "blog-posts.json").read_text(encoding="utf-8"))
 blog_index_template = (BASE / "blog-index-template.html").read_text(encoding="utf-8")
 blog_post_template = (BASE / "blog-post-template.html").read_text(encoding="utf-8")
 
+# The blog landing page's optional hero video. Same framework as the city
+# videos: empty = "Video coming soon" placeholder; drop an 11-char YouTube ID
+# here and re-run the generator to turn it into a real embed (no layout shift).
+BLOG_YOUTUBE_ID = ""
+
 PHONE_DISPLAY = "(480) 878-0808"
 
 # Longest/most-specific suffixes first, so "X Detection & Repair" doesn't
@@ -187,15 +192,16 @@ def build_page(city: dict, svc: dict) -> str:
     return page
 
 
-def build_video(city: dict) -> str:
-    """Video framework: if the city has a non-empty `youtubeId` in cities.json,
-    render a responsive YouTube embed; otherwise render the unchanged
-    "Video coming soon" placeholder. Both fill the same 16:9 box, so turning a
-    video on is a pure content swap — no layout shift, no design change.
+def build_video(youtube_id: str, title: str) -> str:
+    """Video framework: given a non-empty YouTube ID, render a responsive
+    embed; otherwise render the unchanged "Video coming soon" placeholder.
+    Both fill the same 16:9 box, so turning a video on is a pure content
+    swap — no layout shift, no design change. Shared by the city hub pages
+    (ID from cities.json) and the blog landing page (BLOG_YOUTUBE_ID).
 
     Privacy-friendly (youtube-nocookie, no tracking until played) and lazy —
     the video only loads if the visitor scrolls to it."""
-    vid = (city.get("youtubeId") or "").strip()
+    vid = (youtube_id or "").strip()
     if not vid:
         return (
             '<div class="video-placeholder">\n'
@@ -203,11 +209,10 @@ def build_video(city: dict) -> str:
             '                    <span>Video coming soon</span>\n'
             '                </div>'
         )
-    title = esc(f"Plunge, a Plumbing Co. — plumbing in {city['name']}, AZ")
     return (
         '<div class="video-embed">\n'
         f'                    <iframe src="https://www.youtube-nocookie.com/embed/{esc(vid)}" '
-        f'title="{title}" loading="lazy" '
+        f'title="{esc(title)}" loading="lazy" '
         'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
         'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n'
         '                </div>'
@@ -237,7 +242,10 @@ def build_city_page(city: dict) -> str:
         "__CITY_SLUG__": city["slug"],
         "__SERVICES_CHECKLIST__": checklist,
         "__CITY_NOTE_PARAS__": note_paras,
-        "__CITY_VIDEO__": build_video(city),
+        "__CITY_VIDEO__": build_video(
+            city.get("youtubeId"),
+            f"Plunge, a Plumbing Co. — plumbing in {city['name']}, AZ",
+        ),
     }
     page = city_template
     for token, value in tokens.items():
@@ -306,9 +314,13 @@ def build_blog() -> int:
     outdir.mkdir(parents=True, exist_ok=True)
     posts = sorted_posts()
 
-    # Index (post list, newest first)
+    # Index (post list, newest first) + optional hero video
     cards = "\n".join(build_blog_card(p) for p in posts)
     index = blog_index_template.replace("__BLOG_POST_LIST__", cards)
+    index = index.replace(
+        "__BLOG_VIDEO__",
+        build_video(BLOG_YOUTUBE_ID, "The Plunge Blog — plumbing tips & advice"),
+    )
     stray = re.findall(r"__[A-Z_]+__", index)
     if stray:
         print(f"  WARNING: unreplaced tokens in blog index: {set(stray)}")

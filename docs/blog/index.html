@@ -102,7 +102,12 @@
     </nav>
 
     <!-- =============================================
-         BLOG HERO — title + intro (intro is PLACEHOLDER copy)
+         BLOG HERO — title + intro (left) and video (right).
+         Intro is PLACEHOLDER copy. The video slot uses the same framework as
+         the city pages: it shows a "Video coming soon" placeholder until a
+         YouTube ID is set (BLOG_YOUTUBE_ID in generate.py), then becomes a
+         real embed in the same box — no layout shift. On narrow screens the
+         two columns stack (video below the text).
          ============================================= -->
     <section class="blog-hero">
         <div class="container">
@@ -112,16 +117,27 @@
                 <span aria-current="page">Blog</span>
             </nav>
 
-            <h1 class="blog-hero-title">The Plunge Blog</h1>
+            <div class="blog-hero-grid">
+                <div class="blog-hero-text">
+                    <h1 class="blog-hero-title">The Plunge Blog</h1>
 
-            <p class="blog-intro">
-                Welcome to the Plunge blog — where our team shares practical plumbing tips,
-                honest advice, and the occasional hard-won lesson from the field. Whether you're
-                chasing down a stubborn drain, weighing a repair against a replacement, or just
-                trying to keep your home's plumbing healthy in Arizona's hard water, we hope you
-                find something useful here. <em>(This is placeholder text — we'll swap in your
-                real introduction whenever you're ready.)</em>
-            </p>
+                    <p class="blog-intro">
+                        Welcome to the Plunge blog — where our team shares practical plumbing tips,
+                        honest advice, and the occasional hard-won lesson from the field. Whether you're
+                        chasing down a stubborn drain, weighing a repair against a replacement, or just
+                        trying to keep your home's plumbing healthy in Arizona's hard water, we hope you
+                        find something useful here. <em>(This is placeholder text — we'll swap in your
+                        real introduction whenever you're ready.)</em>
+                    </p>
+                </div>
+
+                <div class="blog-hero-media">
+                    <div class="video-placeholder">
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    <span>Video coming soon</span>
+                </div>
+                </div>
+            </div>
         </div>
     </section>
 
