@@ -181,11 +181,10 @@ a placeholder intro paragraph (for design review). Posts show newest-first.
 
 ### Still TODO on the blog (not built yet)
 
-- **Wire up the links**: nav "Blog" + footer "Read Our Blog" still point at
-  the `REPLACE-WITH-BLOG-URL.example.com` placeholder (owner asked to keep
-  them dead until the design is approved). When ready: point them at
-  `blog/` (from root pages) / `../blog/` (from one-level-deep pages) and drop
-  `target="_blank"`.
+- ✅ **Links wired (July 2026):** nav "Blog" + footer "Read Our Blog" now point
+  at the internal `/blog/` index — `blog/` from root pages, `../blog/` one
+  level deep, `../../blog/` from service pages — with `target="_blank"` dropped.
+  (The old external placeholder link is fully gone from every page.)
 - **Scheduling** (future dates + build skip + Netlify build-hook trigger),
   **sitemap.xml**, and **RSS** — all still to add (see below).
 
@@ -203,10 +202,8 @@ a placeholder intro paragraph (for design review). Posts show newest-first.
 - **Workflow**: staff draft in Word/Google Docs → every batch, hand the
   drafts to a Claude session ("publish these weekly starting Monday") →
   Claude formats pages with full SEO trimmings, sets dates, pushes once.
-- The existing nav "Blog" + footer "Read Our Blog" links currently point
-  at the grep-able placeholder `https://REPLACE-WITH-BLOG-URL.example.com`
-  and open in a new tab. When /blog exists: repoint them to the internal
-  page and remove `target="_blank"`.
+- The nav "Blog" + footer "Read Our Blog" links point at the internal
+  `/blog/` index (done July 2026).
 - Later, optional: import the best indexed posts into a free Medium
   publication for extra reach (Medium's import tool sets the canonical
   back to our original — no SEO cost). Substack's only future role would
