@@ -77,11 +77,11 @@ city is just data + one command:
    service pages) AND all its service landing pages. No hand-editing of
    checklists — the hub checklist is derived from `services.json`.
 
-Note: the older hand-built city drafts in `docs/cities/` that AREN'T in
-`cities.json` yet (e.g. apache-junction, glendale, etc.) still show the old
-plain 36-item checklist; adding them to `cities.json` + regenerating brings
-them up to match. `docs/cities/city-template.html` (the old hand template)
-was deleted — this generator template replaces it.
+Note: every city in `docs/cities/` is now generated from `cities.json` — the
+older hand-built drafts have all been added, so there are no leftover pages
+with the old plain checklist. `docs/cities/city-template.html` (the old
+hand-built template) was deleted; this generator's `city-template.html`
+replaces it.
 
 ## To add / rename a service
 
