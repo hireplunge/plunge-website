@@ -43,6 +43,19 @@ blog_index_template = (BASE / "blog-index-template.html").read_text(encoding="ut
 blog_post_template = (BASE / "blog-post-template.html").read_text(encoding="utf-8")
 blog_archive_template = (BASE / "blog-archive-template.html").read_text(encoding="utf-8")
 
+# Blog categories are DERIVED FROM the services list — services.json leads,
+# blog-categories.json follows (see the _notes inside that file for the full
+# rule). check_blog_categories() below cross-checks the two on every build and
+# prints loud warnings on any drift, so the category library can never fall
+# out of sync with the city pages' services list silently.
+blog_categories = json.loads(
+    (BASE / "blog-categories.json").read_text(encoding="utf-8")
+)["categories"]
+
+# Fallback for posts whose "category" is missing or doesn't match the library.
+# Not a real library entry — it only appears on the archive if actually used.
+FALLBACK_CATEGORY = "General"
+
 # The blog landing page shows exactly this many post cards (the newest ones);
 # its 4th card is always the "View All Blog Posts" button. Every post — these
 # included — is listed on the archive page (docs/blog/all-posts.html), which
@@ -285,6 +298,46 @@ def build_city_page(city: dict) -> str:
 # File-based, generated, matching the site (see README "Blog plan").
 # =============================================
 
+def check_blog_categories() -> None:
+    """Enforces the category/services sync rule (see blog-categories.json
+    _notes): every service slug in services.json must be covered by exactly
+    one blog category, and every slug a category lists must still exist.
+    services.json LEADS; blog-categories.json FOLLOWS. Runs on every build so
+    drift is impossible to miss — e.g. add a service and forget the category
+    library, and the very next `generate.py` run names the uncovered slug."""
+    service_slugs = {s["slug"] for s in services}
+    covered = {}
+    for cat in blog_categories:
+        for slug in cat["services"]:
+            if slug in covered:
+                print(f"  WARNING: blog-categories.json lists service '{slug}' under "
+                      f"both '{covered[slug]}' and '{cat['name']}' — keep it in one.")
+            covered[slug] = cat["name"]
+            if slug not in service_slugs:
+                print(f"  WARNING: blog-categories.json category '{cat['name']}' lists "
+                      f"'{slug}', which is no longer in services.json — remove or fix it.")
+    for slug in sorted(service_slugs - set(covered)):
+        print(f"  WARNING: service '{slug}' (services.json) is not covered by any "
+              f"blog category — add it to a category in blog-categories.json "
+              f"(categories follow services, not the other way around).")
+
+    # Posts must use a category from the library (or none -> General fallback)
+    names = {c["name"] for c in blog_categories}
+    for post in blog_posts:
+        cat = post.get("category", "")
+        if cat and cat not in names:
+            print(f"  WARNING: blog post '{post['slug']}' has unknown category "
+                  f"'{cat}' — it will build as '{FALLBACK_CATEGORY}'. Valid names "
+                  f"are in blog-categories.json.")
+
+
+def post_category(post: dict) -> str:
+    """A post's display category: its 'category' field if it matches the
+    library, otherwise the General fallback (never crashes a build)."""
+    cat = post.get("category", "")
+    return cat if cat in {c["name"] for c in blog_categories} else FALLBACK_CATEGORY
+
+
 def format_post_date(iso: str) -> str:
     """'2026-07-14' -> 'July 14, 2026' (for display). Falls back to the raw
     string if it isn't a plain ISO date, so a bad date never crashes a build."""
@@ -303,7 +356,8 @@ def build_blog_card(post: dict) -> str:
     return (
         '                <article class="blog-card">\n'
         f'                    <a class="blog-card-link" href="{post["slug"]}.html">\n'
-        f'                        <p class="blog-card-date">{esc(format_post_date(post.get("date", "")))}</p>\n'
+        f'                        <p class="blog-card-date">{esc(format_post_date(post.get("date", "")))}'
+        f' &middot; <span class="blog-card-cat">{esc(post_category(post))}</span></p>\n'
         f'                        <h2 class="blog-card-title">{esc(post["title"])}</h2>\n'
         f'                        <p class="blog-card-excerpt">{esc(post["excerpt"])}</p>\n'
         '                        <span class="blog-card-more">Read article <i class="fa fa-arrow-right" aria-hidden="true"></i></span>\n'
@@ -385,6 +439,7 @@ def build_blog_post_page(post: dict) -> str:
         "__POST_EXCERPT__": esc(post["excerpt"]),
         "__POST_DATE__": esc(format_post_date(post.get("date", ""))),
         "__POST_AUTHOR__": esc(post.get("author", "The Plunge Team")),
+        "__POST_CATEGORY__": esc(post_category(post)),
         "__POST_BODY__": build_blog_body(post),
     }
     page = blog_post_template
@@ -423,9 +478,37 @@ def build_archive_item(post: dict) -> str:
     )
 
 
+def build_archive_sections(posts: list) -> str:
+    """The archive page's body: posts grouped under category headings, in the
+    library's order (blog-categories.json — which itself follows the services
+    list). Only categories that actually have posts appear, so the page grows
+    naturally as topics get written about; the General fallback bucket comes
+    last, and only if something actually landed in it. Within a category,
+    posts stay newest-first (the caller passes them pre-sorted)."""
+    by_cat = {}
+    for post in posts:
+        by_cat.setdefault(post_category(post), []).append(post)
+
+    order = [c["name"] for c in blog_categories] + [FALLBACK_CATEGORY]
+    sections = []
+    for name in order:
+        cat_posts = by_cat.get(name)
+        if not cat_posts:
+            continue
+        rows = "\n".join(build_archive_item(p) for p in cat_posts)
+        sections.append(
+            f'            <h2 class="blog-archive-cat">{esc(name)}</h2>\n'
+            '            <ul class="blog-archive-list">\n'
+            f'{rows}\n'
+            '            </ul>'
+        )
+    return "\n".join(sections)
+
+
 def build_blog() -> int:
     outdir = ROOT / "docs" / "blog"
     outdir.mkdir(parents=True, exist_ok=True)
+    check_blog_categories()  # keep blog-categories.json in lockstep with services.json
     posts = sorted_posts()
 
     # Landing page: the newest BLOG_INDEX_POST_COUNT posts + the permanent
@@ -442,9 +525,10 @@ def build_blog() -> int:
         print(f"  WARNING: unreplaced tokens in blog index: {set(stray)}")
     (outdir / "index.html").write_text(index, encoding="utf-8")
 
-    # Archive page: EVERY post, newest first, in the checklist-style list
-    archive_list = "\n".join(build_archive_item(p) for p in posts)
-    archive = blog_archive_template.replace("__BLOG_ARCHIVE_LIST__", archive_list)
+    # Archive page: EVERY post, grouped by category (newest first within each)
+    archive = blog_archive_template.replace(
+        "__BLOG_ARCHIVE_SECTIONS__", build_archive_sections(posts)
+    )
     stray = re.findall(r"__[A-Z_]+__", archive)
     if stray:
         print(f"  WARNING: unreplaced tokens in blog archive: {set(stray)}")

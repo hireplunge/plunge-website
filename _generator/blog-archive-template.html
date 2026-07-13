@@ -102,9 +102,13 @@
     </nav>
 
     <!-- =============================================
-         ALL POSTS — every post, newest first, in the same checklist
-         style as the city pages' services list (book-and-pen icon in
-         place of the check mark). List is generated from blog-posts.json.
+         ALL POSTS — every post, grouped under category headings (newest
+         first within each), in the same checklist style as the city pages'
+         services list (book-and-pen icon in place of the check mark).
+         Categories come from blog-categories.json, which FOLLOWS the
+         services list in services.json — see the _notes in that file.
+         Sections are generated from blog-posts.json; only categories that
+         actually have posts appear.
          ============================================= -->
     <section class="blog-hero">
         <div class="container">
@@ -119,17 +123,15 @@
             <h1 class="blog-hero-title">All Blog Posts</h1>
 
             <p class="blog-intro">
-                Every post from the Plunge blog, newest first. Click any title to read
-                the full article.
+                Every post from the Plunge blog, organized by topic. Click any title
+                to read the full article.
             </p>
         </div>
     </section>
 
     <section class="blog-archive-section">
         <div class="container">
-            <ul class="blog-archive-list">
-__BLOG_ARCHIVE_LIST__
-            </ul>
+__BLOG_ARCHIVE_SECTIONS__
 
             <a href="./" class="blog-back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to the blog</a>
         </div>

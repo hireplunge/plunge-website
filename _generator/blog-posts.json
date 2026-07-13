@@ -4,11 +4,24 @@
     "title": "Why Water Heaters Don't Last as Long in Arizona",
     "date": "2026-07-14",
     "author": "The Plunge Team",
+    "category": "Water Heaters",
     "excerpt": "If your water heater gave out sooner than you expected, you're not imagining it — the Valley's hard water is quietly working against every tank in town. Here's what's really going on inside.",
     "photos": [
-      { "src": "", "alt": "", "caption": "" },
-      { "src": "", "alt": "", "caption": "" },
-      { "src": "", "alt": "", "caption": "" }
+      {
+        "src": "",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "",
+        "alt": "",
+        "caption": ""
+      },
+      {
+        "src": "",
+        "alt": "",
+        "caption": ""
+      }
     ],
     "body": [
       "Placeholder post. Most water heaters are rated for eight to twelve years, but here in the Valley plenty of them tap out well before that. The culprit isn't a bad brand or bad luck — it's the water itself. Arizona's hard water carries a heavy load of dissolved minerals, and every time your heater warms that water up, some of those minerals settle out and harden on the bottom of the tank.",
@@ -26,6 +39,7 @@
     "title": "5 Signs Your Toilet Is Ready for Replacement",
     "date": "2026-06-30",
     "author": "The Plunge Team",
+    "category": "Toilets",
     "excerpt": "A toilet can soldier on for decades — but at some point, repairs stop being worth it. Here are five signs it's time to stop patching and start fresh.",
     "body": [
       "Placeholder post. A good toilet is easy to take for granted, right up until it starts running, wobbling, or clogging every other week. Knowing when to repair versus replace can save you money and a lot of frustration.",
@@ -38,6 +52,7 @@
     "title": "Hard Water 101: What It's Really Doing to Your Home",
     "date": "2026-06-12",
     "author": "The Plunge Team",
+    "category": "Water Quality & Softening",
     "excerpt": "Spots on the glasses are just the start. Here's a plain-English look at what hard water is, why the Valley has so much of it, and what it costs your home over time.",
     "body": [
       "Placeholder post. \"Hard\" water simply means water with a high mineral content — mostly calcium and magnesium. It's perfectly safe to drink, but it's rough on everything it touches, and the Valley has some of the hardest water in the country.",
@@ -50,6 +65,7 @@
     "title": "Repair or Replace? Making the Call on an Aging Faucet",
     "date": "2026-05-20",
     "author": "The Plunge Team",
+    "category": "Faucets",
     "excerpt": "A dripping faucet isn't always a lost cause — but sometimes a swap really is the better move. Here's how to tell which situation you're in.",
     "body": [
       "Placeholder post. That slow drip under the handle is worth taking seriously — not just for the annoyance, but for the water it quietly wastes month after month. The question is whether it's worth fixing or worth replacing.",
@@ -62,6 +78,7 @@
     "title": "Find Your Home's Main Water Shutoff Before You Ever Need It",
     "date": "2026-04-28",
     "author": "The Plunge Team",
+    "category": "Emergency Plumbing",
     "excerpt": "When a pipe bursts, the first minute matters most. Knowing where your main shutoff is — today, calmly — can save you from a very bad day.",
     "body": [
       "Placeholder post. Here's a two-minute project that can save you thousands: find your home's main water shutoff and make sure everyone in the house knows where it is. When something lets go, being able to stop the water fast is the difference between a mess and a disaster.",

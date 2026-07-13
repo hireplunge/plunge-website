@@ -116,6 +116,11 @@
     color: var(--orange);
     margin: 0 0 0.4rem;
 }
+/* The post's category, on the same line as the date — slightly dimmed so the
+   line still scans date-first. */
+.blog-card-cat {
+    color: rgba(255, 255, 255, 0.6);
+}
 
 .blog-card-title {
     font-family: var(--font-heading);
@@ -179,19 +184,36 @@
 
 
 /* ---- All-posts archive page (docs/blog/all-posts.html) ----
-   Mirrors the city pages' services checklist exactly (3-column grid, thin
-   separator lines, links that turn orange on hover) — but each row leads
-   with the book-and-pen blog icon instead of the ✓ check mark. */
+   Posts are grouped under category headings (categories come from
+   blog-categories.json, which follows the services list — see that file's
+   _notes). Each group's list mirrors the city pages' services checklist
+   exactly (3-column grid, thin separator lines, links that turn orange on
+   hover) — but each row leads with the book-and-pen blog icon instead of
+   the ✓ check mark. */
 .blog-archive-section {
     background: var(--bg-dark);
     padding: 0 0 var(--space-xl);
 }
+
+/* Category heading above each group */
+.blog-archive-cat {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--orange);
+    margin: var(--space-lg) 0 0;
+}
+.blog-archive-cat:first-of-type {
+    margin-top: 0;
+}
+
 .blog-archive-list {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.15rem 1.5rem;
-    margin: var(--space-md) 0 var(--space-lg);
+    margin: 0.5rem 0 var(--space-md);
 }
 .blog-archive-list li {
     display: flex;

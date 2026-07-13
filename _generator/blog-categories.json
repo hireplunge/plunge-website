@@ -1,0 +1,41 @@
+{
+  "_notes": [
+    "BLOG CATEGORY LIBRARY — derived from services.json (the city pages' services list).",
+    "THE RULE: services.json LEADS, this file FOLLOWS. When a service is added,",
+    "renamed, or removed in services.json, update THIS file to match — never the",
+    "other way around. The generator enforces this: every service slug in",
+    "services.json must appear in exactly one category's 'services' list below,",
+    "or `python3 _generator/generate.py` prints a loud WARNING naming the",
+    "uncovered slug. Stale slugs (listed here but gone from services.json) are",
+    "warned about too. So a mismatch can never slip through silently.",
+    "",
+    "Grouping style (owner's direction, July 2026): categories are GENERAL —",
+    "several related services share one category (e.g. Faucet Installation,",
+    "Faucet Repair, and Faucet Replacement are all just 'Faucets'), never 1:1",
+    "service:category. A new service usually joins an existing category; only",
+    "genuinely new territory earns a new one.",
+    "",
+    "Each blog post in blog-posts.json carries a 'category' field matching a",
+    "'name' below. Posts with a missing or unknown category build as 'General'",
+    "(with a warning) rather than breaking. Categories appear on the archive",
+    "page (docs/blog/all-posts.html) as section headings, in the order below —",
+    "only categories that actually have posts are shown."
+  ],
+  "categories": [
+    { "name": "Water Heaters",             "services": ["water-heater-installation", "water-heater-repair", "water-heater-replacement", "water-tank-installation", "water-tank-repair"] },
+    { "name": "Faucets",                   "services": ["faucet-installation", "faucet-repair", "faucet-replacement"] },
+    { "name": "Toilets",                   "services": ["toilet-installation", "toilet-repair"] },
+    { "name": "Showers",                   "services": ["shower-installation", "shower-repair"] },
+    { "name": "Leaks & Pipes",             "services": ["plumbing-leak-detection", "plumbing-leak-repair", "plumbing-pipe-repair"] },
+    { "name": "Drains & Sewer",            "services": ["drain-cleaning", "sewer-cleaning", "sewer-repair"] },
+    { "name": "Water Quality & Softening", "services": ["water-softener-installation", "water-softener-repair", "reverse-osmosis-units", "whole-house-water-filtration"] },
+    { "name": "Garbage Disposals",         "services": ["garbage-disposal-installation", "garbage-disposal-repair"] },
+    { "name": "Sump Pumps",                "services": ["sump-pump-installation", "sump-pump-repair"] },
+    { "name": "Backflow Prevention",       "services": ["backflow-preventer-installation", "backflow-preventer-repair", "backflow-cage-installation"] },
+    { "name": "Outdoor & Pool Plumbing",   "services": ["outdoor-plumbing-system-repair", "pool-plumbing-installation", "pool-plumbing-repair"] },
+    { "name": "Gas Lines",                 "services": ["underground-gas-leak-detection-and-repair"] },
+    { "name": "Commercial Plumbing",       "services": ["commercial-kitchen-plumbing", "grease-trap-cleaning"] },
+    { "name": "New Installations",         "services": ["new-installation"] },
+    { "name": "Emergency Plumbing",        "services": ["emergency-plumbing"] }
+  ]
+}

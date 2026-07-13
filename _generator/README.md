@@ -174,9 +174,11 @@ Medium cannot live at hireplunge.com/blog, so posts there would build
   matter how many posts accumulate; older posts simply roll off onto the
   archive. All automatic — never hand-edit.
 - **All-posts archive** (`docs/blog/all-posts.html`, from
-  `blog-archive-template.html`): EVERY post, newest first, in a 3-column
-  list that mirrors the city pages' services checklist (same separators and
-  hover behavior) with the book-and-pen blog icon in place of the ✓.
+  `blog-archive-template.html`): EVERY post, grouped under CATEGORY
+  headings (newest first within each), in a 3-column list that mirrors the
+  city pages' services checklist (same separators and hover behavior) with
+  the book-and-pen blog icon in place of the ✓. Only categories that have
+  posts appear.
 - **One page per post** (`docs/blog/<slug>.html`, from
   `blog-post-template.html`): magazine layout — optional photos float and
   alternate right/left down the body text (see "photos" below).
@@ -187,18 +189,39 @@ Currently seeded with 5 PLACEHOLDER posts and a placeholder intro paragraph
 ### To add or edit a blog post (the ONLY step — everything else is automatic)
 
 1. Edit `_generator/blog-posts.json`. Each post is:
-   `{ "slug", "title", "date" (YYYY-MM-DD), "author", "excerpt", "body": [paragraphs] }`
+   `{ "slug", "title", "date" (YYYY-MM-DD), "author", "category", "excerpt", "body": [paragraphs] }`
    plus an optional `"photos"` list (see the magazine-photo notes in
    generate.py: empty `src` = "Picture coming soon" placeholder; entries
    alternate right/left; nest two in a sub-array for a side-by-side pair;
    pin one with `"side": "left"`/`"right"`).
+   `"category"` must be a `name` from `blog-categories.json`; a missing or
+   unknown category builds as "General" with a warning, never an error.
    In practice the owner hands a Google Doc/Word draft to a Claude session,
    which turns it into the JSON entry — no hand-formatting.
 2. Run `python3 _generator/generate.py`. The landing page re-sorts and
    re-caps itself (3 newest + View All card), the archive re-lists every
-   post, and a page is (re)built for each post.
+   post under its category heading, and a page is (re)built for each post.
    (Note: `build_blog()` does NOT rmtree docs/blog/, so if you RENAME or
    DELETE a post's slug, remove the stale `docs/blog/<old-slug>.html` by hand.)
+
+### Blog categories — derived from the services list (services lead, categories follow)
+
+`blog-categories.json` maps every service slug in `services.json` into a
+GENERAL category (e.g. Faucet Installation/Repair/Replacement are all just
+"Faucets" — deliberately never 1:1 service:category). The full rule lives in
+that file's `_notes`. The sync is ENFORCED, not just documented:
+`check_blog_categories()` runs on every build and prints a WARNING naming
+
+- any service slug not covered by a category (the usual case after adding a
+  service — add the new slug to an existing category, or create a new one),
+- any category slug that no longer exists in services.json (stale entry),
+- any slug listed under two categories, and
+- any post whose `"category"` isn't in the library (it builds as "General").
+
+So the workflow when the services list changes: edit `services.json`, run
+the generator, and fix whatever it warns about in `blog-categories.json` —
+never the reverse. Categories show up as the archive page's section
+headings and next to the date on post cards and post pages.
 
 ### Still TODO on the blog (not built yet)
 
