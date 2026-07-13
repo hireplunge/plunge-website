@@ -154,6 +154,75 @@
     transform: translateX(3px);
 }
 
+/* The landing page's permanent 4th card: "View All Blog Posts". Same card
+   chrome as the post cards (background, accent bars, hover lift), but the
+   content is centered and button-like — big book-and-pen icon, title, and
+   the live post count (all filled in by generate.py). */
+.blog-card--viewall {
+    display: flex; /* lets the link stretch to the full card height */
+}
+.blog-card--viewall .blog-card-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.35rem;
+}
+.blog-card--viewall .blog-archive-icon {
+    width: 46px;
+    height: 46px;
+    color: var(--orange);
+    margin-bottom: 0.4rem;
+}
+
+
+/* ---- All-posts archive page (docs/blog/all-posts.html) ----
+   Mirrors the city pages' services checklist exactly (3-column grid, thin
+   separator lines, links that turn orange on hover) — but each row leads
+   with the book-and-pen blog icon instead of the ✓ check mark. */
+.blog-archive-section {
+    background: var(--bg-dark);
+    padding: 0 0 var(--space-xl);
+}
+.blog-archive-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.15rem 1.5rem;
+    margin: var(--space-md) 0 var(--space-lg);
+}
+.blog-archive-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+.blog-archive-list .blog-archive-icon {
+    color: var(--orange);
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin-top: 0.15rem; /* optically aligns the icon with the first text line */
+}
+.blog-archive-list a {
+    color: inherit;
+}
+.blog-archive-list a:hover {
+    color: var(--orange);
+}
+/* Same collapse as the services checklist: single column on narrow screens */
+@media (max-width: 760px) {
+    .blog-archive-list {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
 
 /* ---- Single post page ---- */
 .blog-article-section {

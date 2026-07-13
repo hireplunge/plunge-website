@@ -164,18 +164,39 @@ Substack idea. Per "Choosing Your Blog Platform" (July 2026): Substack and
 Medium cannot live at hireplunge.com/blog, so posts there would build
 *their* domain authority, not ours — disqualifying for an SEO-first blog.
 
-**Built so far (design draft):** the blog index (`docs/blog/index.html`) and
-one page per post (`docs/blog/<slug>.html`), generated from
-`blog-posts.json` + `blog-index-template.html` + `blog-post-template.html`,
-styled by `docs/css/blog.css`. Currently seeded with 5 PLACEHOLDER posts and
-a placeholder intro paragraph (for design review). Posts show newest-first.
+**Built so far (design draft):** three generated page types, all from
+`blog-posts.json`, styled by `docs/css/blog.css`:
 
-### To add or edit a blog post
+- **Landing page** (`docs/blog/index.html`, from `blog-index-template.html`):
+  hero (intro + video slot, `BLOG_YOUTUBE_ID` in generate.py) and **always
+  exactly 4 cards** — the 3 newest posts (`BLOG_INDEX_POST_COUNT`) plus a
+  permanent "View All Blog Posts" card. The page can never get cluttered no
+  matter how many posts accumulate; older posts simply roll off onto the
+  archive. All automatic — never hand-edit.
+- **All-posts archive** (`docs/blog/all-posts.html`, from
+  `blog-archive-template.html`): EVERY post, newest first, in a 3-column
+  list that mirrors the city pages' services checklist (same separators and
+  hover behavior) with the book-and-pen blog icon in place of the ✓.
+- **One page per post** (`docs/blog/<slug>.html`, from
+  `blog-post-template.html`): magazine layout — optional photos float and
+  alternate right/left down the body text (see "photos" below).
+
+Currently seeded with 5 PLACEHOLDER posts and a placeholder intro paragraph
+(for design review).
+
+### To add or edit a blog post (the ONLY step — everything else is automatic)
 
 1. Edit `_generator/blog-posts.json`. Each post is:
-   `{ "slug", "title", "date" (YYYY-MM-DD), "author", "excerpt", "body": [paragraphs] }`.
-2. Run `python3 _generator/generate.py`. The index re-sorts newest-first
-   automatically and a page is (re)built for each post.
+   `{ "slug", "title", "date" (YYYY-MM-DD), "author", "excerpt", "body": [paragraphs] }`
+   plus an optional `"photos"` list (see the magazine-photo notes in
+   generate.py: empty `src` = "Picture coming soon" placeholder; entries
+   alternate right/left; nest two in a sub-array for a side-by-side pair;
+   pin one with `"side": "left"`/`"right"`).
+   In practice the owner hands a Google Doc/Word draft to a Claude session,
+   which turns it into the JSON entry — no hand-formatting.
+2. Run `python3 _generator/generate.py`. The landing page re-sorts and
+   re-caps itself (3 newest + View All card), the archive re-lists every
+   post, and a page is (re)built for each post.
    (Note: `build_blog()` does NOT rmtree docs/blog/, so if you RENAME or
    DELETE a post's slug, remove the stale `docs/blog/<old-slug>.html` by hand.)
 

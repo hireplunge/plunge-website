@@ -41,6 +41,28 @@ city_template = (BASE / "city-template.html").read_text(encoding="utf-8")
 blog_posts = json.loads((BASE / "blog-posts.json").read_text(encoding="utf-8"))
 blog_index_template = (BASE / "blog-index-template.html").read_text(encoding="utf-8")
 blog_post_template = (BASE / "blog-post-template.html").read_text(encoding="utf-8")
+blog_archive_template = (BASE / "blog-archive-template.html").read_text(encoding="utf-8")
+
+# The blog landing page shows exactly this many post cards (the newest ones);
+# its 4th card is always the "View All Blog Posts" button. Every post — these
+# included — is listed on the archive page (docs/blog/all-posts.html), which
+# is rebuilt from blog-posts.json on every run. So no matter how many posts
+# pile up over the years, the landing page stays 4 cards and nothing is ever
+# hand-edited.
+BLOG_INDEX_POST_COUNT = 3
+
+# The open-book-and-pen icon used beside each post on the archive page — the
+# same stroke SVG as the nav drawer's Blog link, so it inherits orange from
+# currentColor via CSS.
+BLOG_ICON_SVG = (
+    '<svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+    'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/>'
+    '<path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/>'
+    '<path d="M12 8V18.5"/>'
+    '<path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/>'
+    '</svg>'
+)
 
 # The blog landing page's optional hero video. Same framework as the city
 # videos: empty = "Video coming soon" placeholder; drop an 11-char YouTube ID
@@ -374,13 +396,42 @@ def build_blog_post_page(post: dict) -> str:
     return page
 
 
+def build_view_all_card(total: int) -> str:
+    """The landing page's permanent 4th card: a "View All Blog Posts" button
+    styled like the post cards, linking to the archive page. Shows the live
+    post count so it always reads current without anyone touching it."""
+    label = "post" if total == 1 else "posts"
+    return (
+        '                <article class="blog-card blog-card--viewall">\n'
+        '                    <a class="blog-card-link" href="all-posts.html">\n'
+        f'                        {BLOG_ICON_SVG}\n'
+        '                        <h2 class="blog-card-title">View All Blog Posts</h2>\n'
+        f'                        <p class="blog-card-excerpt">Browse all {total} {label} in one place.</p>\n'
+        '                        <span class="blog-card-more">See the full list <i class="fa fa-arrow-right" aria-hidden="true"></i></span>\n'
+        '                    </a>\n'
+        '                </article>'
+    )
+
+
+def build_archive_item(post: dict) -> str:
+    """One row of the all-posts archive list: book-and-pen icon + linked title.
+    Mirrors the city pages' services checklist rows (same layout and separator
+    lines via CSS), with the icon in place of the ✓ check mark."""
+    return (
+        f'                <li>{BLOG_ICON_SVG}<a href="{post["slug"]}.html">'
+        f'{esc(post["title"])}</a></li>'
+    )
+
+
 def build_blog() -> int:
     outdir = ROOT / "docs" / "blog"
     outdir.mkdir(parents=True, exist_ok=True)
     posts = sorted_posts()
 
-    # Index (post list, newest first) + optional hero video
-    cards = "\n".join(build_blog_card(p) for p in posts)
+    # Landing page: the newest BLOG_INDEX_POST_COUNT posts + the permanent
+    # "View All Blog Posts" card — always exactly 4 cards, forever.
+    cards = "\n".join(build_blog_card(p) for p in posts[:BLOG_INDEX_POST_COUNT])
+    cards += "\n" + build_view_all_card(len(posts))
     index = blog_index_template.replace("__BLOG_POST_LIST__", cards)
     index = index.replace(
         "__BLOG_VIDEO__",
@@ -390,6 +441,14 @@ def build_blog() -> int:
     if stray:
         print(f"  WARNING: unreplaced tokens in blog index: {set(stray)}")
     (outdir / "index.html").write_text(index, encoding="utf-8")
+
+    # Archive page: EVERY post, newest first, in the checklist-style list
+    archive_list = "\n".join(build_archive_item(p) for p in posts)
+    archive = blog_archive_template.replace("__BLOG_ARCHIVE_LIST__", archive_list)
+    stray = re.findall(r"__[A-Z_]+__", archive)
+    if stray:
+        print(f"  WARNING: unreplaced tokens in blog archive: {set(stray)}")
+    (outdir / "all-posts.html").write_text(archive, encoding="utf-8")
 
     # One page per post
     for post in posts:
@@ -422,12 +481,12 @@ def main() -> int:
             total += 1
         print(f"{city['name']}: 1 hub page + {len(services)} service pages")
 
-    # 3) The blog: docs/blog/index.html + one page per post
+    # 3) The blog: index (4 cards max) + all-posts archive + one page per post
     n_posts = build_blog()
-    print(f"Blog: 1 index + {n_posts} post pages")
+    print(f"Blog: 1 index + 1 all-posts archive + {n_posts} post pages")
 
     print(f"Done. {len(cities)} city hub pages + {total} service pages + "
-          f"1 blog index + {n_posts} blog posts generated.")
+          f"1 blog index + 1 blog archive + {n_posts} blog posts generated.")
     return 0
 
 
