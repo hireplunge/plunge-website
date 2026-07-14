@@ -296,6 +296,107 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
 
 /* -----------------------------------------------
+   BOOKING — Address autocomplete (Google Places)
+   -----------------------------------------------
+   PROGRESSIVE ENHANCEMENT ONLY — the form's golden rule is
+   that it must NEVER depend on this. If Google's script is
+   blocked, fails to load, or the API key rejects the page,
+   the address field stays a plain text input and the form
+   keeps working exactly as it always has.
+
+   Guards, in order:
+     1. Poll briefly for google.maps.places (this file loads
+        BEFORE the Maps <script> tag); give up silently.
+     2. Everything wrapped in try/catch — any error means
+        "do nothing", never a broken field.
+     3. KNOWN GOOGLE FAILURE MODE: on an auth/key failure
+        Google DISABLES the attached input and swaps its
+        placeholder for an error message. gm_authFailure +
+        a MutationObserver catch that and instantly restore
+        the field, so the customer can always just type.
+
+   When a suggestion IS picked, we fill street + ZIP and
+   select the city in the dropdown when it matches one of
+   our options. Typing normally and ignoring the
+   suggestions entirely is always fine.
+   ----------------------------------------------- */
+(function initAddressAutocomplete() {
+    const input = document.getElementById('address');
+    if (!input) return;
+
+    const originalPlaceholder = input.placeholder;
+
+    /* Guard 3: if Google ever disables the field, restore it. */
+    function restoreField() {
+        if (input.disabled) input.disabled = false;
+        if (input.placeholder !== originalPlaceholder) {
+            input.placeholder = originalPlaceholder;
+        }
+    }
+    window.gm_authFailure = restoreField;
+    new MutationObserver(restoreField).observe(input, {
+        attributes: true,
+        attributeFilter: ['disabled', 'placeholder'],
+    });
+
+    /* Guard 1: wait (quietly, ~10s max) for the Maps script. */
+    let attempts = 0;
+    (function waitForGoogle() {
+        if (typeof google !== 'undefined' && google.maps &&
+            google.maps.places && google.maps.places.Autocomplete) {
+            attach();
+        } else if (attempts++ < 25) {
+            setTimeout(waitForGoogle, 400);
+        }
+        /* else: Google never showed up — plain field, no trace. */
+    })();
+
+    function attach() {
+        try { /* Guard 2 */
+            const ac = new google.maps.places.Autocomplete(input, {
+                types: ['address'],
+                componentRestrictions: { country: 'us' },
+                fields: ['address_components'],  // only what we fill
+            });
+
+            ac.addListener('place_changed', function () {
+                try {
+                    const place = ac.getPlace();
+                    const comps = (place && place.address_components) || [];
+                    const get = (type) => {
+                        const c = comps.find((x) => x.types.includes(type));
+                        return c ? c.long_name : '';
+                    };
+
+                    /* Google puts the FULL address string in the input on
+                       selection; reduce it to just the street, since city/
+                       state/ZIP live in their own fields. */
+                    const street = [get('street_number'), get('route')]
+                        .filter(Boolean).join(' ');
+                    if (street) input.value = street;
+
+                    const zip = get('postal_code');
+                    const zipEl = document.getElementById('zip');
+                    if (zip && zipEl) zipEl.value = zip;
+
+                    /* City: select it only when it matches one of our
+                       options; otherwise leave the choice to the customer. */
+                    const city = get('locality') || get('sublocality_level_1');
+                    const cityEl = document.getElementById('city-field');
+                    if (city && cityEl) {
+                        const match = Array.from(cityEl.options).find(
+                            (o) => o.value.toLowerCase() === city.toLowerCase()
+                        );
+                        if (match) cityEl.value = match.value;
+                    }
+                } catch (err) { /* keep whatever the customer typed */ }
+            });
+        } catch (err) { /* no autocomplete — field stays a plain input */ }
+    }
+})();
+
+
+/* -----------------------------------------------
    BOOKING — bold fields once they hold a value
    -----------------------------------------------
    Adds/removes the .is-filled class on each field so

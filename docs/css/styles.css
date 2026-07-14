@@ -636,6 +636,30 @@ button {
     margin-bottom: 1rem;
 }
 
+/* Text link from the About copy down to the before & after gallery — same
+   orange arrow-link language as the blog's "View All" links (hover: text
+   goes white, arrow nudges right). */
+.about-gallery-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--orange);
+}
+.about-gallery-link .fa {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+.about-gallery-link:hover {
+    color: var(--white);
+}
+.about-gallery-link:hover .fa {
+    transform: translateX(3px);
+}
+
 /* Stats boxes */
 .about-stats {
     display: grid;
