@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- The Plunge Blog — all-posts archive. Plunge, a Plumbing Co. LLC.
+<!-- The Plunge Blog — every post by date. Plunge, a Plumbing Co. LLC.
      =============================================
      GENERATED FILE — DO NOT EDIT BY HAND.
      Built by _generator/generate.py from _generator/blog-posts.json
-     and _generator/blog-archive-template.html. To change it: edit those,
+     and _generator/blog-bydate-template.html. To change it: edit those,
      then re-run  python3 _generator/generate.py
      ============================================= -->
 <html lang="en">
@@ -17,8 +17,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Every post from the Plunge blog in one place — plumbing tips, honest advice, and straight talk from a licensed, family-run plumbing company serving Mesa and the greater Phoenix area.">
-    <title>All Blog Posts | The Plunge Blog | Plunge, a Plumbing Co. LLC</title>
+    <meta name="description" content="Every post from the Plunge blog in one list, newest first — plumbing tips and honest advice from a licensed, family-run plumbing company serving Mesa and the greater Phoenix area.">
+    <title>All Posts by Date | The Plunge Blog | Plunge, a Plumbing Co. LLC</title>
 
     <link rel="icon" href="../favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon-32x32.png">
@@ -28,7 +28,7 @@
     <meta name="theme-color" content="#264878">
 
     <!-- TODO (before launch): replace "yourwebsite.com" with hireplunge.com. -->
-    <link rel="canonical" href="https://yourwebsite.com/blog/all-posts.html">
+    <link rel="canonical" href="https://yourwebsite.com/blog/all-posts-by-date.html">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -102,13 +102,9 @@
     </nav>
 
     <!-- =============================================
-         ALL POSTS — every post, grouped under category headings (newest
-         first within each), in the same checklist style as the city pages'
-         services list (book-and-pen icon in place of the check mark).
-         Categories come from blog-categories.json, which FOLLOWS the
-         services list in services.json — see the _notes in that file.
-         Sections are generated from blog-posts.json; only categories that
-         actually have posts appear.
+         ALL POSTS BY DATE — every post in one flat list, newest first,
+         no category grouping; each row shows its publish date. The list
+         is generated from blog-posts.json.
          ============================================= -->
     <section class="blog-hero">
         <div class="container">
@@ -117,117 +113,46 @@
                 <span>/</span>
                 <a href="./">Blog</a>
                 <span>/</span>
-                <span aria-current="page">All Posts</span>
+                <a href="all-posts.html">All Posts</a>
+                <span>/</span>
+                <span aria-current="page">By Date</span>
             </nav>
 
-            <h1 class="blog-hero-title">All Blog Posts</h1>
+            <h1 class="blog-hero-title">All Posts by Date</h1>
 
             <p class="blog-intro">
-                Every post from the Plunge blog, organized by topic. Click any title
-                to read the full article.
+                Every post from the Plunge blog in one list, newest first.
+                20 posts and counting.
             </p>
         </div>
     </section>
 
     <section class="blog-archive-section">
         <div class="container">
-            <div class="blog-archive-grid">
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Water Heaters</h2>
-                <ul class="blog-archive-list">
+            <ul class="blog-archive-list blog-archive-list--full">
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="why-water-heaters-dont-last-in-arizona.html">Why Water Heaters Don't Last as Long in Arizona</a><span class="blog-bydate-date">July 14, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="tank-vs-tankless-water-heaters.html">Tank vs. Tankless: Which Water Heater Fits Your Home?</a><span class="blog-bydate-date">May 2, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="how-often-flush-water-heater.html">How Often Should You Flush Your Water Heater?</a><span class="blog-bydate-date">March 18, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-water-heaters.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Faucets</h2>
-                <ul class="blog-archive-list">
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="repair-or-replace-an-aging-faucet.html">Repair or Replace? Making the Call on an Aging Faucet</a><span class="blog-bydate-date">May 20, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="why-new-faucet-drips.html">Why Your New Faucet Drips (It's Not You)</a><span class="blog-bydate-date">April 12, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="kitchen-faucet-hard-water.html">Choosing a Kitchen Faucet That Survives Hard Water</a><span class="blog-bydate-date">March 5, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-faucets.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Toilets</h2>
-                <ul class="blog-archive-list">
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="5-signs-your-toilet-needs-replacing.html">5 Signs Your Toilet Is Ready for Replacement</a><span class="blog-bydate-date">June 30, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="running-toilet-three-suspects.html">Running Toilet? Three Usual Suspects</a><span class="blog-bydate-date">April 25, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="low-flow-toilet-myths.html">Low-Flow Toilets: Myths vs. Reality</a><span class="blog-bydate-date">February 20, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-toilets.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Showers</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Leaks &amp; Pipes</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Drains &amp; Sewer</h2>
-                <ul class="blog-archive-list">
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="five-things-never-down-drain.html">Five Things That Should Never Go Down Your Drain</a><span class="blog-bydate-date">May 15, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="slow-drain-vs-clog.html">Slow Drain vs. Clog: When to Stop DIY-ing</a><span class="blog-bydate-date">April 2, 2026</span></div></li>
-                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="sewer-camera-inspection.html">What a Sewer Camera Inspection Actually Shows</a><span class="blog-bydate-date">February 27, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-drains-and-sewer.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Water Quality &amp; Softening</h2>
-                <ul class="blog-archive-list">
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="hard-water-101.html">Hard Water 101: What It's Really Doing to Your Home</a><span class="blog-bydate-date">June 12, 2026</span></div></li>
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="salt-vs-salt-free-softeners.html">Salt vs. Salt-Free Softeners: A Plain-English Guide</a><span class="blog-bydate-date">May 28, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-water-quality-and-softening.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Garbage Disposals</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Sump Pumps</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Backflow Prevention</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Outdoor &amp; Pool Plumbing</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Gas Lines</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Commercial Plumbing</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">New Installations</h2>
-                <p class="blog-archive-empty">Stay tuned for more!</p>
-            </div>
-            <div class="blog-archive-group">
-                <h2 class="blog-archive-cat">Emergency Plumbing</h2>
-                <ul class="blog-archive-list">
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="repair-or-replace-an-aging-faucet.html">Repair or Replace? Making the Call on an Aging Faucet</a><span class="blog-bydate-date">May 20, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="five-things-never-down-drain.html">Five Things That Should Never Go Down Your Drain</a><span class="blog-bydate-date">May 15, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="tank-vs-tankless-water-heaters.html">Tank vs. Tankless: Which Water Heater Fits Your Home?</a><span class="blog-bydate-date">May 2, 2026</span></div></li>
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="find-your-main-water-shutoff.html">Find Your Home's Main Water Shutoff Before You Ever Need It</a><span class="blog-bydate-date">April 28, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="running-toilet-three-suspects.html">Running Toilet? Three Usual Suspects</a><span class="blog-bydate-date">April 25, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="why-new-faucet-drips.html">Why Your New Faucet Drips (It's Not You)</a><span class="blog-bydate-date">April 12, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="slow-drain-vs-clog.html">Slow Drain vs. Clog: When to Stop DIY-ing</a><span class="blog-bydate-date">April 2, 2026</span></div></li>
                 <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="plumbing-emergency-kit.html">Build a 10-Minute Plumbing Emergency Kit</a><span class="blog-bydate-date">March 22, 2026</span></div></li>
-                </ul>
-                <a class="blog-archive-viewall" href="category-emergency-plumbing.html">View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
-            </div>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="how-often-flush-water-heater.html">How Often Should You Flush Your Water Heater?</a><span class="blog-bydate-date">March 18, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="kitchen-faucet-hard-water.html">Choosing a Kitchen Faucet That Survives Hard Water</a><span class="blog-bydate-date">March 5, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="sewer-camera-inspection.html">What a Sewer Camera Inspection Actually Shows</a><span class="blog-bydate-date">February 27, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="low-flow-toilet-myths.html">Low-Flow Toilets: Myths vs. Reality</a><span class="blog-bydate-date">February 20, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="rumbling-water-heater-sound.html">What That Rumbling Sound in Your Tank Really Means</a><span class="blog-bydate-date">February 10, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="faucet-aerator-cleanout.html">The 15-Minute Faucet Aerator Clean-Out</a><span class="blog-bydate-date">January 28, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="water-heater-warranties-decoded.html">Water Heater Warranties, Decoded</a><span class="blog-bydate-date">January 15, 2026</span></div></li>
+                <li><svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg><div class="blog-bydate-text"><a href="roots-in-sewer-line.html">Roots in the Sewer Line: An Arizona Story</a><span class="blog-bydate-date">January 8, 2026</span></div></li>
+            </ul>
 
-            <!-- Foot links: back to the blog (left) and the flat by-date
-                 list (right) — one row, mirrored edge distances. -->
-            <div class="blog-archive-footlinks">
-                <a href="./" class="blog-back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to the blog</a>
-                <a href="all-posts-by-date.html" class="blog-archive-viewall blog-archive-bydate">Every post by date <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            </div>
+            <a href="all-posts.html" class="blog-back"><i class="fa fa-arrow-left" aria-hidden="true"></i> All posts by topic</a>
         </div>
     </section>
 

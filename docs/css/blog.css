@@ -184,36 +184,40 @@
 
 
 /* ---- All-posts archive page (docs/blog/all-posts.html) ----
-   Posts are grouped under category headings (categories come from
-   blog-categories.json, which follows the services list — see that file's
-   _notes). Each group's list mirrors the city pages' services checklist
-   exactly (3-column grid, thin separator lines, links that turn orange on
-   hover) — but each row leads with the book-and-pen blog icon instead of
-   the ✓ check mark. */
+   EVERY category from blog-categories.json (which follows the services
+   list — see that file's _notes) gets a block: heading + its posts, or a
+   "Stay tuned for more!" line while the category has none. The blocks sit
+   three across, echoing the city pages' 3-column services checklist; the
+   rows keep that checklist's separator lines and hover-orange links, with
+   the book-and-pen blog icon in place of the ✓ check mark. */
 .blog-archive-section {
     background: var(--bg-dark);
     padding: 0 0 var(--space-xl);
 }
 
-/* Category heading above each group */
+/* Three category blocks per row (the category grid itself) */
+.blog-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg) 2.5rem;
+    margin-bottom: var(--space-lg);
+    align-items: start; /* short blocks don't stretch to their row's tallest */
+}
+
+/* Category heading above each block's list */
 .blog-archive-cat {
     font-family: var(--font-heading);
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: 0.02em;
     color: var(--orange);
-    margin: var(--space-lg) 0 0;
-}
-.blog-archive-cat:first-of-type {
-    margin-top: 0;
+    margin: 0 0 0.5rem;
 }
 
+/* Post rows within a block: single column (the block is already 1/3 wide) */
 .blog-archive-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.15rem 1.5rem;
-    margin: 0.5rem 0 var(--space-md);
+    margin: 0;
 }
 .blog-archive-list li {
     display: flex;
@@ -237,11 +241,105 @@
 .blog-archive-list a:hover {
     color: var(--orange);
 }
-/* Same collapse as the services checklist: single column on narrow screens */
-@media (max-width: 760px) {
-    .blog-archive-list {
+
+/* Categories with no posts yet — replaced automatically by the real list
+   the moment a post lands in the category (generate.py). */
+.blog-archive-empty {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* "View All" link under each archive block — leads to the category's own
+   page. Same orange link language as the cards' "Read article" line, with
+   the same nudging arrow on hover. */
+.blog-archive-viewall {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--orange);
+}
+.blog-archive-viewall .fa {
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+.blog-archive-viewall:hover {
+    color: var(--white);
+}
+.blog-archive-viewall:hover .fa {
+    transform: translateX(3px);
+}
+
+/* The archive's foot-link row: "Back to the blog" hugs the left edge and
+   "Every post by date" hugs the right — same distance from each edge, on
+   one line. Wraps gracefully if a narrow screen can't fit both. */
+.blog-archive-footlinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem var(--space-md);
+}
+.blog-archive-footlinks .blog-back {
+    margin-bottom: 0; /* the row aligns the pair; no extra offset */
+}
+.blog-archive-footlinks .blog-archive-bydate {
+    margin-top: 0; /* override the viewall default so both sit level */
+}
+
+/* By-date page rows: title with its publish date on a small line beneath */
+.blog-bydate-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+.blog-bydate-date {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--orange);
+}
+
+/* Category pages (docs/blog/category-<slug>.html) and the by-date page: the
+   full post list runs three columns wide — the checklist look at full width,
+   not boxed into a 1/3-page block like on the archive. Same rows, same
+   separators. */
+.blog-archive-list--full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.15rem 1.5rem;
+    margin-bottom: var(--space-lg);
+}
+@media (max-width: 900px) {
+    .blog-archive-list--full {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .blog-archive-list--full {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+}
+
+/* Same stepped collapse feel as the rest of the site: 3 -> 2 -> 1 columns */
+@media (max-width: 900px) {
+    .blog-archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .blog-archive-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
     }
 }
 

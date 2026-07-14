@@ -196,7 +196,10 @@
    ============================================= */
 .city-services {
     background: var(--bg-dark);
-    padding: var(--space-xl) 0;
+    /* Top padding deliberately smaller than the bottom: the hero above ends
+       with its own breathing room, so this keeps the services checklist
+       tucked close to the content above it (owner request, July 2026). */
+    padding: var(--space-md) 0 var(--space-xl);
 }
 
 /* Two-column checklist of services (from the client outline) */

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!-- The Plunge Blog — index (homepage). Plunge, a Plumbing Co. LLC.
+<!-- Blog post: What a Sewer Camera Inspection Actually Shows — Plunge, a Plumbing Co. LLC.
      =============================================
      GENERATED FILE — DO NOT EDIT BY HAND.
      Built by _generator/generate.py from _generator/blog-posts.json
-     and _generator/blog-index-template.html. To change it: edit those,
+     and _generator/blog-post-template.html. To change it: edit those,
      then re-run  python3 _generator/generate.py
      ============================================= -->
 <html lang="en">
@@ -17,8 +17,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="The Plunge blog — plumbing tips, honest advice, and straight talk from a licensed, family-run plumbing company serving Mesa and the greater Phoenix area.">
-    <title>The Plunge Blog | Plunge, a Plumbing Co. LLC</title>
+    <meta name="description" content="A look at what the camera sees down there, and when an inspection is genuinely worth it.">
+    <title>What a Sewer Camera Inspection Actually Shows | The Plunge Blog</title>
 
     <link rel="icon" href="../favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="../images/icons/favicon-32x32.png">
@@ -28,7 +28,7 @@
     <meta name="theme-color" content="#264878">
 
     <!-- TODO (before launch): replace "yourwebsite.com" with hireplunge.com. -->
-    <link rel="canonical" href="https://yourwebsite.com/blog/">
+    <link rel="canonical" href="https://yourwebsite.com/blog/sewer-camera-inspection.html">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
@@ -102,84 +102,45 @@
     </nav>
 
     <!-- =============================================
-         BLOG HERO — title + intro (left) and video (right).
-         Intro is PLACEHOLDER copy. The video slot uses the same framework as
-         the city pages: it shows a "Video coming soon" placeholder until a
-         YouTube ID is set (BLOG_YOUTUBE_ID in generate.py), then becomes a
-         real embed in the same box — no layout shift. On narrow screens the
-         two columns stack (video below the text).
+         BLOG ARTICLE
          ============================================= -->
-    <section class="blog-hero">
+    <section class="blog-article-section">
         <div class="container">
-            <nav class="city-breadcrumb" aria-label="Breadcrumb">
-                <a href="../index.html">Home</a>
-                <span>/</span>
-                <span aria-current="page">Blog</span>
-            </nav>
+            <article class="blog-article">
 
-            <div class="blog-hero-grid">
-                <div class="blog-hero-text">
-                    <h1 class="blog-hero-title">The Plunge Blog</h1>
+                <nav class="city-breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span>/</span>
+                    <a href="./">Blog</a>
+                    <span>/</span>
+                    <span aria-current="page">What a Sewer Camera Inspection Actually Shows</span>
+                </nav>
 
-                    <p class="blog-intro">
-                        Welcome to the Plunge blog — where our team shares practical plumbing tips,
-                        honest advice, and the occasional hard-won lesson from the field. Whether you're
-                        chasing down a stubborn drain, weighing a repair against a replacement, or just
-                        trying to keep your home's plumbing healthy in Arizona's hard water, we hope you
-                        find something useful here. <em>(This is placeholder text — we'll swap in your
-                        real introduction whenever you're ready.)</em>
-                    </p>
+                <h1 class="blog-article-title">What a Sewer Camera Inspection Actually Shows</h1>
+                <p class="blog-article-meta">February 27, 2026 &middot; The Plunge Team &middot; Drains &amp; Sewer</p>
+
+                <!-- Body paragraphs, with any photo figures interleaved and
+                     alternating right/left down the text (magazine-style). The
+                     figures come from the post's "photos" list in
+                     blog-posts.json; a post with none is just paragraphs. -->
+                <div class="blog-article-body">
+                    <p>Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with "mock": true in blog-posts.json and re-run the generator).</p>
+                    <p>The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names.</p>
                 </div>
 
-                <div class="blog-hero-media">
-                    <div class="video-placeholder">
-                    <i class="fa fa-play-circle" aria-hidden="true"></i>
-                    <span>Video coming soon</span>
+                <div class="blog-article-foot">
+                    <a href="./" class="blog-back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to the blog</a>
+                    <div class="hero-cta-group">
+                        <a href="tel:+14808780808" class="btn btn-call">
+                            <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                        </a>
+                        <a href="../index.html#booking" class="btn btn-book">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                        </a>
+                    </div>
                 </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- =============================================
-         BLOG POST LIST — newest first (generated from blog-posts.json)
-         ============================================= -->
-    <section class="blog-list-section">
-        <div class="container">
-            <div class="blog-list">
-                <article class="blog-card">
-                    <a class="blog-card-link" href="why-water-heaters-dont-last-in-arizona.html">
-                        <p class="blog-card-date">July 14, 2026 &middot; <span class="blog-card-cat">Water Heaters</span></p>
-                        <h2 class="blog-card-title">Why Water Heaters Don't Last as Long in Arizona</h2>
-                        <p class="blog-card-excerpt">If your water heater gave out sooner than you expected, you're not imagining it — the Valley's hard water is quietly working against every tank in town. Here's what's really going on inside.</p>
-                        <span class="blog-card-more">Read article <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-                </article>
-                <article class="blog-card">
-                    <a class="blog-card-link" href="5-signs-your-toilet-needs-replacing.html">
-                        <p class="blog-card-date">June 30, 2026 &middot; <span class="blog-card-cat">Toilets</span></p>
-                        <h2 class="blog-card-title">5 Signs Your Toilet Is Ready for Replacement</h2>
-                        <p class="blog-card-excerpt">A toilet can soldier on for decades — but at some point, repairs stop being worth it. Here are five signs it's time to stop patching and start fresh.</p>
-                        <span class="blog-card-more">Read article <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-                </article>
-                <article class="blog-card">
-                    <a class="blog-card-link" href="hard-water-101.html">
-                        <p class="blog-card-date">June 12, 2026 &middot; <span class="blog-card-cat">Water Quality &amp; Softening</span></p>
-                        <h2 class="blog-card-title">Hard Water 101: What It's Really Doing to Your Home</h2>
-                        <p class="blog-card-excerpt">Spots on the glasses are just the start. Here's a plain-English look at what hard water is, why the Valley has so much of it, and what it costs your home over time.</p>
-                        <span class="blog-card-more">Read article <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-                </article>
-                <article class="blog-card blog-card--viewall">
-                    <a class="blog-card-link" href="all-posts.html">
-                        <svg class="blog-archive-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg>
-                        <h2 class="blog-card-title">View All Blog Posts</h2>
-                        <p class="blog-card-excerpt">Browse all 20 posts in one place.</p>
-                        <span class="blog-card-more">See the full list <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-                </article>
-            </div>
+            </article>
         </div>
     </section>
 

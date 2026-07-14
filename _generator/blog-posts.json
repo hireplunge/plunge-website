@@ -85,5 +85,200 @@
       "In most Valley homes there are two places to look. Inside or on the exterior wall, often near a front hose bibb, you'll usually find the home's main shutoff valve. Out at the street, in a covered box near the sidewalk, is the city's shutoff at the meter.",
       "Give the valve a gentle test so you know it actually turns — older valves can seize up over time, and the moment of an emergency is the worst time to discover that. If yours won't budge, that's a quick, worthwhile fix to schedule before you need it."
     ]
+  },
+  {
+    "slug": "tank-vs-tankless-water-heaters",
+    "title": "Tank vs. Tankless: Which Water Heater Fits Your Home?",
+    "date": "2026-05-02",
+    "author": "The Plunge Team",
+    "category": "Water Heaters",
+    "mock": true,
+    "excerpt": "Both can be great — the right answer depends on your home, your habits, and your water. A plain-English comparison.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "how-often-flush-water-heater",
+    "title": "How Often Should You Flush Your Water Heater?",
+    "date": "2026-03-18",
+    "author": "The Plunge Team",
+    "category": "Water Heaters",
+    "mock": true,
+    "excerpt": "The single cheapest thing you can do to extend a water heater's life, and how often the Valley's water asks for it.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "rumbling-water-heater-sound",
+    "title": "What That Rumbling Sound in Your Tank Really Means",
+    "date": "2026-02-10",
+    "author": "The Plunge Team",
+    "category": "Water Heaters",
+    "mock": true,
+    "excerpt": "A noisy tank is telling you something. Here's how to translate.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "water-heater-warranties-decoded",
+    "title": "Water Heater Warranties, Decoded",
+    "date": "2026-01-15",
+    "author": "The Plunge Team",
+    "category": "Water Heaters",
+    "mock": true,
+    "excerpt": "Six years? Twelve? What the fine print actually covers, and what it quietly doesn't.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "why-new-faucet-drips",
+    "title": "Why Your New Faucet Drips (It's Not You)",
+    "date": "2026-04-12",
+    "author": "The Plunge Team",
+    "category": "Faucets",
+    "mock": true,
+    "excerpt": "A brand-new faucet that already drips usually points to one of three culprits. None of them are your fault.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "kitchen-faucet-hard-water",
+    "title": "Choosing a Kitchen Faucet That Survives Hard Water",
+    "date": "2026-03-05",
+    "author": "The Plunge Team",
+    "category": "Faucets",
+    "mock": true,
+    "excerpt": "Finishes, cartridges, and the features that actually matter when your water is this mineral-heavy.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "faucet-aerator-cleanout",
+    "title": "The 15-Minute Faucet Aerator Clean-Out",
+    "date": "2026-01-28",
+    "author": "The Plunge Team",
+    "category": "Faucets",
+    "mock": true,
+    "excerpt": "Weak stream? Sputtering? Before you call anyone, try this simple fix.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "running-toilet-three-suspects",
+    "title": "Running Toilet? Three Usual Suspects",
+    "date": "2026-04-25",
+    "author": "The Plunge Team",
+    "category": "Toilets",
+    "mock": true,
+    "excerpt": "That phantom refill sound has a short list of causes. Here's how to catch yours.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "low-flow-toilet-myths",
+    "title": "Low-Flow Toilets: Myths vs. Reality",
+    "date": "2026-02-20",
+    "author": "The Plunge Team",
+    "category": "Toilets",
+    "mock": true,
+    "excerpt": "Modern low-flow toilets are nothing like the weak flushers of the 90s. What changed, and what to look for.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "five-things-never-down-drain",
+    "title": "Five Things That Should Never Go Down Your Drain",
+    "date": "2026-05-15",
+    "author": "The Plunge Team",
+    "category": "Drains & Sewer",
+    "mock": true,
+    "excerpt": "Some of the worst clogs we see start with everyday habits. Five things to keep out of the pipes.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "slow-drain-vs-clog",
+    "title": "Slow Drain vs. Clog: When to Stop DIY-ing",
+    "date": "2026-04-02",
+    "author": "The Plunge Team",
+    "category": "Drains & Sewer",
+    "mock": true,
+    "excerpt": "A slow drain and a true clog are different problems. Knowing which you have saves money — and pipes.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "sewer-camera-inspection",
+    "title": "What a Sewer Camera Inspection Actually Shows",
+    "date": "2026-02-27",
+    "author": "The Plunge Team",
+    "category": "Drains & Sewer",
+    "mock": true,
+    "excerpt": "A look at what the camera sees down there, and when an inspection is genuinely worth it.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "roots-in-sewer-line",
+    "title": "Roots in the Sewer Line: An Arizona Story",
+    "date": "2026-01-08",
+    "author": "The Plunge Team",
+    "category": "Drains & Sewer",
+    "mock": true,
+    "excerpt": "Desert trees are thirsty, and your sewer line is the wettest thing in the yard. How roots get in and what to do.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "plumbing-emergency-kit",
+    "title": "Build a 10-Minute Plumbing Emergency Kit",
+    "date": "2026-03-22",
+    "author": "The Plunge Team",
+    "category": "Emergency Plumbing",
+    "mock": true,
+    "excerpt": "A few dollars of supplies in one known spot can turn a burst-pipe panic into a controlled mess.",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
+  },
+  {
+    "slug": "salt-vs-salt-free-softeners",
+    "title": "Salt vs. Salt-Free Softeners: A Plain-English Guide",
+    "date": "2026-05-28",
+    "author": "The Plunge Team",
+    "category": "Water Quality & Softening",
+    "mock": true,
+    "excerpt": "They're often sold side by side, but they do different jobs. Which one matches the Valley's water?",
+    "body": [
+      "Placeholder post. This is one of the MOCK posts added in July 2026 purely to preview how the blog design handles a large library of articles — it must be removed before launch (delete every entry with \"mock\": true in blog-posts.json and re-run the generator).",
+      "The paragraphs here are filler so the page has a realistic length. Real posts will follow the site's copy rules: practical, plain-English plumbing advice grounded in the Valley's hard-water reality, with no response-time promises and no specific neighborhood or landmark names."
+    ]
   }
 ]

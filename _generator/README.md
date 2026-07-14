@@ -156,6 +156,11 @@ Answered," "Website Folder Review," "Choosing Your Blog Platform"):
    above the Maps `<script>` tag in `index.html`.
 7. Build the blog (below) when ready — it slots into this generator
    without structural changes.
+8. **Remove the blog's MOCK posts** — delete every blog-posts.json entry
+   flagged `"mock": true` and re-run the generator (see the "MOCK POSTS —
+   REMOVE BEFORE LAUNCH" warning in the blog section below). Also swap
+   the placeholder blog intro + remaining placeholder posts for real
+   content, or accept them consciously.
 
 ## Blog (file-based at /blog) — STARTED July 2026
 
@@ -174,11 +179,25 @@ Medium cannot live at hireplunge.com/blog, so posts there would build
   matter how many posts accumulate; older posts simply roll off onto the
   archive. All automatic — never hand-edit.
 - **All-posts archive** (`docs/blog/all-posts.html`, from
-  `blog-archive-template.html`): EVERY post, grouped under CATEGORY
-  headings (newest first within each), in a 3-column list that mirrors the
-  city pages' services checklist (same separators and hover behavior) with
-  the book-and-pen blog icon in place of the ✓. Only categories that have
-  posts appear.
+  `blog-archive-template.html`): EVERY category from blog-categories.json
+  appears as a block, three blocks across — echoing the city pages'
+  3-column services checklist, with its separators/hover behavior and the
+  book-and-pen blog icon in place of the ✓. Each block shows only its
+  newest few posts (`ARCHIVE_CATEGORY_POST_COUNT`, currently 3) plus a
+  "View All →" link, so the archive stays a fixed, scannable size no
+  matter how many posts pile up. Categories with no posts yet show "Stay
+  tuned for more!" until their first post lands (automatic — no
+  hand-editing either way).
+- **Per-category pages** (`docs/blog/category-<slug>.html`, from
+  `blog-category-template.html`): one per library category, listing EVERY
+  post in that category, newest first, in a full-width 3-column checklist.
+  Slugs are derived from the category name automatically
+  (`category_slug()`); empty categories get a live page with the "Stay
+  tuned" placeholder, so every topic URL is stable from day one.
+- **By-date page** (`docs/blog/all-posts-by-date.html`, from
+  `blog-bydate-template.html`): every post in one flat list, newest first,
+  NO category grouping — 3 columns, each row showing its publish date.
+  Linked from the bottom of the all-posts archive ("Every post by date →").
 - **One page per post** (`docs/blog/<slug>.html`, from
   `blog-post-template.html`): magazine layout — optional photos float and
   alternate right/left down the body text (see "photos" below).
@@ -199,10 +218,21 @@ Currently seeded with 5 PLACEHOLDER posts and a placeholder intro paragraph
    In practice the owner hands a Google Doc/Word draft to a Claude session,
    which turns it into the JSON entry — no hand-formatting.
 2. Run `python3 _generator/generate.py`. The landing page re-sorts and
-   re-caps itself (3 newest + View All card), the archive re-lists every
-   post under its category heading, and a page is (re)built for each post.
-   (Note: `build_blog()` does NOT rmtree docs/blog/, so if you RENAME or
-   DELETE a post's slug, remove the stale `docs/blog/<old-slug>.html` by hand.)
+   re-caps itself (3 newest + View All card), the archive and category
+   pages re-list everything, and a page is (re)built for each post.
+   `build_blog()` CLEARS docs/blog/*.html before writing, so renamed or
+   deleted posts can never leave stale pages behind — which also means
+   docs/blog/ must hold ONLY generated files (never hand-place one there).
+
+### ⚠️ MOCK POSTS — REMOVE BEFORE LAUNCH
+
+blog-posts.json currently contains 15 design-preview posts flagged
+`"mock": true` (added July 2026 so the owner could see the blog with a
+full library). **Before launch: delete every entry with `"mock": true`
+and re-run the generator** — the folder-clearing above wipes their pages
+automatically. The real (non-mock) placeholder posts are a separate,
+smaller cleanup decided at content-writing time. This item is also on the
+pre-launch checklist below.
 
 ### Blog categories — derived from the services list (services lead, categories follow)
 

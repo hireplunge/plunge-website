@@ -42,6 +42,8 @@ blog_posts = json.loads((BASE / "blog-posts.json").read_text(encoding="utf-8"))
 blog_index_template = (BASE / "blog-index-template.html").read_text(encoding="utf-8")
 blog_post_template = (BASE / "blog-post-template.html").read_text(encoding="utf-8")
 blog_archive_template = (BASE / "blog-archive-template.html").read_text(encoding="utf-8")
+blog_category_template = (BASE / "blog-category-template.html").read_text(encoding="utf-8")
+blog_bydate_template = (BASE / "blog-bydate-template.html").read_text(encoding="utf-8")
 
 # Blog categories are DERIVED FROM the services list — services.json leads,
 # blog-categories.json follows (see the _notes inside that file for the full
@@ -338,6 +340,15 @@ def post_category(post: dict) -> str:
     return cat if cat in {c["name"] for c in blog_categories} else FALLBACK_CATEGORY
 
 
+def category_slug(name: str) -> str:
+    """Filename-safe slug for a category's page, derived from its name so it
+    never needs to be maintained by hand: 'Water Quality & Softening' ->
+    'water-quality-and-softening' -> docs/blog/category-<slug>.html."""
+    slug = name.lower().replace("&", "and")
+    slug = re.sub(r"[^a-z0-9]+", "-", slug).strip("-")
+    return slug
+
+
 def format_post_date(iso: str) -> str:
     """'2026-07-14' -> 'July 14, 2026' (for display). Falls back to the raw
     string if it isn't a plain ISO date, so a bad date never crashes a build."""
@@ -478,36 +489,137 @@ def build_archive_item(post: dict) -> str:
     )
 
 
+# Each category block on the archive page lists at most this many posts (the
+# newest); the block's "View All" link leads to the category's own page,
+# which lists every post in the category. Like the landing page's 4-card cap,
+# this keeps the archive a fixed, scannable size no matter how many hundreds
+# of posts eventually pile up.
+ARCHIVE_CATEGORY_POST_COUNT = 3
+
+
 def build_archive_sections(posts: list) -> str:
-    """The archive page's body: posts grouped under category headings, in the
-    library's order (blog-categories.json — which itself follows the services
-    list). Only categories that actually have posts appear, so the page grows
-    naturally as topics get written about; the General fallback bucket comes
-    last, and only if something actually landed in it. Within a category,
-    posts stay newest-first (the caller passes them pre-sorted)."""
+    """The archive page's body: one block per category, in the library's order
+    (blog-categories.json — which itself follows the services list). EVERY
+    library category appears, posts or not — the page doubles as a map of the
+    topics we cover. Categories with posts list their newest few (see
+    ARCHIVE_CATEGORY_POST_COUNT) plus a "View All" link to the category's own
+    page; categories with none show a "Stay tuned for more!" placeholder that
+    disappears on its own the moment a post lands in that category. Blocks sit
+    in a 3-across grid (.blog-archive-grid, see blog.css). The General
+    fallback bucket comes last, and only if something actually landed in it."""
     by_cat = {}
     for post in posts:
         by_cat.setdefault(post_category(post), []).append(post)
 
     order = [c["name"] for c in blog_categories] + [FALLBACK_CATEGORY]
-    sections = []
+    blocks = []
     for name in order:
         cat_posts = by_cat.get(name)
-        if not cat_posts:
-            continue
+        if not cat_posts and name == FALLBACK_CATEGORY:
+            continue  # General only appears when actually used
+        if cat_posts:
+            # Dated rows (same markup as the by-date page), per owner request
+            rows = "\n".join(
+                build_bydate_item(p) for p in cat_posts[:ARCHIVE_CATEGORY_POST_COUNT]
+            )
+            body = (
+                '                <ul class="blog-archive-list">\n'
+                f'{rows}\n'
+                '                </ul>\n'
+                f'                <a class="blog-archive-viewall" href="category-{category_slug(name)}.html">'
+                'View All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>'
+            )
+        else:
+            body = '                <p class="blog-archive-empty">Stay tuned for more!</p>'
+        blocks.append(
+            '            <div class="blog-archive-group">\n'
+            f'                <h2 class="blog-archive-cat">{esc(name)}</h2>\n'
+            f'{body}\n'
+            '            </div>'
+        )
+    return (
+        '            <div class="blog-archive-grid">\n'
+        + "\n".join(blocks)
+        + '\n            </div>'
+    )
+
+
+def build_bydate_item(post: dict) -> str:
+    """One row of the by-date list: book-and-pen icon + linked title with the
+    post's date on a small line beneath. Same checklist row chrome as the
+    archive/category lists."""
+    return (
+        f'                <li>{BLOG_ICON_SVG}<div class="blog-bydate-text">'
+        f'<a href="{post["slug"]}.html">{esc(post["title"])}</a>'
+        f'<span class="blog-bydate-date">{esc(format_post_date(post.get("date", "")))}</span>'
+        '</div></li>'
+    )
+
+
+def build_bydate_page(posts: list) -> str:
+    """The by-date page (docs/blog/all-posts-by-date.html): every post in one
+    flat list, newest first, no category grouping — three columns wide, each
+    row showing the post's date. Linked from the bottom of the all-posts
+    archive. Fully generated; grows on its own with every new post."""
+    rows = "\n".join(build_bydate_item(p) for p in posts)
+    n = len(posts)
+    tokens = {
+        "__BYDATE_COUNT_LINE__": f"{n} post{'' if n == 1 else 's'} and counting.",
+        "__BYDATE_LIST__": (
+            '            <ul class="blog-archive-list blog-archive-list--full">\n'
+            f'{rows}\n'
+            '            </ul>'
+        ),
+    }
+    page = blog_bydate_template
+    for token, value in tokens.items():
+        page = page.replace(token, value)
+    stray = re.findall(r"__[A-Z_]+__", page)
+    if stray:
+        print(f"  WARNING: unreplaced tokens in by-date page: {set(stray)}")
+    return page
+
+
+def build_category_page(name: str, cat_posts: list) -> str:
+    """One category's own page (docs/blog/category-<slug>.html): every post in
+    the category, newest first, in the 3-column checklist style. Generated for
+    EVERY library category — a category with no posts yet just shows the same
+    "Stay tuned for more!" placeholder, so its URL is live and stable from day
+    one."""
+    if cat_posts:
         rows = "\n".join(build_archive_item(p) for p in cat_posts)
-        sections.append(
-            f'            <h2 class="blog-archive-cat">{esc(name)}</h2>\n'
-            '            <ul class="blog-archive-list">\n'
+        body = (
+            '            <ul class="blog-archive-list blog-archive-list--full">\n'
             f'{rows}\n'
             '            </ul>'
         )
-    return "\n".join(sections)
+    else:
+        body = '            <p class="blog-archive-empty">Stay tuned for more!</p>'
+    n = len(cat_posts)
+    count_line = f"{n} post{'' if n == 1 else 's'} so far in this topic."
+    tokens = {
+        "__CATEGORY_NAME__": esc(name),
+        "__CATEGORY_SLUG__": category_slug(name),
+        "__CATEGORY_COUNT_LINE__": count_line,
+        "__CATEGORY_BODY__": body,
+    }
+    page = blog_category_template
+    for token, value in tokens.items():
+        page = page.replace(token, value)
+    stray = re.findall(r"__[A-Z_]+__", page)
+    if stray:
+        print(f"  WARNING: unreplaced tokens in category page {name}: {set(stray)}")
+    return page
 
 
 def build_blog() -> int:
     outdir = ROOT / "docs" / "blog"
     outdir.mkdir(parents=True, exist_ok=True)
+    # docs/blog/ holds ONLY generated files, so clear it before writing —
+    # renamed/deleted posts (e.g. removing the pre-launch mock posts) can
+    # then never leave stale pages behind. Never hand-place files here.
+    for stale in outdir.glob("*.html"):
+        stale.unlink()
     check_blog_categories()  # keep blog-categories.json in lockstep with services.json
     posts = sorted_posts()
 
@@ -525,7 +637,7 @@ def build_blog() -> int:
         print(f"  WARNING: unreplaced tokens in blog index: {set(stray)}")
     (outdir / "index.html").write_text(index, encoding="utf-8")
 
-    # Archive page: EVERY post, grouped by category (newest first within each)
+    # Archive page: every category block, newest few posts + View All links
     archive = blog_archive_template.replace(
         "__BLOG_ARCHIVE_SECTIONS__", build_archive_sections(posts)
     )
@@ -533,6 +645,24 @@ def build_blog() -> int:
     if stray:
         print(f"  WARNING: unreplaced tokens in blog archive: {set(stray)}")
     (outdir / "all-posts.html").write_text(archive, encoding="utf-8")
+
+    # One page per category (every library category, even if empty; plus
+    # General only when something actually fell back into it)
+    by_cat = {}
+    for post in posts:
+        by_cat.setdefault(post_category(post), []).append(post)
+    cat_names = [c["name"] for c in blog_categories]
+    if by_cat.get(FALLBACK_CATEGORY):
+        cat_names.append(FALLBACK_CATEGORY)
+    for name in cat_names:
+        (outdir / f"category-{category_slug(name)}.html").write_text(
+            build_category_page(name, by_cat.get(name, [])), encoding="utf-8"
+        )
+
+    # The flat by-date page: every post, newest first, no categories
+    (outdir / "all-posts-by-date.html").write_text(
+        build_bydate_page(posts), encoding="utf-8"
+    )
 
     # One page per post
     for post in posts:
@@ -565,12 +695,15 @@ def main() -> int:
             total += 1
         print(f"{city['name']}: 1 hub page + {len(services)} service pages")
 
-    # 3) The blog: index (4 cards max) + all-posts archive + one page per post
+    # 3) The blog: index (4 cards max) + all-posts archive + one page per
+    #    category + one page per post
     n_posts = build_blog()
-    print(f"Blog: 1 index + 1 all-posts archive + {n_posts} post pages")
+    print(f"Blog: 1 index + 1 all-posts archive + {len(blog_categories)} "
+          f"category pages + {n_posts} post pages")
 
     print(f"Done. {len(cities)} city hub pages + {total} service pages + "
-          f"1 blog index + 1 blog archive + {n_posts} blog posts generated.")
+          f"1 blog index + 1 blog archive + {len(blog_categories)} category "
+          f"pages + {n_posts} blog posts generated.")
     return 0
 
 
