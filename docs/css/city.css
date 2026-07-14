@@ -202,13 +202,15 @@
     padding: var(--space-md) 0 var(--space-xl);
 }
 
-/* Two-column checklist of services (from the client outline) */
+/* Two-column checklist of services (from the client outline).
+   No top margin — the section's own (small) top padding is the only gap
+   above the list, keeping it close to the hero (owner request, July 2026). */
 .services-checklist {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.15rem 1.5rem;
-    margin: var(--space-md) 0 var(--space-lg);
+    margin: 0 0 var(--space-lg);
 }
 .services-checklist li {
     display: flex;
