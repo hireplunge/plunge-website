@@ -296,6 +296,34 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
 
 /* -----------------------------------------------
+   BOOKING — placeholders vanish while a field is focused
+   -----------------------------------------------
+   Clicking into a text box clears its grayed-out sample
+   text; clicking out with the box still empty brings the
+   sample back. (On blur we restore unconditionally — if
+   the customer typed something, the placeholder is
+   invisible behind their text anyway.)
+   NOTE: the address field's autocomplete failsafe knows
+   an EMPTY placeholder is this feature at work and leaves
+   it alone — see initAddressAutocomplete below.
+   ----------------------------------------------- */
+(function initPlaceholderVanish() {
+    const form = document.getElementById('booking-form');
+    if (!form) return;
+
+    form.querySelectorAll('input[placeholder], textarea[placeholder]').forEach((el) => {
+        el.addEventListener('focus', () => {
+            el.dataset.ph = el.placeholder;   // stash the sample text
+            el.placeholder = '';
+        });
+        el.addEventListener('blur', () => {
+            if (el.dataset.ph) el.placeholder = el.dataset.ph;
+        });
+    });
+})();
+
+
+/* -----------------------------------------------
    BOOKING — Address autocomplete (Google Places)
    -----------------------------------------------
    PROGRESSIVE ENHANCEMENT ONLY — the form's golden rule is
@@ -326,10 +354,14 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
     const originalPlaceholder = input.placeholder;
 
-    /* Guard 3: if Google ever disables the field, restore it. */
+    /* Guard 3: if Google ever disables the field, restore it.
+       An EMPTY placeholder is fine — that's the vanish-on-focus
+       feature (initPlaceholderVanish) doing its job, not Google
+       breaking things — so only non-empty rewrites (e.g. Google's
+       "Oops! Something went wrong.") get reverted. */
     function restoreField() {
         if (input.disabled) input.disabled = false;
-        if (input.placeholder !== originalPlaceholder) {
+        if (input.placeholder !== '' && input.placeholder !== originalPlaceholder) {
             input.placeholder = originalPlaceholder;
         }
     }
@@ -359,6 +391,14 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
                 fields: ['address_components'],  // only what we fill
             });
 
+            /* Values set by script don't fire events on their own, so tell
+               the rest of the form (e.g. the bold-when-filled styling) that
+               a field now holds a value — same events real typing fires. */
+            const announce = (el) => {
+                el.dispatchEvent(new Event('input',  { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            };
+
             ac.addListener('place_changed', function () {
                 try {
                     const place = ac.getPlace();
@@ -374,10 +414,11 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
                     const street = [get('street_number'), get('route')]
                         .filter(Boolean).join(' ');
                     if (street) input.value = street;
+                    announce(input);  // Google set a value either way
 
                     const zip = get('postal_code');
                     const zipEl = document.getElementById('zip');
-                    if (zip && zipEl) zipEl.value = zip;
+                    if (zip && zipEl) { zipEl.value = zip; announce(zipEl); }
 
                     /* City: select it only when it matches one of our
                        options; otherwise leave the choice to the customer. */
@@ -387,7 +428,7 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
                         const match = Array.from(cityEl.options).find(
                             (o) => o.value.toLowerCase() === city.toLowerCase()
                         );
-                        if (match) cityEl.value = match.value;
+                        if (match) { cityEl.value = match.value; announce(cityEl); }
                     }
                 } catch (err) { /* keep whatever the customer typed */ }
             });
