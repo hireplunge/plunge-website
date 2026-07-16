@@ -621,7 +621,7 @@ button {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: var(--space-lg);
-    align-items: center;
+    align-items: start; /* text top sits level with the top of the team photo */
     margin-bottom: var(--space-xl);
 }
 
