@@ -21,6 +21,14 @@ See README.md in this folder for how to add cities/services.
 PARKED / TODO (owner wants these back later — see README "Parked features"):
   - collapsed FAQ per service (2-3 Q&A, <details> accordions, + FAQPage schema)
   - trimmed trust-signals block (ROC license #, licensed/insured, 24/7)
+
+BUILT-IN FAILSAFES (July 2026 audit — full catalog: _generator/failure-modes.md):
+  - D4 (DONE 2026-07-14): check_copy_rules() lints all authored copy on
+    every build — time promises, recurrence imagery, "slow", crime+place
+    pairings, {city} placement. Warnings, not failures: READ THEM.
+  - D3 (DONE 2026-07-14): check_orphan_cities() warns when docs/ contains
+    city output that cities.json no longer backs (removing a city does not
+    auto-delete its generated pages — the warning tells you what to delete).
 """
 
 import html
@@ -146,7 +154,7 @@ def build_page(city: dict, svc: dict) -> str:
     # which is the whole point of these pages. (Change seo_heading to h1 here
     # if you ever want the state gone from those too.)
     seo_heading = f"{svc['name']} in {city['name']}, {city['state']}"
-    title = f"{seo_heading} | Plunge, a Plumbing Co. LLC"
+    title = f"{seo_heading} | Plunge, A Plumbing Co. LLC"
     lead = fill(city, svc["lead"])
     meta = f"{seo_heading} — {lead} Call {PHONE_DISPLAY}."
 
@@ -177,7 +185,7 @@ def build_page(city: dict, svc: dict) -> str:
             "description": lead,
             "provider": {
                 "@type": "Plumber",
-                "name": "Plunge, a Plumbing Co. LLC",
+                "name": "Plunge, A Plumbing Co. LLC",
                 "telephone": "+14808780808",
                 "email": "info@hireplunge.com",
                 "address": {
@@ -281,7 +289,7 @@ def build_city_page(city: dict) -> str:
         "__CITY_NOTE_PARAS__": note_paras,
         "__CITY_VIDEO__": build_video(
             city.get("youtubeId"),
-            f"Plunge, a Plumbing Co. — plumbing in {city['name']}, AZ",
+            f"Plunge, A Plumbing Co. — plumbing in {city['name']}, AZ",
         ),
     }
     page = city_template
@@ -299,6 +307,114 @@ def build_city_page(city: dict) -> str:
 # BLOG — index (newest first) + one page per post, from blog-posts.json.
 # File-based, generated, matching the site (see README "Blog plan").
 # =============================================
+
+# =============================================
+# COPY-RULE LINT (catalog D4, _generator/failure-modes.md) — the owner's
+# copy rules, enforced as build warnings so a future edit can't silently
+# regress them. Full rule text lives in project memory (copy-claims-rules);
+# in short:
+#   1. No CONCRETE time promises ("same-day", "within 2 hours"). Vague
+#      speed words and 24/7 availability are fine.
+#   2. No recurrence imagery ("keeps coming back") — first-time-right only.
+#   3. Never call our work "slow" ("slow drain" describing the PROBLEM is
+#      fine and is excluded).
+#   4. Never pair a crime word with any place (city, {city}, Valley, AZ...)
+#      in one sentence.
+#   5. Service flavor copy: {city} appears exactly once, in a PARAGRAPH —
+#      never in the lead (leads feed the "«Service» in «City», AZ — ..."
+#      meta description, so a lead mention doubles the city in snippets).
+# SCOPE: rules 1-4 check services.json + cities.json (marketing copy).
+# Blog content gets rules 2 & 4 only — how-to durations ("a 15-minute fix")
+# and "slow drain" advice are legitimate blog content, not service promises.
+# =============================================
+
+RX_TIME_PROMISE = re.compile(
+    r"\bwithin \d|\bsame.day\b|\bnext.day\b|\b\d+ ?(minute|hour|day)s?\b"
+    r"|\b(one|two|three|four|five|ten|fifteen|thirty)[- ]minute\b", re.I)
+RX_RECURRENCE = re.compile(
+    r"\bcome(s)? back\b|\bcoming back\b|\bkeeps? (clogging|coming|failing|breaking|returning)\b"
+    r"|\bagain and again\b|\brepeat (visit|failure)s?\b|\bre-?fix\b", re.I)
+RX_SLOW = re.compile(r"\bslow(ly)?\b(?! drain)", re.I)
+RX_CRIME = re.compile(
+    r"theft|thief|thieves|steal|stolen|crime|criminal|vandal|burglar"
+    r"|bolt cutter|bad intentions", re.I)
+
+
+def _rx_place() -> re.Pattern:
+    names = "|".join(re.escape(c["name"]) for c in cities)
+    return re.compile(
+        r"\{city\}|" + names + r"|\bValley\b|\bArizona\b|\bAZ\b|neighborhood", re.I)
+
+
+def check_copy_rules() -> int:
+    """Lints all authored copy against the owner's copy rules. Prints a
+    WARNING per violation and returns the count (build still succeeds —
+    warnings are the safety net, not a gate)."""
+    place_rx = _rx_place()
+    problems = []
+
+    def scan(text: str, where: str, marketing: bool) -> None:
+        if marketing:
+            for rx, label in ((RX_TIME_PROMISE, "concrete time promise"),
+                              (RX_SLOW, "'slow' wording")):
+                m = rx.search(text)
+                if m:
+                    problems.append(f"{where}: {label} -> '{m.group(0)}'")
+        m = RX_RECURRENCE.search(text)
+        if m:
+            problems.append(f"{where}: recurrence imagery -> '{m.group(0)}'")
+        for sentence in re.split(r"(?<=[.!?])\s+", text):
+            if RX_CRIME.search(sentence) and place_rx.search(sentence):
+                problems.append(f"{where}: crime word + place in ONE sentence")
+
+    for svc in services:
+        scan(svc["lead"], f"services.json '{svc['slug']}' lead", marketing=True)
+        if "{city}" in svc["lead"]:
+            problems.append(f"services.json '{svc['slug']}': {{city}} in the LEAD "
+                            "(leads feed metas — keep them city-free)")
+        n = sum(p.count("{city}") for p in svc["paras"])
+        if n != 1:
+            problems.append(f"services.json '{svc['slug']}': {{city}} appears {n}x "
+                            "in paras (rule: exactly 1)")
+        for i, p in enumerate(svc["paras"]):
+            scan(p, f"services.json '{svc['slug']}' para {i+1}", marketing=True)
+
+    for city in cities:
+        scan(city.get("noteTitle", ""), f"cities.json '{city['slug']}' noteTitle", marketing=True)
+        for i, p in enumerate(city.get("notePs", [])):
+            scan(p, f"cities.json '{city['slug']}' notePs[{i}]", marketing=True)
+
+    for post in blog_posts:
+        for field in ("title", "excerpt"):
+            scan(post.get(field, ""), f"blog '{post['slug']}' {field}", marketing=False)
+        for i, p in enumerate(post.get("body", [])):
+            scan(p, f"blog '{post['slug']}' body[{i}]", marketing=False)
+
+    for msg in problems:
+        print(f"  WARNING (copy rule): {msg}")
+    return len(problems)
+
+
+def check_orphan_cities() -> int:
+    """Catalog D3: removing a city from cities.json does NOT remove its
+    generated output — docs/cities/<slug>.html and docs/services/<slug>/
+    would stay live forever. This warns loudly so orphans get deleted."""
+    known = {c["slug"] for c in cities}
+    problems = []
+    for f in sorted((ROOT / "docs" / "cities").glob("*.html")):
+        if f.stem != "index" and f.stem not in known:
+            problems.append(f"docs/cities/{f.name} has no cities.json entry — "
+                            "stale page is LIVE; delete it (or restore the city)")
+    services_dir = ROOT / "docs" / "services"
+    if services_dir.exists():
+        for d in sorted(services_dir.iterdir()):
+            if d.is_dir() and d.name not in known:
+                problems.append(f"docs/services/{d.name}/ has no cities.json entry — "
+                                "stale pages are LIVE; delete the folder (or restore the city)")
+    for msg in problems:
+        print(f"  WARNING (orphan city): {msg}")
+    return len(problems)
+
 
 def check_blog_categories() -> None:
     """Enforces the category/services sync rule (see blog-categories.json
@@ -673,6 +789,13 @@ def build_blog() -> int:
 
 
 def main() -> int:
+    # Safety nets first, so their warnings lead the output (build continues
+    # either way — read them, don't scroll past them):
+    n_copy = check_copy_rules()      # catalog D4
+    n_orphans = check_orphan_cities()  # catalog D3
+    if n_copy == 0 and n_orphans == 0:
+        print("Copy-rule lint + orphan check: clean.")
+
     total = 0
     for city in cities:
         # Pages are written into docs/ — the ONLY folder that gets published

@@ -614,9 +614,36 @@ button {
 }
 
 /* Full-width text layout */
+/* Two columns: About text on the left, team photo on the right. The
+   existing responsive rule further down collapses this to a single
+   column on small screens (photo stacks below the text). */
 .about-grid {
-    display: block;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
     margin-bottom: var(--space-xl);
+}
+
+/* Team photo — rounded corners only; deliberately NO border or shadow
+   accents (owner's design call, July 2026). */
+.about-photo {
+    margin: 0;
+    min-width: 0;
+}
+.about-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+}
+.about-photo figcaption {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .about-text {
@@ -898,6 +925,38 @@ textarea {
 }
 
 /* Submission status message */
+/* Fallback shown INSTEAD of the booking form when JS is off (<noscript>)
+   or script.js failed to initialize (the inline watchdog in index.html).
+   Catalog A1, _generator/failure-modes.md. */
+.booking-js-fallback {
+    background: var(--blue-dark);
+    /* Same accent language as the site's other cards: orange top + left
+       edges with a soft shadow (not a full four-sided border). */
+    border-top: 4px solid var(--orange);
+    border-left: 4px solid var(--orange);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin: 0 0 var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--white);
+    text-align: center;
+}
+.booking-js-fallback .fa-wrench {
+    color: var(--orange);
+    margin-right: 0.35rem;
+}
+.booking-js-fallback a {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+.booking-js-fallback a:hover {
+    color: var(--white);
+}
+
 .booking-status {
     padding: 0.8rem 1rem;
     border-radius: var(--radius);
@@ -1463,6 +1522,14 @@ textarea {
 }
 
 /* Prev / next arrows — overlay the viewport edges */
+/* The arrows ship with the `hidden` attribute (dead buttons without JS —
+   catalog C2); this explicit rule is REQUIRED because the display:flex
+   below would otherwise override the browser's built-in [hidden] handling
+   and the arrows would show anyway (caught by the owner, July 2026). */
+.ba-arrow[hidden] {
+    display: none;
+}
+
 .ba-arrow {
     position: absolute;
     top: 50%;

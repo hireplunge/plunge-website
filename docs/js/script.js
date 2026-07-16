@@ -9,6 +9,20 @@
      5. BEFORE/AFTER       — rotating before & after carousel
      6. UTILITIES          — XSS helpers, date helpers
      7. PAGE INIT          — runs on DOMContentLoaded
+   =============================================
+   ⚠️ SINGLE POINT OF FAILURE — READ BEFORE EDITING (July 2026 audit)
+   This one file powers the nav drawer on EVERY page (~990), the entire
+   booking form, the carousel, and the reviews. The IIFEs isolate runtime
+   errors from each other, but ONE SYNTAX ERROR anywhere in this file
+   kills ALL of it at parse time. The booking form survives that via the
+   READY BEACON at the very bottom of this file + the inline watchdog in
+   index.html (catalog A1 — customers get a call-us box, not a dead form);
+   the nav drawer and carousel do NOT have a net.
+
+   STANDING PROCEDURE: after ANY edit to this file, run
+       node --check docs/js/script.js
+   before committing. Full failure catalog + failsafe status:
+   _generator/failure-modes.md
    ============================================= */
 
 
@@ -132,6 +146,12 @@ document.addEventListener('keydown', (e) => {
    used instead — see the commented block in index.html.
    ============================================= */
 
+/* Native browser validation is disabled ONLY once JS is confirmed running
+   (we do custom validation + reporting below). Keeping `novalidate` out of
+   the HTML means a no-JS browser still gets native required-field checks.
+   (Catalog A1 — see _generator/failure-modes.md.) */
+document.getElementById('booking-form')?.setAttribute('novalidate', '');
+
 document.getElementById('booking-form')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -215,11 +235,24 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 
            ServiceTitan API docs: https://developer.servicetitan.io/apis/
            ----------------------------------------------- */
-        const response = await fetch(CONFIG.SERVICETITAN.PROXY_ENDPOINT, {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify(payload),
-        });
+        /* Timeout failsafe (catalog A3, _generator/failure-modes.md): a
+           backend that FAILS lands in the catch below; a backend that HANGS
+           would leave the customer on a spinner for minutes — so after 15s
+           we abort and route into the same call-us message. */
+        const controller  = new AbortController();
+        const abortTimer  = setTimeout(() => controller.abort(), 15000);
+
+        let response;
+        try {
+            response = await fetch(CONFIG.SERVICETITAN.PROXY_ENDPOINT, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(payload),
+                signal:  controller.signal,
+            });
+        } finally {
+            clearTimeout(abortTimer);
+        }
 
         if (!response.ok) {
             const errData = await response.json().catch(() => ({}));
@@ -235,9 +268,14 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
     } catch (err) {
 
         console.error('Booking submission error:', err);
+        /* AbortError = our 15s timeout fired — give a human reason, not
+           the browser's "user aborted a request" wording. */
+        const reason = (err && err.name === 'AbortError')
+            ? 'the request took too long to answer'
+            : err.message;
         statusEl.className   = 'booking-status error';
         statusEl.textContent =
-            `There was a problem submitting your request: ${err.message}.` +
+            `There was a problem submitting your request: ${reason}.` +
             ` Please call us directly at ${CONFIG.PHONE_DISPLAY}.`;
 
     } finally {
@@ -256,6 +294,13 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
    need?"). As soon as a service is chosen, the customer
    detail fields slide down into view. This keeps the
    form from looking like an overwhelming wall of inputs.
+   ⚠️ CRITICAL DEPENDENCY (catalog A1, _generator/
+   failure-modes.md): Step 2 is CSS-hidden by DEFAULT, so
+   this code is the ONLY thing that makes the form usable.
+   That's now SAFE because of the ready beacon (bottom of
+   this file) + the inline watchdog in index.html: if this
+   file ever fails to parse, the watchdog swaps the whole
+   form for a call-us notice. Don't remove either half.
    ----------------------------------------------- */
 (function initBookingReveal() {
     const continueBtn     = document.getElementById('booking-continue-btn');
@@ -907,6 +952,11 @@ const BEFORE_AFTER_PROJECTS = [
        Leave src empty ('') to show an "Add photo here" placeholder.
        Fill in src + alt + caption when the real photos are ready.
 
+       ⚠️ THE FIRST ENTRY HAS A STATIC TWIN in index.html (the baked-in
+       slide inside #ba-track — catalog C2, _generator/failure-modes.md).
+       If you change this first project, update that static copy too, or
+       the JS-dead fallback will show outdated content.
+
        When you add a real photo, write the `alt` as a natural sentence
        describing what the photo actually shows — that one description
        doubles as the image's accessibility text (for screen readers)
@@ -1012,9 +1062,13 @@ function initCarousel() {
         </button>
     `).join('');
 
-    /* Wire up the prev/next arrows */
+    /* Wire up the prev/next arrows, then reveal them — they ship hidden in
+       the HTML because without JS they'd be dead buttons next to the static
+       first slide (catalog C2, _generator/failure-modes.md). */
     document.getElementById('ba-prev')?.addEventListener('click', () => moveCarousel(-1));
     document.getElementById('ba-next')?.addEventListener('click', () => moveCarousel(1));
+    document.getElementById('ba-prev')?.removeAttribute('hidden');
+    document.getElementById('ba-next')?.removeAttribute('hidden');
 
     /* When the active progress bar finishes filling, advance a step */
     dots.addEventListener('animationend', (e) => {
@@ -1124,3 +1178,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+/* =============================================
+   READY BEACON — must stay the LAST statement in this file
+   -----------------------------------------------
+   The booking section's inline watchdog (in index.html) checks this flag
+   shortly after page load. Because this line only executes if the ENTIRE
+   file parsed without a syntax error, a broken script.js means the flag
+   is never set — and the watchdog then swaps the booking form for a
+   visible "call us" notice instead of leaving a silently dead form.
+   (Catalog A1, _generator/failure-modes.md.) If you rename this flag,
+   update the watchdog in index.html to match.
+   ============================================= */
+window.__plungeBookingReady = true;

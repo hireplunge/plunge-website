@@ -283,6 +283,82 @@ headings and next to the date on post cards and post pages.
   back to our original — no SEO cost). Substack's only future role would
   be emailing excerpts that LINK to hireplunge.com/blog, never full posts.
 
+## SEO keyword library (private) — `seo-keywords.json`
+
+The site's keyword inventory: 1,022 unique keywords = the owner's Google
+Keyword Planner export (725, scored/themed by the July 2026 Cowork analysis)
++ 279 new city×service local keywords + 18 new question keywords mapped to
+future blog posts. Full how-to-read notes live in the file's `_readme`,
+including the condensed action plan from the Cowork PDF
+(`keyword-analysis-plunge.pdf` on the owner's Desktop, with its companion
+workbook `plunge-keyword-strategy.xlsx`).
+
+**PRIVACY: this file must NEVER move into `docs/`** — it would be publicly
+downloadable and hand competitors the entire keyword strategy. It lives here
+precisely because `_generator/` is never published.
+
+Use it when writing anything new: check `in_use_where` (which keywords the
+service copy / blog already carry), pull unclaimed keywords for new copy from
+the matching theme, and mine `blog_questions_new` + `quick_wins` for the next
+blog batch. Refresh the analysis roughly twice a year (free — Keyword Planner
++ autocomplete; see the PDF's toolkit section).
+
+## ⚠️ Failure modes & failsafes — read before changing anything load-bearing
+
+**The full catalog lives in `_generator/failure-modes.md`** (July 2026 audit:
+every known way the site can break, what happens today, and the failsafe to
+build, with severity ratings). Headline findings, so they're impossible to miss:
+
+1. ✅ **A1 — FIXED (2026-07-14): the booking form can no longer die
+   silently.** Three layers: a ready beacon at the END of script.js (only
+   runs if the whole file parsed) + an inline watchdog in index.html that
+   swaps the form for a call-us box when the beacon is missing + a
+   `<noscript>` twin for JS-off browsers. `novalidate` is now set BY JS.
+   Don't remove any of the layers — each covers a case the others can't.
+2. ✅ **A3 — FIXED (2026-07-14):** the submit fetch aborts at 15s and
+   shows the call-us message instead of an endless spinner.
+3. **C1 (still true): `docs/js/script.js` is a single point of failure**
+   for the nav drawer on every page, the carousel, and reviews — a parse
+   error kills all of it at once. The booking form now survives via the
+   watchdog; nothing else has a net. Hence the standing `node --check`.
+4. ✅ **D4 + D3 — FIXED (2026-07-14):** `generate.py` now lints every
+   build — copy rules (time promises, recurrence, "slow", crime+place,
+   {city} placement) and orphaned city output both print WARNINGs. A clean
+   build says "Copy-rule lint + orphan check: clean." — if you see
+   warnings instead, fix them before pushing.
+5. ✅ **C2 + C2b + B1 — FIXED (2026-07-14):** the homepage gallery ships a
+   static first slide (JS replaces it; arrows hidden until JS runs — when
+   changing project #1 in script.js, update its static twin in
+   index.html); the reviews section's static state is a real "reviews on
+   Google" link instead of an eternal spinner; and Font Awesome is
+   SELF-HOSTED at docs/vendor/fontawesome/ (no CDN dependency — every
+   template + hand page links the local copy).
+6. Last queued item: build-stamped asset versions at Netlify launch (E1),
+   plus A4 (backend verification) inside the future ServiceTitan Function.
+
+Already verified-safe and worth PRESERVING (don't "simplify" these away):
+the submit handler's graceful call-us failure; the address autocomplete's
+triple guard (poll → try/catch → MutationObserver vs. Google disabling the
+field); the date picker's native-input-stays design; the reviews
+placeholder fallback; generate.py crashing BEFORE writing when JSON is bad.
+
+### Standing procedures (cheap habits that prevent the expensive failures)
+
+- **After ANY edit to `docs/js/script.js`:** run `node --check docs/js/script.js`
+  before committing. One parse error takes down every interactive feature
+  on ~990 pages.
+- **After every push:** hard-refresh (Cmd+Shift+R) before judging the test
+  site — browsers hold stale CSS/JS against new HTML (bitten twice already).
+- **Never hand-place files in `docs/blog/`** — the build clears it. Never
+  hand-edit anything in `docs/` that a template generates.
+- **After editing any `_generator/*.json`:** run the generator and READ its
+  output — the warnings (unreplaced tokens, category sync) are the safety
+  net, not noise.
+- **If the business phone number ever changes:** it's hardcoded in
+  script.js CONFIG, every template's header/footer/CTAs, index.html,
+  pippin.html, and the schema blocks. `grep -r 4808780808` and fix ALL of
+  them, then regenerate.
+
 ## Parked features — revisit when the owner is ready
 
 Both were intentionally removed from the service pages earlier; the owner

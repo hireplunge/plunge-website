@@ -31,9 +31,9 @@
          ============================================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plunge, a Plumbing Co. LLC — Licensed, insured plumbing services. Book online or call now for fast, professional plumbing repairs and installations.">
+    <meta name="description" content="Plunge, A Plumbing Co. LLC — Licensed, insured plumbing services. Book online or call now for fast, professional plumbing repairs and installations.">
     <meta name="keywords" content="plumbing, plumber, drain cleaning, pipe repair, water heater, Plunge plumbing, plumbing company">
-    <title>Plunge, a Plumbing Co. LLC | Professional Plumbing Services</title>
+    <title>Plunge, A Plumbing Co. LLC | Professional Plumbing Services</title>
 
     <!-- Browser tab icons (favicons), iOS home-screen icon, and PWA manifest -->
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -44,7 +44,9 @@
     <meta name="theme-color" content="#264878">
 
     <!-- Font Awesome icons (phone, map pin, social media, etc.) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Font Awesome — SELF-HOSTED (catalog B1, _generator/failure-modes.md):
+         no CDN dependency; icons work even if the outside internet is unreachable. -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
 
     <!-- Main site stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
@@ -55,7 +57,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Plumber",
-      "name": "Plunge, a Plumbing Co. LLC",
+      "name": "Plunge, A Plumbing Co. LLC",
       "url": "https://yourwebsite.com",
       "telephone": "+14808780808",
       "email": "info@hireplunge.com",
@@ -98,7 +100,7 @@
                 </div>
                 <div class="header-title">
                     <span class="header-company-name">Plunge</span>
-                    <span class="header-tagline">a Plumbing Co. LLC</span>
+                    <span class="header-tagline">A Plumbing Co. LLC</span>
                 </div>
             </div>
         </a>
@@ -188,6 +190,16 @@
                          as the blog's orange "View All" arrow links) -->
                     <a href="#gallery" class="about-gallery-link">See our before &amp; after gallery <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
+
+                <!-- Team photo — sits to the RIGHT of the About text on desktop
+                     (stacks below it on mobile). Rounded corners, deliberately
+                     NO border or shadow accents (owner's design call). -->
+                <figure class="about-photo">
+                    <img src="images/about-team.jpg"
+                         alt="The two owners of Plunge and their dog in front of the Plunge shop"
+                         loading="lazy" decoding="async">
+                    <figcaption>The guys in charge!</figcaption>
+                </figure>
             </div>
             <div class="about-cta">
                 <!-- CALL NOW — replace +14808780808 with your phone number (digits only) -->
@@ -223,7 +235,34 @@
             <h2 class="section-title">Book a Service</h2>
             <p class="section-subtitle">Schedule your plumbing service online and we'll reach out to confirm the details.</p>
 
-            <form id="booking-form" class="booking-form" novalidate>
+            <!-- =========================================================
+                 ⚠️ FAILSAFE WIRING (catalog A1, _generator/failure-modes.md)
+                 — three layers keep this form from EVER dead-ending silently:
+                 1. The <noscript> block below: JS-off browsers see the
+                    call-us box instead of the form.
+                 2. The inline WATCHDOG script at the bottom of this file:
+                    if script.js fails to load or parse (its ready beacon
+                    never fires), the watchdog hides the form and shows the
+                    same call-us box. The form is JS-dependent by design
+                    (Step 2 reveal, custom submit) — a script failure now
+                    means an obvious phone number, not a dead form.
+                 3. `novalidate` is set BY script.js, not in this HTML, so
+                    native browser validation stays armed if JS is dead.
+                 Do not remove any of the three. -->
+            <noscript>
+                <style>#booking-form { display: none; }</style>
+                <div class="booking-js-fallback">
+                    <strong><i class="fa fa-wrench" aria-hidden="true"></i> Our online booking form needs JavaScript, which is turned off in your browser :(</strong><br>
+                    We're still here to help. Call us any time, day or night, at
+                    <a href="tel:+14808780808">(480) 878-0808</a> and we'll get you scheduled.
+                </div>
+            </noscript>
+            <div class="booking-js-fallback" id="booking-js-fallback" hidden>
+                <strong><i class="fa fa-wrench" aria-hidden="true"></i> Our online booking form isn't loading right now :(</strong><br>
+                We're still here to help. Call us any time, day or night, at
+                <a href="tel:+14808780808">(480) 878-0808</a> and we'll get you scheduled.
+            </div>
+            <form id="booking-form" class="booking-form">
 
                 <!-- =========================================================
                      STEP 1 — "What do you need?"  (always visible)
@@ -453,7 +492,7 @@
                          Remove any platforms you don't use.
                          ============================================= -->
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/hireplunge/" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/p/DayMB7tj_-3/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" class="social-icon social-icon--instagram" aria-label="Follow Plunge on Instagram" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.facebook.com/p/Plunge-A-Plumbing-Company-LLC-61568241644216/" class="social-icon social-icon--facebook" aria-label="Follow Plunge on Facebook" target="_blank" rel="noopener noreferrer">
@@ -505,18 +544,25 @@
                     <!-- Score, stars, and review count stack together so the
                          count lines up under the rating text; the logo sits to
                          the left, centered against the block. -->
+                    <!-- Static state is a USEFUL link, not "Loading…" (catalog C2b,
+                         _generator/failure-modes.md): if script.js never runs, this
+                         still points visitors at our Google reviews. JS overwrites
+                         it with the live rating + count on a healthy load. -->
                     <div class="rating-info">
                         <span id="overall-rating" class="overall-rating">—</span>
-                        <div id="overall-stars" class="star-rating" aria-label="Loading rating..."></div>
-                        <span id="review-count" class="review-count">Loading reviews&hellip;</span>
+                        <div id="overall-stars" class="star-rating" aria-label="Google rating"></div>
+                        <span id="review-count" class="review-count"><a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">See our reviews on Google</a></span>
                     </div>
                 </div>
             </div>
 
-            <!-- Individual review cards injected by script.js -->
+            <!-- Individual review cards injected by script.js. The static
+                 content below is the JS-dead fallback (catalog C2b): a real
+                 link instead of a spinner that would otherwise sit there
+                 forever. JS replaces it on every healthy load. -->
             <div id="reviews-container" class="reviews-grid" role="list" aria-label="Customer reviews">
                 <div class="reviews-loading">
-                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Loading reviews&hellip;
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">Read our reviews on Google <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -557,18 +603,44 @@
             <p class="section-subtitle">Examples of Our Skilled Technicians' Work</p>
 
             <!-- Before / After carousel — slides injected by initCarousel() in script.js.
-                 Each step shows a Before and an After photo side by side. -->
+                 Each step shows a Before and an After photo side by side.
+                 ⚠️ KNOWN FAILURE POINT (catalog C2, _generator/failure-modes.md):
+                 100% JS-injected — if script.js fails, this section renders as an
+                 empty box under its heading (and the About section links here).
+                 Queued fix: a static first slide in the HTML that JS replaces. -->
             <div class="ba-carousel" id="ba-carousel">
                 <div class="ba-viewport">
                     <div class="ba-track" id="ba-track" aria-live="polite">
-                        <!-- Populated by initCarousel() in script.js -->
+                        <!-- STATIC FIRST SLIDE (catalog C2, _generator/failure-modes.md):
+                             a baked-in copy of BEFORE_AFTER_PROJECTS[0] from js/script.js,
+                             so this section is never an empty box if script.js fails.
+                             On a healthy load initCarousel() replaces it with the full
+                             rotating set — visitors never see the difference.
+                             ⚠️ If you change the FIRST project in script.js (e.g. adding
+                             real photos), update this static copy to match. -->
+                        <div class="ba-slide">
+                            <div class="ba-pair">
+                                <div class="ba-photo ba-photo--placeholder">
+                                    <span class="ba-badge">Before</span>
+                                    <i class="fa fa-image ba-placeholder-icon" aria-hidden="true"></i>
+                                    <span class="ba-placeholder-text">Add photo here</span>
+                                </div>
+                                <div class="ba-photo ba-photo--placeholder">
+                                    <span class="ba-badge">After</span>
+                                    <i class="fa fa-image ba-placeholder-icon" aria-hidden="true"></i>
+                                    <span class="ba-placeholder-text">Add photo here</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Arrows live inside the viewport so they center on the
                          photos themselves, not the whole carousel (which also
-                         includes the caption and dots below). -->
-                    <button class="ba-arrow ba-arrow--prev" id="ba-prev" type="button" aria-label="Previous example">&#8249;</button>
-                    <button class="ba-arrow ba-arrow--next" id="ba-next" type="button" aria-label="Next example">&#8250;</button>
+                         includes the caption and dots below). They ship HIDDEN
+                         (dead buttons without JS — catalog C2); initCarousel()
+                         reveals them once the carousel is actually running. -->
+                    <button class="ba-arrow ba-arrow--prev" id="ba-prev" type="button" aria-label="Previous example" hidden>&#8249;</button>
+                    <button class="ba-arrow ba-arrow--next" id="ba-next" type="button" aria-label="Next example" hidden>&#8250;</button>
                 </div>
 
                 <!-- Caption lives outside the viewport (updated per-slide by
@@ -594,7 +666,7 @@
             <!-- Brand column -->
             <div class="footer-brand">
                 <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="footer-logo" onerror="this.style.display='none'">
-                <p class="footer-company-name">Plunge, a Plumbing Co. LLC</p>
+                <p class="footer-company-name">Plunge, A Plumbing Co. LLC</p>
                 <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
                 <!-- Replace with your contractor license number -->
                 <p class="footer-license">License #: 332623515</p>
@@ -621,7 +693,7 @@
                 <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
                 <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></p>
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/hireplunge/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/p/DayMB7tj_-3/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     <a href="https://www.facebook.com/p/Plunge-A-Plumbing-Company-LLC-61568241644216/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                     <a href="https://www.yelp.com/biz/plunge-a-plumbing-company-mesa" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
                     <a href="https://nextdoor.com/page/plunge-a-plumbing-company-llc-mesa-az?utm_campaign=1783093631810&amp;share_action_id=8a22cfef-040b-4fc6-bc21-13088bc6ab80" aria-label="Nextdoor" target="_blank" rel="noopener noreferrer"><i class="fas fa-home" aria-hidden="true"></i></a>
@@ -633,7 +705,7 @@
 
         <div class="footer-bottom">
             <!-- TODO (before launch): privacy.html and terms.html do not exist yet — the two links below will 404 until those pages are created. -->
-            <p>&copy; <span id="footer-year"></span> Plunge, a Plumbing Co. LLC All rights reserved.</p>
+            <p>&copy; <span id="footer-year"></span> Plunge, A Plumbing Co. LLC All rights reserved.</p>
             <p>
                 <a href="privacy.html">Privacy Policy</a>
                 &nbsp;|&nbsp;
@@ -646,6 +718,31 @@
          JAVASCRIPT
          ============================================= -->
     <script src="js/script.js"></script>
+    <!-- =========================================================
+         BOOKING WATCHDOG — deliberately INLINE and self-contained
+         (catalog A1, _generator/failure-modes.md). If script.js failed to
+         load or parse, its ready beacon (window.__plungeBookingReady, the
+         last line of that file) never fires — so shortly after load this
+         watchdog hides the booking form and reveals the call-us box in the
+         booking section. Keep this inline: moving it into script.js would
+         make it die with the thing it watches.
+         ========================================================= -->
+    <script>
+        (function bookingWatchdog() {
+            function check() {
+                if (window.__plungeBookingReady) return;   // script.js is healthy
+                var fallback = document.getElementById('booking-js-fallback');
+                var form     = document.getElementById('booking-form');
+                if (fallback) fallback.hidden = false;
+                if (form) form.style.display = 'none';
+            }
+            if (document.readyState === 'complete') {
+                setTimeout(check, 2000);
+            } else {
+                window.addEventListener('load', function () { setTimeout(check, 2000); });
+            }
+        })();
+    </script>
 
     <!-- Google Maps JavaScript API — loads Places library for review cards -->
     <!-- =============================================
