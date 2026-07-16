@@ -1444,16 +1444,21 @@ textarea {
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* One step fills the viewport width */
+/* One step fills the viewport width; content centers within it */
 .ba-slide {
     min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Before + After photos side by side */
+/* Before + After photos side by side — each at its OWN native size */
 .ba-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
+    width: 100%;
 }
 
 /* Caption — sits in the controls row between the arrows */
@@ -1467,23 +1472,26 @@ textarea {
 }
 
 .ba-photo {
-    position: relative;
-    /* Uniform "stage" height per photo slot; the image inside displays WHOLE
-       at its native aspect ratio (object-fit: contain below), letterboxed on
-       the blue-dark matting. Portrait and landscape shots both fit fully —
-       nothing gets cropped (owner request, July 2026). */
-    height: clamp(280px, 34vw, 440px);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    background: var(--blue-dark);
+    /* CAROUSEL PHOTOS ARE FRAMELESS (owner request, July 2026): no matting,
+       no background box — the photograph itself IS the element, shown whole
+       at its own native aspect ratio. This rule applies ONLY to the moving
+       galleries (.ba-*); photos elsewhere on the site keep their standard
+       frames (see _generator/design-guide.md §5). */
+    position: relative;   /* anchors the Before/After badge */
+}
+
+.ba-pair .ba-photo {
+    max-width: calc(50% - 0.5rem);   /* two-up: each photo keeps to its half */
 }
 
 .ba-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;   /* whole photograph visible — never cropped */
     display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: clamp(280px, 34vw, 440px);
+    border-radius: var(--radius-lg);   /* corner rounding only — no border */
+    box-shadow: var(--shadow-sm);
 }
 
 /* Before / After badge */
@@ -1503,14 +1511,19 @@ textarea {
     border-radius: var(--radius);
 }
 
-/* Placeholder slot shown until a real photo is added */
+/* Placeholder slot shown until a real photo is added — placeholders DO
+   keep the dashed frame box (there's no photo to shape them otherwise) */
 .ba-photo--placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
+    width: min(480px, 100%);
+    aspect-ratio: 4 / 3;
+    background: var(--blue-dark);
     border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-lg);
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -2037,7 +2050,10 @@ textarea {
 
     /* Stack Before / After vertically on small screens */
     .ba-pair {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    .ba-pair .ba-photo {
+        max-width: 100%;
     }
 
     /* Mobile footer: Quick Links and Contact stack as full-width rows
