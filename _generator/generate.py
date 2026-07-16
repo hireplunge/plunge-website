@@ -416,6 +416,153 @@ def check_orphan_cities() -> int:
     return len(problems)
 
 
+# =============================================
+# SITE CHECKUP (owner request, July 2026) — the full health screen, run
+# automatically at the END of every build so "uploading a blog post" always
+# doubles as a physical for the whole site. Pure standard library — no
+# dependencies, no network, no accounts (owner's constraint). Catches the
+# file-level failures from _generator/failure-modes.md; what it CANNOT see
+# is the outside world (hosting/domain/Google outages) — that's a live-site
+# concern, revisit uptime monitoring at launch.
+# =============================================
+
+# Footer links that are ALLOWED to be missing for now (pinned decision:
+# privacy/terms pages come later). Reported as pre-launch reminders, not
+# problems, so real warnings never drown in known noise.
+KNOWN_PENDING_TARGETS = {"privacy.html", "terms.html"}
+
+EXTERNAL_PREFIXES = ("http://", "https://", "tel:", "mailto:", "#", "data:", "javascript:")
+
+
+def checkup_links(problems: list, notes: list) -> int:
+    """Every href/src in every generated+hand page must resolve to a real
+    file. The one scan that catches broken nav, dead images, renamed pages,
+    and typo'd links across all ~990 pages at once."""
+    docs = ROOT / "docs"
+    files, dirs = set(), set()
+    for dirpath, dirnames, filenames in __import__("os").walk(docs):
+        d = pathlib.Path(dirpath)
+        dirs.add(d)
+        for fn in filenames:
+            files.add(d / fn)
+    checked = 0
+    pending_hits = 0
+    link_rx = re.compile(r'(?:href|src)\s*=\s*"([^"]+)"')
+    for page in sorted(files):
+        if page.suffix != ".html":
+            continue
+        text = page.read_text(encoding="utf-8", errors="replace")
+        for raw in link_rx.findall(text):
+            if raw.startswith(EXTERNAL_PREFIXES) or "${" in raw:
+                continue  # external / JS template literal (pippin gallery)
+            link = raw.split("#")[0].split("?")[0]
+            if not link:
+                continue
+            target = (page.parent / link).resolve()
+            if link.endswith("/") or target in dirs:
+                target = target / "index.html"
+            checked += 1
+            if target not in files:
+                if target.name in KNOWN_PENDING_TARGETS:
+                    pending_hits += 1
+                else:
+                    problems.append(f"broken link in {page.relative_to(ROOT)}: '{raw}'")
+    if pending_hits:
+        notes.append(f"privacy.html / terms.html still pending (linked from every "
+                     f"footer — pinned decision; create or remove before launch)")
+    return checked
+
+
+def checkup_javascript(problems: list, notes: list) -> None:
+    """script.js is the site's single point of failure (catalog C1): check
+    it parses, and check the watchdog contract is intact on BOTH ends —
+    the ready beacon must be the LAST statement of script.js, and
+    index.html must still carry the watchdog + fallback box (catalog A1)."""
+    js = ROOT / "docs" / "js" / "script.js"
+    src = js.read_text(encoding="utf-8")
+    if not src.rstrip().endswith("window.__plungeBookingReady = true;"):
+        problems.append("script.js: the ready beacon is no longer the LAST statement "
+                        "— the booking watchdog would fire on healthy pages "
+                        "(see the READY BEACON comment at the end of script.js)")
+    index_src = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    for needle, what in (
+        ("bookingWatchdog", "the inline booking watchdog script"),
+        ('id="booking-js-fallback"', "the call-us fallback box"),
+        ("<noscript>", "the noscript fallback"),
+        ("__plungeBookingReady", "the watchdog's beacon check"),
+    ):
+        if needle not in index_src:
+            problems.append(f"index.html: {what} is missing (catalog A1 failsafe)")
+    if '<div class="ba-slide">' not in index_src:
+        problems.append("index.html: the static first gallery slide is missing "
+                        "(catalog C2 failsafe)")
+    node = __import__("shutil").which("node")
+    if node:
+        result = __import__("subprocess").run(
+            [node, "--check", str(js)], capture_output=True, text=True)
+        if result.returncode != 0:
+            problems.append("script.js has a SYNTAX ERROR — this kills the nav, "
+                            "form, and carousel on every page: "
+                            + result.stderr.strip().splitlines()[0][:120])
+    else:
+        notes.append("node not installed — JS syntax check skipped this run")
+
+
+def checkup_required_files(problems: list) -> None:
+    """Core assets every page depends on."""
+    required = [
+        "docs/css/styles.css", "docs/css/city.css", "docs/css/service.css",
+        "docs/css/blog.css", "docs/js/script.js", "docs/favicon.ico",
+        "docs/site.webmanifest", "docs/images/logo.png",
+        "docs/vendor/fontawesome/css/all.min.css",
+        "docs/vendor/fontawesome/webfonts/fa-solid-900.woff2",
+        "docs/vendor/fontawesome/webfonts/fa-brands-400.woff2",
+        "docs/vendor/fontawesome/webfonts/fa-regular-400.woff2",
+    ]
+    for rel in required:
+        if not (ROOT / rel).exists():
+            problems.append(f"required file missing: {rel}")
+
+
+def checkup_prelaunch(notes: list) -> None:
+    """Launch-prep reminders — informational, not failures."""
+    mocks = sum(1 for p in blog_posts if p.get("mock"))
+    if mocks:
+        notes.append(f"{mocks} MOCK blog posts still published (flagged "
+                     f"\"mock\": true) — remove before launch (checklist item 9)")
+    placeholder_pages = 0
+    for page in (ROOT / "docs").rglob("*.html"):
+        if "yourwebsite.com" in page.read_text(encoding="utf-8", errors="replace"):
+            placeholder_pages += 1
+    if placeholder_pages:
+        notes.append(f"'yourwebsite.com' placeholder still in {placeholder_pages} "
+                     f"pages — swap to hireplunge.com at launch (checklist item 3)")
+
+
+def run_site_checkup() -> int:
+    """The whole battery. Prints a plain-English verdict as the LAST line of
+    every build: office staff only ever need to read that line."""
+    problems: list = []
+    notes: list = []
+    n_links = checkup_links(problems, notes)
+    checkup_javascript(problems, notes)
+    checkup_required_files(problems)
+    checkup_prelaunch(notes)
+
+    print()
+    for msg in problems:
+        print(f"  ✗ PROBLEM: {msg}")
+    for msg in notes:
+        print(f"  • note: {msg}")
+    if problems:
+        print(f"SITE CHECKUP: {len(problems)} PROBLEM(S) FOUND — fix before "
+              f"uploading (details above).")
+    else:
+        print(f"SITE CHECKUP: PASSED ✓  ({n_links:,} links verified, JS healthy, "
+              f"failsafes intact{', ' + str(len(notes)) + ' launch reminder(s) above' if notes else ''}).")
+    return len(problems)
+
+
 def check_blog_categories() -> None:
     """Enforces the category/services sync rule (see blog-categories.json
     _notes): every service slug in services.json must be covered by exactly
@@ -827,6 +974,11 @@ def main() -> int:
     print(f"Done. {len(cities)} city hub pages + {total} service pages + "
           f"1 blog index + 1 blog archive + {len(blog_categories)} category "
           f"pages + {n_posts} blog posts generated.")
+
+    # 4) The full site checkup — ALWAYS the last thing a build prints.
+    #    Office rule of thumb: if the final line doesn't say PASSED, don't
+    #    upload; the lines above it name exactly what's wrong.
+    run_site_checkup()
     return 0
 
 

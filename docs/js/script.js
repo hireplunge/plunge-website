@@ -965,9 +965,11 @@ const BEFORE_AFTER_PROJECTS = [
        ============================================= */
 
     {
-        before:  { src: '', alt: 'Before photo of plumbing project' },
-        after:   { src: '', alt: 'After photo of plumbing project' },
-        caption: 'Project caption goes here',
+        /* ⚠️ This FIRST project has a STATIC TWIN in index.html (catalog C2)
+           — if you change these photos/caption, update that copy too. */
+        before:  { src: 'images/gallery/ba-1-before.jpg', alt: 'Old tank-style water heater crowding the utility closet before replacement' },
+        after:   { src: 'images/gallery/ba-1-after.jpg',  alt: 'New wall-mounted tankless water heater with clean copper piping in the same closet' },
+        caption: 'Tank to tankless water heater upgrade',
     },
     {
         before:  { src: '', alt: 'Before photo of plumbing project' },

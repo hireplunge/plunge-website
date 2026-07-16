@@ -8,6 +8,14 @@ generator pipeline, and all external dependencies. Private working doc
 today → the recommended failsafe. Severity = how badly it hurts a customer
 trying to reach us, not how likely it is.
 
+**Standing detection layer (added 2026-07-14): the SITE CHECKUP** runs at
+the end of every `generate.py` build — link integrity across all pages,
+script.js parse check, watchdog-contract check (A1), static-slide check
+(C2), required-asset check, plus the pre-build lints (D3/D4). One rule:
+the build's last line must say `SITE CHECKUP: PASSED ✓` before uploading.
+Verified by staging four simultaneous breakages (broken link, dead image,
+JS syntax error, displaced ready-beacon) — all four caught and named.
+
 Legend: 🔴 critical (bookings/calls lost) · 🟠 major (feature dead, workaround
 exists) · 🟡 minor (cosmetic/recoverable) · ✅ already failsafed
 
@@ -104,6 +112,14 @@ exists) · 🟡 minor (cosmetic/recoverable) · ✅ already failsafed
 - Watch item: the underlying `PlacesService` API is legacy; if Google
   sunsets it, reviews quietly fall back to placeholders (safe), but
   refresh the integration then.
+- **KNOWN LIMITATION (explained to owner 2026-07-14): review cards go
+  stale.** Google's browser API returns only 5 reviews of ITS choosing
+  ("most relevant", not newest) — new reviews often never appear, though
+  the live count + star rating DO stay current. No client-side fix exists
+  (the newest-first sort option is server-side only). **QUEUED FIX (launch
+  week): a Netlify Function calling Google's server-side Place Details
+  with reviews_sort=newest, cached ~1h — shows the 5 newest and hides the
+  API key.** Same pattern as the ServiceTitan booking function.
 
 ### 🟡 B3. Google Maps key: billing lapse / quota / deletion
 - Autocomplete → guarded (A5). Reviews → placeholder fallback (B2).

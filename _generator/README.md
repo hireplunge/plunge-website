@@ -56,6 +56,36 @@ from scratch. **Never edit the files in `docs/services/` by hand** — your chan
 will be overwritten on the next run. Edit the JSON/template here instead,
 then re-run.
 
+## 🩺 Site checkup — runs automatically with every build
+
+Every `generate.py` run ends with a full health screen of the whole site
+(added July 2026, owner request; zero dependencies — pure Python).
+**The office rule is one sentence: if the build's LAST line doesn't say
+`SITE CHECKUP: PASSED ✓`, don't upload — the lines above it name exactly
+what's wrong and where.**
+
+What it verifies on every run:
+- **Every internal link and image on all ~990 pages** points at a file
+  that actually exists (~31,000 links checked in a few seconds)
+- **js/script.js parses** (a syntax error there kills the nav, form, and
+  carousel site-wide — catalog C1), and the **booking watchdog contract**
+  is intact on both ends (ready beacon last in script.js; watchdog +
+  call-us fallback + noscript still present in index.html — catalog A1)
+- **The static gallery slide** failsafe is still in index.html (C2)
+- **Core assets exist** (stylesheets, script.js, favicon, logo, manifest,
+  self-hosted Font Awesome files)
+- Plus the pre-build checks that already ran: copy-rule lint, orphan-city
+  detection, blog-category sync, unreplaced-token checks
+
+It also prints **launch reminders** as informational notes (mock posts,
+yourwebsite.com placeholders, pending privacy/terms) — notes are not
+failures; they disappear as launch prep completes.
+
+What it CANNOT see: the outside world — hosting/domain outages, Google
+API changes on the live site. Those only show up on the live site itself;
+revisit uptime monitoring at Netlify launch if wanted (deliberately not
+added now — owner wants zero new dependencies/accounts).
+
 ## To add a city
 
 City pages are now GENERATED too (from `city-template.html`), so adding a
@@ -156,7 +186,12 @@ Answered," "Website Folder Review," "Choosing Your Blog Platform"):
    above the Maps `<script>` tag in `index.html`.
 7. Build the blog (below) when ready — it slots into this generator
    without structural changes.
-8. **Remove the blog's MOCK posts** — delete every blog-posts.json entry
+8. **Reviews freshness function** — small Netlify Function calling
+   Google's server-side Place Details with `reviews_sort=newest` (cached
+   ~1h) so the homepage shows the 5 NEWEST reviews instead of Google's
+   stale "most relevant" picks (browser API can't sort — see
+   failure-modes.md B2). Builds alongside the ServiceTitan function.
+9. **Remove the blog's MOCK posts** — delete every blog-posts.json entry
    flagged `"mock": true` and re-run the generator (see the "MOCK POSTS —
    REMOVE BEFORE LAUNCH" warning in the blog section below). Also swap
    the placeholder blog intro + remaining placeholder posts for real
@@ -358,6 +393,19 @@ placeholder fallback; generate.py crashing BEFORE writing when JSON is bad.
   script.js CONFIG, every template's header/footer/CTAs, index.html,
   pippin.html, and the schema blocks. `grep -r 4808780808` and fix ALL of
   them, then regenerate.
+
+## 🎨 Design guide & page skeleton — how new pages get built
+
+**`_generator/design-guide.md`** is the site's design system: tokens
+(colors/spacing/type), the page-chrome anatomy, the component library
+(cards, buttons, arrow links, checklists, media frames, notice boxes),
+the placeholder→real framework rules, responsive breakpoints, and the
+non-negotiables. **`_generator/page-skeleton.html`** is a ready-to-copy
+starter for ANY new hand-built page (podcast page, promo page, whatever)
+— copy it into docs/, follow its checklist comment, and the header/footer/
+components render correctly with zero design refinement (verified).
+New REPEATED page types (another city-like collection) get a template +
+generator loop instead — see the sections above.
 
 ## Parked features — revisit when the owner is ready
 

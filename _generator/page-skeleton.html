@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- =============================================================
+     PAGE SKELETON — the starting point for ANY new hand-built page
+     (a podcast page, a promo page, anything). Copy, don't edit this.
+
+     NEW PAGE CHECKLIST (full rules: _generator/design-guide.md):
+       1. COPY this file to docs/<your-page>.html
+          (If it goes in a SUBFOLDER like docs/blog/, prefix every
+          internal href/src with ../ — depth table in the guide §2.)
+       2. Replace every REPLACE marker: <title>, meta description,
+          canonical URL, breadcrumb, h1, and the example content.
+       3. Build your content from the component library (guide §4):
+          cards, buttons, arrow links, checklists, media frames —
+          copy existing classes, invent nothing.
+       4. Follow the copy rules (guide §8.3) — the build lint checks.
+       5. Link the new page from the nav drawer, footer, or a parent
+          page so it isn't an orphan.
+       6. Run  python3 _generator/generate.py  and confirm the last
+          line says SITE CHECKUP: PASSED before uploading.
+     ============================================================= -->
+<html lang="en">
+<head>
+
+    <!-- =============================================
+         HOSTING / PUBLISH-FOLDER: this page lives in docs/ (the only
+         folder Netlify publishes). Internal links are relative. Full
+         plan in _generator/README.md. (Website Folder Review, Finding 2.)
+         ============================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="REPLACE — one-sentence description of this page for Google (about 150 characters).">
+    <title>REPLACE Page Name | Plunge, A Plumbing Co. LLC</title>
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#264878">
+
+    <!-- TODO (before launch): replace "yourwebsite.com" with hireplunge.com. -->
+    <link rel="canonical" href="https://yourwebsite.com/REPLACE-page-url.html">
+
+    <!-- Font Awesome — SELF-HOSTED (catalog B1, _generator/failure-modes.md):
+         no CDN dependency; icons work even if the outside internet is unreachable. -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/city.css">
+    <link rel="stylesheet" href="css/blog.css">
+
+</head>
+<body>
+
+    <!-- Nav overlay (dims background when drawer is open) -->
+    <div id="nav-overlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+    <!-- =============================================
+         HEADER — identical across all pages
+         ============================================= -->
+    <header class="site-header">
+        <a href="index.html" class="header-brand-link" aria-label="Return to home page">
+            <div class="header-brand">
+                <div class="header-logo-wrap">
+                    <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="header-title">
+                    <span class="header-company-name">Plunge</span>
+                    <span class="header-tagline">A Plumbing Co. LLC</span>
+                </div>
+            </div>
+        </a>
+        <div class="header-left-btns">
+            <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
+                <span class="menu-icon" aria-hidden="true">&#9776;</span>
+                <span class="menu-label">Service Areas</span>
+            </button>
+            <a href="index.html" class="home-btn" aria-label="Return to homepage">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
+        <a href="tel:+14808780808" class="header-call-btn" aria-label="Call Plunge now">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="header-call-label">Call Now</span>
+        </a>
+    </header>
+
+    <!-- =============================================
+         SERVICE AREAS NAVIGATION DRAWER
+         (blog pages sit in docs/blog/, so city links point to cities/)
+         ============================================= -->
+    <nav id="city-nav" class="city-nav" aria-label="City Service Areas" role="navigation">
+        <div class="city-nav-header">
+            <h2>Service Areas</h2>
+            <button class="close-nav-btn" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <p class="city-nav-subtitle">Professional plumbing in your city</p>
+        <ul class="city-nav-list">
+            <li><a href="cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <li><a href="cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Ahwatukee</a></li>
+            <li><a href="cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
+            <li><a href="cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
+            <li><a href="blog/"><svg class="nav-blog-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg> Blog</a></li>
+        </ul>
+        <div class="city-nav-footer">
+            <a href="cities/" class="city-nav-all-link"><i class="fa fa-map-marked-alt" aria-hidden="true"></i> View All Areas</a>
+            <a href="tel:+14808780808" class="call-btn-nav">
+                <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- =============================================
+         PAGE HERO — breadcrumb + title + intro
+         (Two-column hero with media? See guide §3: .blog-hero-grid)
+         ============================================= -->
+    <section class="blog-hero">
+        <div class="container">
+            <nav class="city-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span aria-current="page">REPLACE Page Name</span>
+            </nav>
+
+            <h1 class="blog-hero-title">REPLACE Page Title</h1>
+
+            <p class="blog-intro">
+                REPLACE — a sentence or two introducing the page. Body text on
+                the dark background reads at 1.05rem with relaxed line height.
+            </p>
+        </div>
+    </section>
+
+    <!-- =============================================
+         EXAMPLE CONTENT SECTION — demonstrates the core components.
+         Replace wholesale with your real content (guide §4).
+         ============================================= -->
+    <section class="blog-list-section">
+        <div class="container">
+
+            <!-- The signature card (blue-dark, orange top+left accent) -->
+            <div class="blog-list">
+                <article class="blog-card">
+                    <a class="blog-card-link" href="index.html">
+                        <p class="blog-card-date">Label line</p>
+                        <h2 class="blog-card-title">An example card</h2>
+                        <p class="blog-card-excerpt">Cards are the site's
+                        signature container — reuse them for anything
+                        list-like or clickable.</p>
+                        <span class="blog-card-more">The arrow link <i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                </article>
+            </div>
+
+            <!-- The CTA button pair — close most pages with this -->
+            <div class="hero-cta-group" style="justify-content: center; margin-top: var(--space-lg);">
+                <a href="tel:+14808780808" class="btn btn-call">
+                    <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                </a>
+                <a href="index.html#booking" class="btn btn-book">
+                    <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+<footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <p class="footer-company-name">Plunge, A Plumbing Co. LLC</p>
+                <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
+                <p class="footer-license">License #: 332623515</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#booking">Book a Service</a></li>
+                    <li><a href="index.html#hours">Business Hours</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
+                    <li><a href="index.html#gallery">Our Work</a></li>
+                    <li><a href="cities/">Service Areas</a></li>
+                    <li><a href="blog/">Read Our Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+14808780808">(480) 878-0808</a></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/p/DayMB7tj_-3/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/p/Plunge-A-Plumbing-Company-LLC-61568241644216/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.yelp.com/biz/plunge-a-plumbing-company-mesa" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
+                    <a href="https://nextdoor.com/page/plunge-a-plumbing-company-llc-mesa-az?utm_campaign=1783093631810&amp;share_action_id=8a22cfef-040b-4fc6-bc21-13088bc6ab80" aria-label="Nextdoor" target="_blank" rel="noopener noreferrer"><i class="fas fa-home" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@Plungeaplumbingcollc1" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span class="footer-year"></span> Plunge, A Plumbing Co. LLC All rights reserved.</p>
+            <p><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+</body>
+</html>

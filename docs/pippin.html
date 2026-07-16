@@ -160,16 +160,19 @@
                     <!-- Arrows live inside the viewport so they center on the
                          photo itself, not the whole carousel (which also
                          includes the dots below). -->
-                    <button class="ba-arrow ba-arrow--prev" id="pippin-prev" type="button" aria-label="Previous photo">&#8249;</button>
-                    <button class="ba-arrow ba-arrow--next" id="pippin-next" type="button" aria-label="Next photo">&#8250;</button>
                 </div>
 
                 <!-- Caption lives outside the viewport (updated per-slide
                      below) so it doesn't add to the viewport's height —
                      keeping the arrows centered on the photo itself. -->
-                <p class="ba-caption" id="pippin-caption"></p>
-
-                <div class="ba-dots" id="pippin-dots" role="tablist" aria-label="Choose a photo to view"></div>
+                <div class="ba-controls">
+                    <button class="ba-arrow ba-arrow--prev" id="pippin-prev" type="button" aria-label="Previous photo">&#8249;</button>
+                    <div class="ba-controls-center">
+                        <p class="ba-caption" id="pippin-caption"></p>
+                        <div class="ba-dots" id="pippin-dots" role="tablist" aria-label="Choose a photo to view"></div>
+                    </div>
+                    <button class="ba-arrow ba-arrow--next" id="pippin-next" type="button" aria-label="Next photo">&#8250;</button>
+                </div>
             </div>
 
         </div>

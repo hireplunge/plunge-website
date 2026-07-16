@@ -620,36 +620,33 @@
                              real photos), update this static copy to match. -->
                         <div class="ba-slide">
                             <div class="ba-pair">
-                                <div class="ba-photo ba-photo--placeholder">
+                                <div class="ba-photo">
                                     <span class="ba-badge">Before</span>
-                                    <i class="fa fa-image ba-placeholder-icon" aria-hidden="true"></i>
-                                    <span class="ba-placeholder-text">Add photo here</span>
+                                    <img src="images/gallery/ba-1-before.jpg" alt="Old tank-style water heater crowding the utility closet before replacement" loading="lazy" decoding="async">
                                 </div>
-                                <div class="ba-photo ba-photo--placeholder">
+                                <div class="ba-photo">
                                     <span class="ba-badge">After</span>
-                                    <i class="fa fa-image ba-placeholder-icon" aria-hidden="true"></i>
-                                    <span class="ba-placeholder-text">Add photo here</span>
+                                    <img src="images/gallery/ba-1-after.jpg" alt="New wall-mounted tankless water heater with clean copper piping in the same closet" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Arrows live inside the viewport so they center on the
-                         photos themselves, not the whole carousel (which also
-                         includes the caption and dots below). They ship HIDDEN
-                         (dead buttons without JS — catalog C2); initCarousel()
-                         reveals them once the carousel is actually running. -->
-                    <button class="ba-arrow ba-arrow--prev" id="ba-prev" type="button" aria-label="Previous example" hidden>&#8249;</button>
-                    <button class="ba-arrow ba-arrow--next" id="ba-next" type="button" aria-label="Next example" hidden>&#8250;</button>
                 </div>
 
-                <!-- Caption lives outside the viewport (updated per-slide by
-                     updateCarousel() in script.js) so it doesn't add to the
-                     viewport's height — keeping the arrows centered on the
-                     photos regardless of how long the caption text is. -->
-                <p class="ba-caption" id="ba-caption"></p>
-
-                <div class="ba-dots" id="ba-dots" role="tablist" aria-label="Choose an example to view"></div>
+                <!-- Controls row BELOW the photos: prev arrow | caption + dots |
+                     next arrow. Arrows never overlay the photographs (owner
+                     request, July 2026). They ship HIDDEN (dead buttons without
+                     JS — catalog C2); initCarousel() reveals them once the
+                     carousel is actually running. -->
+                <div class="ba-controls">
+                    <button class="ba-arrow ba-arrow--prev" id="ba-prev" type="button" aria-label="Previous example" hidden>&#8249;</button>
+                    <div class="ba-controls-center">
+                        <p class="ba-caption" id="ba-caption"></p>
+                        <div class="ba-dots" id="ba-dots" role="tablist" aria-label="Choose an example to view"></div>
+                    </div>
+                    <button class="ba-arrow ba-arrow--next" id="ba-next" type="button" aria-label="Next example" hidden>&#8250;</button>
+                </div>
             </div>
 
         </div>
