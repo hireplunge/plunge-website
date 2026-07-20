@@ -1758,6 +1758,25 @@ textarea {
     color: var(--orange);
 }
 
+/* Quick Links icons (owner request, July 2026): every footer link
+   carries a small orange icon. Fixed width so the labels line up in a
+   clean column despite different glyph widths. .footer-blog-icon is the
+   nav drawer's book+pen SVG (nav-blog-icon) reused at link size. */
+.footer-links ul a i {
+    color: var(--orange);
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+    margin-right: 0.3rem;
+}
+.footer-links ul a .footer-blog-icon {
+    color: var(--orange);
+    width: 1.25em;
+    height: 1em;
+    vertical-align: -0.15em;
+    margin-right: 0.3rem;
+}
+
 .footer-contact p {
     display: flex;
     align-items: center;
