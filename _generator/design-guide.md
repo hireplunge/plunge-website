@@ -151,7 +151,9 @@ turning content on causes no layout shift.**
   frame treatment above. Empty carousel slots DO keep the dashed
   placeholder box (nothing else gives them shape). Photos get a
   `.ba-badge` label. Arrows live in the `.ba-controls` row BELOW the
-  photos (never overlaying them), flanking the caption + dots. REMEMBER:
+  photos (never overlaying them), flanking the caption + dots; the center
+  group is FIXED-WIDTH so the arrows never move between slides (no
+  button-chasing). REMEMBER:
   the homepage ships a STATIC first slide (failsafe C2) — arrows ship
   `hidden`, JS reveals.
 - **Images themselves**: resize before adding — max 1600px wide, JPEG

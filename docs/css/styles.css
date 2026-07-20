@@ -1338,10 +1338,27 @@ textarea {
 
 .reviews-loading {
     text-align: center;
-    color: rgba(255, 255, 255, 0.7);
+    /* Orange for the fallback/failure states (owner request, July 2026) */
+    color: var(--orange);
     padding: var(--space-lg);
     grid-column: 1 / -1;
     font-size: 1rem;
+    line-height: 1.9;
+}
+.reviews-loading a {
+    color: var(--orange);
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+.reviews-loading a .fa {
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+.reviews-loading a:hover {
+    color: var(--white);
+}
+.reviews-loading a:hover .fa {
+    transform: translateX(3px);
 }
 
 /* 6th slot CTA card */
@@ -1552,7 +1569,11 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 0;
+    /* FIXED width (not content-sized) so the arrows sit in the SAME spot on
+       every slide — captions vary in length, and without this the buttons
+       would drift and the user would have to chase them between clicks
+       (owner request, July 2026). Long captions wrap instead of pushing. */
+    width: clamp(200px, 50vw, 420px);
 }
 
 /* The arrows ship with the `hidden` attribute (dead buttons without JS —

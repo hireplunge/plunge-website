@@ -757,6 +757,23 @@ function loadGoogleReviews() {
     const starsEl   = document.getElementById('overall-stars');
     const countEl   = document.getElementById('review-count');
 
+    /* The full failure notice (owner-approved wording, July 2026). Shown by
+       BOTH failure paths below: the API answering with an error, and the API
+       never answering at all (auth failures often swallow the callback). */
+    const REVIEWS_FAILED_HTML =
+        'Review widget failed to load.<br>' +
+        '<a href="https://www.google.com/maps/search/?api=1&query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210"' +
+        ' target="_blank" rel="noopener noreferrer">Read our reviews on Google <i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+
+    /* Failure path 2: Google never calls back. If the static loading link is
+       still sitting in the container after 6s, no reviews arrived — upgrade
+       it to the failure notice. (Healthy loads replace the container well
+       before this fires, so normal visitors never see it.) */
+    setTimeout(() => {
+        const stillWaiting = container.querySelector('.reviews-loading');
+        if (stillWaiting) stillWaiting.innerHTML = REVIEWS_FAILED_HTML;
+    }, 6000);
+
     const service = new google.maps.places.PlacesService(
         document.createElement('div')
     );
@@ -770,9 +787,7 @@ function loadGoogleReviews() {
 
             if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
                 container.innerHTML =
-                    '<p class="reviews-loading">Unable to load reviews right now. ' +
-                    '<a href="' + escapeHTMLAttr(CONFIG.GOOGLE.REVIEW_LINK) +
-                    '" target="_blank" rel="noopener">View reviews on Google</a>.</p>';
+                    '<p class="reviews-loading">' + REVIEWS_FAILED_HTML + '</p>';
                 return;
             }
 
@@ -967,9 +982,9 @@ const BEFORE_AFTER_PROJECTS = [
     {
         /* ⚠️ This FIRST project has a STATIC TWIN in index.html (catalog C2)
            — if you change these photos/caption, update that copy too. */
-        before:  { src: 'images/gallery/ba-1-before.jpg', alt: 'Old tank-style water heater crowding the utility closet before replacement' },
-        after:   { src: 'images/gallery/ba-1-after.jpg',  alt: 'New wall-mounted tankless water heater with clean copper piping in the same closet' },
-        caption: 'Tank to tankless water heater upgrade',
+        before:  { src: 'images/gallery/ba-1-before.jpg', alt: 'Hybrid water heater and water softener filling a utility closet before the upgrade' },
+        after:   { src: 'images/gallery/ba-1-after.jpg',  alt: 'Wall-mounted tankless water heater with clean new copper piping after the hybrid to tankless conversion' },
+        caption: 'Hybrid to tankless water heater upgrade',
     },
     {
         before:  { src: '', alt: 'Before photo of plumbing project' },

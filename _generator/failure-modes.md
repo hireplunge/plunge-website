@@ -109,6 +109,13 @@ exists) · 🟡 minor (cosmetic/recoverable) · ✅ already failsafed
 ### ✅ B2. Google reviews widget
 - Feature-detects Google; on any failure shows curated placeholder
   reviews with a link to Google. Verified fallback in `loadGoogleReviews`.
+- **UPGRADED 2026-07-16:** discovered that Google auth failures often
+  SWALLOW the getDetails callback (no error ever returned), leaving the
+  neutral static link forever. Now a 6-second timeout watchdog upgrades
+  the container to the owner-approved failure notice — "Review widget
+  failed to load. / Read our reviews on Google →" in orange — covering
+  BOTH failure shapes (error returned / no answer at all). Verified under
+  a real auth rejection.
 - Watch item: the underlying `PlacesService` API is legacy; if Google
   sunsets it, reviews quietly fall back to placeholders (safe), but
   refresh the integration then.

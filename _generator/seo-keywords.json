@@ -33,15 +33,20 @@
     "  - Ongoing: blog batches per blog plan; refresh this analysis twice a year (free).",
     "",
     "HIGHLIGHT: 'polybutylene pipes' — 5,000 nat'l searches, LOW competition, perfect",
-    "fit for 1980s-90s AZ homes, almost nobody targets it locally."
+    "fit for 1980s-90s AZ homes, almost nobody targets it locally.",
+    "",
+    "owner_added = keywords supplied directly by the owner (no Keyword Planner",
+    "volume data — treat as priority terms regardless). First batch 2026-07-16:",
+    "water-heater terms for the homepage gallery photo alt text."
   ],
   "built": "2026-07-14",
   "counts": {
     "scored_export": 725,
     "local_new": 279,
     "blog_questions_new": 18,
-    "total_unique": 1022,
-    "duplicates_removed": 2
+    "total_unique": 1026,
+    "duplicates_removed": 2,
+    "owner_added": 4
   },
   "quick_wins": [
     {
@@ -13478,6 +13483,45 @@
       "links_to_service": "grease-trap-cleaning",
       "evidence": "Commercial kitchen niche",
       "in_use_where": []
+    }
+  ],
+  "owner_added": [
+    {
+      "keyword": "water heaters",
+      "theme": "waterheater",
+      "added": "2026-07-16",
+      "source": "owner",
+      "in_use_where": [
+        "service-page copy (water heater family)"
+      ]
+    },
+    {
+      "keyword": "hybrid to tankless",
+      "theme": "waterheater",
+      "added": "2026-07-16",
+      "source": "owner",
+      "in_use_where": [
+        "homepage gallery alt text + caption"
+      ]
+    },
+    {
+      "keyword": "hybrid water heater",
+      "theme": "waterheater",
+      "added": "2026-07-16",
+      "source": "owner",
+      "in_use_where": [
+        "homepage gallery alt text"
+      ]
+    },
+    {
+      "keyword": "tankless water heater",
+      "theme": "waterheater",
+      "added": "2026-07-16",
+      "source": "owner",
+      "in_use_where": [
+        "homepage gallery alt text",
+        "service-page copy (water-heater-installation)"
+      ]
     }
   ]
 }
