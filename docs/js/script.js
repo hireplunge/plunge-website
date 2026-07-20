@@ -40,24 +40,37 @@ const CONFIG = {
     /* -----------------------------------------------
        SERVICETITAN — Online Booking API
        -----------------------------------------------
-       STATUS (July 2026): backend not built yet, so every submission
-       fails and shows the "please call us" message (see the submit
-       handler's catch block). That's intentional, not a bug: the form
-       fails honestly instead of pretending to work.
+       STATUS (July 20 2026): the backend EXISTS — a Netlify Function at
+       netlify/functions/book-servicetitan.js, served at exactly this
+       PROXY_ENDPOINT address (routed by netlify.toml). It stays inert
+       until the ST_* credentials are added in Netlify's environment
+       variables (Site configuration > Environment variables) — they
+       belong ONLY there, never as fields here; anything in js/script.js
+       is public, downloaded by every visitor. Until the credentials are
+       in place (and on any failure after), submissions show the
+       "please call us" message — the form fails honestly instead of
+       pretending to work.
 
-       PLAN (decided July 2026 — Netlify hosting + keep THIS custom
-       form in the finished product): the backend will be a Netlify
-       Function served at exactly this PROXY_ENDPOINT address. The
-       ServiceTitan credentials it needs — Tenant ID, App Key, Client
-       ID, Client Secret — belong ONLY in Netlify's environment
-       variables (Site settings > Environment variables), never as
-       fields here; anything in js/script.js is public, downloaded by
-       every visitor. Build blocked on obtaining ServiceTitan API
-       credentials. See _generator/README.md "Netlify launch plan".
+       FLOW (owner decision, July 20 2026): request-then-confirm. The
+       preferred date and time window are PREFERENCES the office
+       confirms by phone — no live time slots (the dispatch board's
+       capacity data isn't maintained tightly enough to promise real
+       windows). "Plumbing Emergency" bypasses the form entirely — see
+       syncEmergency in initBookingReveal.
        ----------------------------------------------- */
     SERVICETITAN: {
         PROXY_ENDPOINT: '/api/book-servicetitan',
     },
+
+    /* -----------------------------------------------
+       BOOKING LEAD TIME (owner decision, July 20 2026)
+       -----------------------------------------------
+       Earliest selectable "Preferred Date" is this many days from
+       today — the office wants breathing room to confirm and schedule
+       requests. Emergencies don't wait for a form; they get the
+       call-us reroute instead (see index.html #booking-emergency-note).
+       ----------------------------------------------- */
+    BOOKING_LEAD_DAYS: 4,
 
     /* -----------------------------------------------
        GOOGLE PLACES API — Reviews
@@ -171,8 +184,11 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
     statusEl.className   = 'booking-status';
     statusEl.textContent = '';
 
-    /* Collect and structure form data */
+    /* Collect and structure form data. `website` is the hidden spam-trap
+       field — humans never see it, so the backend discards any submission
+       where it holds a value (see netlify/functions/book-servicetitan.js). */
     const payload = {
+        website: form.website?.value || '',
         customer: {
             firstName:     form.firstName.value.trim(),
             lastName:      form.lastName.value.trim(),
@@ -335,8 +351,37 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
         if (serviceOk && dateOk) openStep2();
     });
 
-    /* Collapse Step 2 after a successful submit/reset */
-    form?.addEventListener('reset', () => setTimeout(closeStep2, 0));
+    /* -----------------------------------------------
+       EMERGENCY REROUTE (owner decision, July 20 2026): picking
+       "Plumbing Emergency" swaps the Continue button for the call-us box
+       (#booking-emergency-note in index.html) and hides the preferred
+       date / time window / new-customer row — none of it matters when
+       the answer is "call right now". Picking any other service puts
+       everything back exactly as it was. (The hidden row's required
+       fields can't trip validation: the only submit path is Step 2,
+       which the hidden Continue button makes unreachable.)
+       ----------------------------------------------- */
+    const emergencyNote = document.getElementById('booking-emergency-note');
+    const scheduleRow   = document.getElementById('booking-schedule-row');
+    const continueRow   = document.getElementById('booking-continue-row');
+    function syncEmergency() {
+        const isEmergency = serviceSelect.value === 'emergency';
+        if (emergencyNote) emergencyNote.hidden = !isEmergency;
+        if (scheduleRow)   scheduleRow.hidden   = isEmergency;
+        /* Hide the button's wrapper row, not the button — .btn's own
+           display rule would override `hidden` on the button itself
+           (both wrappers have [hidden] guards in styles.css). */
+        if (continueRow)   continueRow.hidden   = isEmergency;
+        if (isEmergency) closeStep2();
+    }
+    serviceSelect.addEventListener('change', syncEmergency);
+
+    /* Collapse Step 2 (and re-run the emergency check — a reset clears
+       the service dropdown) after a successful submit/reset */
+    form?.addEventListener('reset', () => setTimeout(() => {
+        closeStep2();
+        syncEmergency();
+    }, 0));
 })();
 
 
@@ -722,12 +767,18 @@ document.getElementById('booking-form')?.addEventListener('submit', async functi
 })();
 
 
-/** Sets the minimum selectable date to today on the date input. */
+/** Sets the minimum selectable date on the date input: today plus the
+    booking lead time (CONFIG.BOOKING_LEAD_DAYS — owner decision, July 20
+    2026). Built from LOCAL date parts, not toISOString(): the ISO string
+    is UTC, which in Arizona evenings is already tomorrow and would shift
+    the minimum a day early or late. */
 function setMinDate() {
     const dateInput = document.getElementById('preferred-date');
-    if (dateInput) {
-        dateInput.min = new Date().toISOString().split('T')[0];
-    }
+    if (!dateInput) return;
+    const d = new Date();
+    d.setDate(d.getDate() + (CONFIG.BOOKING_LEAD_DAYS || 0));
+    const pad = (n) => String(n).padStart(2, '0');
+    dateInput.min = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
 

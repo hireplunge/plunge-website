@@ -49,12 +49,15 @@ exists) · 🟡 minor (cosmetic/recoverable) · ✅ already failsafed
 - **Keep:** `node --check docs/js/script.js` after every JS edit remains
   standing procedure — the watchdog is the net, not a license to skip it.
 
-### ✅ A2. Booking backend missing or erroring (the current state!)
-- The form POSTs to `/api/book-servicetitan`, which doesn't exist until
-  the ServiceTitan Netlify Function is built. The submit handler catches
-  every failure and shows: "There was a problem… Please call us directly
-  at (480) 878-0808," then re-enables the button. Verified in code.
-  This is the designed launch posture — safe.
+### ✅ A2. Booking backend missing or erroring — BACKEND BUILT 2026-07-20
+- The function now exists (`netlify/functions/book-servicetitan.js`,
+  routed by netlify.toml) but is INERT until the five ST_* environment
+  variables are set in Netlify — it answers 503 without them, and the
+  form's catch shows: "There was a problem… Please call us directly at
+  (480) 878-0808," then re-enables the button. Same graceful posture as
+  before, now by design of the function rather than by its absence.
+- Also new 2026-07-20: hidden honeypot field ("website") — the function
+  answers bots with a fake success and files nothing.
 
 ### ✅ A3. Backend HANGS instead of failing — FIXED 2026-07-14
 - **The risk:** a slow ServiceTitan API or hung Netlify Function leaves
@@ -66,15 +69,18 @@ exists) · 🟡 minor (cosmetic/recoverable) · ✅ already failsafed
 - **Verified** against a deliberately hanging test backend: spinner during,
   friendly call-us error at ~15s, button re-enabled.
 
-### 🟠 A4. "Success" that isn't (future risk)
+### 🟠 A4. "Success" that isn't — PARTLY ADDRESSED 2026-07-20
 - **Why:** the function returns 200 but the ServiceTitan booking didn't
   actually persist (API change, auth expiry mid-request, malformed
   payload). Customer believes they're booked; nobody comes.
-- **Failsafe (build into the function, not the site):** the function must
-  verify ServiceTitan's response before returning 200; send a
-  confirmation email on success; log failures somewhere a human checks.
-  ServiceTitan credential rotation/expiry lands here too — document the
-  renewal owner when credentials exist.
+- **Built:** the function only returns 200 after ServiceTitan answers OK
+  to the create-booking call; every ServiceTitan error becomes a non-200
+  and the form's call-us fallback. Failures land in Netlify's function
+  logs.
+- **Still open:** confirmation email on success (owner decision —
+  ServiceTitan can send one; `isSendConfirmationEmail` is currently
+  false); naming who checks the Netlify function logs; documenting the
+  credential-renewal owner. Revisit at Phase 4.6 testing.
 
 ### ✅ A5. Address autocomplete failures — triple-guarded (verified live)
 - Google script blocked/never loads → silent 10s poll gives up; plain field.

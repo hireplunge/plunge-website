@@ -219,15 +219,17 @@
 
          DECISION (July 2026, per "Website Folder Review" Finding 1 +
          owner's choice): THIS custom form stays in the finished product
-         — we are NOT swapping in ServiceTitan's hosted widget. When the
-         site moves to Netlify, the missing backend becomes a Netlify
-         Function at the address the form already posts to
-         (/api/book-servicetitan), holding the ServiceTitan credentials
-         as Netlify environment variables (never in this repo). Blocked
-         on obtaining ServiceTitan API credentials. Until then, every
+         — we are NOT swapping in ServiceTitan's hosted widget. The
+         backend NOW EXISTS: a Netlify Function at the address the form
+         posts to (/api/book-servicetitan) — see netlify/functions/
+         book-servicetitan.js and the redirect in netlify.toml. It stays
+         inert until the ST_* credentials are added as Netlify
+         environment variables (never in this repo); until then every
          submission fails gracefully to the "please call us" message —
-         intentional, not a bug. Details: js/script.js "SERVICETITAN"
-         config comment and _generator/README.md "Netlify launch plan".
+         intentional, not a bug. This is a REQUEST-then-confirm flow
+         (owner decision July 20 2026): no live time slots — the
+         preferred date/window are preferences the office confirms by
+         phone. Details: js/script.js "SERVICETITAN" config comment.
          ============================================= -->
     <section id="booking" class="booking-section">
         <div class="container">
@@ -265,6 +267,19 @@
             <form id="booking-form" class="booking-form">
 
                 <!-- =========================================================
+                     SPAM TRAP (honeypot) — invisible to people (moved
+                     off-screen in styles.css, skipped by tab order and
+                     screen readers), but form-filling bots complete it.
+                     The Netlify Function quietly discards any submission
+                     where this field has a value. Do not remove; do not
+                     "fix" the odd name — it's bait.
+                     ========================================================= -->
+                <div class="hp-field" aria-hidden="true">
+                    <label for="website">Leave this field empty</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- =========================================================
                      STEP 1 — "What do you need?"  (always visible)
                      These fields define the job. The service dropdown maps to
                      a ServiceTitan job type via data-st-job-type — fill those
@@ -293,13 +308,16 @@
                                 <option value="garbage-disposal" data-st-job-type="">Garbage Disposal</option>
                                 <option value="faucet"           data-st-job-type="">Faucet Repair / Replacement</option>
                                 <option value="remodel"          data-st-job-type="">Plumbing Remodel</option>
-                                <option value="emergency"        data-st-job-type="">Emergency Service</option>
+                                <option value="emergency"        data-st-job-type="">Plumbing Emergency</option>
                                 <option value="other"            data-st-job-type="">Other (describe below)</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-row">
+                    <!-- Hidden while "Plumbing Emergency" is selected (script.js
+                         syncEmergency) — none of these three matter when the
+                         answer is "call right now". -->
+                    <div class="form-row" id="booking-schedule-row">
                         <div class="form-group">
                             <label for="preferred-date">Preferred Date <span class="required">*</span></label>
                             <input type="date" id="preferred-date" name="preferredDate" required>
@@ -323,10 +341,26 @@
                         </div>
                     </div>
 
-                    <div class="booking-step-continue">
+                    <div class="booking-step-continue" id="booking-continue-row">
                         <button type="button" id="booking-continue-btn" class="btn btn-call">
                             Continue <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </button>
+                    </div>
+
+                    <!-- =========================================================
+                         EMERGENCY REROUTE (owner decision, July 20 2026):
+                         choosing "Plumbing Emergency" swaps the Continue button
+                         for this call-us box and hides the date/time/new-customer
+                         row above — an emergency shouldn't wait on a web form
+                         and an office callback. Toggled by script.js
+                         (initBookingReveal's syncEmergency); reuses the
+                         .booking-js-fallback styling on purpose (design
+                         system: no improvised styles).
+                         ========================================================= -->
+                    <div class="booking-js-fallback booking-emergency" id="booking-emergency-note" hidden>
+                        <strong><i class="fa fa-phone" aria-hidden="true"></i> For an emergency, skip the form.</strong><br>
+                        Call us now, any time day or night, at
+                        <a href="tel:+14808780808">(480) 878-0808</a> and we'll take it from there.
                     </div>
 
                     <!-- Shown only while Step 1 is the active view; hidden once

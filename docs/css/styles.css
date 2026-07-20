@@ -758,6 +758,12 @@ button {
     justify-content: flex-end;
     margin-top: var(--space-sm);
 }
+/* Same guard as .form-row[hidden] above: the flex rule would otherwise
+   override the `hidden` attribute set by the emergency reroute
+   (script.js syncEmergency), leaving the Continue button visible. */
+.booking-step-continue[hidden] {
+    display: none;
+}
 
 /* Step 2 progressive reveal — the CSS grid 0fr→1fr trick
    animates the container's height smoothly with no fixed
@@ -783,6 +789,13 @@ button {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.9rem;
+}
+/* Without this, the flex rule above would override the `hidden`
+   attribute and the row would stay visible. Needed by the emergency
+   reroute, which hides the date/time/new-customer row (script.js
+   syncEmergency). */
+.form-row[hidden] {
+    display: none;
 }
 
 .form-group {
@@ -943,9 +956,28 @@ textarea {
     color: var(--white);
     text-align: center;
 }
-.booking-js-fallback .fa-wrench {
+.booking-js-fallback .fa-wrench,
+.booking-js-fallback .fa-phone {
     color: var(--orange);
     margin-right: 0.35rem;
+}
+
+/* The emergency reroute box (shown when "Emergency Service" is picked —
+   see index.html #booking-emergency-note) reuses the fallback styling
+   above; it only needs breathing room from the fields above it. */
+.booking-emergency {
+    margin-top: var(--space-md);
+}
+
+/* Honeypot spam trap (see the hp-field comment in index.html): parked
+   far off-screen rather than display:none, so form-filling bots still
+   "see" and complete it while humans and screen readers never do. */
+.booking-form .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 .booking-js-fallback a {
     color: var(--orange);

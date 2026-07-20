@@ -24,6 +24,19 @@
   # generator itself on every push, add here:
   #   command = "python3 _generator/generate.py"
 
-# When the booking form's ServiceTitan backend gets built (a Netlify
-# Function at /api/book-servicetitan — see js/script.js SERVICETITAN
-# comment), its config will be added here.
+# =============================================
+# BOOKING FORM BACKEND (built July 20 2026)
+# The form POSTs to /api/book-servicetitan; the redirect below hands that
+# address to the Netlify Function in netlify/functions/. The function is
+# inert until the five ST_* environment variables are added in the Netlify
+# dashboard (Site configuration > Environment variables) — until then every
+# submission gets the form's polite "please call us" fallback, same as today.
+# Credentials NEVER go in this file or anywhere else in the repo.
+# =============================================
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/book-servicetitan"
+  to = "/.netlify/functions/book-servicetitan"
+  status = 200
