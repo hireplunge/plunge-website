@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!-- =============================================================
+     TERMS OF SERVICE — hand-built from _generator/page-skeleton.html
+     (design-guide.md rules). Content source: the owner's commissioned
+     "Website Legal Pages: Review Draft" (July 21 2026).
+
+     ⚠️ UNCONFIRMED ITEMS — every .legal-pending span or
+     .legal-pending-note block marks something the owner has NOT yet
+     confirmed (ROC license number, effective date, after-hours rates,
+     gift-card decision). generate.py counts these and prints a launch
+     reminder until they're all resolved. Resolve + remove the markers
+     before launch; attorney review recommended (drafting notes in the
+     source PDF).
+     ============================================================= -->
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="The terms that govern hireplunge.com and Plunge's plumbing services — booking requests, estimates, payment, warranties, and more.">
+    <title>Terms of Service | Plunge, A Plumbing Co. LLC</title>
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#264878">
+
+    <!-- TODO (before launch): replace "yourwebsite.com" with hireplunge.com. -->
+    <link rel="canonical" href="https://yourwebsite.com/terms.html">
+
+    <!-- Font Awesome — SELF-HOSTED (catalog B1, _generator/failure-modes.md):
+         no CDN dependency; icons work even if the outside internet is unreachable. -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/city.css">
+    <link rel="stylesheet" href="css/blog.css">
+
+</head>
+<body>
+
+    <!-- Nav overlay (dims background when drawer is open) -->
+    <div id="nav-overlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+    <!-- =============================================
+         HEADER — identical across all pages
+         ============================================= -->
+    <header class="site-header">
+        <a href="index.html" class="header-brand-link" aria-label="Return to home page">
+            <div class="header-brand">
+                <div class="header-logo-wrap">
+                    <img src="images/logo.png" alt="Plunge Plumbing Company Logo" class="header-logo" onerror="this.parentElement.style.display='none'">
+                </div>
+                <div class="header-title">
+                    <span class="header-company-name">Plunge</span>
+                    <span class="header-tagline">A Plumbing Co. LLC</span>
+                </div>
+            </div>
+        </a>
+        <div class="header-left-btns">
+            <button class="menu-btn" id="menu-toggle" onclick="toggleMenu()" aria-label="Open city services menu" aria-expanded="false">
+                <span class="menu-icon" aria-hidden="true">&#9776;</span>
+                <span class="menu-label">Service Areas</span>
+            </button>
+            <a href="index.html" class="home-btn" aria-label="Return to homepage">
+                <i class="fa fa-home" aria-hidden="true"></i>
+            </a>
+        </div>
+        <a href="tel:+14808780808" class="header-call-btn" aria-label="Call Plunge now">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="header-call-label">Call Now</span>
+        </a>
+    </header>
+
+    <!-- =============================================
+         SERVICE AREAS NAVIGATION DRAWER
+         ============================================= -->
+    <nav id="city-nav" class="city-nav" aria-label="City Service Areas" role="navigation">
+        <div class="city-nav-header">
+            <h2>Service Areas</h2>
+            <button class="close-nav-btn" onclick="closeMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <p class="city-nav-subtitle">Professional plumbing in your city</p>
+        <ul class="city-nav-list">
+            <li><a href="cities/mesa.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Mesa</a></li>
+            <li><a href="cities/ahwatukee.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Ahwatukee</a></li>
+            <li><a href="cities/chandler.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Chandler</a></li>
+            <li><a href="cities/gilbert.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Gilbert</a></li>
+            <li><a href="cities/phoenix.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Phoenix</a></li>
+            <li><a href="cities/queen-creek.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Queen Creek</a></li>
+            <li><a href="cities/scottsdale.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Scottsdale</a></li>
+            <li><a href="cities/tempe.html"><i class="fa fa-map-marker-alt" aria-hidden="true"></i> Tempe</a></li>
+            <li><a href="pippin.html"><svg class="paw-icon nav-paw-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7.2" cy="16.3" rx="3.1" ry="2.5"/><ellipse cx="3.6" cy="12.4" rx="1.1" ry="1.45"/><ellipse cx="6.7" cy="10.5" rx="1.2" ry="1.55"/><ellipse cx="10.1" cy="11.6" rx="1.1" ry="1.45"/><ellipse cx="16.8" cy="7.7" rx="2.5" ry="2"/><ellipse cx="14.1" cy="4.7" rx="0.9" ry="1.2"/><ellipse cx="16.5" cy="3.3" rx="0.95" ry="1.25"/><ellipse cx="19.1" cy="4.4" rx="0.9" ry="1.2"/></svg> Pippin :)</a></li>
+            <li><a href="blog/"><svg class="nav-blog-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg> Blog</a></li>
+        </ul>
+        <div class="city-nav-footer">
+            <a href="cities/" class="city-nav-all-link"><i class="fa fa-map-marked-alt" aria-hidden="true"></i> View All Areas</a>
+            <a href="tel:+14808780808" class="call-btn-nav">
+                <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- =============================================
+         PAGE HERO — breadcrumb + title
+         ============================================= -->
+    <section class="blog-hero">
+        <div class="container">
+            <nav class="city-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span aria-current="page">Terms of Service</span>
+            </nav>
+
+            <h1 class="blog-hero-title">Terms of Service</h1>
+
+            <p class="blog-intro">
+                Plunge, A Plumbing Co. LLC &middot; Effective date:
+                <span class="legal-pending">[set at launch]</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- =============================================
+         TERMS BODY — long-form text on the dark background, using the
+         blog article components (design-guide component library).
+         ============================================= -->
+    <section class="blog-article-section">
+        <div class="container">
+            <article class="blog-article">
+
+                <div class="blog-article-body legal-body">
+
+                    <h2>1. What these terms cover</h2>
+                    <p>These terms govern your use of the website hireplunge.com and set
+                    out the general terms on which Plunge, A Plumbing Co. LLC ("Plunge,"
+                    "we," "us") provides plumbing services. By using the website or
+                    booking our services, you agree to them. Where you and Plunge sign a
+                    separate agreement, estimate, or service contract, that document
+                    controls for the work it describes.</p>
+
+                    <h2>2. Using this website</h2>
+                    <p><strong>Booking requests.</strong> Submitting our online booking
+                    form sends us a service <em>request</em>. It is not a confirmed
+                    appointment: our office will contact you to confirm timing and
+                    details, and no appointment exists until we confirm it.</p>
+                    <p><strong>Information, not advice.</strong> Content on this site
+                    &mdash; including blog articles, how-to guidance, and cost information
+                    &mdash; is general information for Arizona homeowners and businesses.
+                    It is not professional advice about your specific plumbing system, and
+                    prices or ranges mentioned on the site are illustrations, not quotes
+                    or offers. If you attempt do-it-yourself work described on this site,
+                    you do so at your own risk; when in doubt, call a licensed plumber.</p>
+                    <p><strong>Our content.</strong> The website's text, images, and logo
+                    belong to Plunge. You're welcome to link to our pages; please don't
+                    copy, scrape, or republish our content without permission.</p>
+                    <p><strong>Fair use of our forms.</strong> Our booking and signup
+                    forms exist for genuine customer inquiries. Automated, bulk, or
+                    abusive submissions are prohibited.</p>
+                    <p><strong>As-is.</strong> We work to keep the site accurate and
+                    available but provide it "as is," without warranties of uninterrupted
+                    availability or error-free content.</p>
+
+                    <h2>3. Services and estimates</h2>
+                    <p>Plunge provides residential and commercial plumbing services
+                    &mdash; repairs, installations, maintenance, inspections, and
+                    emergency work &mdash; performed by licensed technicians in accordance
+                    with applicable regulations (ROC License
+                    <span class="legal-pending">#[confirm]</span>). Estimates are free
+                    unless we tell you otherwise, and pricing may change with the final
+                    scope of work and materials. If work beyond the original estimate
+                    becomes necessary, we will provide a revised estimate for your
+                    approval before proceeding.</p>
+
+                    <h2>4. Appointments and access</h2>
+                    <p>Please ensure safe, clear access to work areas. Appointments missed
+                    without at least 24 hours' notice may incur a trip fee. We may need to
+                    reschedule for weather, emergencies, or other circumstances beyond our
+                    control, and will tell you as early as we can.</p>
+
+                    <h2>5. Payment</h2>
+                    <p>Payment is due when service is completed unless we agree otherwise
+                    in writing. We accept cash, check, Venmo, Zelle, and credit cards
+                    (card processing fees may apply). Checks are payable to Plunge, A
+                    Plumbing Co. at 555 W 2nd Ave, Suite B7, Mesa, AZ 85210.</p>
+
+                    <h2>6. After-hours and emergency service</h2>
+                    <p>Emergency service is subject to availability, and we make every
+                    reasonable effort to respond promptly. Service calls after 5 PM on
+                    weekdays, and at any time on weekends, are billed at
+                    <span class="legal-pending">double our standard rate or a flat $500
+                    for up to two hours (materials not included), with additional time at
+                    $250 per hour [confirm these figures are current before
+                    publishing]</span>.</p>
+
+                    <h2>7. Cancellations and refunds</h2>
+                    <p>Cancellations within 24 hours of a scheduled service may incur a
+                    fee. Refunds are provided for services not rendered or where the law
+                    requires; material costs may be non-refundable.</p>
+
+                    <h2>8. Warranties</h2>
+                    <p>Our labor is warrantied for two years from the service date. Parts
+                    and materials carry the manufacturer's warranty where applicable.
+                    Warranties are void where damage results from misuse, unauthorized
+                    repairs, or issues unrelated to our work.</p>
+
+                    <h2>9. Liability</h2>
+                    <p>Plunge is not liable for damage arising from pre-existing
+                    conditions, concealed defects, or systems that don't comply with code.
+                    Please tell us everything relevant about your plumbing system before
+                    work begins. To the fullest extent the law allows, our liability in
+                    connection with the website or our services is limited to the amount
+                    you paid for the service at issue.</p>
+
+                    <h2>10. Permits and code compliance</h2>
+                    <p>Where permits are required, we obtain them, and permit fees appear
+                    in your estimate. We perform work to current codes and best practices,
+                    but cannot guarantee that pre-existing systems will pass inspection.</p>
+
+                    <h2>11. Recurring maintenance and grease-trap service agreements</h2>
+                    <p>Recurring maintenance and grease-trap cleaning are offered under
+                    signed service agreements that state frequency, scope, and pricing.
+                    Visits are scheduled automatically on the agreed cycle, with
+                    reminders. Depending on the agreement, payment is per visit or
+                    monthly; late payment may pause service or incur fees. Either party
+                    may cancel with 30 days' written notice, and discounts may be reversed
+                    if minimum terms aren't met. Commercial grease-trap clients receive
+                    disposal documentation and are responsible for providing access and
+                    telling us their compliance deadlines.</p>
+
+                    <h2>12. Gift-card promotion</h2>
+                    <p class="legal-pending-note"><i class="fa fa-wrench" aria-hidden="true"></i>
+                    Before launch: the gift-card popup is still undecided. If we keep it,
+                    remove this note; if we drop it, remove this whole section and the
+                    gift-card paragraph in the Privacy Policy (section 2).</p>
+                    <p>Our $50 Visa gift-card offer is available to qualifying first-time
+                    callers of the month, issued after completion and payment of an
+                    eligible service. Limit one per household or service address; allow
+                    4&ndash;6 weeks for delivery. The card has no cash value, is
+                    non-transferable, and cannot be combined with other offers. Plunge
+                    isn't responsible for cards lost due to incorrect information provided
+                    to us, and we may modify or end the promotion at any time. The card
+                    issuer's terms apply.</p>
+
+                    <h2>13. Text messaging</h2>
+                    <p>By providing your mobile number, you consent to receive text
+                    messages from Plunge about scheduling and updates on your request and,
+                    where you've opted in, promotions and offers. Message frequency
+                    varies; message and data rates may apply. Text HELP for support or
+                    STOP to unsubscribe at any time. Consent to texting is not a condition
+                    of purchasing any service, and opt-in data is never shared with third
+                    parties for their marketing.</p>
+
+                    <h2>14. Third-party links</h2>
+                    <p>Links to third-party sites (such as financing through Synchrony, or
+                    our social and review profiles) are provided for convenience. Those
+                    sites have their own terms and policies, and Plunge is not responsible
+                    for them.</p>
+
+                    <h2>15. General</h2>
+                    <p>These terms are governed by Arizona law, and any disputes will be
+                    handled in the courts of Maricopa County, Arizona. If part of these
+                    terms is found unenforceable, the rest remains in effect. We may
+                    update these terms by posting the revised version here with a new
+                    effective date.</p>
+
+                    <h2>16. Contact</h2>
+                    <p>Plunge, A Plumbing Co. LLC &middot; 555 W 2nd Ave, Suite B7, Mesa,
+                    AZ 85210 &middot; <a href="tel:+14808780808">(480) 878-0808</a>
+                    &middot; <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+
+                </div>
+
+                <div class="blog-article-foot">
+                    <a href="index.html" class="blog-back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to the homepage</a>
+                    <div class="hero-cta-group">
+                        <a href="tel:+14808780808" class="btn btn-call">
+                            <i class="fa fa-phone" aria-hidden="true"></i> Call Now
+                        </a>
+                        <a href="index.html#booking" class="btn btn-book">
+                            <i class="fa fa-calendar-check" aria-hidden="true"></i> Book Online
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </section>
+
+<footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Plunge Plumbing Logo" class="footer-logo" onerror="this.style.display='none'">
+                <p class="footer-company-name">Plunge, A Plumbing Co. LLC</p>
+                <p class="footer-tagline">Licensed &amp; Insured Plumbing Professionals</p>
+                <p class="footer-license">License #: 332623515</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                    <li><a href="index.html#booking"><i class="fa fa-calendar-check" aria-hidden="true"></i> Book a Service</a></li>
+                    <li><a href="index.html#hours"><i class="fa fa-clock" aria-hidden="true"></i> Business Hours</a></li>
+                    <li><a href="index.html#reviews"><i class="fab fa-google" aria-hidden="true"></i> Reviews</a></li>
+                    <li><a href="index.html#gallery"><i class="fa fa-camera" aria-hidden="true"></i> Our Work</a></li>
+                    <li><a href="cities/"><i class="fa fa-map-marked-alt" aria-hidden="true"></i> Service Areas</a></li>
+                    <li><a href="blog/"><svg class="footer-blog-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8C10.3 6.7 7.3 6.3 5 6.9V17.4C7.3 16.8 10.3 17.2 12 18.5"/><path d="M12 8C13.7 6.7 16.7 6.3 19 6.9V13"/><path d="M12 8V18.5"/><path d="M20.9 12.1L15.9 17.1L13.5 17.6L14 15.2L19 10.2C19.5 9.7 20.4 9.7 20.9 10.2C21.4 10.7 21.4 11.6 20.9 12.1Z"/></svg> Read Our Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:+14808780808">(480) 878-0808</a></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:info@hireplunge.com">info@hireplunge.com</a></p>
+                <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/search/?api=1&amp;query=555%20W%202nd%20Ave%20B7%2C%20Mesa%2C%20AZ%2085210" target="_blank" rel="noopener noreferrer">555 W 2nd Ave B7, Mesa, AZ 85210</a></p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/p/DayMB7tj_-3/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/p/Plunge-A-Plumbing-Company-LLC-61568241644216/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.yelp.com/biz/plunge-a-plumbing-company-mesa" aria-label="Yelp" target="_blank" rel="noopener noreferrer"><i class="fab fa-yelp" aria-hidden="true"></i></a>
+                    <a href="https://nextdoor.com/page/plunge-a-plumbing-company-llc-mesa-az?utm_campaign=1783093631810&amp;share_action_id=8a22cfef-040b-4fc6-bc21-13088bc6ab80" aria-label="Nextdoor" target="_blank" rel="noopener noreferrer"><i class="fas fa-home" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/@Plungeaplumbingcollc1" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span class="footer-year"></span> Plunge, A Plumbing Co. LLC All rights reserved.</p>
+            <p><a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.footer-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+</body>
+</html>

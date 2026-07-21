@@ -537,6 +537,21 @@ def checkup_prelaunch(notes: list) -> None:
     if placeholder_pages:
         notes.append(f"'yourwebsite.com' placeholder still in {placeholder_pages} "
                      f"pages — swap to hireplunge.com at launch (checklist item 3)")
+    # Legal pages (privacy.html / terms.html) carry visible "pending" markers
+    # for every item the owner hasn't confirmed yet: ROC license number,
+    # effective dates, after-hours rates, and the gift-card popup decision.
+    # This reminder stays until every marker is resolved and removed.
+    legal_pending = 0
+    for name in ("privacy.html", "terms.html"):
+        page = ROOT / "docs" / name
+        if page.exists():
+            legal_pending += page.read_text(encoding="utf-8",
+                                            errors="replace").count('class="legal-pending')
+    if legal_pending:
+        notes.append(f"{legal_pending} unconfirmed item(s) marked in privacy.html/"
+                     f"terms.html (ROC #, effective dates, after-hours rates, "
+                     f"gift-card popup decision) — resolve before launch; "
+                     f"attorney review recommended")
 
 
 def run_site_checkup() -> int:

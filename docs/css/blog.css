@@ -477,6 +477,66 @@
     }
 }
 
+/* ---- Legal pages (privacy.html, terms.html) ----
+   These extend the blog article components for long-form legal text.
+   .legal-summary uses the site's signature card accent (blue-dark with
+   orange top+left edges — same language as .blog-card / the booking
+   fallback box). The two "pending" styles mark UNCONFIRMED items from
+   the owner's legal draft (ROC #, effective dates, after-hours rates,
+   gift-card decision); generate.py counts them and prints a launch
+   reminder until every one is resolved and removed. */
+.legal-summary {
+    background: var(--blue-dark);
+    border-top: 4px solid var(--orange);
+    border-left: 4px solid var(--orange);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin: 0 0 var(--space-lg);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+}
+.legal-summary strong {
+    color: var(--white);
+}
+.legal-summary a,
+.legal-body a {
+    color: var(--orange);
+}
+.legal-summary a:hover,
+.legal-body a:hover {
+    color: var(--white);
+}
+.legal-body h2 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--white);
+    margin: 1.8rem 0 0.6rem;
+}
+/* Inline unconfirmed value — impossible to miss during review */
+.legal-pending {
+    background: rgba(235, 149, 74, 0.18);
+    border-bottom: 2px dashed var(--orange);
+    padding: 0 0.25em;
+    border-radius: 3px;
+}
+/* Block-level internal reminder (e.g. the gift-card decision) */
+.legal-pending-note {
+    border: 2px dashed var(--orange);
+    border-radius: var(--radius-lg);
+    padding: 0.7rem 1rem;
+    color: var(--orange);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.legal-pending-note .fa {
+    margin-right: 0.35rem;
+}
+
 /* Foot of the article: back link + call-to-action buttons */
 .blog-article-foot {
     clear: both; /* drop below the floated photo column if the body is short */
